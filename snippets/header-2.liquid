@@ -1,9 +1,1129 @@
-{% comment %}
+
 <link href="{{ 'PT_Serif.css' | asset_url}}" rel="stylesheet">
 <link href="{{ 'DM_Serif.css' | asset_url}}" rel="stylesheet">
+
+
+{% comment %}
 <link href="https://fonts.googleapis.com/css?family=PT+Serif:400,700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=DM+Serif+Text:400,400i|Poppins:300,400,500,600,700&display=swap" rel="stylesheet"> 
 {% endcomment %}
+<style>
+  .wrap_menu li {
+    position: unset !Important;
+}
+.shop_now_menu {
+    width: 1120px;
+    margin: 0 auto !important;
+    display: flex;
+    max-width: 100%;
+    padding: 0px 0px 0px 60px;
+}
+.wrap_menu .main_menu li .sub_menu {
+    width: 100% !important;
+    background: #fafafa !important;
+    text-align: center;
+    padding: 0px 0px;
+    top: 83%;
+}
+
+  .wrap_menu .main_menu > li:hover {
+    border-bottom: 0px !important;
+    text-decoration: none !important;
+}
+
+.wrap_menu .main_menu > li:hover > a {
+   border-bottom: 4px solid #b54d27; 
+    text-decoration: none !important;
+}
+
+  .wrap_menu .main_menu > li {
+    padding: 20px 10px;
+    margin: 0px;
+    display: inline-block;
+    height: 100%;
+}
+.wrap_menu .main_menu > li > a {
+    padding: 8px 0px;
+    border-bottom: 4px solid transparent;
+}
+.shop_sub_menu_list {
+    width: 30%;
+    float: left;
+    text-align: left;
+    border-right: 1px solid #b54d27;
+    padding: 0px 0px;
+    display: flex;
+    margin: 40px 0px;
+}
+.shop_sub_menu_prod_col {
+    width: 33.33%;
+    float: left;
+    padding: 10px 40px;
+    margin: 0px;
+}
+  .shop_sub_menu_list li:first-child {
+    padding-top: 0px !important;
+}
+.shop_sub_menu_list ul {
+    /* white-space: nowrap; */
+    display: inline-block;
+    position: relative;
+    top: -8px;
+}
+.shop_sub_menu_prod_col img {
+    width: 100%;
+    height: 140.64px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 7px;
+}
+
+  .category-products.show_prod {
+    display: block !important;
+}
+
+.category-products {
+    width: 100%;
+    display: inline-block;
+}
+
+
+ .prod_col_inner {
+    width: 100%;
+    position: relative;
+}
+  .shop_sub_menu_prod_col a {
+    width: 100% !important;
+    display: inline-block;
+    padding: 0px !important;
+}
+  .prod_col_inner:hover .prod_overlay {
+    opacity: 1;
+}
+.prod_overlay {
+    opacity: 0;
+    background: rgba(198, 160, 149, 0.7);
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    z-index: 9999;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 7px;
+}
+.prod_overlay h3 {
+    color: #fff;
+    font-size: 20px;
+}
+.shop_sub_menu_prod {
+    width: 70%;
+    float: left;
+    padding: 29px 40px 30px 40px;
+}
+  
+.shop_sub_menu_list li a {
+    color: #000 !important;
+    font-weight: bold;
+}
+  .shop_sub_menu_list li {
+    padding: 5px !important;
+}
+.wrap_menu .main_menu .shop_sub_menu_list li.menu_active > a {
+    text-decoration: underline !IMPORTANT;
+}
+
+  .search_header_main .search-product {
+    border-radius: 7px !important;
+}
+.container.main_page > .row > div {
+    width: 100%;
+}
+.shopify-challenge__container {
+    padding: 50px 0px;
+}
+  .desktop_only{
+  display: block;
+  }
+.header-cart .header-cart-wrapbtn a {
+    text-align: center !important;
+}
+  klarna-placement iframe {
+    width: 100% !important;
+}
+
+    .play_button {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.play_button img:hover, .hero_play_button:hover img{
+    transform: scale(1.2);
+}
+.play_button img {
+    width: 100px !important;
+    height: auto !important;
+    background: #fff;
+    border-radius: 50% !important;
+    transition: all 0.3s ease;
+}
+.article_title {
+    display: none;
+}
+  .show_vidpopup {
+/*     position: fixed;
+    overflow-y: scroll;
+    width: 100%;
+    overflow-x:hidden; */
+   overflow-y:hidden;
+}
+ .hero_play_button img {
+    width: 50px !important;
+    height: auto !important;
+   	transition: all 0.3s ease;
+} 
+.hero_play_button p {
+    display: inline-block;
+    padding-left: 10px;
+}
+.hero_play_button:hover p{
+    text-decoration: underline;
+}
+
+  .hero_play_button {
+    margin: 21px 0px 0px 15px;
+    display: inline-block;
+}
+  .play_button iframe, .play_button video ,  .hero_play_button video , .hero_play_button iframe {
+    display: none;
+}
+  .play_button img,  .hero_play_button p, .hero_play_button img {
+   cursor: pointer;
+}
+.video_popup span.lnr.lnr-cross.close_popup {
+    color: #fff;
+    position: absolute;
+    right: -20px;
+    top: -20px;
+    font-size: 24px !important;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 9999;
+}
+.video_popup .video_iframe img, .video_popup .video_iframe p {
+    display: none;
+}
+  .video_popup .video_container {
+    width: 75%;
+    margin: 0 auto;
+    position: relative;
+    max-width: 100%;
+}
+.video_popup .video_container .video_iframe iframe, .video_popup .video_container .video_iframe video {
+    width: 100% !important;
+    height: 100%;
+}
+.video_popup {
+    background: rgba(0,0,0,0.8);
+    position: fixed;
+    width: 100%;
+    z-index: 999999;
+    height: 100%;
+    display: none;
+  	top: 0px;
+  	overflow-y: scroll;
+}
+  .show_vidpopup .video_popup{
+  display: flex;
+    align-items:center;
+    justify-content:center;
+  }
+.stylist_cart_row #variantQuantity {
+    display: none;
+}
+body  #snize-search-results-grid-mode li.snize-product span.snize-thumbnail img {
+    top: 0px !important;
+    bottom: unset !important;
+}
+.main_menu > li > .sub_menu {
+    width: 270px !important;
+    max-width: unset !important;
+}
+#messageus_button {
+    z-index: 9999;
+}
+header .main_menu li a {
+    font-size: 18px !important;
+}
+.blog-article .p-b-80 {
+    padding-bottom: 0px;
+}
+.blog-detail-txt .s-text8.flex-w.flex-m.p-b-21 {
+    display: none;
+}
+.flex-m.flex-w.p-t-20 {
+    display: none;
+}
+.locale-bar__container {
+    position: fixed !important;
+    top: 0;
+}
+.topbar_added .show-fixed-header2 {
+    top: 97px;
+}
+.menu-open{
+  overflow: hidden;
+}
+.btn-show-menu-mobile .closeMenu{
+  display: none;
+}
+.btn-show-menu-mobile.is-active .closeMenu{
+  display: block;
+  font-size: 22px;
+}
+.btn-show-menu-mobile.is-active span{
+  display: none;
+}
+header .btn-show-menu-mobile.is-active {
+    border: 1px solid #000;
+    margin-top: 15px;
+    padding: 2px 7px;
+}
+.block2-img .reveal:hover .hidden {
+    z-index: 9;
+}
+.moneyRow {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+section.relateproduct img,
+.home_product .block2-img img {
+	object-fit: cover;
+	object-position: top;
+}
+section h3 p, section h2 p {
+    text-transform: initial;
+}
+#snize_results.snize-mobile-design.snize-new-version #snize-search-results-grid-mode li.snize-product span.snize-title {
+	text-align: center;
+	min-height: unset !IMPORTANT;
+	height: auto;
+}
+
+#snize_results.snize-mobile-design.snize-new-version #snize-search-results-grid-mode .snize-price-list {
+	text-align: center;
+}
+
+header .main_menu li a {
+	font-family: 'PT Serif', serif !important;
+	font-size: 20px;
+	color: #111;
+}
+
+.wrap_header {
+	z-index: initial;
+  	height: 75px !important;
+}
+
+.wrap_header.fixedHeader {
+	z-index: 999;
+}
+
+header .fixed-header2 {
+	position: fixed;
+	height: 75px;
+}
+
+li.header-cart-item {
+	border-bottom: 0px !important;
+}
+
+.header-cart-wrapbtn a i {
+	color: #fff;
+	font-size: 16px;
+	position: relative;
+	top: -1px;
+	margin-right: 10px;
+}
+
+.simpletext a.btn {
+	font-family: 'DM Serif Text', serif !important;
+}
+
+header .main_menu li ul li a {
+	color: #fff;
+}
+
+footer button {
+	border-radius: 10px !important;
+}
+
+.mobile_searchbar input,
+.mobile_searchbar input::placeholder {
+	color: #fff !important;
+}
+
+.home_product .block2-img.wrap-pic-w.of-hidden.pos-relative {
+	max-height: unset !important;
+}
+
+section.bg-title-page h2 {
+	margin-bottom: 0px !important;
+	color: #fff !important;
+  	
+}
+
+.product_desc a,
+#snize-search-results-grid-mode li.snize-product span.snize-title {
+	color: #b44b2b;
+	font-size: 17px;
+	font-weight: 400;
+}
+
+.product_desc span,
+.header-cart span,
+.shipping span,
+#snize-search-results-grid-mode .snize-price-list span {
+	color: #000;
+	font-family: 'Poppins', sans-serif !important;
+	font-weight: 400 !important;
+	font-size: 16px;
+}
+
+.w-size3.see_more {
+	max-width: unset;
+	width: 100%;
+	text-align: center;
+}
+
+.see_more a:hover,
+.header-cart a.bg1:hover,
+#snize-search-results-grid-mode li.snize-product .snize-button:hover {
+	background: #b64c28 !important;
+	border: 0px !important;
+	color: #fff !important;
+}
+
+.see_more a:hover,
+.header-cart a.bg1:hover,
+#snize-search-results-grid-mode li.snize-product .snize-button:hover,
+button.bg1:hover,
+a.bg1:hover,
+#fbtAppWidget button.cbb-frequently-bought-add-button:hover {
+	-webkit-animation-name: hvr-wobble-horizontal;
+	animation-name: hvr-wobble-horizontal;
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-timing-function: ease-in-out;
+	animation-timing-function: ease-in-out;
+	-webkit-animation-iteration-count: 1;
+	animation-iteration-count: 1;
+}
+
+.see_more a {
+	background: #b65327 !important;
+	border: 0px;
+	height: auto !important;
+	box-shadow: unset;
+	font-size: 28px;
+	padding: 10px 40px !important;
+	border-radius: 10px !important;
+	font-weight: 500;
+	max-width: 100% !important;
+	display: inline-block !important;
+	width: auto;
+	min-width: 400px !important;
+	margin: 0 auto;
+	font-family: 'DM Serif Text', serif !important;
+}
+
+.header-cart a.bg1,
+#snize-search-results-grid-mode li.snize-product .snize-button {
+	background: #b65327 !important;
+	border: 0px;
+	height: auto !important;
+	box-shadow: unset;
+	font-size: 20px;
+	padding: 10px 30px !important;
+	border-radius: 10px !important;
+	text-transform: uppercase !important;
+	font-weight: 500;
+	max-width: 100% !important;
+	left: 0px;
+	right: 0px;
+	margin: 0 auto;
+	font-family: 'DM Serif Text', serif !important;
+	color: #fff !important;
+	-webkit-transform: perspective(1px) translateZ(0);
+	transform: perspective(1px) translateZ(0);
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+button.bg1,
+a.bg1,
+#fbtAppWidget button.cbb-frequently-bought-add-button {
+	-webkit-transform: perspective(1px) translateZ(0);
+	transform: perspective(1px) translateZ(0);
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+.header-cart .header-cart-total {
+	color: #000;
+}
+
+section:not(.desktop-bg) h3,
+section:not(.bg-title-page) h2 {
+	color: #b44b2b !important;
+	font-size: 36px !important;
+	line-height: 1.2em;
+	width: 100%;
+  text-transform: unset !important;
+  margin-bottom: 25px !important;
+  padding-bottom: 0px !important;
+
+}
+.sec-title {
+    padding-bottom: 0px !important;
+}
+.shipping h4 {
+	color: #b44b2b !important;
+	font-weight: 400 !important;
+	font-size: 28px !important;
+	line-height: 1.4em;
+	width: 100%;
+	text-align: center !important;
+}
+
+.header-cart a {
+	font-size: 20px !important;
+	text-align: left !important;
+	line-height: 1.3em !important;
+	height: auto;
+	margin-bottom: 10px;
+	color: #b44b2b !important;
+	font-weight: 400 !important;
+	text-transform: unset !important;
+	width: 100%;
+}
+
+.block2-img .discount .middle p {
+	color: #fff !important;
+	font-size: 15px !important;
+	line-height: 1.3em !important;
+}
+
+div {
+	font-family: 'Poppins', sans-serif !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.product_desc a,
+.qv_product_desc a,
+.header-cart a,
+.header-cart-item-name button span,
+button,
+#snize-search-results-grid-mode li.snize-product span.snize-title {
+	font-family: 'DM Serif Text', serif !important;
+}
+
+#snize-search-results-grid-mode div.snize-product-label.top-left {
+	display: none !important;
+}
+
+p,
+footer p,
+footer li a,
+footer div,
+input,
+input::placeholder {
+	font-size: 16px !important;
+	line-height: 1.6em !important;
+	color: #000000 !important;
+	font-weight: 400 !important;
+	font-family: 'Poppins', sans-serif !important;
+}
+
+footer h4 {
+	font-size: 19.5px !important;
+	min-height: 70px !important;
+	padding-bottom: 0px !important;
+	margin-bottom: 15px;
+}
+
+.block2-img .discount {
+	display: none;
+}
+
+#snize_results.snize-mobile-design.snize-new-version li.snize-product .snize-price-list .snize-price {
+	color: #000;
+}
+
+body:not(.common-home) footer {
+	margin-top: 0px !important;
+}
+section.bg-title-page, section.page_title {
+    background: #244024!important;
+    padding: 30px 15px !important;
+}
+section.bg-title-page h1, section.bg-title-page h2, section.page_title h1 {
+    font-size: 35px !important;
+}
+section p, p {
+    font-size: 17px !important;
+    line-height: 1.6em !important;
+    color: #000000 !important;
+    font-weight: 400 !important;
+    margin-bottom: 20px !important;
+    font-family: 'Poppins', sans-serif !important;
+}
+.logo img {
+    max-height: 58px !important;
+}
+
+@media (min-width: 1367px){
+  .search_header_main {
+      width: 250px;
+  }
+}
+
+@media (min-width: 993px) and (max-width: 1140px){
+ .logo {
+    left: 15px !important; 
+  }
+  .logo img {
+    max-height: 50px !important;
+}
+header .main_menu li a {
+    font-size: 16px !important;
+}
+.main_menu > li {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+}
+.search_header_main {
+    margin-right: 0 !important;
+    width: 135px !important;
+}
+}
+  @media (min-width: 1231px) and (max-width: 1300px){
+.logo {
+    
+    left: 30px !important;
+  }
+    }
+@media (min-width: 1141px) and (max-width: 1230px){
+ .logo {
+    left: 15px !important; 
+  }
+  .logo img {
+    max-height: 55px !important;
+}
+header .main_menu li a {
+    font-size: 17px !important;
+}
+.main_menu > li {
+    padding-left: 7px !important;
+    padding-right: 7px !important;
+}
+.search_header_main {
+    margin-right: 0 !important;
+    width: 155px !important;
+}
+}
+@media (min-width: 992px){
+  header:not(.home) .wrap_header {
+	position: fixed !important;
+	height: 75px !important;
+	top: 33px !important;
+    z-index: 9999;
+  }
+  header:not(.home) .wrap_header {
+      border-bottom: 1px solid #f1ddd7;
+      margin-bottom: 0px;
+  }
+header:not(.home) .mobile_v {
+    background-image: none !important;
+}
+header:not(.home) {
+    padding-bottom: 75px;
+}
+}
+
+
+@media (min-width: 768px) and (max-width: 1160px) {
+	footer p,
+	footer li a,
+	footer div,
+	input,
+	input::placeholder {
+		font-size: 15px !important;
+	}
+	footer h4 {
+		font-size: 18.5px !important;
+		min-height: unset !important;
+		padding-bottom: 0px !important;
+		margin-bottom: 12px;
+	}
+	.product_desc a,
+	#snize-search-results-grid-mode li.snize-product span.snize-title {
+		font-size: 16px;
+	}
+	.product_desc span,
+	.shipping span,
+	#snize-search-results-grid-mode .snize-price-list span {
+		font-size: 15px;
+	}
+	.see_more a {
+		font-size: 21px;
+		padding: 8px 13px !important;
+		min-width: unset !important;
+	}
+	section:not(.desktop-bg) h3,
+	section h2 {
+		font-size: 28px !important;
+	}
+	p {
+		font-size: 16px !important;
+	}
+  	section.bg-title-page h1, section.bg-title-page h2, section.page_title h1 {
+        font-size: 35px !important;
+    }
+  	section p, p {
+        font-size: 16px !important;
+        line-height: 1.5em !important;
+        color: #000000 !important;
+        font-weight: 400 !important;
+        margin-bottom: 15px !important;
+        font-family: 'Poppins', sans-serif !important;
+    } 
+}
+
+.header-cart a {
+	font-size: 16px !important;
+	text-align: left !important;
+	line-height: 1.3em !important;
+	height: auto;
+	margin-bottom: 5px;
+	color: #b44b2b !important;
+	font-weight: 400 !important;
+	text-transform: unset !important;
+	width: 100%;
+}
+
+li.header-cart-item span {
+	font-size: 14px;
+}
+
+li.header-cart-item {
+	border-bottom: 0px !important;
+	margin-bottom: 7px;
+}
+
+.header-cart-item #variantQuantity {
+    font-size: 14px;
+    line-height: 1.5em;
+    margin-top: 0px;
+    color: #155724;
+    margin: 0px 0px 0px 15px;
+  	font-weight: 400;
+}
+
+.header-cart-item button span {
+	color: #111 !important;
+	margin: 0px !important;
+	padding: 0px !important;
+	position: relative;
+}
+
+.quantityRow {
+	display: flex;
+}
+
+.header-cart-item button.btn_cart_up,
+.header-cart-item button.btn_cart_down {
+	background: #e7e9ec;
+	border-radius: 3px;
+	border-color: #ADB1B8 #A2A6AC #8D9096;
+	border-style: solid;
+	border-width: 1px;
+	margin-left: 0px;
+	align-items: center;
+	display: flex;
+	color: #111 !important;
+	justify-content: center !important;
+	height: 25px !important;
+	width: 30px !important;
+}
+
+.header-cart-item input[type=number] {
+	color: #111;
+	border-radius: 0px;
+	width: 50px;
+	padding: 5px;
+	line-height: 1em;
+	border-color: #ADB1B8 #A2A6AC #8D9096 !important;
+	border-style: solid !important;
+	border-width: 1px 0px 1px 0px !important;
+	height: 25px;
+	font-size: 14px !important;
+}
+
+.header-cart-item #variantQuantity {
+	font-size: 14px;
+	line-height: 1.5em;
+	margin-top: 0px;
+	margin: 0px 0px 0px 15px;
+}
+
+.header-cart-item .header-cart-item-img {
+	width: 80px;
+	position: relative;
+	margin-right: 20px;
+	padding-left: 0px;
+	margin-left: 10px;
+}
+
+.table-shopping-cart td .price-section .money {
+	margin-bottom: 7px !important;
+	display: flex;
+}
+
+.header-cart-item button.delete_btn {
+	width: auto !important;
+	display: flex;
+  	align-items: center;
+  	justify-content: center;
+	height: 25px !important;
+	color: #111 !important;
+	font-weight: normal;
+	padding: 0px 23px 0px 23px;
+	font-size: 13px;
+	line-height: 1em;
+	background: #e7e9ec;
+	border-radius: 3px;
+	border-color: #ADB1B8 #A2A6AC #8D9096;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 3px !important;
+	margin-left: 15px;
+}
+
+.header-cart-item button.btn_cart_down {
+	justify-content: end;
+}
+
+.header-cart-item button.btn_cart_up {
+	justify-content: flex-end;
+}
+
+.header-cart-item button {
+	width: 30px !important;
+	height: 25px !important;
+}
+
+.header-cart-item button.btn_cart_up,
+.header-cart-item button.btn_cart_down {
+	height: 25px !important;
+	width: 30px !important;
+}
+
+.priceStockRow {
+	display: flex;
+	margin-bottom: 5px;
+}
+#snize-search-results-grid-mode span.snize-thumbnail img {
+    width: 100%;
+    max-height: unset !important;
+    object-fit: cover;
+    object-position: top;
+}
+#snize_results.snize-mobile-design.snize-new-version #snize-search-results-grid-mode span.snize-thumbnail img:not(.snize-flip-image) {
+    position: unset;
+}
+#snize_results.snize-mobile-design.snize-new-version #snize-search-results-grid-mode span.snize-thumbnail {
+    min-height: 100px;
+    height: auto;
+}
+#snize_results.snize-mobile-design.snize-new-version #snize-search-results-grid-mode li.snize-product {
+    padding: 0px 1px;
+    border: 0px !important;
+}
+#snize_results.snize-mobile-design.snize-new-version div.snize-main-panel-mobile-filters {
+    max-width: 30% !important;
+}
+.bannerSectionheading{
+	text-transform: unset !important;
+}
+@media (min-width: 992px) {
+	.home_product .col-lg-3 {
+		-ms-flex: 0 0 33.33%;
+		flex: 0 0 33.33%;
+		max-width: 33.33%;
+	}
+	#snize-search-results-grid-mode li.snize-product {
+		width: 31.33% !important;
+	}
+/* 	#snize-search-results-grid-mode span.snize-thumbnail img {
+		width: 100%;
+		min-height: unset !important;
+		max-height: unset !important;
+		object-fit: cover;
+		object-position: top;
+		height: 340px !important;
+	} */
+	#snize-search-results-grid-mode span.snize-thumbnail img.snize-item-image:not(.snize-flip-image) {
+		position: unset;
+	}
+	#snize-search-results-grid-mode span.snize-thumbnail {
+		height: auto;
+		min-height: 100%;
+	}
+}
+@media (max-width: 991px){
+  .xmobile_header.wrap_header_mobile {
+        padding-top: 33px;
+    }
+}
+@media (max-width: 767px) {
+   .desktop_only{
+  display: none;
+  }
+klarna-placement iframe {
+    width: 100% !important;
+    padding: 0px 15px;
+}
+  
+.collection .row .col-6, #shopify-section-coll-special .row .col-6{
+    padding-left: 0px !important;
+    max-width: 49.74% !important;
+    padding-right: 0px !important;
+    padding-bottom: 0px !important;
+}
+  #ffsbmsg, #ffsbmsg .slick-track, #ffsbmsg .slick-list {
+    height: 33px !important;
+}
+.collection .row, #shopify-section-coll-special .row {
+    justify-content: space-between !important;
+    padding: 0px !important;
+}
+.collection .row .col-sm-12, #shopify-section-coll-special .col-sm-12 {
+    padding-bottom: 0px !important;
+}
+.collection .see_more, #shopify-section-coll-special .see_more {
+    margin-top: 25px !important;
+}
+.collection .block2 .product_desc, .home_product .product_desc, #shopify-section-coll-special .block2 .product_desc{
+    padding: 15px 10px !important;
+}
+.collection section.bgwhite {
+    padding: 1px 0px;
+}
+	#snize_product_filter_tags {
+		display: flex !important;
+		margin-top: 35px !important;
+	}
+  .play_button .video-wrapper{
+    height: auto !important;
+}
+  .video_iframe .video-wrapper{
+    height: 100% !important;
+}
+  	 .header-cart-buttons {
+        padding: 0px 10px;
+    }
+        .play_button img {
+    width: 60px !important;
+    height: auto !important;
+}
+.hero_play_button img {
+    width: 40px !important;
+    height: auto !important;
+}
+  .video_iframe {
+    height: 215px;
+    padding: 0px 10px !important;
+}
+  .video_popup .video_container .video_iframe iframe, .video_popup .video_container .video_iframe video {
+    width: 100% !important;
+    height: 100%;
+}
+.hero_play_button {
+    margin: 20px 0px 0px 0px;
+    display: inline-block;
+    width: 100%;
+}
+ .hero_play_button p {
+    display: inline-block;
+    padding-left: 10px;
+    text-decoration: underline;
+    font-size: 14px;
+}
+  .video_popup .video_container {
+    width: 400px;
+    max-width: 100%;
+}
+.video_popup span.lnr.lnr-cross.close_popup {
+    top: -23px !important;
+    font-size: 20px !important;
+    right: 10px;
+    font-weight: bold;
+}
+ 
+  #ffsb {
+    z-index: 99999 !important;
+}
+	#snize-modal-mobile-filters-dialog ul.snize-product-color-filter li {
+		margin: 15px !important;
+	}
+  	section.bg-title-page, section.page_title {
+        padding: 15px 15px !important;
+    }
+	section.bg-title-page h1, section.bg-title-page h2, section.page_title h1 {
+        font-size: 24px !important;
+      	line-height: 1.2em;
+    }
+	section.bg-title-page {
+		padding: 15px 15px;
+	}
+	.header-cart-wrapbtn a i {
+		color: #fff;
+		font-size: 13px;
+		position: relative;
+		top: -1px;
+		margin-right: 8px;
+	}
+	.bo2 {
+		border-left: 0px !important;
+		border-right: 0px !Important;
+	}
+	footer p,
+	footer li a,
+	footer div,
+	input,
+	input::placeholder {
+		font-size: 14px !important;
+		line-height: 1.6em !important;
+		color: #000000 !important;
+		font-weight: 400 !important;
+		font-family: 'Poppins', sans-serif !important;
+	}
+	footer h4 {
+		font-size: 17.5px !important;
+		min-height: unset !important;
+		padding-bottom: 0px !important;
+		margin-bottom: 12px;
+	}
+	.product_desc a,
+	#snize-search-results-grid-mode li.snize-product span.snize-title {
+		font-size: 15px;
+	}
+	.product_desc span,
+	.shipping span,
+	#snize-search-results-grid-mode .snize-price-list span {
+		font-size: 14px;
+	}
+	.header-cart span {
+		font-size: 15px;
+	}
+	.header-cart .header-cart-total {
+        color: #000;
+        font-size: 14px;
+        font-weight: 600;
+        padding: 13px 10px 20px 10px;
+    }
+	.header-cart a.bg1 {
+        font-size: 15px !important;
+        padding: 8px 17px !important;
+        min-width: unset !important;
+    }
+  	.header-cart-item button.delete_btn {
+        margin-left: 10px;
+    }
+  	.header-cart-item .header-cart-item-img {
+        margin-right: 15px !important;
+    }
+	#snize-search-results-grid-mode li.snize-product .snize-button {
+		font-size: 16px;
+		padding: 8px 20px !important;
+		min-width: unset !important;
+	}
+	.header-cart a {
+		font-size: 15px !important;
+	}
+	.see_more a {
+		font-size: 19px;
+		padding: 8px 11px !important;
+		min-width: 200px !important;
+	}
+	.shipping h4 {
+		font-size: 21px !important;
+	}
+	section:not(.desktop-bg) h3,
+	section:not(.bg-title-page) h2 {
+		font-size: 21px !important;
+      	  padding: 0px !important;
+      	margin-bottom: 20px !important;
+	}
+	section p, p {
+        font-size: 14px !important;
+        line-height: 17pt !important;
+        color: #000000 !important;
+        font-weight: 400 !important;
+        margin-bottom: 20px !important;
+        padding-top: 0px !important;
+    }
+	.header-cart-item #variantQuantity {
+		margin-top: 2px;
+		font-size: 13px;
+		line-height: 1.2em;
+	}
+	.header-cart-footer {
+		font-size: 14px !important;
+	}
+}
+@media (max-width: 360px) {
+	section:not(.desktop-bg) h3,
+	section:not(.bg-title-page) h2 {
+		font-size: 21px !important;
+	}
+   .video_popup span.lnr.lnr-cross.close_popup {
+    top: -10px !important;
+}
+.announce_ment_slide {
+    font-size: 11px;
+}
+}
+@media (max-width: 340px) {
+	section:not(.desktop-bg) h3,
+	section:not(.bg-title-page) h2 {
+		font-size: 21px !important;
+	}
+  .announce_ment_slide {
+    font-size: 10px;
+}
+}
+
+@media (max-width: 330px) {
+	.see_more a {
+        font-size: 18px;
+        padding: 8px 12px !important;
+    }
+  	body .container{
+      padding: 0px 15px !important;
+    }
+}
+</style>
+
 {% include 'fsb' %}
 {% assign logo_size = '500x250' %}
 
@@ -12,640 +1132,756 @@
   <header class="header2 home">
   <!-- Header desktop -->
   <div class="container-menu-header-v2 p-t-26">
-	{% if section.settings.video_status %}
-  <div class="mobile_v lazybg" data-sizes="auto" style="background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=);" data-style="background-image: url({{ section.settings.mobile_gif_video | img_url: 'master' }});">
-	</div>
-	{% endif %} 
-	<div class="topbar2" style="opacity: 1; background-image: none; background-color: transparent;">
+    {% if section.settings.video_status %}
+  <div class="mobile_v lazyload" data-sizes="auto" data-bgset="{{ section.settings.mobile_gif_video | img_url: '767x400' }} [(max-width: 767px)] | {{ section.settings.mobile_gif_video | img_url: 'master' }} [(min-width: 768px)]">
+    </div>
+    {% endif %} 
+    <div class="topbar2" style="opacity: 1; background-image: none; background-color: transparent;">
 
-	  <!-- Logo2 -->
-	  {% if section.settings.logo %}
-	  <a href="/" itemprop="url" class="logo2">
-		{% comment %}
-		<img class="lazy2"
-			 src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-			 data-src="{{ section.settings.logo | img_url: logo_size }}"
-			 alt="{{ section.settings.logo.alt | default: shop.name }}"
-			 itemprop="logo">
-		{% endcomment %}
-		<img src="{{ section.settings.logo | img_url: logo_size }}"
-			 alt="{{ section.settings.logo.alt | default: shop.name }}"
-			 itemprop="logo">
-	  </a>
-	  {% else %}
-	  <a href="/" itemprop="url" class="navbar-brand img-responsive">{{ shop.name }}</a>
-	  {% endif %} 
-	</div>
-	<div class="wrap_header">
-		   
-	  {% include 'logo' %}
-	  <!-- Menu -->
-	  <div class="wrap_menu">
-		<nav class="menu">
-		  {% include 'main-menu' %}
-		</nav>
-	  </div>
-	  <!-- Header Icon -->
-	  <div class="header-icons">
-	  </div>
-	  
-			<div class="topbar-child2">
-		 <form action="/search" method="POST" role="search" class="search_header_main" id="blog-search">
-		  <div id="search" class="search-product pos-relative bo4 of-hidden">
-			<input type="text" name="q" value="{{ search.terms | escape }}" placeholder="Search all products..." class="s-text7 size6 p-l-23 p-r-50" aria-label="Search all products..." />
-			<button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
-			  <i class="fs-12 fa fa-search" aria-hidden="true"></i>
-			</button>
-		  </div>
-		</form>
-		{% if section.settings.show_email %}
-		<span class="topbar-email">
-		  {{ section.settings.header_email_text }}
-		</span>
-		{% endif %}
+      
+      <!-- Logo2 -->
+      {% if section.settings.logo %}
+      <a href="/" itemprop="url" class="logo2">
+        {% comment %}
+        <img class="lazyload" 
+             src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+             data-src="{{ section.settings.logo | img_url: logo_size }}"
+             alt="{{ section.settings.logo.alt | default: shop.name }}"
+             itemprop="logo" />
+        {% endcomment %}
+        <img src="{{ section.settings.logo | img_url: logo_size }}"
+             alt="{{ section.settings.logo.alt | default: shop.name }}"
+             itemprop="logo" />
+      </a>
+      {% else %}
+      <a href="/" itemprop="url" class="navbar-brand img-responsive">{{ shop.name }}</a>
+      {% endif %} 
+      
+
+    </div>
+    <div class="wrap_header">
+           
+      {% include 'logo' %}
+      <!-- Menu -->
+      <div class="wrap_menu">
+        <nav class="menu">
+          {% include 'main-menu' %}
+        </nav>
+      </div>
+      <!-- Header Icon -->
+      <div class="header-icons">
+      </div>
+      
+            <div class="topbar-child2">
+         <form action="/search" method="POST" role="search" class="search_header_main" id="blog-search">
+          <div id="search" class="search-product pos-relative bo4 of-hidden">
+            <input type="text" name="q" value="{{ search.terms | escape }}" placeholder="Search all products..." class="s-text7 size6 p-l-23 p-r-50" aria-label="Search all products..." />
+            <button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
+              <i class="fs-12 fa fa-search" aria-hidden="true"></i>
+            </button>
+          </div>
+        </form>
+        {% if section.settings.show_email %}
+        <span class="topbar-email">
+          {{ section.settings.header_email_text }}
+        </span>
+        {% endif %}
  
-		
-		<div class="header-wrapicon2 m-r-13">
-		  {% include 'header-cart' %}
-		</div>
-		{% capture the_snippet_auth %}{% include 'socialshopwave-widget-auth' %}{% endcapture %}
-		{% if the_snippet_auth contains 'Liquid error' %}
-		{% else %}
-		<div id="ssw-topauth" class="ssw-topauth" style="float: right;">
-		  {% if customer %}
-		  <div class="ssw-tprofile ssw-dropdown">
-			<a class="ssw-dropdown-toggle" style="font-size: 31px; color: #b54d26;" data-toggle="ssw-dropdown" href="javascript:void(0);">
-			  <i class="ssw-icon-user"></i>
-			</a>
-			<ul class="ssw-dropdown-menu" role="menu" aria-labelledby="dLabel">
-			  <li id="customer_myorders_li"><a tabindex="-1" href="/account">{{ 'socialshopwave.my_orders' | t }}</a></li>
-			  {% include 'ssw-widget-dropdown' %}
-			  <li class="ssw-divider"></li>
-			  <li><a id="customer_logout_link" tabindex="-1" href="/account/logout">{{ 'socialshopwave.logout' | t }}</a></li>
-			</ul>
-		  </div>
-		  {% else %}
-		  <a id="customer_login_link" style="font-size: 31px; color: #b54d26;" href="javascript:void(0);" data-toggle="ssw-modal" data-target="#login_modal" onclick="trackShopStats('login_popup_view', 'all')"><i class="ssw-icon-user"></i></a>
-		  {% endif %}
-		</div>
-		{% endif %}
-	  </div>
-	</div>
+        
+        <div class="header-wrapicon2 m-r-13">
+          {% include 'header-cart' %}
+        </div>
+        {% capture the_snippet_auth %}{% include 'socialshopwave-widget-auth' %}{% endcapture %}
+        {% if the_snippet_auth contains 'Liquid error' %}
+        {% else %}
+        <div id="ssw-topauth" class="ssw-topauth" style="float: right;">
+          {% if customer %}
+          <div class="ssw-tprofile ssw-dropdown">
+            <a class="ssw-dropdown-toggle" style="font-size: 31px; color: #b54d26;" data-toggle="ssw-dropdown" href="javascript:void(0);">
+              <i class="ssw-icon-user"></i>
+            </a>
+            <ul class="ssw-dropdown-menu" role="menu" aria-labelledby="dLabel">
+              <li id="customer_myorders_li"><a tabindex="-1" href="/account">{{ 'socialshopwave.my_orders' | t }}</a></li>
+              {% include 'ssw-widget-dropdown' %}
+              <li class="ssw-divider"></li>
+              <li><a id="customer_logout_link" tabindex="-1" href="/account/logout">{{ 'socialshopwave.logout' | t }}</a></li>
+            </ul>
+          </div>
+          {% else %}
+          <a id="customer_login_link" style="font-size: 31px; color: #b54d26;" href="javascript:void(0);" data-toggle="ssw-modal" data-target="#login_modal" onclick="trackShopStats('login_popup_view', 'all')"><i class="ssw-icon-user"></i></a>
+          {% endif %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
   </div>
   <!-- Header Mobile -->
-	{% if section.settings.plain_bg_header %}
-	<div class="xmobile_header wrap_header_mobile plain_background_header" style="background: transparent">
-	  {% if section.settings.video_status %}
-	  <div class="mobile_v lazyload"  data-sizes="auto" data-bgset="{{ section.settings.mobile_gif_video | img_url: '767x400' }} [(max-width: 767px)] | {{ section.settings.mobile_gif_video | img_url: 'master' }} [(min-width: 768px)]">
-	  </div>
-	  {% endif %} 
-	   
-	  <!-- Logo moblie -->  
-	  {% if section.settings.logo %}
-	  <a href="/" class="logo-mobile">
-		{% comment %}
-		
-		<img class="lazy2" 
-			 src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
-			 data-src="{{ section.settings.logo_image_for_plain_bg | img_url: '456x256' }}"
-			 alt="{{ section.settings.logo.alt | default: shop.name }}">
-		{% endcomment %}
-		
-		<img class="lazy2" 
-			 src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
-			 data-src="{{ section.settings.logo_image_for_plain_bg | img_url: '456x256' }}"
-			 alt="{{ section.settings.logo.alt | default: shop.name }}">
-		
-	  </a>
-	  {% endif %}
+    {% if section.settings.plain_bg_header %}
+    <div class="xmobile_header wrap_header_mobile plain_background_header" style="background: transparent">
+      {% if section.settings.video_status %}
+      <div class="mobile_v lazyload"  data-sizes="auto" data-bgset="{{ section.settings.mobile_gif_video | img_url: '767x400' }} [(max-width: 767px)] | {{ section.settings.mobile_gif_video | img_url: 'master' }} [(min-width: 768px)]">
+      </div>
+      {% endif %} 
+       
+      <!-- Logo moblie -->  
+      {% if section.settings.logo %}
+      <a href="/" class="logo-mobile">
+        {% comment %}
+        
+        <img class="lazyload" 
+             src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+             data-src="{{ section.settings.logo_image_for_plain_bg | img_url: '456x256' }}"
+             alt="{{ section.settings.logo.alt | default: shop.name }}">
+        {% endcomment %}
+        
+        <img 
+             src="{{ section.settings.logo_image_for_plain_bg | img_url: '456x256' }}"
+             alt="{{ section.settings.logo.alt | default: shop.name }}">
+        
+      </a>
+      {% endif %}
   <!--     <span class="icon_search"></span> -->
-	  <!-- Button show menu -->
-	<div class="mob_right_menu">
-	  <div class="btn-show-menu">
-		<!-- Header Icon mobile -->
-		<div class="header-icons-mobile">
-		  {% include 'header-cart-mob' %}
-		</div>
+      <!-- Button show menu -->
+    <div class="mob_right_menu">
+      <div class="btn-show-menu">
+        <!-- Header Icon mobile -->
+        <div class="header-icons-mobile">
+          {% include 'header-cart-mob' %}
+        </div>
 
-	  </div>
-	  
-	   <div class="btn-show-menu-mobile ">
-		 
-		<span class="menu">
-			<span></span>
-			<span></span>
-			<span></span>
-		 </span>
-		<span class="lnr lnr-chevron-left return_arrow"></span>
-		 <span class="lnr lnr-cross closeMenu" style="left: 0px; display: none;"></span>
-		</div>
-	  </div>
-	</div>
-	<!-- Menu Mobile -->
-	{% else %}
-	<div class="xmobile_header wrap_header_mobile  " style="background: transparent">
-	  {% if section.settings.video_status %}
-	  <div class="mobile_v lazyload"  data-sizes="auto" data-bgset="{{ section.settings.mobile_gif_video | img_url: '767x400' }} [(max-width: 767px)] | {{ section.settings.mobile_gif_video | img_url: 'master' }} [(min-width: 768px)]">
-	  </div>
-	  {% endif %} 
-	   
-	  <!-- Logo moblie -->  
-	  {% if section.settings.logo %}
-	  <a href="/" class="logo-mobile">
-		{% comment %}
-		
-		<img class="lazyload" 
-			 src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
-			 data-src="{{ section.settings.logo | img_url: 'master' }}"
-			 alt="{{ section.settings.logo.alt | default: shop.name }}">
-		{% endcomment %}
-		
-		<img class="lazy2" 
-			 src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
-			 data-src="{{ section.settings.logo | img_url: '767X280' }}"
-			 alt="{{ section.settings.logo.alt | default: shop.name }}">
-		
-	  </a>
-	  {% endif %}
+      </div>
+      
+       <div class="btn-show-menu-mobile ">
+         
+        <span class="menu">
+        	<span></span>
+            <span></span>
+            <span></span>
+         </span>
+        <span class="lnr lnr-chevron-left return_arrow"></span>
+         <span class="lnr lnr-cross closeMenu" style="left: 0px; display: none;"></span>
+        </div>
+      </div>
+    </div>
+    <!-- Menu Mobile -->
+    {% else %}
+    <div class="xmobile_header wrap_header_mobile  " style="background: transparent">
+      {% if section.settings.video_status %}
+      <div class="mobile_v lazyload"  data-sizes="auto" data-bgset="{{ section.settings.mobile_gif_video | img_url: '767x400' }} [(max-width: 767px)] | {{ section.settings.mobile_gif_video | img_url: 'master' }} [(min-width: 768px)]">
+      </div>
+      {% endif %} 
+       
+      <!-- Logo moblie -->  
+      {% if section.settings.logo %}
+      <a href="/" class="logo-mobile">
+        {% comment %}
+        
+        <img class="lazyload" 
+             src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+             data-src="{{ section.settings.logo | img_url: 'master' }}"
+             alt="{{ section.settings.logo.alt | default: shop.name }}">
+        {% endcomment %}
+        
+        <img 
+             src="{{ section.settings.logo | img_url: '767X280' }}"
+             alt="{{ section.settings.logo.alt | default: shop.name }}">
+        
+      </a>
+      {% endif %}
   <!--     <span class="icon_search"></span> -->
-	  <!-- Button show menu -->
-	<div class="mob_right_menu">
-	  <div class="btn-show-menu">
-		<!-- Header Icon mobile -->
-		<div class="header-icons-mobile">
-		  {% include 'header-cart-mob' %}
-		</div>
+      <!-- Button show menu -->
+    <div class="mob_right_menu">
+      <div class="btn-show-menu">
+        <!-- Header Icon mobile -->
+        <div class="header-icons-mobile">
+          {% include 'header-cart-mob' %}
+        </div>
 
-	  </div>
-	   <div class="btn-show-menu-mobile ">
-		 
-		<span class="menu">
-			<span></span>
-			<span></span>
-			<span></span>
-		 </span>
-		<span class="lnr lnr-chevron-left return_arrow"></span>
-		 <span class="lnr lnr-cross closeMenu" style="left: 0px; display: none;"></span>
-		</div>
-	  </div>
-	</div>
+      </div>
+       <div class="btn-show-menu-mobile ">
+         
+        <span class="menu">
+        	<span></span>
+            <span></span>
+            <span></span>
+         </span>
+        <span class="lnr lnr-chevron-left return_arrow"></span>
+         <span class="lnr lnr-cross closeMenu" style="left: 0px; display: none;"></span>
+        </div>
+      </div>
+    </div>
    
    {% endif %}<!-- Menu Mobile -->
-	<div class="mobile_header_oth wrap-side-menu nav-down" >
-	  <nav class="side-menu">
-		<ul class="main-menu">
-		  {% include 'header-mob-nav' %}
-		</ul>
-	  </nav>
-	</div>
+    <div class="mobile_header_oth wrap-side-menu nav-down" >
+      <nav class="side-menu">
+        <ul class="main-menu">
+          {% include 'header-mob-nav' %}
+        </ul>
+      </nav>
+    </div>
   
 {% if section.settings.white_head %} 
   <div class="mobile_searchbar wrap_header_mobile mobile_header nav-down white_sticky_header" id="search-header">
 
-	<form action="/search" method="POST" role="search" class="search_header" id="blog-search">
-		  <div id="search" class="search-product pos-relative bo4 of-hidden">
-			<input type="text" name="q" value="{{ search.terms | escape }}" placeholder="Search Products" class="s-text7 size6 p-l-23 p-r-50" aria-label="Search Products" />
-			
-			<button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
-			  <i class="fs-12 fa fa-search" aria-hidden="true"></i>
-			</button>
-		  </div>
-		</form>
-	<div class="mob_right_menu">
-	  <div class="btn-show-menu">
-		<!-- Header Icon mobile -->
-		<div class="header-icons-mobile">
-		   {% include 'header-cart-mob-sticky' %}
-		</div>
+    <form action="/search" method="POST" role="search" class="search_header" id="blog-search">
+          <div id="search" class="search-product pos-relative bo4 of-hidden">
+            <input type="text" name="q" value="{{ search.terms | escape }}" placeholder="Search Products" class="s-text7 size6 p-l-23 p-r-50" aria-label="Search Products" />
+            
+            <button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
+              <i class="fs-12 fa fa-search" aria-hidden="true"></i>
+            </button>
+          </div>
+        </form>
+    <div class="mob_right_menu">
+      <div class="btn-show-menu">
+        <!-- Header Icon mobile -->
+        <div class="header-icons-mobile">
+           {% include 'header-cart-mob-sticky' %}
+        </div>
 
-	  </div>
-	  <div class="btn-show-menu-mobile ">
-		 
-		<span class="menu">
-			<span></span>
-			<span></span>
-			<span></span>
-		 </span>
-		<span class="lnr lnr-chevron-left return_arrow"></span>
-		 <span class="lnr lnr-cross closeMenu" style="left: 0px; display: none;"></span>
-		</div>
-	  </div>
-	</div>
+      </div>
+      <div class="btn-show-menu-mobile ">
+         
+        <span class="menu">
+        	<span></span>
+            <span></span>
+            <span></span>
+         </span>
+        <span class="lnr lnr-chevron-left return_arrow"></span>
+         <span class="lnr lnr-cross closeMenu" style="left: 0px; display: none;"></span>
+        </div>
+      </div>
+    </div>
   {% else %} 
   <div class="mobile_searchbar wrap_header_mobile mobile_header nav-down" id="search-header">
 
-	<form action="/search" method="POST" role="search" class="search_header" id="blog-search">
-		  <div id="search" class="search-product pos-relative bo4 of-hidden">
-			<input type="text" name="q" value="{{ search.terms | escape }}" placeholder="Search Products" class="s-text7 size6 p-l-23 p-r-50" aria-label="Search Products" />
-			
-			<button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
-			  <i class="fs-12 fa fa-search" aria-hidden="true"></i>
-			</button>
-		  </div>
-		</form>
-	<div class="mob_right_menu">
-	  <div class="btn-show-menu">
-		<!-- Header Icon mobile -->
-		<div class="header-icons-mobile">
-		   {% include 'header-cart-mob-sticky' %}
-		</div>
+    <form action="/search" method="POST" role="search" class="search_header" id="blog-search">
+          <div id="search" class="search-product pos-relative bo4 of-hidden">
+            <input type="text" name="q" value="{{ search.terms | escape }}" placeholder="Search Products" class="s-text7 size6 p-l-23 p-r-50" aria-label="Search Products" />
+            
+            <button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
+              <i class="fs-12 fa fa-search" aria-hidden="true"></i>
+            </button>
+          </div>
+        </form>
+    <div class="mob_right_menu">
+      <div class="btn-show-menu">
+        <!-- Header Icon mobile -->
+        <div class="header-icons-mobile">
+           {% include 'header-cart-mob-sticky' %}
+        </div>
 
-	  </div>
-	  <div class="btn-show-menu-mobile ">
-		 
-		<span class="menu">
-			<span></span>
-			<span></span>
-			<span></span>
-		 </span>
-		<span class="lnr lnr-chevron-left return_arrow"></span>
-		 <span class="lnr lnr-cross closeMenu" style="left: 0px; display: none;"></span>
-		</div>
-	  </div>
-	</div>
+      </div>
+      <div class="btn-show-menu-mobile ">
+         
+        <span class="menu">
+        	<span></span>
+            <span></span>
+            <span></span>
+         </span>
+        <span class="lnr lnr-chevron-left return_arrow"></span>
+         <span class="lnr lnr-cross closeMenu" style="left: 0px; display: none;"></span>
+        </div>
+      </div>
+    </div>
   
-	  {% endif %}
+      {% endif %}
   
-	
+    
 </header>   
 
 
 {% else %}
-	<header class="header2">
+ 	<header class="header2">
   <!-- Header desktop -->
   
   <div class="container-menu-header-v2 p-t-33">
-	{% if section.settings.video_status %}
+    {% if section.settings.video_status %}
 	<div class="mobile_v lazyload" data-sizes="auto" data-bgset="{{ section.settings.mobile_gif_video | img_url: '767x400' }} [(max-width: 767px)] | {{ section.settings.mobile_gif_video | img_url: 'master' }} [(min-width: 768px)]">
-	</div>
-	{% endif %} 
-	
-	<div class="wrap_header">
-		   
-	  {% include 'logo' %}
-	  <!-- Menu -->
-	  <div class="wrap_menu">
-		<nav class="menu">
-		  {% include 'main-menu' %}
-		</nav>
-	  </div>
-	  <!-- Header Icon -->
-	  <div class="header-icons">
-	  </div>
-	  
-			<div class="topbar-child2">
-		 <form action="/search" method="POST" role="search" class="search_header_main" id="blog-search">
-		  <div id="search" class="search-product pos-relative bo4 of-hidden">
-			<input type="text" name="q" value="{{ search.terms | escape }}" placeholder="Search all products..." class="s-text7 size6 p-l-23 p-r-50" aria-label="Search all products..." />
-			<button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
-			  <i class="fs-12 fa fa-search" aria-hidden="true"></i>
-			</button>
-		  </div>
-		</form>
-		{% if section.settings.show_email %}
-		<span class="topbar-email">
-		  {{ section.settings.header_email_text }}
-		</span>
-		{% endif %}
+    </div>
+    {% endif %} 
+    
+    <div class="wrap_header">
+           
+      {% include 'logo' %}
+      <!-- Menu -->
+      <div class="wrap_menu">
+        <nav class="menu">
+          {% include 'main-menu' %}
+        </nav>
+      </div>
+      <!-- Header Icon -->
+      <div class="header-icons">
+      </div>
+      
+            <div class="topbar-child2">
+         <form action="/search" method="POST" role="search" class="search_header_main" id="blog-search">
+          <div id="search" class="search-product pos-relative bo4 of-hidden">
+            <input type="text" name="q" value="{{ search.terms | escape }}" placeholder="Search all products..." class="s-text7 size6 p-l-23 p-r-50" aria-label="Search all products..." />
+            <button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
+              <i class="fs-12 fa fa-search" aria-hidden="true"></i>
+            </button>
+          </div>
+        </form>
+        {% if section.settings.show_email %}
+        <span class="topbar-email">
+          {{ section.settings.header_email_text }}
+        </span>
+        {% endif %}
  
-		
-		<div class="header-wrapicon2 m-r-13">
-		  {% include 'header-cart' %}
-		</div>
-		{% capture the_snippet_auth %}{% include 'socialshopwave-widget-auth' %}{% endcapture %}
-		{% if the_snippet_auth contains 'Liquid error' %}
-		{% else %}
-		<div id="ssw-topauth" class="ssw-topauth" style="float: right;">
-		  {% if customer %}
-		  <div class="ssw-tprofile ssw-dropdown">
-			<a class="ssw-dropdown-toggle" style="font-size: 31px; color: #b54d26;" data-toggle="ssw-dropdown" href="javascript:void(0);">
-			  <i class="ssw-icon-user"></i>
-			</a>
-			<ul class="ssw-dropdown-menu" role="menu" aria-labelledby="dLabel">
-			  <li id="customer_myorders_li"><a tabindex="-1" href="/account">{{ 'socialshopwave.my_orders' | t }}</a></li>
-			  {% include 'ssw-widget-dropdown' %}
-			  <li class="ssw-divider"></li>
-			  <li><a id="customer_logout_link" tabindex="-1" href="/account/logout">{{ 'socialshopwave.logout' | t }}</a></li>
-			</ul>
-		  </div>
-		  {% else %}
-		  <a id="customer_login_link" style="font-size: 31px; color: #b54d26;" href="javascript:void(0);" data-toggle="ssw-modal" data-target="#login_modal" onclick="trackShopStats('login_popup_view', 'all')"><i class="ssw-icon-user"></i></a>
-		  {% endif %}
-		</div>
-		{% endif %}
-	  </div>
-	</div>
+        
+        <div class="header-wrapicon2 m-r-13">
+          {% include 'header-cart' %}
+        </div>
+        {% capture the_snippet_auth %}{% include 'socialshopwave-widget-auth' %}{% endcapture %}
+        {% if the_snippet_auth contains 'Liquid error' %}
+        {% else %}
+        <div id="ssw-topauth" class="ssw-topauth" style="float: right;">
+          {% if customer %}
+          <div class="ssw-tprofile ssw-dropdown">
+            <a class="ssw-dropdown-toggle" style="font-size: 31px; color: #b54d26;" data-toggle="ssw-dropdown" href="javascript:void(0);">
+              <i class="ssw-icon-user"></i>
+            </a>
+            <ul class="ssw-dropdown-menu" role="menu" aria-labelledby="dLabel">
+              <li id="customer_myorders_li"><a tabindex="-1" href="/account">{{ 'socialshopwave.my_orders' | t }}</a></li>
+              {% include 'ssw-widget-dropdown' %}
+              <li class="ssw-divider"></li>
+              <li><a id="customer_logout_link" tabindex="-1" href="/account/logout">{{ 'socialshopwave.logout' | t }}</a></li>
+            </ul>
+          </div>
+          {% else %}
+          <a id="customer_login_link" style="font-size: 31px; color: #b54d26;" href="javascript:void(0);" data-toggle="ssw-modal" data-target="#login_modal" onclick="trackShopStats('login_popup_view', 'all')"><i class="ssw-icon-user"></i></a>
+          {% endif %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
   </div>
   <!-- Header Mobile -->
-	{% if section.settings.plain_bg_header %}
-	<div class="xmobile_header wrap_header_mobile plain_background_header" style="background: transparent">
-	  {% if section.settings.video_status %}
-	  <div class="mobile_v lazyload"  data-sizes="auto" data-bgset="{{ section.settings.mobile_gif_video | img_url: '767x400' }} [(max-width: 767px)] | {{ section.settings.mobile_gif_video | img_url: 'master' }} [(min-width: 768px)]">
-	  </div>
-	  {% endif %} 
-	   
-	  <!-- Logo moblie -->  
-	  {% if section.settings.logo %}
-	  <a href="/" class="logo-mobile">
-		{% comment %}
-		
-		<img class="lazyload" 
-			 src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
-			 data-src="{{ section.settings.logo_image_for_plain_bg | img_url: '456x256' }}"
-			 alt="{{ section.settings.logo.alt | default: shop.name }}">
-		{% endcomment %}
-		
-		<img class="lazy2" 
-			 src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
-			 data-src="{{ section.settings.logo_image_for_plain_bg | img_url: '456x256' }}"
-			 alt="{{ section.settings.logo.alt | default: shop.name }}">
-		
-	  </a>
-	  {% endif %}
+  	{% if section.settings.plain_bg_header %}
+    <div class="xmobile_header wrap_header_mobile plain_background_header" style="background: transparent">
+      {% if section.settings.video_status %}
+      <div class="mobile_v lazyload"  data-sizes="auto" data-bgset="{{ section.settings.mobile_gif_video | img_url: '767x400' }} [(max-width: 767px)] | {{ section.settings.mobile_gif_video | img_url: 'master' }} [(min-width: 768px)]">
+      </div>
+      {% endif %} 
+       
+      <!-- Logo moblie -->  
+      {% if section.settings.logo %}
+      <a href="/" class="logo-mobile">
+        {% comment %}
+        
+        <img class="lazyload" 
+             src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+             data-src="{{ section.settings.logo_image_for_plain_bg | img_url: '456x256' }}"
+             alt="{{ section.settings.logo.alt | default: shop.name }}">
+        {% endcomment %}
+        
+        <img 
+             src="{{ section.settings.logo_image_for_plain_bg | img_url: '456x256' }}"
+             alt="{{ section.settings.logo.alt | default: shop.name }}">
+        
+      </a>
+      {% endif %}
   <!--     <span class="icon_search"></span> -->
-	  <!-- Button show menu -->
-	 <div class="mob_right_menu">
-	  <div class="btn-show-menu">
-		<!-- Header Icon mobile -->
-		<div class="header-icons-mobile">
-		  {% include 'header-cart-mob' %}
-		</div>
+      <!-- Button show menu -->
+     <div class="mob_right_menu">
+      <div class="btn-show-menu">
+        <!-- Header Icon mobile -->
+        <div class="header-icons-mobile">
+          {% include 'header-cart-mob' %}
+        </div>
 
-	  </div>
-	  <div class="btn-show-menu-mobile ">
-		 
-		<span class="menu">
-			<span></span>
-			<span></span>
-			<span></span>
-		 </span>
-		<span class="lnr lnr-chevron-left return_arrow"></span>
-		<span class="lnr lnr-cross closeMenu" style="left: 0px; display: none;"></span>
-		</div>
-	  </div>
-	</div>
-	<!-- Menu Mobile -->
-	{% else %}
-	<div class="xmobile_header wrap_header_mobile  " style="background: transparent">
-	  {% if section.settings.video_status %}
-	  <div class="mobile_v lazyload"  data-sizes="auto" data-bgset="{{ section.settings.mobile_gif_video | img_url: '767x400' }} [(max-width: 767px)] | {{ section.settings.mobile_gif_video | img_url: 'master' }} [(min-width: 768px)]">
-	  </div>
-	  {% endif %} 
-	   
-	  <!-- Logo moblie -->  
-	  {% if section.settings.logo %}
-	  <a href="/" class="logo-mobile">
-		{% comment %}
-		
-		<img class="lazyload" 
-			 src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
-			 data-src="{{ section.settings.logo | img_url: 'master' }}"
-			 alt="{{ section.settings.logo.alt | default: shop.name }}">
-		{% endcomment %}
-		
-		<img class="lazy2" 
-			 src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
-			 data-src="{{ section.settings.logo | img_url: '767X280' }}"
-			 alt="{{ section.settings.logo.alt | default: shop.name }}">
-		
-	  </a>
-	  {% endif %}
+      </div>
+      <div class="btn-show-menu-mobile ">
+         
+        <span class="menu">
+        	<span></span>
+            <span></span>
+            <span></span>
+         </span>
+        <span class="lnr lnr-chevron-left return_arrow"></span>
+        <span class="lnr lnr-cross closeMenu" style="left: 0px; display: none;"></span>
+        </div>
+      </div>
+    </div>
+    <!-- Menu Mobile -->
+    {% else %}
+    <div class="xmobile_header wrap_header_mobile  " style="background: transparent">
+      {% if section.settings.video_status %}
+      <div class="mobile_v lazyload"  data-sizes="auto" data-bgset="{{ section.settings.mobile_gif_video | img_url: '767x400' }} [(max-width: 767px)] | {{ section.settings.mobile_gif_video | img_url: 'master' }} [(min-width: 768px)]">
+      </div>
+      {% endif %} 
+       
+      <!-- Logo moblie -->  
+      {% if section.settings.logo %}
+      <a href="/" class="logo-mobile">
+        {% comment %}
+        
+        <img class="lazyload" 
+             src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+             data-src="{{ section.settings.logo | img_url: 'master' }}"
+             alt="{{ section.settings.logo.alt | default: shop.name }}">
+        {% endcomment %}
+        
+        <img 
+             src="{{ section.settings.logo | img_url: '767X280' }}"
+             alt="{{ section.settings.logo.alt | default: shop.name }}">
+        
+      </a>
+      {% endif %}
   <!--     <span class="icon_search"></span> -->
-	  <!-- Button show menu -->
-	<div class="mob_right_menu">
-	  <div class="btn-show-menu">
-		<!-- Header Icon mobile -->
-		<div class="header-icons-mobile">
-		  {% include 'header-cart-mob' %}
-		</div>
+      <!-- Button show menu -->
+    <div class="mob_right_menu">
+      <div class="btn-show-menu">
+        <!-- Header Icon mobile -->
+        <div class="header-icons-mobile">
+          {% include 'header-cart-mob' %}
+        </div>
 
-	  </div>
-	  <div class="btn-show-menu-mobile ">
-		 
-		<span class="menu">
-			<span></span>
-			<span></span>
-			<span></span>
-		 </span>
-		<span class="lnr lnr-chevron-left return_arrow"></span>
-		 <span class="lnr lnr-cross closeMenu" style="left: 0px; display: none;"></span>
-		</div>
-	  </div>
-	</div>
+      </div>
+      <div class="btn-show-menu-mobile ">
+         
+        <span class="menu">
+        	<span></span>
+            <span></span>
+            <span></span>
+         </span>
+        <span class="lnr lnr-chevron-left return_arrow"></span>
+         <span class="lnr lnr-cross closeMenu" style="left: 0px; display: none;"></span>
+        </div>
+      </div>
+    </div>
    
    {% endif %}<!-- Menu Mobile -->
-	<div class="mobile_header_oth wrap-side-menu nav-down" >
-	  <nav class="side-menu">
-		<ul class="main-menu">
-		  {% include 'header-mob-nav' %}
-		</ul>
-	  </nav>
-	</div>
+    <div class="mobile_header_oth wrap-side-menu nav-down" >
+      <nav class="side-menu">
+        <ul class="main-menu">
+          {% include 'header-mob-nav' %}
+        </ul>
+      </nav>
+    </div>
   {% if section.settings.white_head %} 
   <div class="mobile_searchbar wrap_header_mobile mobile_header nav-down white_sticky_header" id="search-header">
 
-	<form action="/search" method="POST" role="search" class="search_header" id="blog-search">
-		  <div id="search" class="search-product pos-relative bo4 of-hidden">
-			<input type="text" name="q" value="{{ search.terms | escape }}" placeholder="Search Products" class="s-text7 size6 p-l-23 p-r-50" aria-label="Search Products" />
-			
-			<button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
-			  <i class="fs-12 fa fa-search" aria-hidden="true"></i>
-			</button>
-		  </div>
-		</form>
-	<div class="mob_right_menu">
-	  <div class="btn-show-menu">
-		<!-- Header Icon mobile -->
-		<div class="header-icons-mobile">
-		   {% include 'header-cart-mob-sticky' %}
-		</div>
+    <form action="/search" method="POST" role="search" class="search_header" id="blog-search">
+          <div id="search" class="search-product pos-relative bo4 of-hidden">
+            <input type="text" name="q" value="{{ search.terms | escape }}" placeholder="Search Products" class="s-text7 size6 p-l-23 p-r-50" aria-label="Search Products" />
+            
+            <button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
+              <i class="fs-12 fa fa-search" aria-hidden="true"></i>
+            </button>
+          </div>
+        </form>
+    <div class="mob_right_menu">
+      <div class="btn-show-menu">
+        <!-- Header Icon mobile -->
+        <div class="header-icons-mobile">
+           {% include 'header-cart-mob-sticky' %}
+        </div>
 
-	  </div>
-	  <div class="btn-show-menu-mobile ">
-		 
-		<span class="menu">
-			<span></span>
-			<span></span>
-			<span></span>
-		 </span>
-		<span class="lnr lnr-chevron-left return_arrow"></span>
-		 <span class="lnr lnr-cross closeMenu" style="left: 0px; display: none;"></span>
-		</div>
-	  </div>
-	</div>
+      </div>
+      <div class="btn-show-menu-mobile ">
+         
+        <span class="menu">
+        	<span></span>
+            <span></span>
+            <span></span>
+         </span>
+        <span class="lnr lnr-chevron-left return_arrow"></span>
+         <span class="lnr lnr-cross closeMenu" style="left: 0px; display: none;"></span>
+        </div>
+      </div>
+    </div>
   {% else %} 
   <div class="mobile_searchbar wrap_header_mobile mobile_header nav-down" id="search-header">
 
-	<form action="/search" method="POST" role="search" class="search_header" id="blog-search">
-		  <div id="search" class="search-product pos-relative bo4 of-hidden">
-			<input type="text" name="q" value="{{ search.terms | escape }}" placeholder="Search Products" class="s-text7 size6 p-l-23 p-r-50" aria-label="Search Products" />
-			
-			<button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
-			  <i class="fs-12 fa fa-search" aria-hidden="true"></i>
-			</button>
-		  </div>
-		</form>
-	<div class="mob_right_menu">
-	  <div class="btn-show-menu">
-		<!-- Header Icon mobile -->
-		<div class="header-icons-mobile">
-		   {% include 'header-cart-mob-sticky' %}
-		</div>
+    <form action="/search" method="POST" role="search" class="search_header" id="blog-search">
+          <div id="search" class="search-product pos-relative bo4 of-hidden">
+            <input type="text" name="q" value="{{ search.terms | escape }}" placeholder="Search Products" class="s-text7 size6 p-l-23 p-r-50" aria-label="Search Products" />
+            
+            <button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
+              <i class="fs-12 fa fa-search" aria-hidden="true"></i>
+            </button>
+          </div>
+        </form>
+    <div class="mob_right_menu">
+      <div class="btn-show-menu">
+        <!-- Header Icon mobile -->
+        <div class="header-icons-mobile">
+           {% include 'header-cart-mob-sticky' %}
+        </div>
 
-	  </div>
-	  <div class="btn-show-menu-mobile ">
-		 
-		<span class="menu">
-			<span></span>
-			<span></span>
-			<span></span>
-		 </span>
-		<span class="lnr lnr-chevron-left return_arrow"></span>
-		 <span class="lnr lnr-cross closeMenu" style="left: 0px; display: none;"></span>
-		</div>
-	  </div>
-	</div>
+      </div>
+      <div class="btn-show-menu-mobile ">
+         
+        <span class="menu">
+        	<span></span>
+            <span></span>
+            <span></span>
+         </span>
+        <span class="lnr lnr-chevron-left return_arrow"></span>
+         <span class="lnr lnr-cross closeMenu" style="left: 0px; display: none;"></span>
+        </div>
+      </div>
+    </div>
   
-	  {% endif %}
+      {% endif %}
   
-	
+  	
 </header>
 {% endif %}
+  
+<style>
+  .mobile_v {
+    padding: 0px;
+    margin: 0px;
+    max-width: initial;
+    overflow: hidden;
+    pointer-events: none;
+    position: absolute;
+    border-radius: 0px;
+    opacity: 1;
+    width: 100%;
+    height: 80px;
+    left: 0px;  
+  }
+.bg-video {
+    padding: 0px;
+    margin: 0px;
+    max-width: initial;
+    overflow: hidden;
+    pointer-events: none;
+    position: absolute;
+    border-radius: 0px;
+    opacity: 1;
+    width: 100%;
+    height: {{ section.settings.video_height }};
+    left: 0px;
+}
+
+.bg-video #player,.mobile_v #player1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+}
+
+.bg-video .overlay,.mobile_v .overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+}
+iframe#player,iframe#player1 {
+       position: absolute !important;
+    width: 100% !important;
+    height: 1012px !important;
+    left: 0px !important;
+    top: -416px !important;
+    max-width: initial;
+}
+ 
+  @media (min-width: 480px) {
+body.animsition {
+    padding-top: 32px !important;
+}
+
+   .bg-video {
+     top: 44px;
+  }
+    .mobile_v {
+     height: {{ section.settings.video_height }};
+      margin-top: -26px;
+    }
+}
+
+@media (max-width: 480px) {
+ .xmobile_header.wrap_header_mobile {
+        padding-top: 0px;
+    }
+body.animsition {
+    padding-top: 32px !important;
+}
+  
+  .announce_ment_slide {
+    font-size: 12px;
+}
+ 
+}
+
+.video_header{
+   opacity: 1; background-image: none; background-color: transparent;
+}
+  
+  .mobile_bg {
+    display:none;
+  }  
+
+.mobile_v {
+    
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    z-index: -2;
+}
+  
+</style>
 <!-- code by RY -->
 <script>
-	setTimeout(function() {
-	$(".data-category:first-child").addClass("menu_active").siblings().removeClass('menu_active');
-	
-	$(".category-products:first-child").addClass("show_prod").siblings().removeClass('show_prod');
-	$(".data-category").on({
-		mouseenter: function () {
-	  $(this).addClass("menu_active").siblings().removeClass('menu_active');
-	
-	  var data_category = $(this).attr("data-category");
-	  console.log("data_category",data_category);
-	  $(".category-products[data-category-products~='" + data_category + "']").addClass("show_prod").siblings().removeClass('show_prod');
-	}
-	});
-	imageSquarefunction();
-  }, 100 );
+   $(document).ready(function(){
+   /* 
+                    $(".mobile_searchbar .header-icons-mobile").each(function(){
+$(this).find(".header-icon1").click(function(){
+    console.log("1");
+$(this).parent().toggleClass("hide_drop");
+});
+});
 
+$(".mobile_searchbar .header-icons-mobile.hide_drop").each(function(){
+$(this).find(".header-icon1").click(function(){
+    console.log("2");
+$(this).parent().toggleClass("hide_drop_cart");
+$("html").toggleClass("hide_pk_overlay");
+});
+});*/
+    
+     
+    $(".data-category:first-child").addClass("menu_active").siblings().removeClass('menu_active');
+    
+    $(".category-products:first-child").addClass("show_prod").siblings().removeClass('show_prod');
+    $(".data-category").on({
+		mouseenter: function () {
+      $(this).addClass("menu_active").siblings().removeClass('menu_active');
+    
+      var data_category = $(this).attr("data-category");
+      console.log("data_category",data_category);
+      $(".category-products[data-category-products~='" + data_category + "']").addClass("show_prod").siblings().removeClass('show_prod');
+    }
+    });
+  });
+  $(document).ready(imageSquarefunction);
   $(window).on('resize',imageSquarefunction);
 
   function imageSquarefunction() {
   setTimeout(function(){
-		  $(".block2-img img").each(function() {
-			var fbtWidth = $(this).width();
-			$(this).css("height",fbtWidth);
-		  });
-	  }, 3000);
-	
-	$("#snize-search-results-grid-mode span.snize-thumbnail img").each(function() {
-	  var width = $(this).width();
-	  $(this).attr('style', 'height: '+width+'px !important');
-	  $(this).parent().attr('style', 'height: '+width+'px !important');
-	});
-	
-	setInterval(function(){
-		  $("li.header-cart-item").each(function() {
-			var value = $(this).find("input[type = 'number']").val();
-			if( value < "2") {
-			  $(this).find(".btn_cart_down span").html("<i class='fa fa-trash-o cart_trash'></i>");
+          $(".block2-img img").each(function() {
+            var fbtWidth = $(this).width();
+            $(this).css("height",fbtWidth);
+          });
+      }, 3000);
+    
+    $("#snize-search-results-grid-mode span.snize-thumbnail img").each(function() {
+      var width = $(this).width();
+      $(this).attr('style', 'height: '+width+'px !important');
+      $(this).parent().attr('style', 'height: '+width+'px !important');
+    });
+    
+    setInterval(function(){
+          $("li.header-cart-item").each(function() {
+            var value = $(this).find("input[type = 'number']").val();
+            if( value < "2") {
+              $(this).find(".btn_cart_down span").html("<i class='fa fa-trash-o cart_trash'></i>");
 
-			}else{
-			  $(this).find(".btn_cart_down span").html("-");
-			}
-		  });
-		}, 1000);
-	  var tobar_height = $(".locale-bar__container").height();
+            }else{
+              $(this).find(".btn_cart_down span").html("-");
+            }
+          });
+        }, 1000);
+      var tobar_height = $(".locale-bar__container").height();
   $(".topbar_added .mobile_searchbar").css("top",tobar_height);
-	var cart_fixed_height = tobar_height + 33;
-	$(".topbar_added #mob_cart .fixedATC.cart-sec-chkout-box .size15.trans-0-4").css("top",cart_fixed_height);
+    var cart_fixed_height = tobar_height + 33;
+    $(".topbar_added #mob_cart .fixedATC.cart-sec-chkout-box .size15.trans-0-4").css("top",cart_fixed_height);
   
-	$(".locale-bar__close-button").click(function(){
-		$("body").removeClass("topbar_added");
-		$(".fixedATC.cart-sec-chkout-box .size15.trans-0-4").css("top","33px");
+    $(".locale-bar__close-button").click(function(){
+        $("body").removeClass("topbar_added");
+      	$(".fixedATC.cart-sec-chkout-box .size15.trans-0-4").css("top","33px");
    });
   }
   
-	setTimeout(function() {
-
-	var src= $("#product-image-carousel .slick-slide.slick-current img").attr('src');
+  $(document).ready(function() {
+  
+  
+    
+    var src= $("#product-image-carousel .slick-slide.slick-current img").attr('src');
 $("#xmain_btn_mobile").append("<img src=''>");
 $("#xmain_btn_mobile img").attr('src', src);
+    
+    $("body").append('<div class="video_popup"><div class="video_container"><span class="lnr lnr-cross close_popup"></span><div class="video_iframe"></div></div></div>');
 	
-	$("body").append('<div class="video_popup"><div class="video_container"><span class="lnr lnr-cross close_popup"></span><div class="video_iframe"></div></div></div>');
-	
-	$(document).on('click','.play_button',function(e){
-	
-		$("html").addClass("show_vidpopup");
-		$(".video_popup").show();
-		var iframe = $(this).html();
-		$(".video_iframe").html(iframe);
-		$(".video_iframe iframe").attr('src', $(".video_iframe iframe").attr('src') + '?autoplay=1&loop=0' );
-		$(".video_iframe").html();
-	   $(".video_iframe video").trigger('play'); 	
+    $(document).on('click','.play_button',function(e){
+    
+      	$("html").addClass("show_vidpopup");
+        var iframe = $(this).html();
+      	$(".video_iframe").html(iframe);
+        $(".video_iframe iframe").attr('src', $(".video_iframe iframe").attr('src') + '?autoplay=1&loop=0' );
+  		$(".video_iframe").html();
+       $(".video_iframe video").trigger('play'); 	
    });
-	
-	$(document).on('click','.video_popup .close_popup',function(e){
-	  $("html").removeClass("show_vidpopup");
-		$(".video_iframe").html("");
-	  
-		
-		
+    
+    $(document).on('click','.video_popup .close_popup',function(e){
+      $("html").removeClass("show_vidpopup");
+      	$(".video_iframe").html("");
+      
+    	
+      	
    });
-	
-	$(document).on('click','.hero_play_button',function(e){
-	  $("html").addClass("show_vidpopup");
-		  var iframe = $(this).html();
-		$(".video_iframe").html(iframe);
-	  $(".video_iframe iframe").attr('src', $(".video_iframe iframe").attr('src') + '?autoplay=1&loop=0' );
+    
+    $(document).on('click','.hero_play_button',function(e){
+      $("html").addClass("show_vidpopup");
+          var iframe = $(this).html();
+      	$(".video_iframe").html(iframe);
+      $(".video_iframe iframe").attr('src', $(".video_iframe iframe").attr('src') + '?autoplay=1&loop=0' );
 
-		$(".video_iframe").html();
-	  $(".video_iframe video").trigger('play'); 
+  		$(".video_iframe").html();
+      $(".video_iframe video").trigger('play'); 
    });
-  }, 500);
+  });
   
   $(document).mouseup(function(e) 
   {
-	  var vidContainer = $(".video_popup .video_iframe");
+      var vidContainer = $(".video_popup .video_iframe");
 
-	  // if the target of the click isn't the container nor a descendant of the container
-	  if (!vidContainer.is(e.target) && vidContainer.has(e.target).length === 0) 
-	  {
-		  
+      // if the target of the click isn't the container nor a descendant of the container
+      if (!vidContainer.is(e.target) && vidContainer.has(e.target).length === 0) 
+      {
+          
 //           $(".play_button").find("iframe").attr('src', $(".play_button").find("iframe").attr('src').replace('?autoplay=1&loop=0&autopause=0', ''));
 //       $(".hero_play_button").find("iframe").attr('src', $(".hero_play_button").find("iframe").attr('src').replace('?autoplay=1&loop=0&autopause=0', ''));
-	   
-		 $("html").removeClass("show_vidpopup");
-		
-		$(".video_iframe").html("");
-	   
-		
-	  }
+       
+         $("html").removeClass("show_vidpopup");
+        
+      	$(".video_iframe").html("");
+       
+        
+      }
   });
-	   
-	  
+       
+      
   
-	setInterval(function() {
-			$("#snize-search-results-grid-mode span.snize-thumbnail img").each(function() {
-			var width = $(this).width();
-			$(this).attr('style', 'height: '+width+'px !important');
-		  });
+    setInterval(function() {
+            $("#snize-search-results-grid-mode span.snize-thumbnail img").each(function() {
+            var width = $(this).width();
+            $(this).attr('style', 'height: '+width+'px !important');
+          });
 
-	   }, 500);
+       }, 500);
   
   $(document).mouseup(function(e) 
   {
-	  var container = $(".wrap-side-menu ul, .btn-show-menu-mobile");
+      var container = $(".wrap-side-menu ul, .btn-show-menu-mobile");
 
-	  // if the target of the click isn't the container nor a descendant of the container
-	  if (!container.is(e.target) && container.has(e.target).length === 0) 
-	  {
-		  $(".btn-show-menu-mobile").removeClass("is-active");
-		$("html").removeClass("menu-open");
-		$(".wrap-side-menu").slideUp();
-	   
-	  }
+      // if the target of the click isn't the container nor a descendant of the container
+      if (!container.is(e.target) && container.has(e.target).length === 0) 
+      {
+          $(".btn-show-menu-mobile").removeClass("is-active");
+        $("html").removeClass("menu-open");
+        $(".wrap-side-menu").slideUp();
+       
+      }
   });
    
 

@@ -1,3 +1,31 @@
+<style>
+  .wuscrf .slick-dots li button {
+    height: 12px !important;
+}
+
+.wuscrf .slick-dots li button {
+    color: transparent;
+}
+.wuscrf .slick-dots {
+    display: inline-flex;
+    position: relative;
+    top: -10px;
+  width: auto;
+}
+.wuscrf .slick-dots li {
+    width: 12px;
+    height: 12px;
+    background: transparent;
+    border: 1px solid #c3862b;
+    margin: 0px 5px;
+    border-radius: 50px;
+    list-style-type: none !important;
+}
+.wuscrf .slick-dots li.slick-active {
+    background: #c3862b;
+}
+
+</style>
 {% if collection.handle == 'colors-of-courage' or collection.handle == 'flamboyant-baroque'  or collection.handle == 'geometry-meets-art' or collection.handle == 'timeless-classics'  or collection.handle == 'wild-bohemia' or collection.handle == 'starry-eyed' or collection.handle == 'pastel-patisseries' %}
 
 {% assign bgimg-rb = collection.handle | append: '-rb.png' %}

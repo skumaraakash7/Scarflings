@@ -1,27 +1,102 @@
+<style>
+.homeBannerVideo {
+    position: relative;
+    height: 600px;
+}
+.vimeo-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+.home_banner_content {
+    width: 100%;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: rgba(0,0,0, 0.3);
+}
+.home_banner_content h1 {
+    font-size: 75px;
+    margin-bottom: 10px;
+    color: #fff;
+}
+.home_banner_content h4 {
+    color: #fff;
+    font-size: 30px;
+}
+.vimeo-wrapper iframe {
+   width: 100vw;
+   height: 56.25vw; /* Given a 16:9 aspect ratio, 9/16*100 = 56.25 */
+   min-height: 100vh;
+   min-width: 177.77vh; /* Given a 16:9 aspect ratio, 16/9*100 = 177.77 */
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+}
+@media (max-width: 767px){
+  .homeBannerVideo {
+    position: relative;
+    height: 300px;
+}
+.home_banner_content h1 {
+    font-size: 36px;
+    margin-bottom: 6px;
+    color: #fff;
+}
+.home_banner_content h4 {
+    color: #fff;
+    font-size: 20px;
+}
+}
+</style>
 <div class="homeBannerVideo">
-	<div class="vimeo-wrapper" id="vimeo-wrapper-image_{{ section.id }}">
-	  <img  src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="{{ section.settings.home_banner_bg_image | img_url:"master" }}" class="lazy2" />
-	</div>
+  
+  	
+  	<div class="vimeo-wrapper" id="vimeo-wrapper-image_{{ section.id }}">
+      <img  src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="{{ section.settings.home_banner_bg_image | img_url:"master" }}" class="lazyload" />
+  	</div>
+  
   <div class="vimeo-wrapper" id="vimeo-wrapper_{{ section.id }}">
-	{% if section.settings.home_banner_video_local != blank %}
-		<video style="width: 100%;" id="vid_{{section.id}}" loop muted playsinline preload="none">
-		  <source src="{{ section.settings.home_banner_video_local | asset_url }}" type="video/mp4">
-		</video>
-	{% else %}
-			<iframe data-src="https://player.vimeo.com/video/{{ section.settings.home_banner_video }}?background=1&autoplay=1&loop=1&byline=0&title=0" 
-			frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-	{% endif %}
+    
+    {% if section.settings.home_banner_video_local != blank %}
+    
+    	<video style="width: 100%;" id="vid_{{section.id}}" loop muted playsinline autoplay>
+          <source src="{{ section.settings.home_banner_video_local | asset_url }}" type="video/mp4">
+        </video>
+    {% else %}
+
+    		<iframe src="https://player.vimeo.com/video/{{ section.settings.home_banner_video }}?background=1&autoplay=1&loop=1&byline=0&title=0" 
+            frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    {% endif %}
   </div>
-  <div class="home_banner_content">
-			<h1>{{ section.settings.home_banner_heading }}</h1>
-			<h4>{{ section.settings.home_banner_description }}</h4>
-	  </div>
+  
+  	
+      <div class="home_banner_content">
+        	<h1>{{ section.settings.home_banner_heading }}</h1>
+        	<h4>{{ section.settings.home_banner_description }}</h4>
+      </div>
 </div>
 {% comment %}
-<script type="lazyload2">
-	setTimeout(function() {
-		$('#vimeo-wrapper_{{ section.id }}').append('<iframe src="https://player.vimeo.com/video/{{ section.settings.home_banner_video }}?background=1&autoplay=1&loop=1&byline=0&title=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>');
-	}, 1000);
+<script>
+ 
+  $(document).ready(function(){
+    
+    $('#vimeo-wrapper_{{ section.id }}').append('<iframe src="https://player.vimeo.com/video/{{ section.settings.home_banner_video }}?background=1&autoplay=1&loop=1&byline=0&title=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>');
+     
+    
+    
+  });
+ 
+  
 </script>
 {% endcomment %}
 {% schema %}
@@ -30,34 +105,34 @@
   "settings": [
 		{
 		"id": "home_banner_video",
-		"type": "text",
-		"label": "Vimeo video id"
-	  },
+        "type": "text",
+        "label": "Vimeo video id"
+      },
 		{
 		"id": "home_banner_video_local",
-		"type": "text",
-		"label": "Vimeo video"
-	  },
-	  {
-		"id": "home_banner_heading",
-		"type": "html",
-		"label": "Banner heading"
-	  },
+        "type": "text",
+        "label": "Vimeo video"
+      },
+      {
+        "id": "home_banner_heading",
+        "type": "html",
+        "label": "Banner heading"
+      },
 		{
-		"id": "home_banner_description",
-		"type": "html",
-		"label": "Banner text"
-	  },{
+        "id": "home_banner_description",
+        "type": "html",
+        "label": "Banner text"
+      },{
 		"id": "home_banner_bg_image",
-		"type": "image_picker",
-		"label": "Background Image"
-	  }
+        "type": "image_picker",
+        "label": "Background Image"
+      }
 			
-	],
+    ],
   "presets": [{
-	"name": "Banner Section",
-	"category": "Custom Section"
-	
+    "name": "Banner Section",
+    "category": "Custom Section"
+    
   }]
 }
 {% endschema %}

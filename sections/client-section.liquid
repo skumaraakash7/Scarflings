@@ -1,36 +1,139 @@
+<style>
+  
+.quote-icon .url-details {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    opacity: 0;
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    -moz-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  	z-index: 9;
+}
+.quote-icon .url-overlay {
+    margin: 0;
+    background: rgba(0,0,0,0.7);
+    position: absolute;
+    height: 95%;
+    width: 95%;
+    left: 0;
+    top: 50%;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    -webkit-transition: all 0.4s ease-in-out 0s;
+    -moz-transition: all 0.4s ease-in-out 0s;
+    transition: all 0.4s ease-in-out 0s;
+    border-radius: 50%;
+    margin: 0 auto;
+    transform: translateY(-50%);
+}
+.quote-icon .url-details a.btn {
+    margin: 0px !important;
+}
+.quote-icon .url-details .btn.btn--cta.cpsgts {
+    background: #b65327 !important;
+    font-size: 18px;
+    height: auto;
+    border-radius: 8px !important;
+    text-align: center;
+    padding: 0px;
+    padding: 15px 25px;
+    line-height: 1em;
+    font-weight: 400;
+}
+a.btn{
+   font-family: 'DM Serif Text', serif !important;
+}
+.quote-icon .url-details .btn.btn--cta.cpsgts:hover, .quote-icon .url-details .btn.btn--cta.cpsgts:focus, .url-details .btn.btn--cta.cpsgts:active {
+    background-color: #d45426 !important;
+    border: 0px !important;
+  	box-shadow: unset !important;
+  	
+}
+.quote-icon:hover .url-details {
+    opacity: 1;
+    z-index: 99;
+}
+.quote-icon:hover .url-overlay {
+    opacity: 1;
+}
+.mobileBtn{
+   display: none !important;
+}
+@media (max-width:767px){
+  .quote-icon .url-details .btn.btn--cta.cpsgts {
+    font-size: 15px;
+    padding: 12px 18px;
+  }
+  .mobileBtn{
+     display: inline-block !important;
+  }
+  .quote-icon .url-details, .quote-icon .url-overlay {
+    display: none !important;
+  }
+  .csitem_txt a.btn {
+      padding: 10px 40px;
+      font-size: 16px;
+      line-height: 1em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 5px !important;
+      margin: 20px auto 0px auto !important;
+      background: transparent !important;
+      border: 1px solid #fff;
+      padding: 12px 25px;
+      width: 170px;
+      font-size: 16px;
+  }
+  .csitem_txt a.btn:hover, .csitem_txt a.btn:focus, .csitem_txt a.btn:active {
+      background: #fff !important;
+      opacity: 1 !important;
+      color: #b64c27 !important;
+      box-shadow: unset !important;
+  }
+}
+</style>
 {% if template == 'cart' %}
 
 	<section class="client_section bgwhite p-t-22 p-b-22" data-section-id="{{ section.id }}">
-		<div class="container-fluid" >
+        <div class="container-fluid" >
 
-		  <!-- Slide2 -->
-		  <div class="wrap-slick2 rs1-slick2">
-			<div class="slick1">
-			  {% for i in (1..6) %}
-		  {%  assign author = "author_" | append: i %}     
-		  {%  assign c_content = "c_content_" | append: i %}   
-		  {%  assign client_image = "client_image_" | append: i %}  
-			  {% if  settings[author] != blank  %} 
-			  <div class="item-slick2 p-l-15 p-r-15">
-				<blockquote class="quotes-slider__text text-center">
-				  <span class="quote-icon">
-					<img class="lazyload" 
-					  src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
-					  data-src="{{ settings[client_image] | img_url: 'master' }}">
-					 
-				  </span>
-				  <div class="rte-setting"><p>{{ settings[c_content] }}</p>
-				  <cite>- {{ settings[author] }}</cite>
-				  </div>
-				  
-				 </blockquote>
-			  </div>
-			   {% endif %}
-	  {% endfor %}
-			</div>
-		  </div>
-		</div>
-	</section>
+          <!-- Slide2 -->
+          <div class="wrap-slick2 rs1-slick2">
+            <div class="slick1">
+              {% for i in (1..6) %}
+          {%  assign author = "author_" | append: i %}     
+          {%  assign c_content = "c_content_" | append: i %}   
+          {%  assign client_image = "client_image_" | append: i %}  
+              {% if  settings[author] != blank  %} 
+              <div class="item-slick2 p-l-15 p-r-15">
+                <blockquote class="quotes-slider__text text-center">
+                  <span class="quote-icon">
+                    <img class="lazyload" 
+                      src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+                      data-src="{{ settings[client_image] | img_url: 'master' }}">
+                     
+                  </span>
+                  <div class="rte-setting"><p>{{ settings[c_content] }}</p>
+                  <cite>- {{ settings[author] }}</cite>
+                  </div>
+                  
+                 </blockquote>
+              </div>
+               {% endif %}
+      {% endfor %}
+            </div>
+          </div>
+        </div>
+    </section>
 {% comment %}
 {%elsif template == 'collection.special' %}
 
@@ -38,111 +141,376 @@
   
 
 .csbg-yellow {
-	background-image: url(//cdn.shopify.com/s/files/1/0070/0835/4356/t/68/assets/cs-bg.png?49192);
-	background-repeat: no-repeat;
-	background-position: 0 140px;
-	background-size: 100vw 270px;
+    background-image: url(//cdn.shopify.com/s/files/1/0070/0835/4356/t/68/assets/cs-bg.png?49192);
+    background-repeat: no-repeat;
+    background-position: 0 140px;
+    background-size: 100vw 270px;
 }
 .collspcl .client_section .quotes-slider__text {
-	background-image: url({{ 'cs-bg.svg' | asset_url }});
+    background-image: url({{ 'cs-bg.svg' | asset_url }});
 }
 
 
   </style>
  <section class="client_section bgwhite p-t-22 p-b-22 csbg-yellow" >
-		<div class="container-fluid" >
+        <div class="container-fluid" >
 			<div class="sec-title p-b-22 m-p-t-22">
-			   <h3 class="m-text5 t-center">{{ settings.client_heading }}</h3>
-			</div>
-		  
-			<div class="slick6">
-				{% for i in (1..6) %}
-		  {%  assign author = "author_" | append: i %}     
-		  {%  assign c_content = "c_content_" | append: i %}
-		  {%  assign c_url = "c_url_" | append: i %}
-		  {%  assign c_anchortext = "c_anchortext_" | append: i %}
-		  {%  assign client_image = "client_image_" | append: i %}   
-			  {% if  settings[author] != blank  %} 
-			  <div class="csitem ">
-				<div class="quotes-slider__text text-center">
-				  <span class="quote-icon">
-					<img class="lazyload" 
-					  src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
-					  data-src="{{ settings[client_image] | img_url: 'master' }}">
-					  <div class="url-details">
-					  <a href="{{ settings[c_url] }}" class="btn btn--cta cpsgts">{{ settings[c_anchortext] }}</a>
-				  </div>    
-				  <div class="url-overlay"></div>
-				  </span>
-				  <div class="csitem_txt">
-					<span>{{ settings[c_content] }}</span>
-					<br/>
-					<br/>
-					<span><b>{{ settings[author] }}</b></span>
-					<a href="{{ settings[c_url] }}" class="btn btn--cta cpsgts mobileBtn">{{ settings[c_anchortext] }}</a>
-				   
-				  </div>
-				  
-				 </div>
-			  </div>
-			  {% endif %}
-	  {% endfor %}
-			  
-			</div>
-			<div class='sldots'>&nbsp;</div>
-		  </div>
-		
-	</section>
+               <h3 class="m-text5 t-center">{{ settings.client_heading }}</h3>
+            </div>
+          
+            <div class="slick6">
+                {% for i in (1..6) %}
+          {%  assign author = "author_" | append: i %}     
+          {%  assign c_content = "c_content_" | append: i %}
+          {%  assign c_url = "c_url_" | append: i %}
+          {%  assign c_anchortext = "c_anchortext_" | append: i %}
+          {%  assign client_image = "client_image_" | append: i %}   
+              {% if  settings[author] != blank  %} 
+              <div class="csitem ">
+                <div class="quotes-slider__text text-center">
+                  <span class="quote-icon">
+                    <img class="lazyload" 
+                      src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+                      data-src="{{ settings[client_image] | img_url: 'master' }}">
+                      <div class="url-details">
+                      <a href="{{ settings[c_url] }}" class="btn btn--cta cpsgts">{{ settings[c_anchortext] }}</a>
+                  </div>    
+                  <div class="url-overlay"></div>
+                  </span>
+                  <div class="csitem_txt">
+                    <span>{{ settings[c_content] }}</span>
+                    <br/>
+                    <br/>
+                    <span><b>{{ settings[author] }}</b></span>
+                    <a href="{{ settings[c_url] }}" class="btn btn--cta cpsgts mobileBtn">{{ settings[c_anchortext] }}</a>
+                   
+                  </div>
+                  
+                 </div>
+              </div>
+              {% endif %}
+      {% endfor %}
+              
+            </div>
+          	<div class='sldots'>&nbsp;</div>
+          </div>
+        
+    </section>
 {% endcomment %}
 {% else %}
 
 
+<style>
+  
+
+
+/*! CSS Used from: Embedded */
+.client_section .container-fluid {
+    padding: 20px;
+}
+  
+.client_section .quotes-slider__text {
+    height: 400px;
+}
+.client-mobile.client-desktop {
+    background-size: cover;
+    height: 350px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+.client_section .quotes-slider__text  .csitem_txt {
+    color: #fff!important;
+    padding-left: 0px!important;
+    font-size: 18px!important;
+    text-align: left!important;
+    padding-top: 0px!important;
+    width: 50%!important;
+    display: flex!important;
+    flex-direction: column!important;
+    justify-content: center!important;
+    float: right!important;
+    height: 100%!important;
+    margin-top: 0px;
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 300;
+}
+.client_section .csitem_txt span b {
+    margin-top: 10px!important;
+    display: inline-block!important;
+    font-size: 24px!important;
+    font-weight: 600 !important;
+}
+.client_section .sldots .slick-dots li {
+    width: 12px;
+    height: 12px;
+    background: transparent;
+    border: 1px solid #fff;
+    margin: 0px 5px;
+    border-radius: 50px;
+    list-style-type: none !important;
+}
+.client_section .sldots .slick-dots li.slick-active {
+    background: #fff;
+}
+.client_section .sldots .slick-dots li button {
+    height: 12px !important;
+}
+.client_section.csbg-yellow .sldots {
+    text-align: center!important;
+    margin-top: -145px!important;
+    width: 50%!important;
+    float: right!important;
+}
+.client_section .slick-slider {
+    margin-top: -80px;
+}
+body .client_section .quote-icon img {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    top: 0px;
+    border: 10px solid #fff !important;
+    border-radius: 50%;
+    width: 450px !important;
+    left: 0px;
+    right: auto;
+    height: 450px !important;
+    position: absolute;
+    max-width: 100%;
+}
+body .client_section .quote-icon {
+    position: relative;
+}
+section.client_section.csbg-yellow {
+    background-size: 100vw 320px!important;
+    background-position: 0px 225px!important;
+    margin-bottom: 75px!important;
+    background-repeat:no-repeat !important;
+}
+section.client_section{background-size:100vw 320px!important;background-position:0px 205px!important;margin-bottom:75px!important;}
+ .client_section h3{color:#b54f28!important;text-transform:none;font-size:36px!important;font-weight:500 !important;padding-bottom:40px!important;letter-spacing:1px!important;display:inline-block!important;width:100%!important;}
+  .client_section .quote-icon img{width:450px!important;height:450px!important;border:10px solid #fff!important;background:#fff!important;}
+  .client_section .csitem_txt br{display:none!important;}
+  .client_section .quote-icon{width:450px!important;height:450px!important;float:left!important;margin-top:-50px!important;}
+  .client_section .sldots{text-align:center!important;margin-top:-185px!important;width:50%!important;float:right!important;}
+  .client_section .container-fluid{padding-bottom:0px!important;}
+  .client_section .csitem_txt span b{margin-top:10px!important;display:inline-block!important;font-size:26px!important;}
+  .client_section .quotes-slider__text{height:320px!important;margin-top:60px!important;background-repeat:no-repeat!important;background-position:79% 30px!important;background-size:260px!important;}
+  .client_section .sldots li{font-size:35px!important;}
+  .client_section .csitem_txt{color:#fff!important;padding-left:30px!important;font-family:Poppins!important;font-size:20px!important;text-align:left!important;padding-top:0px!important;width:50%!important;display:flex!important;flex-direction:column!important;justify-content:center!important;float:right!important;height:100%!important;}
+
+@media (max-width:767px){
+  .slick-dots {
+    bottom: 0px !important;
+}
+  .client_section h3{font-size:22px!important;padding-bottom:15px!important;}
+section.client_section{background-size:cover!important;background-position:0px 150px!important;margin-bottom:0px!important;}
+  .client_section .sldots{text-align:center!important;margin-top:0px!important;width:100%!important;float:unset!important;}
+  .client_section .quote-icon{width:200px!important;height:auto!important;float:none!important;padding-top:50px!important;margin-bottom:0px!important;margin-top:0px!important;padding-bottom:0px!important;}
+  .client_section .quotes-slider__text{width:100%;height:100%!important;padding:0px!important;display:inline-block!important;margin-top:0px!important;background-position:center 115px!important;background-size:300px!important;}
+  .client_section .quote-icon img{width:200px!important;height:200px!important;}
+  .client_section .csitem_txt{width:100%!important;text-align:center!important;margin-top:50px!important;padding-left:0px!important;}
+  .client_section .csitem_txt span b{font-size:20px!important;}
+}
+@media (max-width:767px){
+  .client_section .sldots{text-align:center!important;margin-top:0px!important;width:100%!important;margin:0px auto;padding-left:60px;float:unset!important;}
+}
+@media (max-width:330px){
+  h3{font-size:21px!important;padding-bottom:15px!important;}
+}
+
+  .client_section .quote-icon{width:350px;height:350px;float:left;margin-top:-50px;}
+  .client_section .quote-icon img{width:350px;height:350px;border:10px solid #fff;background:#fff;}
+  .client_section .quotes-slider__text{font-size:1.10938em;font-weight:400;font-style:normal;padding:0 80px;height:250px;margin-top:50px;background-repeat:no-repeat;background-position:78%;background-size:auto;}
+  .csitem_txt{color:#fff;font-family:Poppins;font-size:20px;text-align:left;padding-top:50px;width:50%;float:right;}
+
+.sldots{text-align:center;margin-top:-120px;width:50%;float:right;}
+.sldots ul{display:inline-flex;}
+.sldots .slick-dots li{list-style-type:disc;color:#fff;display:list-item;width:20px;font-size:30px;z-index:300;}
+.sldots .slick-dots li.slick-active{list-style-type:circle;}
+.sldots .slick-dots li button{color:transparent;}
+@media (max-width: 1200px){
+  .client_section .quotes-slider__text{height:460px;padding:0px;margin-top:0px;background-position:center;}
+  .client_section .quote-icon{width:200px;height:200px;float:none;margin-top:0px;padding-top:20px;}
+  .client_section .quote-icon img{width:200px;height:200px;}
+  .csitem_txt{text-align:center;width:100%;float:none;padding-top:30px;font-size:18px;}
+.sldots{text-align:center;margin-top:-70px;width:100%;float:none;margin-left:28px;}
+
+}
+  
+@media (max-width: 1160px) and (min-width: 768px){
+body .client_section .quote-icon img {
+    width: 310px !important;
+    height: 310px !important;
+    margin: 0 auto !important;
+    left: 0px;
+    right: 0px;
+}
+body .client-mobile.client-desktop {
+    background-size: cover;
+    height: 225px;
+    margin-bottom: 0px;
+    margin-top: 50px;
+}
+body .client_section .quote-icon {
+    text-align: center !Important;
+    display: inline-block !important;
+    margin-top: -45px !important;
+    height: 100% !important;
+}
+body .client_section .quotes-slider__text .csitem_txt {
+    font-size: 15px!important;
+    flex-direction: column!important;
+    justify-content: start !important;
+    height: 100%!important;
+    margin-top: 0px;
+    font-weight: 300;
+    padding-top: 50px !important;
+}
+}
+@media (max-width: 991px) and (min-width: 768px){
+.client_section .quote-icon {
+    margin-top: -90px!important;
+}
+  
+}
+@media (max-width:767px){
+.client-mobile.client-desktop {
+    background-size: cover;
+    height: 100%;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    padding: 35px 0px 25px 0px;
+}
+    #shopify-section-client-sections section.client_section {
+    background-position: 0px 140px !important;
+    padding-bottom: 0px;
+    margin-bottom: 0px !important;
+    background-size: cover !important;
+}
+
+body .client_section .quote-icon {
+    width: 210px!important;
+    height: auto!important;
+    float: none!important;
+    padding-top: 0px!important;
+    margin-bottom: 0px!important;
+    margin-top: 0px!important;
+    padding-bottom: 0px!important;
+}
+.client_section .slick-slider {
+    margin-top: -20px;
+}
+section.client_section .quotes-slider__text .csitem_txt {
+    width: 100%!important;
+    text-align: center!important;
+    margin-top: 15px!important;
+    font-size: 15px !important;
+    font-weight: 400 !important;
+    padding-left: 0px!important;
+}
+section.client_section .csitem_txt span b {
+    margin-top: 20px!important;
+    font-size: 17px!important;
+    font-weight: 500 !important;
+    margin-top: 20px !important;
+}
+body .client_section .quote-icon img {
+    width: 210px !important;
+    height: 210px !important;
+    position: unset;
+    border: 5px solid #fff!important;
+}
+.client_section.csbg-yellow .sldots {
+    text-align: center!important;
+    margin-top: 20px!important;
+    width: 100%!important;
+    margin: 0px auto;
+    padding-left: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    float: unset!important;
+}
+}
+  
+{% assign desktop =  product.handle | append: "-desktop.png" | asset_url    %} 
+
+
+{% assign mobile =  product.handle | append: '-mobile.png' | asset_url  %}
+  
+  .desktop{
+  /*  background-image:url("{{ desktop }}" )!important;*/
+      background-repeat: no-repeat;
+  }
+  .client-desktop{
+    background-repeat: no-repeat;
+  	/*background-image:url("{{ 'book-personal-stylist-client-desktop.png' | asset_url }}" )!important;*/
+  }
+  
+  @media (max-width:767px){
+  .mobile{
+    background-repeat: no-repeat;
+   /* background-image:url('{{ mobile }}')!important;*/
+  
+  }
+    .client-mobile{
+      background-repeat: no-repeat;
+  /*	  background-image:url("{{ 'book-personal-stylist-client-mobile.png' | asset_url }}" )!important;*/
+  	}
+    
+    
+    }
+
+
+
+  </style>
 <section class="client_section csbg-yellow bgwhite p-t-22 p-b-22" data-section-id="{{ section.id }}">
-		<div class="container-fluid" >
+        <div class="container-fluid" >
 			<div class="sec-title p-b-22 m-p-t-22">
-			  <h3 class="m-text5 t-center">{{ settings.client_heading }}</h3>
-			</div>
+              <h3 class="m-text5 t-center">{{ settings.client_heading }}</h3>
+            </div>
   </div>
    
   <div class="client-mobile client-desktop lazyload"   data-sizes="auto" data-bgset="{{ 'book-personal-stylist-client-mobile.png' | asset_url }} [(max-width: 767px)] | {{ 'book-personal-stylist-client-desktop.png' | asset_url }} [(min-width: 768px)]">
-	<div class="container-fluid" >
-			<div class="slick6 ">
-					 {% for i in (1..6) %}
-		  {%  assign author = "author_" | append: i %}     
-		  {%  assign c_content = "c_content_" | append: i %}
-		  {%  assign c_url = "c_url_" | append: i %}
-		  {%  assign c_anchortext = "c_anchortext_" | append: i %}
-		  {%  assign client_image = "client_image_" | append: i %}     
-			{% if  settings[author] != blank  %} 
-			  <div class="csitem ">
-				<div class="quotes-slider__text text-center">
-				  <span class="quote-icon">
-					<img class="lazyload" 
-					  src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
-					  data-src="{{ settings[client_image] | img_url: 'master' }}">
-					  <div class="url-details">
-					  <a href="{{ settings[c_url] }}" class="btn btn--cta cpsgts">{{ settings[c_anchortext] }}</a>
-				  </div>    
-				  <div class="url-overlay"></div>
-				  </span>
-				  <div class="csitem_txt">
-					<span>{{ settings[c_content] }}</span>
-					<br/>
-					<br/>
-					<span><b>{{ settings[author] }}</b></span>
-					<a href="{{ settings[c_url] }}" class="btn btn--cta cpsgts mobileBtn">{{ settings[c_anchortext] }}</a>
-				   
-				  </div>
-				  
-				 </div>
-			  </div>
-			{% endif %}
-	  {% endfor %}
-			  
-			</div>
-			<div class='sldots'>&nbsp;</div>
-	</div>
-	
+    <div class="container-fluid" >
+            <div class="slick6 ">
+                     {% for i in (1..6) %}
+          {%  assign author = "author_" | append: i %}     
+          {%  assign c_content = "c_content_" | append: i %}
+          {%  assign c_url = "c_url_" | append: i %}
+          {%  assign c_anchortext = "c_anchortext_" | append: i %}
+          {%  assign client_image = "client_image_" | append: i %}     
+            {% if  settings[author] != blank  %} 
+              <div class="csitem ">
+                <div class="quotes-slider__text text-center">
+                  <span class="quote-icon">
+                    <img class="lazyload" 
+                      src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+                      data-src="{{ settings[client_image] | img_url: 'master' }}">
+                      <div class="url-details">
+                      <a href="{{ settings[c_url] }}" class="btn btn--cta cpsgts">{{ settings[c_anchortext] }}</a>
+                  </div>    
+                  <div class="url-overlay"></div>
+                  </span>
+                  <div class="csitem_txt">
+                    <span>{{ settings[c_content] }}</span>
+                    <br/>
+                    <br/>
+                    <span><b>{{ settings[author] }}</b></span>
+                    <a href="{{ settings[c_url] }}" class="btn btn--cta cpsgts mobileBtn">{{ settings[c_anchortext] }}</a>
+                   
+                  </div>
+                  
+                 </div>
+              </div>
+            {% endif %}
+      {% endfor %}
+              
+            </div>
+          	<div class='sldots'>&nbsp;</div>
+    </div>
+    
   </div>
 </section>
 
@@ -155,16 +523,16 @@
   "name": "Client Section",
   "settings": [
 	{
-		"type": "text",
-		"id": "heading",
-		"label": "Heading",
-		"default": "Heading"   
-	}
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Heading"   
+    }
   ],
   "presets": [{
-	"name": "Client Section",
-	"category": "Custom Section"
-	
+    "name": "Client Section",
+    "category": "Custom Section"
+    
   }]
 }
 {% endschema %}

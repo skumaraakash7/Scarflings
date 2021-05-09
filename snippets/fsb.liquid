@@ -58,6 +58,40 @@
   </div>
   </div>
 </div>
+<style>
+  .announce_ment_slide:not(:first-child){
+    display:none;
+  }
+.mob_no {
+    position: absolute;
+    left: 55px;
+    top: 0px;
+    z-index: 99;
+}
+  .mob_no a:hover, .mob_no a:hover i {
+    color: #efe4e4 !important;
+}
+  .mob_no a {
+    color: #fff;
+    font-size: 11px !important;
+    font-family: poppins, sans-serif;
+}
+  .mob_no i {
+    position: relative;
+    top: 0px;
+}
+  @media (min-width: 768px) and (max-width: 1300px) {
+    .mob_no{
+    left: 30px !Important;
+} 
+  }
+    @media (min-width: 768px) and (max-width: 1230px) {
+    .mob_no{
+    left: 15px !Important;
+} 
+
+  }
+</style>
 <script>
   
   $(document).ready(function(){
