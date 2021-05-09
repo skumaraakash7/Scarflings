@@ -1,0 +1,80 @@
+<style>
+	
+</style>
+
+<section class="page_content_section" id="section_k_{{ section.id }}">
+<div class="container">
+  <div class="standard_step2">
+    <div class="step_title">
+      <p class="step_label">Step 2.</p><h3 class="step_name">{{ section.settings.standard_step_name }}</h3>
+    </div>
+    <div class="info_section">
+      <div class="info_para">
+        {{ section.settings.standard_step_para }}
+      </div> 
+      
+    </div>
+  </div>
+   <div class="vip_step2">
+    <div class="step_title">
+      <p class="step_label">Step 2.</p><h3 class="step_name">{{ section.settings.vip_step_name }}</h3>
+    </div>
+    <div class="info_section">
+      <div class="info_para">
+        {{ section.settings.vip_step_para }}
+      </div> 
+      
+    </div>
+  </div>
+  <div class="info_button">
+
+        <div class="mybutton">
+          <label id="i_undershand_button">
+            <input type="checkbox" id="i_undershand" />
+            <span> {{ section.settings.i_undershand_button_title }} </span>
+          </label>
+        </div>
+      </div>
+</div>
+</section>
+
+{% schema %}
+  {
+    "name": "Step2",
+    "settings": [
+      {
+        "id": "standard_step_name",
+        "type": "text",
+        "label": "Standard step name"
+      },
+		{
+        "id": "standard_step_para",
+        "type": "html",
+        "label": "Standard Paragraph"
+      },
+	   {
+        "id": "vip_step_name",
+        "type": "text",
+        "label": "Vip step name"
+      },
+     {
+        "id": "vip_step_para",
+        "type": "html",
+        "label": "Vip Paragraph"
+      },
+		{
+        "id": "i_undershand_button_title",
+        "type": "text",
+        "label": "Checkbox Title",
+		"default":"I UNDERSTAND"
+      }
+
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

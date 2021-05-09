@@ -1,0 +1,69 @@
+<style>
+  .view_booking{
+  	color: #fff !important;
+    background-color: #b54d27 !important;
+    border-radius: 10px !important;
+    width: 100%;
+    font-weight: bold;
+    letter-spacing: 0px;
+    padding: 15px !important;
+    font-size: 18px !important;
+  }
+</style>
+{% assign product_in_cart = false %}
+{% for item in cart.items %}
+  {% if item.product.handle == product.handle %}
+    {% assign product_in_cart = true %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+<div class="booking-form" data-product-id={{ product.id }}>
+{% if product_in_cart %}
+    <p id="booking-guard-{{ product.handle }}">
+      <a href="/cart" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 view_booking">View Booking</a>
+  	</p>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function(event) {
+        $("#booking-guard-{{ product.handle }}").closest("form[action^='/cart/add']").find("input:submit, button:submit, .hide-if-in-cart , select, .single-option-selector, label").hide();
+          setTimeout(function(){
+            $("#booking-guard-{{ product.handle }}").closest("form[action^='/cart/add']").find("input:submit, button:submit, .hide-if-in-cart , select, .single-option-selector, label").hide();
+          },2000);
+      });
+    </script>
+{% else %}
+
+<input type="submit" style="display:none;" />
+  <script>
+    /*
+  setInterval(function(){
+      
+      if($(".sesami__button").text() != "Select Time"){
+        $(".sesami__button").text("Select Your Booking Date and Time");
+      }
+      
+    },500);
+    */
+    
+    
+    
+    var sesami__button = setInterval(sesami__button_function, 500);
+
+function sesami__button_function() {
+  console.log("mm");
+  if($(".sesami__button").text() == "Select Time" || $(".sesami__button") == undefined){
+        $(".sesami__button").text("Select Your Booking Date and Time");
+  }else if($(".sesami__button").text() == "Select Your Booking Date and Time"){
+  	sesami_clear_button_function();
+  }
+}
+
+function sesami_clear_button_function() {
+  clearInterval(sesami__button);
+}
+
+
+    
+  </script>
+  {% endif %}

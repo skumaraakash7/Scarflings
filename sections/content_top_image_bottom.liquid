@@ -1,0 +1,44 @@
+<section class="page_content_section p-t-66 p-b-38 desktop" id="section_k_{{ section.id }}">
+<div class="container">
+  <div class="simpletext">
+    <h2> {{ section.settings.text_box_top_title }} </h2>
+    <h3> {{ section.settings.text_box_top_text }} </h3>
+  </div>
+</div>
+<div class="bg_image" style="background-image: url('{{ section.settings.img_bottom | img_url: 'master' }}');">
+
+</div>
+</section>
+
+  
+
+{% schema %}
+  {
+    "name": "D Content Top Img Bottom",
+    "settings": [
+      {
+        "id": "text_box_top_title",
+        "type": "text",
+        "label": "Heading",
+        "default": "Title"
+      },
+      {
+        "id": "text_box_top_text",
+        "type": "richtext",
+        "label": "Add custom text below",
+        "default": "<p>Add your text here</p>"
+      },
+		{
+		"id": "img_bottom",
+        "type": "image_picker",
+        "label": "Image"
+		}	
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

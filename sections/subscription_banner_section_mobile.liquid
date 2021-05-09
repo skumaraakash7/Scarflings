@@ -1,0 +1,68 @@
+<section class="page_content_section mobile_only p-t-66 p-b-38" id="section_k_{{ section.id }}" >
+	
+    	<div class="row">
+<div class="col-md-12 FirstSectImage"  style="background-image:url('{{ section.settings.subscription_banner_bg | img_url: 'master' }}')">
+	
+  	<div class="play_button">
+       <video id="vid" controls>
+        <source src="https://cdn.shopify.com/s/files/1/0070/0835/4356/t/69/assets/{{ section.settings.sub_banner_video_mob }}" type="video/mp4">
+   	  </video>
+      <img src="{{ 'white-play.png' | asset_url }}">
+            </div>
+</div>
+          
+<div class="col-md-12 bgWhite">
+  <div class="container">
+    <div class="simpletext">
+      <h2 class="textOverImg"> {{ section.settings.subscription_m_text_box_left_title }} </h2>
+      <p> {{ section.settings.subscrition_m_section_description }} </p>
+      <a href="javascript:void(0)" class="btn btn--cta cpsgts">{{ section.settings.sub_left_image_linktext }}</a>           
+    </div>
+   </div>    
+</div>
+
+          
+          </div>
+   
+</section>
+{% schema %}
+  {
+    "name": "subscription_banner_m",
+    "settings": [
+      {
+        "id": "subscription_m_text_box_left_title",
+        "type": "text",
+        "label": "Heading",
+        "default": "Title"
+      },
+	  {
+          "id": "subscrition_m_section_description",
+          "type": "html",
+          "label": "Add custom text below",
+          "default": "<p>Add your text here</p>"
+       },
+	   {
+      "id": "sub_left_image_linktext",
+      "type": "text",
+      "label": "Button text",
+      "default": "Read More"
+    },	
+		{
+		"id": "subscription_banner_bg",
+        "type": "image_picker",
+        "label": "Background Image"
+		},
+	 {
+        "id": "sub_banner_video_mob",
+        "type": "text",
+        "label": "Video name"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

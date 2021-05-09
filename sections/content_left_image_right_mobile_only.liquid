@@ -1,0 +1,82 @@
+<section class="page_content_section p-t-66 p-b-38 mobile_only" id="section_k_{{ section.id }}" style="background-image:url('{{ section.settings.section_background | img_url: 'master' }}')">
+  <div class="container">
+    <div class="about_us_section_title">
+    <h2 class="bannerSectionheading"> {{ section.settings.section_title }} </h2>
+    </div>
+
+      <div  id="section_k_slider_{{ section.id }}">
+
+        {% for block in section.blocks %}
+          <div class=" {{ block.id }}">
+            <div class="col-md-7">
+              <div class="simpletext">
+
+                <p> {{ block.settings.box_paragraph }} </p>
+              </div>
+            </div>
+            <div class="col-md-5 FirstSectImage"  >
+
+
+            </div>
+
+          </div>
+        {% endfor %}
+      </div>
+  </div>
+      
+</section>
+<script>
+  
+ $(document).ready(function() {
+  $("#section_k_slider_{{ section.id }}").owlCarousel({
+    items: 1,
+    singleItem: true,
+    itemsScaleUp : true,
+    slideSpeed: 4000,
+    autoPlay: 4000,
+	dots:true
+  });
+});
+
+</script>
+{% schema %}
+  {
+    "name": "M Content Left Img Slide",
+	"settings": [
+          {
+        "id": "section_title",
+        "type": "text",
+        "label": "Heading",
+        "default": "Title"
+      },
+      	{
+		"id": "section_background",
+        "type": "image_picker",
+        "label": "Image"
+		}	
+        ],
+	
+	"max_blocks": 10,
+	"blocks": [
+      {
+        "type": "slideshow",
+        "name": "SlidePage",
+        "settings": [
+          
+      {
+        "id": "box_paragraph",
+        "type": "html",
+        "label": "Add custom text below",
+        "default": "<p>Add your text here</p>"
+      }
+			
+        ]
+      }
+    ]
+   
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+

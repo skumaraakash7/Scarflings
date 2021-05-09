@@ -1,0 +1,254 @@
+
+<section id="section-{{ section.id }}" class="plan_section" >
+  <div class="container">
+    <div class="subscription_notes">
+  	 <h3 class="before_subscription">{{ section.settings.subscription_intro_heading }}</h3>
+     <p class="before_subscription mobile_only"><span class="available">{{ section.settings.subscription_box_avail }}</span></p>
+	 <p class="before_subscription">{{ section.settings.subscription_intro_para }}<span class="available desktop_only"> {{ section.settings.subscription_box_avail }}</span></p>
+     <h3 class="after_subscription">{{ section.settings.subscription_form_after_heading }}</h3>
+      <p class="reservePara stock after_subscription"><b>{{ section.settings.subscription_welcome_text }}</b></p>
+     <p class="reservePara after_subscription">{{ section.settings.subscription_form_date }}</p>
+    </div>
+  </div>
+  <hr>
+  <div class="container">
+   <div class="month_year_switch">
+     <label class="bill_monthly">Billed Monthly</label>
+     <label class="switch">
+        <input type="checkbox">
+        <span class="slider round"></span>
+      </label>
+     <label class="bill_yearly">Billed Yearly</label>
+      <h2 class="monthBill">${{ section.settings.monthly_billed }}</h2>
+     <h2 class="yearlytotalBill"><del>${{ section.settings.yearlytotal_billed }}</del> <span class="sale_price">Save $280</span></h2>
+      <h2 class="yearlydiscountedBill">${{ section.settings.yearlydiscounted_billed }}</h2>
+    </div>
+   <div class="offer_section">
+     	<img src="{{ section.settings.offer_image | img_url: 'master'}}">
+     	<div class="offer">
+          {{ section.settings.offer_text }}
+     	</div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <div class="sub_features" >
+          <img src="{{ section.settings.plan_features_image_one | img_url: 'master'}}">
+          <p>{{ section.settings.plan_features_text_one }}</p>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="sub_features" >
+          <img src="{{ section.settings.plan_features_image_two | img_url: 'master'}}">
+          <p>{{ section.settings.plan_features_text_two }}</p>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="sub_features" >
+          <img src="{{ section.settings.plan_features_image_three | img_url: 'master'}}">
+          <p>{{ section.settings.plan_features_text_three }}</p>
+        </div>
+      </div>
+    </div>
+   </div>
+   <div class="planSelectSection" style="background-image: url(' {{ section.settings.subscription_right_background | img_url: 'master' }} ')">
+    <div class="container">
+      <div class="row planSlider">
+            {% for block in section.blocks %}
+               {% assign p = all_products[ block.settings.plan ]%}
+            <div class="col-md-4 Plan" id="Plan_{{ block.id }}"> 
+                <div class="PlanInner" id="{{ p.handle }}">
+
+                  {% if block.settings.plan_ribbon_text != "" %}
+
+                  <div class="ribbon" style="background-color:{{ block.settings.plan_ribbon_bg_color }};color:{{ block.settings.plan_ribbon_txt_color }}"><span>{{ block.settings.plan_ribbon_text }} </span></div>
+
+                  {% endif %}
+
+
+
+                  <h5 class="productTitle">{{ p.title }}</h5>
+
+                  <div class="plan_image">
+                    <img src="{{ p | img_url : 'master'}}" class="img-fluid">
+                    <img src="{{ block.settings.plan_features_hover_image | img_url: 'master'}}" class="hover_img">
+                  </div>
+
+                  <p>{{ p.description }}</p>
+
+                  <div id="Plan_{{ block.id }}_Monthly_Button" style="display:none;" class="monthly_btn">
+                    {{  block.settings.plan_monthly_button  }}
+                  </div>
+
+                  <div id="Plan_{{ block.id }}_Yearly_Button" style="display:none;" class="yearly_btn">
+                    {{  block.settings.plan_yearly_button  }}
+                  </div>
+              </div>   
+
+            </div> 
+            {% endfor %}
+          </div>
+      </div>
+  </div>
+      
+</section> 
+
+
+{% schema %}
+{
+  "name": "Subscription Plans",
+	"max_blocks": 3,
+  "settings": [
+    {
+          "id": "subscription_intro_heading",
+          "type": "html",
+          "label": "Intro heading"
+        },
+	{
+          "id": "subscription_intro_para",
+          "type": "html",
+          "label": "Intro description"
+        },
+	   {
+          "id": "subscription_box_avail",
+          "type": "html",
+          "label": "Box available"
+        },
+	   {
+          "id": "subscription_form_after_heading",
+          "type": "html",
+          "label": "After Subscription heading"
+       },
+	   {
+          "id": "subscription_welcome_text",
+          "type": "html",
+          "label": "Subscription welcome text"
+       },
+		{
+          "id": "subscription_form_date",
+          "type": "html",
+          "label": "Subscription date"
+       },
+	{
+      "id": "plan_title",
+      "type": "text",
+      "label": "Subscription Title",
+      "default": "Subscription Title"
+    },
+	{
+      "id": "subscription_right_background",
+      "type": "image_picker",
+      "label": "Section Right BG"
+      
+    },
+	{
+          "id": "plan_features_text_one",
+          "type": "html",
+          "label": "plan features text 1"
+        },
+		{
+		"id": "plan_features_image_one",
+        "type": "image_picker",
+        "label": "feature image 1"
+		},
+	{
+          "id": "plan_features_text_two",
+          "type": "html",
+          "label": "plan features text 2"
+        },
+		{
+		"id": "plan_features_image_two",
+        "type": "image_picker",
+        "label": "feature image 2"
+		},
+{
+          "id": "plan_features_text_three",
+          "type": "html",
+          "label": "plan features text 3"
+        },
+		{
+		"id": "plan_features_image_three",
+        "type": "image_picker",
+        "label": "feature image 3"
+		},
+	{
+      "id": "yearlytotal_billed",
+      "type": "text",
+      "label": "yearly total bill"
+    },
+		{
+      "id": "yearlydiscounted_billed",
+      "type": "text",
+      "label": "yearly discounted bill"
+    },
+	{
+      "id": "monthly_billed",
+      "type": "text",
+      "label": "monthly bill"
+    },
+	{
+      "id": "offer_image",
+      "type": "image_picker",
+      "label": "Offer image"
+    },
+	{
+      "id": "offer_text",
+      "type": "html",
+      "label": "Offer text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "select",
+      "name": "Add Plan",
+      "settings": [
+        {
+          "id": "plan",
+          "type": "product",
+       		"label": "Plan"
+        },
+		{
+          "id": "plan_features_hover_image",
+          "type": "image_picker",
+          "label": "Plan features hover image"
+        },
+        {
+          "id": "plan_monthly_button",
+          "type": "html",
+          "label": "Subscribe Monthly Button",
+          "default": "Subscribe Now"
+        },
+        {
+          "id": "plan_yearly_button",
+          "type": "html",
+          "label": "Subscribe Yearly Button",
+          "default": "Subscribe Now"
+        },
+		{
+          "id": "plan_ribbon_text",
+          "type": "text",
+          "label": "Ribbon text"
+          
+          
+        },
+        {
+          "id": "plan_ribbon_bg_color",
+          "type": "color",
+          "label": "Ribbon Background color",
+          "default": "#000000"
+        },{
+          "id": "plan_ribbon_txt_color",
+          "type": "color",
+          "label": "Ribbon text color",
+          "default": "#ffffff"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,543 @@
+{{ "//cdn.shopify.com/s/javascripts/currencies.js" | script_tag }}
+{{ "jquery.currencies.js" | asset_url | script_tag }}
+
+
+
+
+<script>
+  setTimeout(function(){
+   
+    var enabled_currencies = { {% for currency in shop.enabled_currencies %}
+      {% if currency == cart.currency %}
+  	"{{currency.iso_code}}" : "{{ currency.symbol }}" ,
+      {% else %}
+    "{{currency.iso_code}}" : "{{ currency.symbol }}" ,
+      {% endif %}
+    {% endfor %} };
+    
+    var kurrCheck = $.cookie('currency');
+  
+  	var countryCheck = $.cookie('country');
+    Currency.format = '{{ settings.currency_format | default: 'money_with_currency_format' }}';
+    
+    var format = Currency.format;
+    var shopCurrency = '{{ shop.currency }}';
+    var cookieCurrency = Currency.cookie.read();
+    Currency.shopCurrency = shopCurrency;
+    Currency.selector = "span.money";
+    Currency.enabled_currencies = enabled_currencies;
+    Currency.currentCurrency = shopCurrency;
+    
+    Currency.cartCurrency = '{{ cart.currency.iso_code }}';
+    
+Currency.moneyFormats[shopCurrency].money_with_currency_format = {{ shop.money_with_currency_format | strip_html | json }};
+Currency.moneyFormats[shopCurrency].money_format = {{ shop.money_format | strip_html | json }};
+var defaultCurrency = '{{ settings.default_currency | default: shop.currency }}';
+Currency.defaultCurrency = defaultCurrency;
+var cookieCurrency = Currency.cookie.read();
+
+
+    
+    
+    
+      if(kurrCheck==undefined || kurrCheck==null || kurrCheck==''){
+    
+    
+    
+  jQuery.ajax({
+		url: "https://geoip-db.com/jsonp",
+		jsonpCallback: "callback",
+		dataType: "jsonp",
+		success: function( location ) {
+            window.newCurrency = 'USD';
+          	window.country_name = 'United States';
+          console.log(location.country_code);
+            switch(location.country_code) {
+              case 'CA':
+                window.newCurrency = 'CAD';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                console.log("canada: ",Currency.currentCurrency);
+                window.country_name = location.country_name;
+                break;
+               case 'JP':
+                 window.newCurrency = 'JPY';
+                 Currency.cookieCurrency = window.newCurrency;
+                 Currency.currentCurrency = window.newCurrency; 
+                 window.country_name = location.country_name;
+                 break;
+               case 'IN':
+                 
+                 window.newCurrency = 'INR';
+                 Currency.cookieCurrency = window.newCurrency;
+                 Currency.currentCurrency = window.newCurrency; 
+                 window.country_name = location.country_name;
+                 break;
+              case 'AU':
+                window.newCurrency = 'AUD';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'CX':
+                window.newCurrency = 'AUD';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'CC':
+                window.newCurrency = 'AUD';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'HM':
+                window.newCurrency = 'AUD';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'KI':
+                window.newCurrency = 'AUD';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'NR':
+                window.newCurrency = 'AUD';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'NF':
+                window.newCurrency = 'AUD';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'TV':
+                window.newCurrency = 'AUD';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'GB':
+                window.newCurrency = 'GBP';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'IO':
+                window.newCurrency = 'GBP';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'IM':
+                
+                window.newCurrency = 'GBP';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'JE':
+                window.newCurrency = 'GBP';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'GG':
+                window.newCurrency = 'GBP';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'AX':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                 window.country_name = location.country_name;
+                break;
+              case 'EU':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                 window.country_name = location.country_name;
+                break;
+              case 'AD':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'AT':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'BE':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'CY':
+                window.newCurrency = 'EUR';
+                Currency.currentCurrency = window.newCurrency;
+                Currency.cookieCurrency = window.newCurrency;
+                window.country_name = location.country_name;
+                break;
+              case 'EE':
+                window.newCurrency = 'EUR';
+                Currency.currentCurrency = window.newCurrency;
+                Currency.cookieCurrency = window.newCurrency;
+                window.country_name = location.country_name;
+                break;
+              case 'FI':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'FR':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'TF':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;  
+              case 'DE':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                
+                break;
+              case 'GR':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'GP':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'IE':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                
+                break;
+              case 'IT':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'XK':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'LV':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'LT':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'LU':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'MT':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'GF':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'MQ':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'YT':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'MC':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'ME':
+                window.newCurrency = 'EUR';
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'NL':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'PT':
+                window.newCurrency = 'EUR';
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'RE':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+                
+              case 'BL':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+                
+              case 'MF':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'PM':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'SM':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+                
+              case 'SK':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency;
+                window.country_name = location.country_name;
+                break;
+              case 'SI':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'VA':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'ES':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'BG':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'HR':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'CZ':
+                
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'HU':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'PL':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'RO':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'SE':
+                window.newCurrency = 'EUR';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'NZ':
+                window.newCurrency = 'NZD';
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'CK':
+                window.newCurrency = 'NZD';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'NU':
+                window.newCurrency = 'NZD';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'PN':
+                window.newCurrency = 'NZD';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'TK':
+                window.newCurrency = 'NZD';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'HK':
+                window.newCurrency = 'HKD';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              case 'SG':
+                window.newCurrency = 'SGD';
+                Currency.cookieCurrency = window.newCurrency;
+                Currency.currentCurrency = window.newCurrency; 
+                window.country_name = location.country_name;
+                break;
+              
+            }
+     
+          $.cookie('currency', window.newCurrency, {
+              expires: 14,
+              path: '/',
+              domain: window.location.hostname
+            }
+          );
+          $.cookie('country', window.country_name, {
+              expires: 14,
+              path: '/',
+              domain: window.location.hostname
+            }      
+          );
+           
+           
+          Currency.cookie.write(window.newCurrency);
+            /*window.location = window.location.origin + '?currency=' + newCurrency;*/
+          
+          $('#top_bar_country').html(window.country_name);
+          
+          if($("#currenciesSel").find("option[value=" + Currency.cookieCurrency +"]").length > 0){
+              console.log("Running from damm1");
+              $("#currenciesSel option").attr("selected",false);
+              $("#currenciesSel").val(Currency.cookieCurrency).find("option[value=" + Currency.cookieCurrency +"]").attr('selected', true).trigger("change");
+              $("#currency_switcher_submit_button").trigger("click");	
+          }	
+          
+          
+		}
+    
+	});
+  }else{
+    
+    
+    setTimeout(function(){
+      
+      
+      
+      if(window.country_name == undefined){
+        
+        
+        
+      if(countryCheck != undefined){
+        
+        
+        
+        $('#top_bar_country').html(countryCheck);
+        
+        
+        
+      }
+      
+    }else{
+      
+      console.log("else");
+      
+      $('#top_bar_country').html(window.country_name);
+      
+    }
+      $.cookie("top_currency_bar_hide", true);
+      if($("#currenciesSel").find("option[value=" + Currency.cookieCurrency +"]").length > 0){
+              
+              $("#currenciesSel option").attr("selected",false);
+              $("#currenciesSel").val(Currency.cookieCurrency).find("option[value=" + Currency.cookieCurrency +"]").attr('selected', true).trigger("change");
+          }
+      
+    },3000);
+    
+    
+  
+  }
+    
+   
+ 
+/* Saving the current price */
+$('span.money').each(function() {
+  $(this).attr('data-currency-{{ shop.currency }}', $(this).html());
+});
+    
+  },2000);
+
+    
+</script>
+{{ "change_currency.js" | asset_url | script_tag }}

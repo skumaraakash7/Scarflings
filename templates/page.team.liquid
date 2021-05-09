@@ -1,0 +1,30 @@
+<!-- Title Page -->
+{% assign img_bg = '' %}
+{% if page %}
+           {% capture mybanner %}{{page.handle}}.jpg {% endcapture %}
+           {% assign img_bg = mybanner | asset_url %}
+{% endif %}
+<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m"  {% if img_bg %} style="background-image:url({{ img_bg }});" {% else %} style="background-color:#000;" {% endif %}>
+  <h1 class="snize-search-results-page-title l-text2 t-center">{{ page.title }}</h1>
+</section>
+{% comment %}
+<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m"  style="background-color:#000;">
+  <h2 class="l-text2 t-center">
+    {{ page.title }}
+  </h2>
+</section>
+  {% endcomment %}
+  
+<!-- content page -->
+<section class="bgwhite p-t-66 p-b-38">
+  <div class="container {% if page.handle == 'search-results' %} search_page {% else %} main_page{% endif %}">
+    <div class="row">
+      <div class="col-md-12 p-b-30 pgadjusts">
+        {{ page.content }}
+      </div>
+    </div>
+  </div>
+</section>
+
+
+

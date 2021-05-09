@@ -1,0 +1,54 @@
+<section class="page_content_section desktop p-t-66 p-b-38" id="section_k_{{ section.id }}" style="background-image:url('{{ section.settings.subscription_banner_bg | img_url: 'master' }}')">
+
+  <div class="container">
+    	<div class="row">
+<div class="col-md-5 FirstSectImage" > 
+</div>
+          
+<div class="col-md-7">
+  <div class="simpletext">
+    <h2> {{ section.settings.subscription_text_box_left_title }} </h2>
+    <p>{{ section.settings.subscription_text_box_left_des }}</p>
+    <div class="hero_play_button">
+    <video controls>
+        <source src="{{ 'Questionnaire.mov' | asset_url }}" type="video/mp4">
+      </video> 
+      <img src="{{ 'watch-button.png' | asset_url }}"><p>Watch Video</p>
+    </div>
+  </div>
+</div>
+
+          
+          </div>
+    </div>
+</section>
+
+{% schema %}
+  {
+    "name": "subscription_banner_d",
+    "settings": [
+      {
+        "id": "subscription_text_box_left_title",
+        "type": "text",
+        "label": "Heading",
+        "default": "Title"
+      },
+		{
+        "id": "subscription_text_box_left_des",
+        "type": "html",
+        "label": "Description"
+      },
+		{
+		"id": "subscription_banner_bg",
+        "type": "image_picker",
+        "label": "Background Image"
+		}
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

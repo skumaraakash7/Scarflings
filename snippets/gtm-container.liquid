@@ -1,0 +1,114 @@
+<script>
+//=======================================================
+//
+// GTM tracking script
+// Written for Jamie Henry Mediasumo LLC
+//
+//=======================================================
+
+// IMPORTANT: Change this value to whatever the ID of your
+// GTM container is.
+const GTM_CONTAINER_ID = 'GTM-55QTHZX';
+
+//=======================================================
+// Only customise the below if you know what you're doing
+//=======================================================
+  
+// Initialise data layer object
+var user = {};
+{% if customer %}
+  user = {
+    user_id: '{{ customer.id }}',
+    first_name: '{{ customer.first_name }}',
+    total_spent: ({{ customer.total_spent }} / 100),
+    order_count: {{ customer.orders_count }}
+  }
+  {% if customer.last_order %}
+    user.last_order = {
+    total: ({{ customer.last_order.total_price }} / 100),
+    created_at: '{{ customer.last_order.created_at }}'
+  }
+  {% endif %}
+
+{% endif %}
+
+var dataLayer = [{
+  page: {
+    type: '{{ template }}',
+    title: '{{ page_title }}'
+  },
+  user: user
+}];
+
+{% if template contains 'product' %}
+//=======================================================
+// Product pages
+//=======================================================
+
+dataLayer[0].product = {{ product | json }},
+dataLayer[0].ecommerce = {
+    'detail': {
+      'actionField': {},
+      'products': [{
+        'name': '{{ product.title }}',
+        'id': '{{ product.id }}',
+        'price': ({{ product.price }} / 100).toString(),
+        'brand': '{{ product.vendor }}',
+        'category': '{{ product.type }}'
+       }]
+     }
+   };
+  
+{% elsif template contains 'cart' %}
+//=======================================================
+// Cart page
+//=======================================================
+
+dataLayer[0].line_items = {{ cart.items | json }};
+
+{% elsif template contains 'collection' %}
+//=======================================================
+// Collection pages
+//=======================================================
+
+// Loop through all the products in the collection and
+// build an array.
+var products = [];
+{% for product in collection.products %}
+  products.push({
+    'name': '{{ product.title }}',
+    'id': '{{ product.id }}',
+    'price': ({{ product.price }} / 100).toString(),
+    'brand': '{{ product.vendor }}',
+    'category': '{{ product.type }}',
+    'list': '{{ page_title }}',
+    'position': {{ forloop.index }}
+  });
+{% endfor %}
+
+dataLayer[0].page.breadcrumb = ['{{ collection.title }}'];
+dataLayer[0].ecommerce = {
+    'currencyCode': '{{ shop.currency }}',
+    'impressions': products
+  };
+  
+{% elsif template contains 'article' %}
+//=======================================================
+// Blog article pages
+//=======================================================
+
+dataLayer[0].page.author = '{{ article.author }}';
+
+{% endif %}
+
+//=======================================================
+// GTM container tag
+//=======================================================
+<!-- Google Tag Manager -->
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer', GTM_CONTAINER_ID);
+<!-- End Google Tag Manager -->
+</script>

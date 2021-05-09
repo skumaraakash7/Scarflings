@@ -1,0 +1,29 @@
+{% assign product = all_products[settings.free_gift]%}
+<div id="fgOffer" class="modal prodbx" role='dialog'>
+  <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+  
+  <div class='fgContent'>
+      <div class="fgimg wrap-pic-w  p-b-10 p-t-20">
+        {% include 'responsive-image' with
+                    image: product.featured_image.src ,
+            max_width: 170,
+            max_height: 170
+        %}
+
+      </div>
+      <div class=' fgtext m-text28 p-b-3 p-t-3 fgcoltext'>Congratulations!</div>
+      <div class=' fgtext m-text11 p-b-3 p-t-3 fgcoltext'>You've earned 1 FREE</div>
+      <div class='fgtitle m-text28 p-b-3 p-t-3'>{{product.title}}</div>
+      <div class=' fgtext p-b-3 p-t-0'>({{settings.free_gift_value}} value)</div>
+      <div class="fgFooter p-b-10 p-t-10">
+        <button onclick='kartUpdatePromo("{{product.selected_or_first_available_variant.id}}",1);' data-dismiss="modal" class="ok s-text1 btn btn-lg bo-rad-21 bg6 color2">
+          {{ 'products.product.add_to_cart' | t }}
+        </button>
+        <button type="button" class="nt s-text4 btn btn-lg bo-rad-21 bg3 color1" data-dismiss="modal">NO, THANKS</button>
+      </div>
+   
+  </div>
+ 
+</div>
+

@@ -1,0 +1,119 @@
+
+<section class="postmidsection1">
+  <div class="topBg" style="background-image:url('{{ section.settings.post_top_bg | img_url: 'master' }}');"></div>
+  	<div class="midBg" style="background-image:url('{{ section.settings.post_mid_bg | img_url: 'master' }}');"></div>  
+    
+  <div class="container">
+    <div class="simpletext">
+      <h3> {{ section.settings.post_sub_heading1 }} </h3>
+      <p>{{ section.settings.post_left_text1 }} </p>
+      <h3 class="second_point_heading"> {{ section.settings.post_sub_heading2 }} </h3>
+      <p class="second_point_para">{{ section.settings.post_left_text2 }} </p>
+  	</div>
+  </div>
+</section>
+<section class="postmidsection2">
+    <img src="{{ section.settings.mid_bg | img_url: 'master' }}"> 
+</section>
+<section class="postmidsection3">
+  <div class="topBg" style="background-image:url('{{ section.settings.post_bottom_bg | img_url: 'master' }}');"></div>
+  	
+  <div class="container">
+    <div class="simpletext">
+       <h3> {{ section.settings.post_sub_heading3 }} </h3>
+      <p>{{ section.settings.post_left_text3 }} </p>
+      <h3> {{ section.settings.post_sub_heading4 }} </h3>
+      <p>{{ section.settings.post_left_text4 }} </p>
+      <p class="contact_text">{{ section.settings.contact_text }} </p>
+      <a href="{{ section.settings.contact_button_url }}" class="btn btn--cta cpsgts"><img src='https://cdn.shopify.com/s/files/1/0070/0835/4356/t/69/assets/smiling-face-with-3-hearts.png?v=1586612736'>{{ section.settings.contact_button_text }}</a>
+  	</div>
+  </div>
+</section>
+{% schema %}
+  {
+    "name": "Post mid section",
+    "settings": [
+	  {
+        "id": "post_sub_heading1",
+        "type": "html",
+        "label": "Heading 1"
+      },
+		{
+        "id": "post_left_text1",
+        "type": "html",
+        "label": "Description 1"
+      },
+      {
+        "id": "post_sub_heading2",
+        "type": "html",
+        "label": "Heading 2"
+      },
+		{
+        "id": "post_left_text2",
+        "type": "html",
+        "label": "Description 2"
+      },
+      {
+      "id": "mid_bg",
+      "type": "image_picker",
+      "label": "Middle image"
+      },
+	  {
+        "id": "post_sub_heading3",
+        "type": "html",
+        "label": "Heading 3"
+      },
+		{
+        "id": "post_left_text3",
+        "type": "html",
+        "label": "Description 3"
+      },
+	  {
+        "id": "post_sub_heading4",
+        "type": "html",
+        "label": "Heading 4"
+      },
+		{
+        "id": "post_left_text4",
+        "type": "html",
+        "label": "Description 4"
+      },
+		{
+        "id": "contact_text",
+        "type": "html",
+        "label": "Contact text"
+      },
+		{
+        "id": "contact_button_url",
+        "type": "url",
+        "label": "Contact button url"
+      },
+	  {
+        "id": "contact_button_text",
+        "type": "html",
+        "label": "Contact button text"
+      },
+      {
+      "id": "post_top_bg",
+      "type": "image_picker",
+      "label": "Background image 1"
+      },
+      {
+      "id": "post_mid_bg",
+      "type": "image_picker",
+      "label": "Background image 2"
+      },
+      {
+      "id": "post_bottom_bg",
+      "type": "image_picker",
+      "label": "Background image 3"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

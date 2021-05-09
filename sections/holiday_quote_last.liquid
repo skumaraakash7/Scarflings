@@ -1,0 +1,44 @@
+<section class="quote_section last">
+  	<div class="bg_img left_top_image" style="background-image: url('{{ section.settings.section_image_left | img_url: 'master' }}');">
+		</div>
+	<div class="container">
+      
+		<p>
+			{{ section.settings.section_title }}
+
+		</p>
+		
+	</div>
+  <div class="bg_img right_top_image" style="background-image: url('{{ section.settings.section_image_right | img_url: 'master' }}');">
+		</div>
+		
+</section>
+
+{% schema %}
+  {
+    "name": "Holiday Quote Last",
+    "settings": [
+     {
+        "id": "section_title",
+        "type": "text",
+        "label": "Section Title",
+        "default": "Title"
+      },{
+		"id": "section_image_left",
+        "type": "image_picker",
+        "label": "Bg Image Left"
+		},{
+		"id": "section_image_right",
+        "type": "image_picker",
+        "label": "Bg Image Right"
+		}
+		
+]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

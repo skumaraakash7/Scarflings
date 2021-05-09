@@ -1,0 +1,76 @@
+{% assign collection = collections['featured-products'] %}
+{% assign current_collection = collections['featured-products'] %}
+
+<section class="featuredproduct bgwhite p-t-45">
+  <div class="top_background"></div>
+  <div class="container">
+    
+    <div class="featureprod_section">
+    <!--Featured Product Area Start-->
+    <div class="sec-title simpletext  p-b-60">
+      <h2 class="m-text5 t-center">
+        
+        {{ 'products.general.featured_products' | t }}
+        
+      </h2>
+    </div>
+    <div class="wrap-slick2">
+      <div class="slick7">
+
+        
+        {% for product in collection.products %}
+        
+        
+        
+        
+        <div class="item-slick2 p-l-15 p-r-15">
+          {% include 'product-grid-item' %}
+        </div>
+        
+        
+        {% endfor %}
+      </div>
+    </div>
+    <!--End of Featured Product Area-->
+    </div>
+    
+  </div>
+</section>
+<script>
+$(document).ready(function(){
+$('.slick7').slick({
+              autoplay: true,
+            autoplaySpeed: 2000,
+              infinite: true,
+              slidesToShow: 4,
+              slidesToScroll: 1,
+              dots: false,
+              arrows: true,
+          	  responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 3
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 2
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1
+            }
+          }
+          // You can unslick at a given breakpoint now by adding:
+          // settings: "unslick"
+          // instead of a settings object
+        ]
+});
+$(".slick-prev.slick-arrow").html('<i class="fa fa-angle-left" aria-hidden="true"></i>');
+$(".slick-next.slick-arrow").html('<i class="fa fa-angle-right" aria-hidden="true"></i>');
+});
+</script>

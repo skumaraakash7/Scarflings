@@ -1,0 +1,20 @@
+{% comment %}
+{% if settings.show_multiple_currencies %}
+<select id="currenciesSel" class="currsel">
+  <option value="USD">USD $</option>
+  <option value="CAD">CAD $</option>
+  <option value="AUD">AUD $</option>
+  <option value="EUR">EUR &euro;</option>
+  <option value="GBP">GBP &pound;</option>
+</select>
+
+
+
+ <style>
+   .currsel {
+   		float: right;
+   } 
+ </style>
+
+{% endif %}
+{% endcomment %}

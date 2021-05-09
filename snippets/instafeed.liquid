@@ -1,0 +1,8 @@
+<script defer src="{{ 'instafeed.min.js' | asset_url }}"></script>
+  <div class="sec-title p-b-52 p-l-15 p-r-15">
+    {% if section.settings.insta_title != blank%}
+    <h3 class="m-text5 t-center">{{ section.settings.insta_title }}</h3>
+    {% endif %}
+  </div>
+  <div class="instaslick" id="instafeed">
+</div>

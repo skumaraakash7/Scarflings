@@ -1,0 +1,107 @@
+ <div class="rightBg" style="background-image:url('{{ section.settings.right_bg | img_url: 'master' }}');
+"></div>
+<div class="container my-4 accordian_other_enquiries">
+
+    <h2 style="text-align: center;padding: 60px 40px 30px 20px;">{{ section.settings.accordian_heading }}</h2> 
+    
+<div class="accordion md-accordion" id="accordian_other_enquiries" role="tablist" aria-multiselectable="true">    
+  <!--Accordion wrapper-->  
+  {% for block in section.blocks %}
+    
+
+{% if forloop.first == true %}
+  <!-- Accordion card -->
+  <div class="card">
+
+    <!-- Card header -->
+    <div class="card-header" role="tab" id="heading_{{ block.id }}">
+      <a data-toggle="collapse" data-parent="#accordian_other_enquiries" href="#collapse_{{ block.id }}" aria-expanded="true"
+        aria-controls="collapse_{{ block.id }}" style="color: #b64d27;">
+        <h5 class="mb-0">
+          {{ block.settings.accordian_title }} <i class="fa fa-angle-down rotate-icon" style="float:right;color: #b64d27;"></i>
+        </h5>
+      </a>
+    </div>
+
+    <!-- Card body -->
+    <div id="collapse_{{ block.id }}" class="collapse show" role="tabpanel" aria-labelledby="heading_{{ block.id }}"
+      data-parent="#accordian_other_enquiries">
+      <div class="card-body">
+        {{ block.settings.accrdian_text }}
+      </div>
+    </div>
+
+  </div>
+  <!-- Accordion card -->
+  
+  
+  {% else %}
+        <!-- Accordion card -->
+  <div class="card">
+
+    <!-- Card header -->
+    <div class="card-header" role="tab" id="heading_{{ block.id }}">
+      <a data-toggle="collapse" data-parent="#accordian_other_enquiries" href="#collapse_{{ block.id }}" aria-expanded="false"
+        aria-controls="collapse_{{ block.id }}" style="color: #b64d27;">
+        <h5 class="mb-0">
+          {{ block.settings.accordian_title }} <i class="fa fa-angle-down rotate-icon" style="float:right;color: #b64d27;"></i>
+        </h5>
+      </a>
+    </div>
+
+    <!-- Card body -->
+    <div id="collapse_{{ block.id }}" class="collapse" role="tabpanel" aria-labelledby="heading_{{ block.id }}"
+      data-parent="#accordian_other_enquiries">
+      <div class="card-body">
+        {{ block.settings.accrdian_text }}
+      </div>
+    </div>
+
+  </div>
+  <!-- Accordion card -->
+  {% endif %}
+{% endfor %}
+  </div>
+<!-- Accordion wrapper -->
+    
+</div>
+
+
+{% schema %}
+  {
+    "name": "Cancel & Other Enquiries",
+    "max_blocks": 10,
+    "settings": [
+    {
+		"id": "right_bg",
+        "type": "image_picker",
+        "label": "Background"
+		}, 
+	{
+      "id": "accordian_heading",
+      "type": "text",
+      "label": "Accordian Heading",
+      "default": "Cancel & Other Enquiries"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "select",
+      "name": "Add accordian",
+      "settings": [
+        {
+          "id": "accordian_title",
+          "type": "text",
+          "label": "Accordian title"
+        },
+        {
+          "id": "accrdian_text",
+          "type": "html",
+          "label": "Accordian text"
+          
+        }
+      ]
+    }
+  ]
+  }
+{% endschema %}

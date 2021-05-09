@@ -1,0 +1,228 @@
+<style>
+  .updates_input_bookthat_app {
+    display: none;
+}
+</style>
+{% assign free_shipping_threshold = all_products["free-shipping"].compare_at_price %}
+<!-- Title Page -->
+<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" {% if settings.show_cart_top_image %}
+         style="background-image:url({{ 'cart_top.jpg' | asset_url }});" {% endif %}>
+  <h2 class="l-text2 t-center">
+    MY CART
+  </h2>
+  
+</section>
+<!-- Cart -->
+
+{% assign has_fg = 'false' %}
+<section class="cart bgwhite p-t-70">
+  
+  <div class="container">
+    <div id="destop_cartform_item" class="desktop_cart" >
+      {% comment %}
+      <div class="dsk_sidebar p-t-35" >
+        %%SIDEBAR%%
+      </div>
+      {% endcomment %}
+      <div id="parent_dsk_cart">
+        <div  id="dsk_cart">
+        {% if cart.item_count > 0 %}
+          {% include 'cart_list' %}
+        {% else %}
+        <h1 class="page-heading">{{ 'cart.general.empty' | t }}</h1>
+        <p>{{ 'cart.general.continue_browsing_html' | t }}</p>
+        {% endif %}
+        </div>
+        
+      </div>
+      
+      <div class="dsk_sidebar p-t-35 p-b-40">
+          %%SIDEBAR%%
+          <div class="donation">
+       		<div class="allPaymentSection">
+                <img src="{{ 'payment.png' | asset_url }}">
+            </div>
+        	 {% if section.settings.show_video %}
+            <div class="cart_video">
+                <video id="vid" controls poster="{{ section.settings.cart_poster | img_url: 'master' }}">
+                  <source src="https://cdn.shopify.com/s/files/1/0070/0835/4356/t/69/assets/{{ section.settings.cart_video }}" type="video/mp4">
+                </video>
+            </div>
+         {% endif %} 
+            <div id="desktop_donation">
+            	<script src="https://cdn.shoppinggives.com/cc-utilities/shopify-cart.js?store-id=139f3336-986c-4ad5-b431-291b1a393e35&template-type=1"></script>
+            </div>         
+         </div>
+        </div>
+      
+<!--        <div class=" w-size26 p-l-40 p-r-40 p-t-10 m-t-20 m-r-0 m-l-auto p-lr-15-sm cart-recomm-box">
+			&nbsp;
+        </div> -->
+      
+     
+			
+       
+    </div>
+    
+    
+    <!------------------------------ mobile cart----------------------------------->
+    
+     <div id="mobile_cartform_item" class="mobile_cart">
+       <div class="donation mobile_donation">
+         <div class="allPaymentSection">
+           <img src="{{ 'payment.png' | asset_url }}">
+         </div> 
+         
+            {% if section.settings.show_video %}
+          <div class="cart_video">
+            <video id="vid" controls poster="{{ section.settings.cart_poster | img_url: 'master' }}">
+              <source src="https://cdn.shopify.com/s/files/1/0070/0835/4356/t/69/assets/{{ section.settings.cart_video }}" type="video/mp4">
+            </video>
+            </div>
+         {% endif %} 
+           	<div id="mobile_donation">
+         		<script src="https://cdn.shoppinggives.com/cc-utilities/shopify-cart.js?store-id=139f3336-986c-4ad5-b431-291b1a393e35&template-type=1"></script>
+         	</div>
+       </div>
+      <div id="parent_mob_cart">
+        <div  id="mob_cart">
+              {% if cart.item_count > 0 %}
+                {% include 'cart_list_mobile' %}
+              {% else %}
+                <h1 class="page-heading">{{ 'cart.general.empty' | t }}</h1>
+                <p>{{ 'cart.general.continue_browsing_html' | t }}</p>
+              {% endif %}
+
+          </div>
+       </div>
+       
+       <div class="dsk_sidebar p-t-35" style="min-width: 290px">
+              %%SIDEBAR%%
+            </div>
+      <div class=" cart-recomm-box">
+			&nbsp;
+        </div>
+        
+    </div>
+     
+    <!---------------- close mobile cart-------------------------------------->
+     
+    <div id="cart-recomm-box">
+      {% include 'product-recommendations', product: cart.items.first.product%} 
+    </div>
+    
+   
+ <input type="hidden" value="cartpage" id="cartpage"> 
+  </div>
+</section>
+{% unless settings.shipping_calculator == 'Disabled' %}
+<script>
+  window.theme = window.theme || {};
+  theme.strings = {
+    shippingCalcSubmitButton: {{ settings.shipping_calculator_submit_button_label | default: 'Calculate shipping' | json }},
+    shippingCalcSubmitButtonDisabled: {{ settings.shipping_calculator_submit_button_label_disabled | default: 'Calculating...' | json }},
+    {% if customer %}shippingCalcCustomerIsLoggedIn: true,{% endif %}
+    shippingCalcMoneyFormat: {{ shop.money_with_currency_format | json }}
+  }
+</script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+<script src="/services/javascripts/countries.js"></script>
+<script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+{{ 'shipping-cart.js' | asset_url | script_tag }}
+
+<script>
+  Shopify.Cart.ShippingCalculator.show( {
+    submitButton: theme.strings.shippingCalcSubmitButton,
+    submitButtonDisabled: theme.strings.shippingCalcSubmitButtonDisabled,
+    customerIsLoggedIn: theme.strings.shippingCalcCustomerIsLoggedIn,
+    moneyFormat: theme.strings.shippingCalcMoneyFormat                                     
+  } );
+</script>
+{% endunless %}
+
+
+{% schema %}
+  {
+    "name": "Cart",
+	"max_blocks": 6,
+    "settings": [
+		{
+      "type": "checkbox",
+      "id": "show_video",
+	  "default":  true,
+      "label": "Show video"
+    },
+	{
+		"id": "cart_poster",
+        "type": "image_picker",
+        "label": "Cart video poster"
+		},
+	{
+        "id": "cart_video",
+        "type": "text",
+        "label": "Video name"
+      },
+	{
+         "type": "text",
+         "id": "maxprice",
+         "label": "Price",
+         "default": "7500",
+		 "info": "Maximum Price where Free Shipping test will show. Please addd in following formate, 6500 or 7500. This is for $65 and $75 respectively."
+      },
+	  {
+         "type": "text",
+         "id": "qualifiedinfo",
+         "label": "qualified",
+		 "info": "After qualified"
+      },
+	  {
+            "type": "image_picker",
+            "id": "secure_image",
+            "label": "Image"
+       },
+	   {
+         "type": "text",
+         "id": "deliveroptions",
+         "label": "Delivery options"
+      },
+	  {
+         "type": "text",
+         "id": "freedelivery",
+         "label": "Free Delivery"
+      }
+	],
+
+	"blocks": [
+      {
+        "type": "text",
+        "name": "Left Box Info",
+        "settings": [
+          {
+            "type": "text",
+            "id": "listcontain",
+            "label": "Repeat Info"
+          }
+        ]
+      }
+    ]
+
+
+  }
+{% endschema %}
+{% if settings.enable_free_gift %}
+
+{% include 'free-gift' %}
+  <script>
+    $(document).ready(function(){
+      loadKartRecommendations();
+      {% if has_fg == 'false' %}
+      if(parseInt('{{cart.total_price}}') >= parseInt('{{all_products[settings.free_gift].compare_at_price}}')){
+             setTimeout(function(){
+               $('#fgOffer').modal({backdrop: true, keyboard: true})}
+            , 3000);
+        } 
+     {% endif %}
+    });
+  </script>
+{% endif %}

@@ -1,0 +1,44 @@
+<section class="page_content_section subFormsection" id="section_k_{{ section.id }}" style="background-image:url('{{ section.settings.plan_bg_image | img_url: 'master' }}');
+">
+  <div class="container">
+
+    <div class="subForminnersection">
+        <div class="text-center simpletext">
+
+          <h2> {{ section.settings.plan_heading }} </h2>
+          <p> {{ section.settings.plan_text }} </p>
+
+        </div>
+      
+{% schema %}
+  {
+    "name": "Subscription Selection",
+    "settings": [
+     {
+        "id": "plan_heading",
+        "type": "text",
+        "label": "Heading",
+        "default": "Title"
+      },
+
+    {
+        "id": "plan_text",
+        "type": "richtext",
+        "label": "Add custom text below",
+        "default": "<p>Add your text here</p>"
+      },
+    {
+    "id": "plan_bg_image",
+        "type": "image_picker",
+        "label": "Background"
+    },
+     {
+            "type": "image_picker",
+            "id": "check_image",
+            "label": "Check Image",
+            "info": "add image"
+       }
+      
+    ]
+ }
+{% endschema %}

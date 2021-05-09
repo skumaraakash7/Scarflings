@@ -1,0 +1,25 @@
+
+body{
+background-color:#ffffff !important;
+}
+
+input.btn.continue_btn {
+    background: #b65327 !important;
+    border: 0px !important;
+    box-shadow: unset !important;
+    font-size: 22px !important;
+    border-radius: 10px !important;
+    font-weight: 500 !important;
+    font-family: 'DM Serif Text', serif !important;
+    padding: 8px 32px;
+    text-transform: uppercase;
+    line-height: 1.6em;
+}
+@media (max-width: 767px){
+	input.btn.continue_btn {
+      font-size: 18px !important;
+      border-radius: 10px !important;
+      padding: 8px 32px;
+      line-height: 1.5em;
+  }
+}

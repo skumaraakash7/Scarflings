@@ -1,0 +1,122 @@
+<section class="bgwhite p-t-66 p-b-60 floralbg-lt" style="background-image:url({{ 'contact_top_new.png' | asset_url }});">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 p-b-30 contact_ttl p-desktop">
+         {{ section.settings.contact_heading}}
+      </div>
+      <div class="col-md-12 p-b-30 contact_ttl p-mobile">
+         {{ section.settings.contact_heading_mob}} 
+      </div>
+      
+      <div class="videoInnerSection">
+      	<iframe src="https://player.vimeo.com/video/{{ section.settings.contact_video }}" width="320" height="240" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      </div>
+<!--       <div class="col-md-12 p-b-30 contact_ttl p-mobile">
+        A <span class="highlt"> perfect scarf</span> for every occasion<br/> —we're here to help you find it.
+      </div> -->
+    </div>
+    <div class="row boxed shrink90">
+      <div class="col-md-6 p-b-0 p-l-0 p-r-0 contact-info">
+        <div class=" size21">
+            <p class='nftext p-t-50 p-b-50'>Office Hours (PST)</p>
+            <p class='days_title p-t-0 p-b-3'><b>Monday - Friday</b></p>
+            <p class=' time_available p-t-0 p-b-15'>9:00 AM - 8:00 PM</p>
+          
+          <p class='days_title p-t-0 p-b-3'><b>Saturday</b></p>
+            <p class=' time_available p-t-0 p-b-15'>10:00 AM - 8:00 PM</p>
+          	
+          <p class='days_title p-t-0 p-b-3'><b>Sunday</b></p>
+            <p class=' time_available p-t-0 p-b-15'>12:00 PM - 4:00 PM</p>
+            <hr class='p-b-15'>
+            <p class='p-t-10 p-b-15'><b>Phone:</b> (855)-960-0677</p>
+            <p class='p-t-10 p-b-30'><b>Email:</b> support@scarflings.com</p>
+          </div>
+      </div>
+      <div class="col-md-6">
+        {% form 'contact',class:'p-b-22 leave-comment' %}
+        {% if form.posted_successfully? %}
+        <p class="note form-success">
+          {{ 'contact.form.post_success' | t }}
+        </p>
+        {% endif %}
+
+        {% include 'form-errors-custom' %}
+        {% comment %}
+        <h4 class="m-text26 p-b-36 p-t-15">{{ 'contact.form.leave_msg' | t }}</h4>
+        {% endcomment %}
+        <h4 class="p-t-15"></h4>
+        <div class="bo4 of-hidden size15 m-b-20  m-t-25">
+          <input required  type="text" id="contactFormName" name="contact[name]" class="sizefull s-text7 p-l-22 p-r-22" placeholder="{{ 'contact.form.name' | t }}" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}" />
+        </div>
+        <div class="bo4 of-hidden size15 m-b-20">
+          <input required  type="text" id="contactFormEmail" name="contact[email]" class="sizefull s-text7 p-l-22 p-r-22" placeholder="{{ 'contact.form.email' | t }}" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" />
+        </div>
+        <div class="bo4 of-hidden size15 m-b-20">
+          <input type="text" id="contactFormPhone" name="contact[phone]" class="sizefull s-text7 p-l-22 p-r-22" placeholder="{{ 'contact.form.phone' | t }}" value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}" />
+        </div>
+        <textarea required  class="dis-block s-text7 size20 bo4 p-l-22 p-r-22 p-t-13 m-b-20" id="contactFormMessage" name="contact[body]" placeholder="{{ 'contact.form.message' | t }}">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+        <div class="w-size25">
+          <!-- Button -->
+          <!--<input class="flex-c-m size2 bg1 bo-rad-23 hov1 m-text3 trans-0-4" id="submitMessage" name="submitMessage" type="submit" value="{{ 'contact.form.send' | t }}" /> -->
+          <input class="submit" type="submit" value="Send" />
+        </div>
+        {% endform %}  
+      </div>
+    </div>
+    <br/>
+  
+    
+	{% comment %}
+    <div class="row boxed">
+      <div class="col-md-12 p-b-30 p-t-30 contact_ttl">
+        <p>
+          Please note that we aim to respond to emails in 1-2 business days, however due to high the volume of emails we may take a little longer. Don't worry though, our support team will handle all emails in the priority that they are received and we will ensure your needs are looked after.
+        </p>
+        <p><b class="highlt">Because, that's what sisters are for!</b></p>
+        
+      </div>
+      <div class="col-md-12 p-b-40">
+        <div class="founderinf">
+          <img src="{{'founder.png' | asset_img_url: '120x'}}" />
+          <p>
+            <span class="name">Melissa Yap</span><br/>
+            <span class="design">Founder of Scarflings</span><br/>
+            <span class="place">Vancouver, Canada</span><br/>
+          </p>
+        </div>
+      </div>
+    </div>
+    {% endcomment %}
+    
+  </div>
+</section>
+
+
+{% schema %}
+  {
+    "name": "Section 1",
+    "settings": [
+      {
+        "id": "contact_video",
+        "type": "text",
+        "label": "Video id"
+      },
+		{
+		"id": "contact_heading",
+        "type": "html",
+        "label": "Heading"
+		},
+		{
+		"id": "contact_heading_mob",
+        "type": "html",
+        "label": "Heading for mobile"
+		}
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,160 @@
+{% assign number_of_comments = article.comments_count %}
+{% if comment and comment.created_at %}
+{% assign number_of_comments = article.comments_count | plus: 1 %}
+{% endif %}
+<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" {% if settings.show_contact_top_image %}style="background-image:url({{ 'blog_top.jpg' | asset_url }});" {% endif %}>
+  <h2 class="l-text2 t-center article_text">
+   {{ article.title }}
+  </h2>
+</section>
+
+
+{% section 'blog_2021' %}
+
+<div class="blog-promise">
+	{% section 'testimonial__bg_title_user_image' %}
+</div>
+  
+{% section 'welcome-cta-section' %}
+
+<style>
+  .bgwhite.blog-back {
+      padding: 5% 0 8%;
+      background-size: cover;
+      background-position: right -200px center;
+      background-repeat: no-repeat;
+  }
+  .blog-content h1, .pro-name {
+      color: #b54f28;
+  }
+  .blog-back .blog-content h3, .style-with, .our-pick {
+  	  color: #c3882b !important;
+  }
+  .blog-promise #shopify-section-testimonial__bg_title_user_image section {
+  	  background-image: url({{ 'flower_right.png' | asset_img_url: 'master' }}) !important;
+      background-position: right -15% top 40%;
+      background-repeat: no-repeat;
+      background-size: auto 450px;
+  }
+  .inr-blk {
+  	  text-align: center;
+      margin: 15px auto;
+      display: inline-block;
+      width: 100%;
+  }
+  .inr-blk img {
+      max-width: 100%;
+  }
+  .style-with {
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 16px;
+  }
+  .pro-name {
+  	  margin: 10px auto;
+  }
+  .inner-data {
+  	  margin: 20px auto;
+      width: 70%;
+  }
+  .extra-text {
+      color: #666;
+  }
+  hr.golden-dash {
+      border-width: 2px;
+      width: 100px;
+      margin: 35px auto 0;
+      border-color: #c3882b;
+  }
+  .blog-back .play_button {
+      margin: 10% auto;
+  }
+  
+  
+  
+  @media (min-width: 1500px) {
+  	  .bgwhite.blog-back {
+          padding: 8% 0 8%;
+      }
+  }
+  @media (max-width: 1400px) {
+      .blog-promise #shopify-section-testimonial__bg_title_user_image section {
+          background-position: right -10% top 40%;
+          background-size: auto 300px;
+      }
+  }
+  @media (max-width: 991px) {
+  	  .inner-data {
+          width: 100%;
+      }
+      .blog-promise #shopify-section-testimonial__bg_title_user_image section {
+          background-position: right -20% top 40%;
+          background-size: auto 150px;
+          margin-bottom: 40px;
+      }
+      .bgwhite.blog-back {
+          background-position: right -300px center;
+      }
+  }
+  @media (max-width: 767px) {
+      .blog-content p:last-child {
+          margin: 0 !important;
+      }
+  }
+  @media (max-width: 576px) {
+      .back-flower .col-xs-6 {
+          -ms-flex: 0 0 50%;
+          flex: 0 0 50%;
+          max-width: 50%;
+      }
+      .blog-back img {
+          display: block !important;
+          margin: 0 0 30px;
+          width: 100%;
+      }
+      .bgwhite.blog-back {
+          padding: 0 0 0;
+          background-image: none !important;
+      }
+      .blog-content h1 {
+		  font-size: 22px !important;
+          text-align: center;
+      }
+      .blog-content h3 {
+		  font-size: 16px !important;
+          text-align: center;
+      }
+      .pro-name {
+          font-size: 16px;
+          margin: 5px auto;
+      }
+      .style-with {
+          text-transform: uppercase;
+          font-weight: 600;
+          font-size: 14px;
+      }
+      .extra-text {
+          line-height: normal;
+          font-size: 12px;
+      }
+      .bgwhite .p-b-80 {
+          padding-bottom: 0px;
+      }
+      .back-flower .p-b-40 {
+          padding-bottom: 10px;
+          padding-top: 30px;
+      }
+      hr.golden-dash {
+          padding: 35px 0 0px;
+          margin: 0 auto;
+          border-top: 0;
+          border-bottom: 1px solid #c3882b;
+      }
+      .inner-data {
+          text-align: left;
+      }
+      section.back-flower {
+          padding-bottom: 0px;
+      }
+  }
+</style>

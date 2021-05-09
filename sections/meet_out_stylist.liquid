@@ -1,0 +1,336 @@
+<style>
+  .user_card {
+    cursor: pointer !important;
+}
+  #section_k_slider_meet_out_stylist .user_card {
+    background-image:url('{{ section.settings.user_card_bg | img_url: 'master' }}');
+    
+  }
+  @media (max-width:767px){
+    #section_k_slider_meet_out_stylist .user_card {
+    background-image:url('{{ section.settings.user_card_bg_mobile | img_url: 'master' }}');
+    
+  	}
+  }
+  button.sesami__modal-btn.sesami__modal-btn--primary.sesami__modal-btn--disabled:first-child {
+    display: none;
+}
+  button.sesami__modal-btn.sesami__modal-btn--primary:first-child {
+    display: none;
+}
+</style>
+
+<section class="page_content_section p-t-66 p-b-38 blocks-carousel" id="section_k_{{ section.id }}">
+   <div class="container" style="display:none;">  	
+  		<div class="row">
+    	
+       		<div class="col-md-12 simpletext">
+              <h2> {{ section.settings.section_title }} </h2>
+            </div>
+        
+  		</div>
+  </div>
+<div id="section_k_slider_{{ section.id }}">
+  
+  
+{% for block in section.blocks %}
+  
+  {% if block.settings.is_active %}
+<div class="row user_row" id="block_k_{{ block.id }}">
+  
+
+      <div class="row user_card user_card_bg_{{ block.id }}" style="">
+        
+      	{% assign booking_product = all_products[block.settings.user_product] %}
+        
+        
+        <div class="container" data-product = "{{ booking_product.id }}"> 
+          
+        	<div class="col-md-12">
+            
+            {% if block.settings.user_image_position =='left' %}
+            
+            <div class="col-md-6 rondedImageLeft imgLeft" >
+              <div class="SliderLeftImage" style="background-image:url('{{ block.settings.user_image | img_url: 'master' }}')">
+                <div class="content-details ">
+                	<a href="javascript:void(0)" class="btn btn--cta cpsgts radio_select" data-radio_select="{{ block.settings.user_radio_btn_val }}">{{ block.settings.user_radio_btn_text }}</a>
+                </div>    
+                <div class="content-overlay"></div>
+              </div>
+                
+             	
+
+            </div>
+
+            <div class="col-md-6 imgleft" id="imgleft_txt_{{ block.id }}">
+                <div class="simpletext">
+                  	<h3> {{ block.settings.user_title }} </h3>
+
+                    <p> {{ block.settings.user_bio_txt }} </p>
+                  	<a href="javascript:void(0)" class="btn btn--cta cpsgts radio_select" data-radio_select="{{ block.settings.user_radio_btn_val }}">{{ block.settings.user_radio_btn_text }}</a>
+                  <div class="product_form" data-product-url="{{ shop.url }}{{ booking_product.url }}" id="product_form_parent_{{ booking_product.id }}">
+					{% form 'product',booking_product, class:'book_stylist_add_to_cart_form' %}
+                        <select name="id" class="hide_this">
+                          {% for variant in booking_product.variants %}
+                            <option value="{{ variant.id }}" data-title="{{ variant.title }}">{{ variant.title }} - {{ variant.price | money }}</option>
+                          {% endfor %}
+                        </select>
+                  		<input type="text" value="1" name="quantity" class="hide_this" />
+                  		{% comment %}	
+                  	  <input required type="hidden" class="appointment_date appointment_data" name="properties[AppointmentDate]" value="None">
+					  <input required type="hidden" class="appointment_time appointment_data" name="properties[AppointmentTime]" value="None">
+                  		{% endcomment %}
+                      <div class="form-group sesami__additionalButtonWrapper" data-sesami-product-id="{{ booking_product.id }}" data-pro-title="{{ booking_product.title }}" style="display:none;">
+                        
+                      </div>
+                  	  <input type="submit" class="hide_this" />
+					  <button name="add" class="book_stylist_now_button hide_this" class="flex-c-m sizefull button-atc bg1 bo-rad-23 hov1 s-text1 buynow_btn btnsubmit" style=""><i class="fa fa-shopping-bag"></i>Add To Cart</button>
+                    	
+                     {% endform %}
+                  </div>
+                  <script>
+                    $(document).ready(function(){
+                        setInterval(function(){
+                            $("#product_form_parent_{{ booking_product.id }}").find(".sesami__button").text("{{ block.settings.user_radio_btn_text }}");		
+                        },900);
+
+                    });
+                  </script>
+                  
+                </div>
+            </div>
+              <style>
+                 #imgleft_txt_{{ block.id }} .simpletext h3,#imgleft_txt_{{ block.id }} .simpletext p{
+                  text-align:left;
+                  }
+              </style>
+            
+            {% endif %}
+            
+            {% if block.settings.user_image_position =='right' %}
+             <div class="col-md-6 imgRight" id="imgRight_txt_{{ block.id }}">
+                <div class="simpletext">
+                  	<h3> {{ block.settings.user_title }} </h3>
+
+                    <p> {{ block.settings.user_bio_txt }} </p>
+                 
+                  	<a href="javascript:void(0)" class=" btn btn--cta cpsgts radio_select choose_stylist" data-radio_select="{{ block.settings.user_radio_btn_val }}">{{ block.settings.user_radio_btn_text }}</a>
+					
+                  <div class="product_form" data-product-url="{{ shop.url }}{{ booking_product.url }}"  id="product_form_parent_{{ booking_product.id }}">
+                    {% form 'product',booking_product , class:'book_stylist_add_to_cart_form' %}
+                      <select name="id" class="hide_this">
+                        {% for variant in booking_product.variants %}
+                          <option  value="{{ variant.id }}" data-title="{{ variant.title }}">{{ variant.title }} - {{ variant.price | money }}</option>
+                        {% endfor %}
+                      </select>
+                  	  <input type="text" value="1" name="quantity" class="hide_this" />
+                  	{% comment %}  
+                    <input required type="hidden" class="appointment_date appointment_data" name="properties[AppointmentDate]" value="None">
+					<input required type="hidden" class="appointment_time appointment_data" name="properties[AppointmentTime]" value="None">
+                    {% endcomment %}
+                      <div class="form-group sesami__additionalButtonWrapper" data-sesami-product-id="{{ booking_product.id }}" style="display:none;">
+                        
+                      </div>
+                      <input type="submit" style="display:none;" />
+					  <button name="add" class="book_stylist_now_button hide_this" class="flex-c-m sizefull button-atc bg1 bo-rad-23 hov1 s-text1 buynow_btn btnsubmit" style=""><i class="fa fa-shopping-bag"></i>Add To Cart</button>
+                    {% endform %}
+                  </div>
+                  
+                  <script>
+                    $(document).ready(function(){
+                        setInterval(function(){
+                            $("#product_form_parent_{{ booking_product.id }}").find(".sesami__button").text("{{ block.settings.user_radio_btn_text }}");		
+                        },900);
+
+                    });
+                  </script>
+                </div>
+            </div>
+            
+            <div class="col-md-6 rondedImageLeft" >
+              <div class="SliderLeftImage" style="background-image:url('{{ block.settings.user_image | img_url: 'master' }}')">
+                <div class="content-details ">
+                	<a href="javascript:void(0)" class="hide_this btn btn--cta cpsgts radio_select choose_stylist" data-radio_select="{{ block.settings.user_radio_btn_val }}">{{ block.settings.user_radio_btn_text }}</a>
+                </div>    
+                <div class="content-overlay"></div>
+              </div>
+                
+             	
+
+            </div>
+           	<style>
+                 #imgRight_txt_{{ block.id }} .simpletext h3,#imgRight_txt_{{ block.id }} .simpletext p{
+                  text-align:right;
+                  }
+              </style>
+            
+            {% endif %}
+              
+             
+            
+            
+          </div>
+          
+          
+        </div>
+
+      </div>
+    
+    
+  
+  
+</div>
+  {% endif %}
+  
+  {% endfor %}
+  </div>
+{% comment %}
+	<a href="#redirect_form_section" class="btn btn--cta cpsgts">{{ section.settings.linktext }}</a>
+{% endcomment %}
+</section>
+
+<script>
+/*
+ $(document).ready(function() {
+  $("#section_k_slider_{{ section.id }}").owlCarousel({
+    items: 1,
+    singleItem: true,
+    itemsScaleUp : true,
+    slideSpeed: 500,
+    autoPlay: 3000,
+	dots:true,
+    stopOnHover: true
+  });
+});
+*/
+
+</script>
+
+
+{% schema %}
+  {
+    "name": "Meet Our Stylist",
+
+	
+	"settings": [
+	 {
+        "id": "section_title",
+        "type": "text",
+        "label": "Section Title",
+        "default": "Title"
+      },
+		
+	{
+      "id": "link",
+      "type": "url",
+      "label": "Button link"
+    	},
+	{
+      "id": "linktext",
+      "type": "text",
+      "label": "Button text",
+      "default": "Read More"
+    },
+	{
+      "id": "user_card_bg",
+      "type": "image_picker",
+      "label": "User Card Backround"
+
+
+      },
+	 {
+      "id": "user_card_bg_mobile",
+      "type": "image_picker",
+      "label": "User Card Backround Mobile"
+
+
+      }
+     
+	
+	],
+	"max_blocks": 100,
+	"blocks": [
+	
+      {
+        "type": "slideshow",
+        "name": "Stylist",
+
+        "settings": [
+
+		{
+		"id": "is_active",
+        "type": "checkbox",
+        "label": "Is Active"
+		
+
+		},
+
+		{
+        "id": "user_title",
+        "type": "text",
+        "label": "User Title",
+        "default": "Title"
+      },
+	  {
+        "id": "user_radio_btn_val",
+        "type": "text",
+        "label": "User Button Value",
+        "default": "Title"
+      },
+	  {
+        "id": "user_radio_btn_text",
+        "type": "text",
+        "label": "User Button Text",
+        "default": "Title"
+      },
+		{
+		 "id": "user_button_link",
+        "type": "text",
+        "label": "User Button Link",
+        "default": "Title"
+      },
+	
+         
+      {
+        "id": "user_bio_txt",
+        "type": "html",
+        "label": "User Bio",
+        "default": "<p>Add your text here</p>"
+      },
+		{
+		"id": "user_image_position",
+        "type": "radio",
+        "label": "Profile Image Position",
+		"options": [ 
+		{"value" :"left"},
+		{"value":"right"} 
+		
+		]
+		
+		},
+		{
+		"id": "user_image",
+        "type": "image_picker",
+        "label": "Profile Image"
+		},
+		{
+		"id": "user_product",
+        "type": "product",
+        "label": "Product"
+		
+
+		}
+		
+		
+        ]
+      }
+    ]
+
+
+  
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+

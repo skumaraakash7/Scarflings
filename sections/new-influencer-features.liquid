@@ -1,0 +1,155 @@
+<style>
+#section_k_new-influencer-features .simpletext {
+    padding: 70px 40px 20px 40px;
+}
+  #section_k_new-influencer-features h2 {
+    font-size: 30px !important;
+    margin: 5px 0px 15px 0px !important;
+}
+  .feat_block {
+    position: relative;
+    margin-bottom: 40px;
+}
+  .imgBlock {
+    width: 60px !IMPORTANT;
+    border-radius: 50px;
+    background: #b65327;
+    position: absolute;
+    left: 0px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.imgBlock img {
+    width: 32px;
+    height: auto;
+    margin: 0px;
+}
+  .textBlock {
+    margin-left: 85px;
+}
+
+  .feat_block::after {
+    content: "";
+    position: absolute;
+    width: 5px;
+    background: #b65327;
+    height: 100%;
+    top: 40px;
+    left: 27px;
+    display: inline-block;
+    z-index: -1;
+}
+  .feat_block:last-child::after {
+  display:none;
+  }
+
+#section_k_new-influencer-features .simpletext li::before {
+    background: #fff;
+    border: 5px solid #b65327 !important;
+    width: 12px !important;
+    height: 12px !important;
+    padding: 3px;
+    top: 5px;
+  left: -17px;
+}
+  #section_k_new-influencer-features li {
+    margin-left: 17px;
+}
+  @media (max-width:767px){
+  #section_k_new-influencer-features .simpletext {
+    padding: 60px 0px 0px 0px;
+}
+  .feat_block::after{
+  display:none !important;
+  }
+ .textBlock {
+    margin-left: 0px;
+}
+#section_k_new-influencer-features .simpletext li::before {
+    padding: 3px;
+    top: 3px;
+    left: -17px;
+}
+#section_k_new-influencer-features h2 {
+    font-size: 24px !important;
+    margin: 3px 0px 20px 0px !important;
+    width: 282px;
+    overflow: hidden;
+    padding: 0px 0px 0px 80px !important;
+    text-align: left;
+    max-width: 100%;
+}
+  }
+</style>
+<section class="influencerSection commonSection" id="section_k_{{ section.id }}">
+    <div class="leftBg" style="background-image:url('{{ section.settings.feat_left_bg | img_url: 'master' }}');
+"></div>
+	<div class="container">
+    	<div class="row">
+            <div class="simpletext">
+              	
+              {% for block in section.blocks %}
+  				<div class="feat_block">
+                  <div class="imgBlock">
+              		<img src="{{ block.settings.feat_icon | img_url: 'master' }}">
+                  </div>
+                  <div class="textBlock">
+                    <h2> {{ block.settings.feat_head }} </h2>
+                    <p> {{ block.settings.feat_text }} </p>
+                  </div>
+              	</div>
+			   {% endfor %}
+              	
+            </div>
+        </div>
+     
+    </div>
+</section>
+{% schema %}
+  {
+    "name": "influencer features",
+    "settings": [
+	   
+      {
+      "id": "feat_left_bg",
+      "type": "image_picker",
+      "label": "Background"
+      }
+    ],
+	 "blocks": [
+    {
+      "type": "text",
+      "name": "features",
+      "settings": [
+  
+    {
+            "type": "image_picker",
+            "id": "feat_icon",
+            "label": "Image"
+       },
+		{
+            "type": "text",
+            "id": "feat_head",
+            "label": "Heading"
+       },
+		{
+            "type": "html",
+            "id": "feat_text",
+            "label": "Description"
+       }
+      ]
+
+    }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+
+

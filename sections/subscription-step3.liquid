@@ -1,0 +1,129 @@
+<section class="planSelectSection step3">
+    <div class="container">
+      <div class="step_title">
+          <p class="step_label">Step 3.</p><h3 class="step_name">{{ section.settings.step3_name }}</h3>
+      </div>
+      <div class="row planSlider">
+            {% for block in section.blocks %}
+               {% assign p = all_products[ block.settings.plan ] %}
+            <div class="col-md-6 Plan" id="Plan_{{ block.id }}" data-package="{{  block.settings.offer_name | upcase }}"> 
+                <div class="PlanInner" id="{{ p.handle }}">
+
+                  {% if block.settings.plan_ribbon_text != "" %}
+
+                  <div class="ribbon" style="background-color:{{ block.settings.plan_ribbon_bg_color }};color:{{ block.settings.plan_ribbon_txt_color }}"><span>{{ block.settings.plan_ribbon_text }} </span></div>
+
+                  {% endif %}
+
+                  <div class="pffer_sec">
+                  	<div class="plan_image">
+                    <img src="{{ block.settings.offer_image | img_url: 'master'}}" class="img-fluid">
+                    </div>
+                    
+                    <div class="offer_details">
+                       <h5 class="productTitle" data-plan="{{  block.settings.offer_name  }}"> {{  block.settings.offer_name  }}</h5>
+                       <div class="price_month">
+                         <span class="productPrice"> {{  block.settings.offer_price  }}</span>/<span class="productMonth"> {{  block.settings.offer_months  }}</span>
+                      </div>
+                    </div>
+
+                  </div>
+
+        
+                  <div class="offer_des">{{  block.settings.offer_des }}</div>
+
+                  <div class="ptc_btn">
+                    <button type="button"  id="proceed_to_checkout_{{ block.id }}" class=" proceed_to_checkout flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4 hvr-wobble-horizontal">
+                      <span class="desktop_only"> {{  block.settings.package_button  }}</span> <span class="mobile_only">{{  block.settings.package_button_mobile  }}</span>
+                      <img src="{{ section.settings.offer_buton_emoji | img_url: 'master'}}">
+                    </button>
+                   
+                   
+                  </div>
+                 
+              </div>   
+
+            </div> 
+            {% endfor %}
+        <div id="reset_prefferences_div">
+        <button type="button" id="reset_prefferences"> Reset Preferences</button>
+        </div>
+          </div>
+      </div>
+  
+</section> 
+
+
+{% schema %}
+{
+  "name": "Step 3",
+	"max_blocks": 3,
+  "settings": [
+   {
+        "id": "step3_name",
+        "type": "text",
+        "label": "Step3 name"
+      },
+		{
+          "id": "offer_buton_emoji",
+          "type": "image_picker",
+          "label": "Button emoji"
+        }
+   ],
+  "blocks": [
+    {
+      "type": "select",
+      "name": "Add Offer",
+      "settings": [
+        {
+          "id": "offer_image",
+          "type": "image_picker",
+          "label": "Offer image"
+        },
+		{
+          "id": "offer_name",
+          "type": "html",
+          "label": "Offer name"
+        },
+	    {
+          "id": "offer_price",
+          "type": "html",
+          "label": "Offer price"
+        },
+		{
+          "id": "offer_months",
+          "type": "html",
+          "label": "Offer Months"
+        },
+		{
+          "id": "offer_des",
+          "type": "html",
+          "label": "Offer description"
+        },
+		{
+          "id": "package_button",
+          "type": "html",
+          "label": "Offer Button"
+        },
+	    {
+          "id": "package_button_mobile",
+          "type": "html",
+          "label": "Offer Button text for mobile"
+        },
+		{
+          "id": "plan_ribbon_text",
+          "type": "text",
+          "label": "Ribbon text" 
+          
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

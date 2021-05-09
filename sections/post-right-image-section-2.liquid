@@ -1,0 +1,73 @@
+<hr>
+<section class="roundRightImage postCommonsection commonSection" id="section_k_{{ section.id }}">
+    <div class="rightBg" style="background-image:url('{{ section.settings.post_left_bg | img_url: 'master' }}');
+"></div>
+	<div class="container">
+    	<div class="roundImageinner row">
+            <div class="simpletext col-sm-6">
+              <h5> {{ section.settings.post_round_left_sub_heading }} </h5>
+              <h2> {{ section.settings.post_round_left_heading }} </h2>
+              <p>{{ section.settings.post_round_left_text }} </p>
+              <a href="{{ section.settings.post_round_image_anchor_url }}" class="btn btn--cta cpsgts mobileBtn">{{ section.settings.post_round_image_anchor }}</a>
+              
+            </div>
+          	<div class="imageOuter col-sm-6">
+              <div class="imageOuterinner">
+                <img src="{{ section.settings.post_round_image_left | img_url: 'master' }}">
+                <div class="url-details">
+                      <a href="{{ section.settings.post_round_image_anchor_url }}" class="btn btn--cta cpsgts">{{ section.settings.post_round_image_anchor }}</a>
+                </div>    
+                <div class="url-overlay"></div>
+              </div>
+          	</div>
+       </div>
+   </div>
+</section>
+{% schema %}
+  {
+    "name": "Round Image section 2",
+    "settings": [
+	  {
+        "id": "post_round_left_sub_heading",
+        "type": "html",
+        "label": "Sub Heading"
+      },
+      {
+        "id": "post_round_left_heading",
+        "type": "html",
+        "label": "Heading"
+      },
+		{
+        "id": "post_round_left_text",
+        "type": "html",
+        "label": "Description"
+      },
+	  {
+        "id": "post_round_image_anchor",
+        "type": "html",
+        "label": "Button text"
+      },
+	  {
+        "id": "post_round_image_anchor_url",
+        "type": "url",
+        "label": "Button Url"
+      },
+      {
+      "id": "post_left_bg",
+      "type": "image_picker",
+      "label": "Background"
+      },
+      {
+      "id": "post_round_image_left",
+      "type": "image_picker",
+      "label": "Image"
+      }	
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

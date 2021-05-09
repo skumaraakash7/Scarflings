@@ -1,0 +1,87 @@
+<section class="roundRightImage postCommonsection commonSection" id="section_k_{{ section.id }}">
+    <div class="rightBg" style="background-image:url('{{ section.settings.shipp_left_bg | img_url: 'master' }}');
+"></div>
+	<div class="container">
+    	<div class="roundImageinner row">
+            <div class="simpletext col-sm-6">
+              <div class="accordion-container">
+{% for block in section.blocks %}
+
+  <div class="set">
+    <a href="javascript:void(0)">
+      {{ block.settings.acc_question }}
+      <i class="fa fa-angle-down"></i>
+    </a>
+    <div class="content">
+      <p> {{ block.settings.acc_answer }}</p>
+    </div>
+  </div>
+                
+ {% endfor %}
+</div>
+            </div>
+          	<div class="imageOuter col-sm-6">
+              <div class="imageOuterinner">
+                <img src="{{ section.settings.shipp_round_image_left | img_url: 'master' }}">
+                <div class="url-details">
+                      <a href="{{ section.settings.shipp_round_image_anchor_url1 }}" class="btn btn--cta cpsgts">{{ section.settings.shipp_round_image_anchor1 }}</a>
+                </div>   
+                <div class="url-overlay"></div>
+              </div>
+          	</div>
+       </div>
+   </div>
+</section>
+{% schema %}
+  {
+    "name": "Shipping section 1",
+    "settings": [
+	  {
+        "id": "shipp_round_image_anchor1",
+        "type": "html",
+        "label": "Button text"
+      },
+	  {
+        "id": "shipp_round_image_anchor_url1",
+        "type": "url",
+        "label": "Button Url"
+      },
+      {
+      "id": "shipp_left_bg",
+      "type": "image_picker",
+      "label": "Background"
+      },
+      {
+      "id": "shipp_round_image_left",
+      "type": "image_picker",
+      "label": "Image"
+      }	
+    ],
+	"max_blocks": 20,
+	"blocks": [
+      {
+        "type": "accordian",
+        "name": "Accordian 1",
+        "settings": [
+         
+      {
+        "id": "acc_question",
+        "type": "html",
+        "label": "Question"
+      },
+		{
+        "id": "acc_answer",
+        "type": "html",
+        "label": "Answer"
+      }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

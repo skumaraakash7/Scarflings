@@ -1,0 +1,85 @@
+{% if collection.handle == 'colors-of-courage' or collection.handle == 'flamboyant-baroque'  or collection.handle == 'geometry-meets-art' or collection.handle == 'timeless-classics'  or collection.handle == 'wild-bohemia' or collection.handle == 'starry-eyed' or collection.handle == 'pastel-patisseries' %}
+
+{% assign bgimg-rb = collection.handle | append: '-rb.png' %}
+
+
+{% else %}
+
+{% assign bgimg-rb = collection.handle | append: '-rb.svg' %}
+
+
+{% endif %}
+
+
+
+{% if template == 'collection.special' %}
+<section class="wuscrf bgwhite p-t-62 p-b-46" data-section-id="{{ section.id }}" >
+  <div class="scarfRightimage" style="background-image:url({{ bgimg-rb | asset_url }});"></div>
+   <div class="container">
+     <div class="sec-title p-b-22 m-p-t-22">
+      <h3 class="m-text5 t-center">{{ settings.img_heading }}</h3>
+    </div>
+    <div class="logo-bar slick5">
+      {% for i in (1..6) %}
+      
+      	{%  assign cimg = "custom_image_" | append: i %}     
+      	{%  assign ciurl = "custom_url_" | append: i %}     
+      
+      	{% if  settings[cimg] != blank  %} 
+      	{% if  settings[ciurl] != blank  %} 
+      <a href="{{ settings[ciurl] }}" >
+      {% endif %}
+         <div class="item-slick2 logo-bar__item">            
+              <img class="logo-bar__image lazyload" 
+                   src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+                   data-src="{{ settings[cimg] | img_url: 'master' }}">
+         </div>  
+        {% if  settings[ciurl] != blank  %} 
+      </a>
+      {% endif %}
+      {% endif %}
+    {% endfor %}        
+    </div>
+</div>
+</section>
+{% else %}
+<section class="wuscrf bgwhite p-t-62 p-b-46" data-section-id="{{ section.id }}" >
+   <div class="container">
+     <div class="sec-title p-b-22 m-p-t-22">
+      <h3 class="m-text5 t-center">{{ settings.img_heading }}</h3>
+    </div>
+    <div class="logo-bar slick5">
+      {% for i in (1..6) %}
+      
+      	{%  assign cimg = "custom_image_" | append: i %}     
+      	{%  assign ciurl = "custom_url_" | append: i %}     
+      
+      	{% if  settings[cimg] != blank  %} 
+      	{% if  settings[ciurl] != blank  %} 
+      <a href="{{ settings[ciurl] }}" >
+      {% endif %}
+         <div class="item-slick2 logo-bar__item">            
+              <img class="logo-bar__image lazyload" 
+                   src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+                   data-src="{{ settings[cimg] | img_url: 'master' }}">
+         </div>  
+        {% if  settings[ciurl] != blank  %} 
+      </a>
+      {% endif %}
+      {% endif %}
+    {% endfor %}         
+    </div>
+</div>
+</section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Wear Your Scarf Section",
+  "presets": [{
+    "name": "Wear Your Scarf Section",
+    "category": "Custom Section"
+    
+  }]
+}
+{% endschema %}

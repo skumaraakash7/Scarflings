@@ -1,0 +1,28 @@
+{% if template == 'index' %}
+  {% if section.settings.sticky_logo %}
+    <a href="/" itemprop="url" class="logo stkylogo">
+      <img class="lazyload" 
+           src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+           data-src="{{ section.settings.sticky_logo | img_url: 'master' }}"
+           alt="{{ section.settings.sticky_logo.alt | default: shop.name }}"
+           itemprop="logo"/>
+    </a>
+	{% else %}
+  		<a href="/" itemprop="url" class="navbar-brand img-responsive">{{ shop.name }}</a>
+  {% endif %} 
+
+{% else %}
+
+	{% if section.settings.sticky_logo %}
+      <a href="/" itemprop="url" class="logo">
+        <img class="lazyload" 
+             src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+             data-src="{{ section.settings.sticky_logo | img_url: 'master' }}"
+             alt="{{ section.settings.sticky_logo.alt | default: shop.name }}"
+             itemprop="logo"/>
+      </a>
+    {% else %}
+    	<a href="/" itemprop="url" class="navbar-brand img-responsive">{{ shop.name }}</a>
+    {% endif %} 
+
+{% endif %} 

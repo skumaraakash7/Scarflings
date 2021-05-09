@@ -1,0 +1,69 @@
+<section class="stocking_suffer_section">
+	<div class="container">
+		<h1>{{ section.settings.section_title }} </h1>
+		<div class="row">
+			<div class="col-sm-6 round_circle_image" style="background-image: url('{{ section.settings.product_image | img_url: 'master' }}');">
+			</div>
+			<div class="col-sm-6 deal_details_sec">
+				<h2>{{ section.settings.product_title }}</h2>
+				<h3>{{ section.settings.product_price }}</h3>
+				<p>{{ section.settings.product_desc }}</p>
+				<a class="btn btn--cta cpsgts" href="{{ section.settings.product_link }}">{{ section.settings.product_link_text }}</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% schema %}
+  {
+    "name": "Holiday Top Section",
+    "settings": [
+	  {
+        "id": "section_title",
+        "type": "text",
+        "label": "Section Title",
+        "default": "Title"
+      },{
+        "id": "product_title",
+        "type": "html",
+        "label": "Product Title",
+        "default": "Title"
+      },{
+        "id": "product_price",
+        "type": "html",
+        "label": "Product price",
+        "default": "$56"
+      },
+		{
+        "id": "product_desc",
+        "type": "html",
+        "label": "Product Desc",
+        "default": "Title"
+      },
+		
+	{
+      "id": "product_link",
+      "type": "text",
+      "label": "Product link"
+    	},
+	{
+      "id": "product_link_text",
+      "type": "text",
+      "label": "Button text",
+      "default": "VIEW NOW"
+    },
+		{
+		"id": "product_image",
+        "type": "image_picker",
+        "label": "Product Left BG Image"
+		}
+
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

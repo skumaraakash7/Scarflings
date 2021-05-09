@@ -1,0 +1,58 @@
+<section class="roundRightImage postCommonsection commonSection" id="section_k_{{ section.id }}">
+    <div class="rightBg" style="background-image:url('{{ section.settings.ret_left_bg | img_url: 'master' }}');
+"></div>
+	<div class="container">
+    	<div class="roundImageinner row">
+            <div class="simpletext col-sm-6">
+              {{ section.settings.ret_left_text }}
+            </div>
+          	<div class="imageOuter col-sm-6">
+              <div class="imageOuterinner">
+                <img src="{{ section.settings.ret_round_image_left | img_url: 'master' }}">
+                <div class="url-details">
+                      <a href="{{ section.settings.ret_round_image_anchor_url1 }}" class="btn btn--cta cpsgts">{{ section.settings.ret_round_image_anchor1 }}</a>
+                </div>   
+                <div class="url-overlay"></div>
+              </div>
+          	</div>
+       </div>
+   </div>
+</section>
+{% schema %}
+  {
+    "name": "Section 2",
+    "settings": [
+	  {
+        "id": "ret_left_text",
+        "type": "html",
+        "label": "Text"
+      },
+      {
+        "id": "ret_round_image_anchor1",
+        "type": "html",
+        "label": "Button text"
+      },
+	  {
+        "id": "ret_round_image_anchor_url1",
+        "type": "url",
+        "label": "Button Url"
+      },
+      {
+      "id": "ret_left_bg",
+      "type": "image_picker",
+      "label": "Background"
+      },
+      {
+      "id": "ret_round_image_left",
+      "type": "image_picker",
+      "label": "Image"
+      }	
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

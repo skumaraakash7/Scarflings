@@ -1,0 +1,110 @@
+  
+<style>
+  #section_k_slider_subscription_cta_section{
+    background-image:url('{{ section.settings.subscription_user_card_bg | img_url: 'master' }}');
+    
+  }
+  #section_k_slider_subscription_cta_section a.btn.btn--cta.cpsgts.scrollToForm {
+    border: 1px solid #b65327;
+}
+  @media (max-width:767px){
+     #section_k_slider_subscription_cta_section{
+    background-image:url('{{ section.settings.subscription_user_card_bg_mobile | img_url: 'master' }}');
+    
+  	}
+    #section_k_slider_subscription_cta_section .row p.or {
+    margin: 10px auto 5px auto !important;
+}
+  }
+  
+ 
+  
+</style>
+
+
+<section class="page_content_section p-t-66 p-b-38 blocks-carousel" id="section_k_{{ section.id }}">
+  
+<div id="section_k_slider_{{ section.id }}">
+  <div class="container"> 
+  <div class="row">
+   
+        <div class="col-md-6 imgRight" id="imgRight_txt_{{ block.id }}">
+          <div class="simpletext">
+            <h3> {{ section.settings.subscription_cta_title }} </h3>
+
+            <p> {{ section.settings.subscription_cta_text }} </p>
+			<a href="javascript:void(0)" class="btn btn--cta cpsgts scrollToForm">{{ section.settings.subscription_cta_button }}</a>
+            <p class="or">OR</p>
+			<a href="{{ section.settings.subscription_chat_url }}" class="btn btn--cta cpsgts">{{ section.settings.subscription_chat_button }}</a>
+          </div>
+        </div>
+
+        <div class="col-md-6 rondedImageLeft" >
+          <div class="SliderLeftImage" style="background-image:url('{{ section.settings.subscription_user_image | img_url: 'master' }}')">
+           
+          </div>  
+           </div>
+      </div>
+   
+  </div>
+  </div>
+
+</section>
+
+
+{% schema %}
+  {
+    "name": "subscription_cta",
+
+	
+	"settings": [
+		{
+		"id": "subscription_user_image",
+        "type": "image_picker",
+        "label": "Profile Image"
+		},
+		{
+		"id": "subscription_user_card_bg",
+        "type": "image_picker",
+        "label": "User Card Background"
+		
+
+		},{
+		"id": "subscription_user_card_bg_mobile",
+        "type": "image_picker",
+        "label": "User Card Backround Mobile"
+		
+
+		},
+  	    {
+          "id": "subscription_cta_title",
+          "type": "html",
+          "label": "Title"
+        },
+       {
+          "id": "subscription_cta_text",
+          "type": "html",
+          "label": "Description"
+        },
+  		{
+          "id": "subscription_cta_button",
+          "type": "html",
+          "label": "Take Questionnaire Button Text"
+        },
+  		{
+          "id": "subscription_chat_button",
+          "type": "html",
+          "label": "Chat button text"
+        },
+  		{
+          "id": "subscription_chat_url",
+          "type": "url",
+          "label": "Chat button url"
+        }
+     ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+

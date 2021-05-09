@@ -1,0 +1,63 @@
+<div class="homeBannerVideo">
+	<div class="vimeo-wrapper" id="vimeo-wrapper-image_{{ section.id }}">
+	  <img  src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="{{ section.settings.home_banner_bg_image | img_url:"master" }}" class="lazy2" />
+	</div>
+  <div class="vimeo-wrapper" id="vimeo-wrapper_{{ section.id }}">
+	{% if section.settings.home_banner_video_local != blank %}
+		<video style="width: 100%;" id="vid_{{section.id}}" loop muted playsinline preload="none">
+		  <source src="{{ section.settings.home_banner_video_local | asset_url }}" type="video/mp4">
+		</video>
+	{% else %}
+			<iframe data-src="https://player.vimeo.com/video/{{ section.settings.home_banner_video }}?background=1&autoplay=1&loop=1&byline=0&title=0" 
+			frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+	{% endif %}
+  </div>
+  <div class="home_banner_content">
+			<h1>{{ section.settings.home_banner_heading }}</h1>
+			<h4>{{ section.settings.home_banner_description }}</h4>
+	  </div>
+</div>
+{% comment %}
+<script type="lazyload2">
+	setTimeout(function() {
+		$('#vimeo-wrapper_{{ section.id }}').append('<iframe src="https://player.vimeo.com/video/{{ section.settings.home_banner_video }}?background=1&autoplay=1&loop=1&byline=0&title=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>');
+	}, 1000);
+</script>
+{% endcomment %}
+{% schema %}
+{
+  "name": "Banner Section",
+  "settings": [
+		{
+		"id": "home_banner_video",
+		"type": "text",
+		"label": "Vimeo video id"
+	  },
+		{
+		"id": "home_banner_video_local",
+		"type": "text",
+		"label": "Vimeo video"
+	  },
+	  {
+		"id": "home_banner_heading",
+		"type": "html",
+		"label": "Banner heading"
+	  },
+		{
+		"id": "home_banner_description",
+		"type": "html",
+		"label": "Banner text"
+	  },{
+		"id": "home_banner_bg_image",
+		"type": "image_picker",
+		"label": "Background Image"
+	  }
+			
+	],
+  "presets": [{
+	"name": "Banner Section",
+	"category": "Custom Section"
+	
+  }]
+}
+{% endschema %}

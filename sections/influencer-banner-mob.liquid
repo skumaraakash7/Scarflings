@@ -1,0 +1,78 @@
+<section class="influencer_mobile mobile_only p-t-66 p-b-38" id="section_k_{{ section.id }}" >
+	
+    	<div class="row">
+<div class="col-md-12 FirstSectImage"  style="background-image:url('{{ section.settings.in_heading_bg_image_mob | img_url: 'master' }}')">
+	
+  	<div class="play_button">
+       <video id="vid" controls>
+        <source src="https://cdn.shopify.com/s/files/1/0070/0835/4356/t/69/assets/{{ section.settings.in_video_mob }}" type="video/mp4">
+   	  </video>
+      <img src="{{ 'white-play.png' | asset_url }}">
+            </div>
+</div>
+          
+<div class="col-md-12 bgWhite">
+  <div class="container">
+    <div class="simpletext">
+      <h2 class="textOverImg"> {{ section.settings.in_banner_heading_mob }} </h2>
+      <p> {{ section.settings.in_text_box_left_text_mob }} </p>
+      <a href="{{ section.settings.in_button_link_mob }}" class="btn btn--cta cpsgts">{{ section.settings.in_button_mob }} <img src='{{ section.settings.in_button_emoji | img_url: 'master'}}'></a>           
+    </div>
+   </div>    
+</div>
+
+          
+          </div>
+   
+</section>
+{% schema %}
+  {
+    "name": "Influencer Banner Mobile",
+    "settings": [
+	  {
+        "id": "in_banner_heading_mob",
+        "type": "html",
+        "label": "Heading",
+        "default": "<p>Add your text here</p>"
+      },
+		{
+		"id": "in_heading_bg_image_mob",
+        "type": "image_picker",
+        "label": "Background"
+		},
+		 {
+        "id": "in_text_box_left_text_mob",
+        "type": "html",
+        "label": "Add custom text below",
+        "default": "<p>Add your text here</p>"
+      },
+	{
+      "id": "in_button_mob",
+      "type": "text",
+      "label": "Button text"
+    },
+	{
+      "id": "in_button_link_mob",
+      "type": "url",
+      "label": "Button link"
+    },
+	{
+		"id": "in_button_emoji",
+        "type": "image_picker",
+        "label": "Button_emoji"
+		},
+	{
+        "id": "in_video_mob",
+        "type": "text",
+        "label": "Video name"
+      }
+    ]
+  }
+{% endschema %}
+
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

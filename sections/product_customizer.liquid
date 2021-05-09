@@ -1,0 +1,74 @@
+{% if section.settings.enable_giftbox %}
+
+{% assign giftbox_tags = section.settings.tag_list %}
+
+
+{% assign ptags = product.tags %}
+
+{% assign enable_giftbox = false %}
+
+
+
+{% for ptag in ptags %}
+
+{% if giftbox_tags contains ptag %}
+
+{% assign enable_giftbox = true %}
+
+{% endif %}
+
+{% endfor %}
+
+
+
+
+{% if enable_giftbox %}
+
+
+
+{% include 'product_customizer' %}
+
+
+
+{% endif %}
+
+
+
+{% endif %}
+
+
+{% schema %}
+ {
+   "name": "Giftbox",
+   "settings": [
+	{
+       "id": "enable_giftbox",
+       "type": "checkbox",
+       "label": "Enable Giftbox",
+       "default": false
+     },
+	{
+       "id": "tag_list",
+       "type": "text",
+       "label": "Tags List",
+	   "default":"Scarf"
+
+
+     },{
+       	"id": "custom_message",
+       	"type": "checkbox",
+       	"label": "custom message",
+       	"default": false,
+		"info":" Show custom message"
+		
+     }
+
+]
+ }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

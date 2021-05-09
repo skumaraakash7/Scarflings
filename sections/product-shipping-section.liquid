@@ -1,0 +1,75 @@
+<div class="shipSection">
+  <h5 class="">{{ section.settings.ship_title }}</h5>
+  <div class="shipPoints">
+    <p><b>{{ section.settings.heading1 }}</b>
+      <br>{{ section.settings.text1 }}</p>
+    <p>
+      <b>{{ section.settings.heading2 }}</b>
+      <br>{{ section.settings.text2 }}
+      <img src="{{ section.settings.ship_img2 | img_url: 'master' }}">
+    </p>
+    <p>
+      <b>{{ section.settings.heading3 }}</b>
+      <br>{{ section.settings.text3 }}</p>
+    <p>
+    </p>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Shipping Section",
+    "settings": [
+      {
+        "id": "ship_title",
+        "type": "text",
+        "label": "Heading",
+        "default": "Title"
+      },
+		{
+		"id": "heading1",
+        "type": "html",
+        "label": "Heading 1"
+		}
+	  ,
+		{
+		"id": "text1",
+        "type": "html",
+        "label": "Text 1"
+		}
+      ,
+		{
+		"id": "heading2",
+        "type": "html",
+        "label": "Heading 2"
+		}
+	  ,
+		{
+		"id": "text2",
+        "type": "html",
+        "label": "Text 2"
+		}
+      ,
+	  {
+		"id": "ship_img2",
+        "type": "image_picker",
+        "label": "Image 2"
+		}
+	  ,
+		{
+		"id": "heading3",
+        "type": "html",
+        "label": "Heading 3"
+		}
+	  ,
+		{
+		"id": "text3",
+        "type": "html",
+        "label": "Text 3"
+		}
+      
+      
+    ]
+  }
+{% endschema %}
+      	

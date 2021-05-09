@@ -1,0 +1,1381 @@
+<!--Start of Header Area-->
+{% include section.settings.header_layout %}
+<!--End of Header Area-->
+
+{% if template == 'index' %}
+<style>
+  .pgmsk{
+  z-index:998 !important;
+  }
+  #ffsbmsg .slick-arrow{
+  display:none !important;
+}
+  @media only screen and (max-width: 767px){
+div#tab-0 .col-6.col-sm-6.col-md-4.col-lg-3.p-b-50 {
+   padding-right: 0px !important;
+   padding-left: 0px !important;
+       max-width: 49.74% !important;
+}
+div#tab-0 .row {
+   justify-content: space-between;
+}
+}
+</style>
+{% endif %}
+
+<style>
+.closed_currency .wrap_header.fixed-header2.show-fixed-header2 {
+    top: 33px;
+}
+  .closed_currency_bar{
+  top: 0px !important;
+  }
+.closed_currency #search-header {
+    top: 33px !important;
+}
+  @media (max-width: 992px){
+    .mobile_header_oth.wrap-side-menu ul.overHeight {
+    height: auto;
+}
+    .hide_drop_cart #cart-mobile-sticky {
+    display: none;
+}
+ .hide_pk_overlay .pgmsk {
+    display: none !IMPORTANT;
+}
+.mobile_searchbar.headroom-not-top .header-icons-noti {
+    background-color: #fff;
+    color: #b54e25;
+    font-weight: bold;
+}
+.white_sticky_header.mobile_searchbar.headroom-not-top .search_header .bo4 input::placeholder, .white_sticky_header.mobile_searchbar.headroom-not-top .search_header .bo4 input {
+    color: #b65327 !important;
+}
+.white_sticky_header.mobile_searchbar.headroom-not-top .mob_right_menu .header-icons-mobile > i {
+    color: #b65327;
+}
+    .white_sticky_header.mobile_searchbar.headroom-not-top .header-icons-noti {
+    background: #b65327;
+    color: #fff !important;
+}
+    .white_sticky_header.mobile_searchbar.headroom-not-top .mob_right_menu .btn-show-menu-mobile span.menu span {
+    background: #b65327 !important;
+}
+    .white_sticky_header.mobile_searchbar.headroom-not-top {
+    background: #fff !important;
+}
+
+    .mobile_searchbar:not(.headroom-not-top) .small_logo, .mobile_searchbar:not(.headroom-not-top) .mob_right_menu {
+    display: none;
+}
+.fix_menu_is_open .xmobile_header.wrap_header_mobile {
+    display: none !important;
+}
+.fix_menu_is_open .mobile_searchbar.headroom-not-top .btn-show-menu-mobile.is-active .closeMenu {
+    display: block !important;
+}
+.fix_menu_is_open #search-header {
+    display: flex !important;
+    width: 100%;
+    left: 0px !important;
+}
+    .fix_menu_is_open .mobile_searchbar.white_sticky_header.headroom-not-top .btn-show-menu-mobile.is-active .closeMenu {
+    color: #b65226;
+}
+.fix_menu_is_open .mobile_searchbar.headroom-not-top .btn-show-menu-mobile.is-active .closeMenu {
+    display: block !important;
+    color: #fff;
+    padding-right: 0px;
+    margin: 0px -3px 0px 10px !important;
+}
+
+
+.fix_menu_is_open span.lnr.lnr-cross.closeMenu {
+    display: block !important;
+    color: #fff;
+    padding-right: 0px;
+}
+.fix_menu_is_open .mobile_searchbar.headroom-not-top .btn-show-menu-mobile .return_arrow {
+    color: #fff;
+}
+.fix_menu_is_open .mobile_searchbar .mob_right_menu {
+    width: 30%;
+}
+.fix_menu_is_open .mobile_searchbar.headroom-not-top form {
+    width: 70%;
+}
+.header-icons-mobile .header-cart {
+    width: 350px !important;
+    right: -45px !important;
+}
+ .mobile_searchbar.headroom-not-top .btn-show-menu-mobile.is-active .closeMenu, .mobile_searchbar.headroom-not-top .closeMenu {
+    display: none !important;
+}
+ .btn-show-menu-mobile.is-active span.menu span {
+    display: block;
+}
+  .btn-show-menu-mobile.is-active span.menu {
+    display: block;
+}
+ .mobile_searchbar.headroom-not-top {
+    padding: 0px 0px 0px 10px;
+    height: 65px;
+     z-index: 9999;
+}
+.small_logo {
+    width: 13%;
+}
+.small_logo img {
+    width: auto;
+    position: relative;
+    top: -2px;
+    height: 47px;
+    max-height: 100%;
+}
+.mobile_searchbar.headroom-not-top form {
+    width: 75%;
+    padding: 0px 20px 0px 5px;
+}
+ 
+.search_header .bo4 {
+    border: 1px solid #d06c47 !important;
+    border-radius: 10px !important;
+}
+.mobile_searchbar.headroom-not-top form button {
+    width: 40px;
+    height: 40px;
+}
+.mobile_searchbar.headroom-not-top .mob_right_menu {
+    width: 25%;
+    display: flex;
+    align-items: center;
+}
+.mobile_searchbar.headroom-not-top .mob_right_menu .header-icons-mobile {
+    margin: -9px 10px 0px 0px;
+}
+.mobile_searchbar.headroom-not-top .mob_right_menu .header-icons-mobile > i {
+    color: #fff;
+    font-size: 21px;
+}
+.mobile_searchbar.headroom-not-top .mob_right_menu .header-icons-mobile span#cart-total-mobile {
+    background: #fff;
+    color: #b54e25;
+}
+.mobile_searchbar.headroom-not-top .search_header .bo4 input {
+    padding: 0px 35px 0px 10px;
+}
+.mobile_searchbar.headroom-not-top .mob_right_menu .btn-show-menu-mobile {
+    background: transparent;
+    width: auto;
+    border: 0px;
+    padding: 0px !important;
+    margin: 0px !important;
+    display: flex;
+    align-items: center;
+}
+
+.mobile_searchbar.headroom-not-top .mob_right_menu .btn-show-menu-mobile span.menu span {
+    background: #fff !important;
+    width: 25px;
+}
+.mobile_searchbar.headroom-not-top .mob_right_menu .btn-show-menu-mobile span.menu {
+    margin-top: 3px;
+    padding: 0px 15px 0px 13px;
+} 
+  .plain_background_header .mobile_v {
+    background-image: none !important;
+    background: #fff;
+    height: 100% !important;
+    margin: 0px !important;
+}
+.search_header .bo4 {
+    border: 1px solid #d06c47;
+    border-radius: 10px;
+}
+a.logo-mobile {
+    text-align: left;
+    width: 60%;
+}
+ span.menu {
+    padding-left: 10px;
+}
+a.logo-mobile {
+    text-align: left !important;
+    display: inline-block !important;
+    flex: unset;
+}
+.plain_background_header .header-icons-mobile > i {
+    color: #b54e25;
+}
+body .mobile_header_oth.wrap-side-menu {
+    margin: 0px !important;
+    background: #fff !important;
+    display: block !important;
+    height: calc(100% - 92px) !important;
+    position: fixed;
+    padding: 0px !important;
+    transition: 0.5s;
+    transform: unset !important;
+    visibility: hidden;
+    top: 97px;
+}
+
+.mobile_header_oth .side-menu ul > li img {
+    width: auto;
+    margin-left: auto;
+    height: auto;
+    max-width: 74px;
+    border-radius: 10px;
+}
+.mobile_header_oth .side-menu ul > li {
+    display: inline-block;
+    width: 100%;
+}
+.mobile_header_oth .side-menu ul > li {
+    padding: 5px 10px;
+}
+.mobile_header_oth.wrap-side-menu ul {
+    margin: 5px 0px 0px 0px;
+    height: auto;
+    overflow-y: scroll;
+    position: absolute;
+    width: 100%;
+    transition: 0.5s;
+    background: #fff;
+    padding-bottom: 190px;
+}
+.mobile_header_oth.wrap-side-menu nav.side-menu {
+    max-height: 100% !important;
+    height: 100%;
+    position: relative;
+      overflow-x: hidden;
+}
+.xmobile_header.wrap_header_mobile.plain_background_header .btn-show-menu-mobile {
+    background: transparent;
+    padding: 0px 0px 0px 0px !important;
+    border: 0px !important;
+    margin: 0px 0px 0px 0px !important;
+    display: flex;
+    align-items: center;
+    width: auto;
+}
+.btn-show-menu-mobile .closeMenu {
+    display: block;
+    font-size: 26px !important;
+    position: relative;
+    top: -3px;
+    color: #b54e25;
+    padding-right: 15px;
+    margin: 0px 0px 0px 5px !important;
+}
+
+
+.menu_is_open .xmobile_header.wrap_header_mobile {
+    margin-top: 12px;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+  	background: #fff !important;
+}
+
+.xmobile_header.wrap_header_mobile.plain_background_header .header-icons-mobile > i {
+    font-size: 24px;
+}
+.xmobile_header.wrap_header_mobile.plain_background_header .header-icons-mobile {
+    margin-right: 25px;
+    margin-top: 3px;
+}
+.mobile_header_oth .side-menu ul > li a {
+    color: #b64d27;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.3));
+    background-color: #ffffff;
+    border-radius: 10px !important;
+    padding: 0px 0px 0px 15px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: poppins;
+    min-height: 70px;
+}
+
+.mobile_social_icons {
+    margin: 0px 0px 20px 0px;
+    display: flex;
+    justify-content: center;
+}
+.open_sub_menu .return_arrow {
+    display: block !important;
+}
+.open_sub_menu .btn-show-menu {
+    position: relative;
+    left: -15px;
+}
+.open_sub_menu .closeMenu {
+    right: 21px !important;
+    left: auto !important;
+    margin-left: 10px !important;
+}
+.mobile_social_icons a {
+    background: #d9d9d9;
+    padding: 10px;
+    font-size: 25px;
+    border-radius: 50% !important;
+    width: 40px !important;
+    height: 40px !important;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    justify-content: center;
+    margin: 0px 5px;
+}
+.mobile_copyright {
+    background: #d2d2d2;
+    padding: 20px 8px;
+}
+.siderbar_bottom {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+    .collection_sub_menu .siderbar_bottom {
+    position: absolute;
+    bottom: -118px;
+    width: 100%;
+}
+.menu_is_open .mobile_searchbar{
+  display: none !important;
+}
+
+.mobile_copyright p {
+    margin: 0px !important;
+    padding: 0px;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    line-height: 1.4em !important;
+}
+.xmobile_header.wrap_header_mobile.plain_background_header .header-icons-mobile {
+    margin-right: 12px;
+    margin-top: -8px;
+}
+.mob_right_menu {
+    width: 40%;
+    float: right;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  	margin-top: 3px;
+}
+.xmobile_header.wrap_header_mobile.plain_background_header .logo-mobile img {
+    max-width: 170px;
+    margin-top: 0px;
+    height: auto;
+    width: auto;
+}
+.xmobile_header.wrap_header_mobile {
+    padding-top: 0px !important;
+    margin-top: 33px;
+    height: 65px !important;
+    min-height: 65px;
+    justify-content: space-between;
+    padding: 0px 0px 0px 15px !important;
+}
+.btn-show-menu-mobile {
+    width: 60px;
+}
+ul.collection_sub_menu, ul.shop_sub_menu, ul.main-menu, ul.cust_sub_menu {
+    position: relative;
+}
+.btn-show-menu-mobile.is-active .closeMenu {
+    display: block;
+}
+.closeMenu {
+    font-weight: 600 !important;
+}
+.return_arrow {
+    position: absolute;
+    display: none;
+    font-size: 20px;
+    font-weight: bold !important;
+    padding-left: 10px;
+    right: 0px !important;
+    left: auto !important;
+    transform: rotate(180deg);
+    top: 22px !IMPORTANT;
+}
+.header-cart-item input[type=number] {
+    color: #111 !Important;
+}
+
+span.menu {
+    font-size: 15px;
+    font-weight: bold;
+    display: inline-block !important;
+    padding: 0px 15px 0px 10px;
+}
+span.menu span {
+    position: relative;
+    width: 30px;
+    height: 2px;
+    display: block;
+    background: #b54e25;
+    margin-bottom: 7px;
+}
+ .announce_ment_slide {
+    font-size: 12px;
+}
+
+.menu_is_open .xmobile_header.wrap_header_mobile.plain_background_header .btn-show-menu-mobile{
+   padding-left: 0px !important;
+}
+.closeMenu{
+  position: relative;   
+  margin-left: 12px;
+  
+}
+.menu_is_open span.menu{
+   display: none !important;
+}
+}
+  @media (max-width: 480px){
+.header-icons-mobile .header-cart {
+    width: 97vw !important;
+    right: -61px !important;
+}
+ .header-cart-buttons {
+
+    padding: 0 15px;
+}
+  }
+</style>
+<div class="mobile_header_oth wrap-side-menu nav-down" >
+      <nav class="side-menu">
+        <ul class="main-menu">
+          {% for block in section.blocks %}
+            {% if block.type == 'text' %}
+              <li id="{{ block.id }}">
+                  <a href="{{ block.settings.menu_url }}"><span>{{ block.settings.menu_title }}</span>
+                    {% comment %}<img src="{{ block.settings.menu_image | img_url: 'master' }}">{% endcomment %}
+                    <img class=" lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+                         alt="" data-src="{{ block.settings.menu_image | img_url: 'master' }}">
+                </a>
+                  
+              </li>
+            {% endif %}
+          {% endfor %}
+          <div class="siderbar_bottom">
+          <div class="mobile_social_icons">
+            <a href="{{ section.settings.facebook_link }}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="{{ section.settings.instagram_link }}"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+          </div>
+          <div class="mobile_copyright">
+            <p>{{ section.settings.copyright_text }}</p>
+          </div>
+        </div>
+        </ul>
+        <ul class="collection_sub_menu cust_sub_menu">
+          {% for block in section.blocks %}
+            {% if block.type == 'text-2' %}
+              <li id="{{ block.id }}">
+                  <a href="{{ block.settings.menu_url }}"><span>{{ block.settings.menu_title }}</span>
+                   {% comment %} <img src="{{ block.settings.menu_image | img_url: 'master' }}">{% endcomment %}
+                    <img class=" lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+                         alt="" data-src="{{ block.settings.menu_image | img_url: 'master' }}">
+                </a>
+                   
+              </li>
+            {% endif %}
+          {% endfor %}
+          <div class="siderbar_bottom">
+          <div class="mobile_social_icons">
+            <a href="{{ section.settings.facebook_link }}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="{{ section.settings.instagram_link }}"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+          </div>
+          <div class="mobile_copyright">
+            <p>{{ section.settings.copyright_text }}</p>
+          </div>
+        </div>
+        </ul>
+        <ul class="shop_sub_menu cust_sub_menu">
+          {% for block in section.blocks %}
+            {% if block.type == 'text-3' %}
+              <li id="{{ block.id }}">
+                  <a href="{{ block.settings.menu_url }}"><span>{{ block.settings.menu_title }}</span>
+                    {% comment %}<img src="{{ block.settings.menu_image | img_url: 'master' }}">{% endcomment %}
+                    <img class=" lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+                         alt="" data-src="{{ block.settings.menu_image | img_url: 'master' }}">
+                </a>
+                  
+              </li>
+            {% endif %}
+          {% endfor %}
+          <div class="siderbar_bottom">
+          <div class="mobile_social_icons">
+            <a href="{{ section.settings.facebook_link }}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="{{ section.settings.instagram_link }}"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+          </div>
+          <div class="mobile_copyright">
+            <p>{{ section.settings.copyright_text }}</p>
+          </div>
+        </div>
+        </ul>
+        <ul class="about_sub_menu cust_sub_menu">
+          {% for block in section.blocks %}
+            {% if block.type == 'text-4' %}
+              <li id="{{ block.id }}">
+                  <a href="{{ block.settings.menu_url }}"><span>{{ block.settings.menu_title }}</span>
+                   {% comment %}<img src="{{ block.settings.menu_image | img_url: 'master' }}">{% endcomment %}
+                    <img class=" lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+                        alt="" data-src="{{ block.settings.menu_image | img_url: 'master' }}">
+                </a>
+                  
+              </li>
+            {% endif %}
+          {% endfor %}
+          <div class="siderbar_bottom">
+          <div class="mobile_social_icons">
+            <a href="{{ section.settings.facebook_link }}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="{{ section.settings.instagram_link }}"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+          </div>
+          <div class="mobile_copyright">
+            <p>{{ section.settings.copyright_text }}</p>
+          </div>
+        </div>
+        </ul>
+        <ul class="gift_sub_menu cust_sub_menu">
+          {% for block in section.blocks %}
+            {% if block.type == 'text-5' %}
+              <li id="{{ block.id }}">
+                  <a href="{{ block.settings.menu_url }}"><span>{{ block.settings.menu_title }}</span>
+                    {% comment %}<img src="{{ block.settings.menu_image | img_url: 'master' }}">{% endcomment %}
+                    <img class=" lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+                         alt="" data-src="{{ block.settings.menu_image | img_url: 'master' }}">
+                </a>
+                  
+              </li>
+            {% endif %}
+          {% endfor %}
+          <div class="siderbar_bottom">
+          <div class="mobile_social_icons">
+            <a href="{{ section.settings.facebook_link }}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="{{ section.settings.instagram_link }}"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+          </div>
+          <div class="mobile_copyright">
+            <p>{{ section.settings.copyright_text }}</p>
+          </div>
+        </div>
+        </ul>
+        <ul class="subscription_sub_menu cust_sub_menu">
+          {% for block in section.blocks %}
+            {% if block.type == 'text-6' %}
+              <li id="{{ block.id }}">
+                  <a href="{{ block.settings.menu_url }}"><span>{{ block.settings.menu_title }}</span>
+                    {% comment %}<img src="{{ block.settings.menu_image | img_url: 'master' }}">{% endcomment %}
+                    <img class=" lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+                         alt="" data-src="{{ block.settings.menu_image | img_url: 'master' }}">
+                </a>
+                  
+              </li>
+            {% endif %}
+          {% endfor %}
+          <div class="siderbar_bottom">
+          <div class="mobile_social_icons">
+            <a href="{{ section.settings.facebook_link }}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="{{ section.settings.instagram_link }}"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+          </div>
+          <div class="mobile_copyright">
+            <p>{{ section.settings.copyright_text }}</p>
+          </div>
+        </div>
+        </ul>
+        <ul class="stylist_sub_menu cust_sub_menu">
+          {% for block in section.blocks %}
+            {% if block.type == 'text-7' %}
+              <li id="{{ block.id }}">
+                  <a href="{{ block.settings.menu_url }}"><span>{{ block.settings.menu_title }}</span>
+                    {% comment %}<img src="{{ block.settings.menu_image | img_url: 'master' }}">{% endcomment %}
+                    <img class=" lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+                         alt="" data-src="{{ block.settings.menu_image | img_url: 'master' }}">
+                </a>
+                  
+              </li>
+            {% endif %}
+          {% endfor %}
+          <div class="siderbar_bottom">
+          <div class="mobile_social_icons">
+            <a href="{{ section.settings.facebook_link }}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="{{ section.settings.instagram_link }}"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+          </div>
+          <div class="mobile_copyright">
+            <p>{{ section.settings.copyright_text }}</p>
+          </div>
+        </div>
+        </ul>
+        <ul class="cards_sub_menu cust_sub_menu">
+          {% for block in section.blocks %}
+            {% if block.type == 'text-8' %}
+              <li id="{{ block.id }}">
+                  <a href="{{ block.settings.menu_url }}"><span>{{ block.settings.menu_title }}</span>
+                    {% comment %}<img src="{{ block.settings.menu_image | img_url: 'master' }}">{% endcomment %}
+                    <img class=" lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+                         alt="" data-src="{{ block.settings.menu_image | img_url: 'master' }}">
+                </a>
+                  
+              </li>
+            {% endif %}
+          {% endfor %}
+          <div class="siderbar_bottom">
+          <div class="mobile_social_icons">
+            <a href="{{ section.settings.facebook_link }}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="{{ section.settings.instagram_link }}"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+          </div>
+          <div class="mobile_copyright">
+            <p>{{ section.settings.copyright_text }}</p>
+          </div>
+        </div>
+        </ul>
+      </nav>
+    </div>
+
+<script type="text/javascript">
+   setInterval(function(){
+      $(".mobile_header_oth.wrap-side-menu").removeClass(".nav-up");
+      $(".mobile_header_oth.wrap-side-menu").removeClass(".mobile-open-menu");
+     
+    }, 100);
+  
+  
+  $(document).ready(function() {
+     var main_menu_height = $(".mobile_header_oth.wrap-side-menu ul.main-menu").outerHeight() - parseInt(-118);
+     var main_menu_height2 = $(".mobile_header_oth.wrap-side-menu ul.shop_sub_menu").outerHeight();
+        var main_menu_height3 = $(".mobile_header_oth.wrap-side-menu ul.collection_sub_menu").outerHeight()  - parseInt(118);
+      var main_menu_height4 = $(".mobile_header_oth.wrap-side-menu ul.about_sub_menu").outerHeight() ;   
+      var main_menu_height5 = $(".mobile_header_oth.wrap-side-menu ul.gift_sub_menu").outerHeight() ;   
+      var main_menu_height6 = $(".mobile_header_oth.wrap-side-menu ul.subscription_sub_menu").outerHeight() ;   
+      var main_menu_height7 = $(".mobile_header_oth.wrap-side-menu ul.stylist_sub_menu").outerHeight() ;   
+      var main_menu_height8 = $(".mobile_header_oth.wrap-side-menu ul.card_sub_menu").outerHeight() ;   
+     
+
+   
+      $('<div class="overlay_play"><img src="https://cdn.shopify.com/s/files/1/0070/0835/4356/t/69/assets/interface.png?v=1816123511370322250"></div>').insertAfter(".video_thumb img");
+        
+    
+   	var width = $(window).width();
+    
+    $("#currency_switcher_submit_button").click(function(){
+        	 $('header').addClass("closed_currency");
+      		$('#ffsb').addClass("closed_currency_bar");
+      		
+    	});
+   
+ 
+      _
+    if(width < 767){
+      	$(".locale-bar__close-button, #currency_switcher_submit_button").click(function(){
+        	$("#search-header").css("top","32px");
+          $("body .mobile_header_oth.wrap-side-menu").css("top","92px");
+    	});
+  	 setInterval(function(){
+           
+    
+    
+         /* 
+           var width = $(window).width();
+           var count = $(".announce_ment_slide.slick-slide").length;
+
+           var bar_width = width*count;
+           $(".announce_ment_slide.slick-slide").css("width",width);
+           $("#ffsbmsg .slick-track").css("width",bar_width);
+       */
+
+         }, 100);
+     }
+    
+    $(".mobile_header_oth.wrap-side-menu.nav-down").css("visibility","visible");
+    var window_width = $(window).width();
+    $(".cust_sub_menu, .mobile_header_oth.wrap-side-menu").css("right",-window_width);
+    
+ 
+     if($(".collection_sub_menu li").length > 0){
+      
+      $(".mobile_header_oth .side-menu ul li#1586970444146 a").attr("href","javascript:void(0)");
+          $(".mobile_header_oth .side-menu ul li#1586970444146").click(function(){
+          $(".mobile_header_oth.wrap-side-menu ul").css("height",main_menu_height2);
+             if($(".shop_sub_menu li").length < 4){
+          $(".mobile_header_oth.wrap-side-menu ul").css("height","100%");
+         }
+          $(".mob_right_menu").addClass("open_sub_menu");
+          $(".return_arrow").css("left","0px");
+          $(".main-menu").css("right",-window_width);
+          $(".main-menu").css("left","auto");
+          $(".collection_sub_menu").css("right","0px");  
+          $(".collection_sub_menu").css("left","auto");  
+           $(".closeMenu").css("right","20px");
+        });
+      }
+
+    if($(".shop_sub_menu li").length > 0){
+      
+      $(".mobile_header_oth .side-menu ul li#1586970486633 a").attr("href","javascript:void(0)");
+          $(".mobile_header_oth .side-menu ul li#1586970486633").click(function(){
+          $(".mobile_header_oth.wrap-side-menu ul").css("height",main_menu_height2);
+             if($(".shop_sub_menu li").length < 4){
+          $(".mobile_header_oth.wrap-side-menu ul").css("height","100%");
+         }
+          $(".mob_right_menu").addClass("open_sub_menu");
+          $(".return_arrow").css("left","0px");
+          $(".main-menu").css("right",-window_width);
+          $(".main-menu").css("left","auto");
+          $(".shop_sub_menu").css("right","0px");  
+          $(".shop_sub_menu").css("left","auto");  
+           $(".closeMenu").css("right","20px");
+        });
+      }
+    
+    if($(".about_sub_menu li").length > 0){
+      
+      $(".mobile_header_oth .side-menu ul li#1586968884020 a").attr("href","javascript:void(0)");
+        $(".mobile_header_oth .side-menu ul li#1586968884020").click(function(){
+      $(".mobile_header_oth.wrap-side-menu ul").css("height",main_menu_height4);
+          $(".mobile_header_oth.wrap-side-menu ul").css("height",main_menu_height5);
+          if($(".about_sub_menu li").length < 4){
+          $(".mobile_header_oth.wrap-side-menu ul").css("height","100%");
+         }
+      $(".mob_right_menu").addClass("open_sub_menu");
+      $(".return_arrow").css("left","0px");
+      $(".main-menu").css("right",-window_width);
+      $(".main-menu").css("left","auto");
+      $(".about_sub_menu").css("right","0px");  
+      $(".about_sub_menu").css("left","auto");  
+       $(".closeMenu").css("right","20px");
+    });
+      }
+    
+   
+   if($(".gift_sub_menu li").length > 0){
+      
+      $(".mobile_header_oth .side-menu ul li#daaeefae-17ab-495e-927c-34ed56431f51 a").attr("href","javascript:void(0)");
+       $(".mobile_header_oth .side-menu ul li#daaeefae-17ab-495e-927c-34ed56431f51").click(function(){
+        
+         
+         $(".mobile_header_oth.wrap-side-menu ul").css("height",main_menu_height5);
+          if($(".gift_sub_menu li").length < 4){
+          $(".mobile_header_oth.wrap-side-menu ul").css("height","100%");
+         }
+      $(".mob_right_menu").addClass("open_sub_menu");
+      $(".return_arrow").css("left","0px");
+      $(".main-menu").css("right",-window_width);
+      $(".main-menu").css("left","auto");
+      $(".gift_sub_menu").css("right","0px");  
+      $(".gift_sub_menu").css("left","auto");  
+       $(".closeMenu").css("right","20px");
+    });
+    
+      }
+    
+    
+    
+     if($(".subscription_sub_menu li").length > 0){
+      
+      $(".mobile_header_oth .side-menu ul li#1586970518169 a").attr("href","javascript:void(0)");
+       $(".mobile_header_oth .side-menu ul li#1586970518169").click(function(){
+      $(".mobile_header_oth.wrap-side-menu ul").css("height",main_menu_height6);
+          
+          if($(".subscription_sub_menu li").length < 4){
+          $(".mobile_header_oth.wrap-side-menu ul").css("height","100%");
+         }
+      $(".mob_right_menu").addClass("open_sub_menu");
+      $(".return_arrow").css("left","0px");
+      $(".main-menu").css("right",-window_width);
+      $(".main-menu").css("left","auto");
+      $(".subscription_sub_menu").css("right","0px");  
+      $(".subscription_sub_menu").css("left","auto");  
+       $(".closeMenu").css("right","20px");
+    });
+    
+    
+      }
+    
+    if($(".stylist_sub_menu li").length > 0){
+      
+      $(".mobile_header_oth .side-menu ul li#1586970572280 a").attr("href","javascript:void(0)");
+          $(".mobile_header_oth .side-menu ul li#1586970572280").click(function(){
+      $(".mobile_header_oth.wrap-side-menu ul").css("height",main_menu_height7);
+             if($(".stylist_sub_menu li").length < 4){
+          $(".mobile_header_oth.wrap-side-menu ul").css("height","100%");
+         }
+      $(".mob_right_menu").addClass("open_sub_menu");
+      $(".return_arrow").css("left","0px");
+      $(".main-menu").css("right",-window_width);
+      $(".main-menu").css("left","auto");
+      $(".stylist_sub_menu").css("right","0px");  
+      $(".stylist_sub_menu").css("left","auto");  
+       $(".closeMenu").css("right","20px");
+    });
+   
+      }
+    
+    
+      if($(".card_sub_menu li").length > 0){
+      
+      $(".mobile_header_oth .side-menu ul li#1586970632108 a").attr("href","javascript:void(0)");
+          $(".mobile_header_oth .side-menu ul li#1586970632108").click(function(){
+      $(".mobile_header_oth.wrap-side-menu ul").css("height",main_menu_height7);
+             if($(".card_sub_menu li").length < 4){
+          $(".mobile_header_oth.wrap-side-menu ul").css("height","100%");
+         }
+      $(".mob_right_menu").addClass("open_sub_menu");
+      $(".return_arrow").css("left","0px");
+      $(".main-menu").css("right",-window_width);
+      $(".main-menu").css("left","auto");
+      $(".card_sub_menu").css("right","0px");  
+      $(".card_sub_menu").css("left","auto");  
+       $(".closeMenu").css("right","20px");
+    });
+      }
+ 
+   
+    
+    
+    
+   
+    
+    $("span.menu").click(function(){
+      if(width < 992){
+         $(".mobile_header_oth.wrap-side-menu ul").css("height",main_menu_height);
+        
+    if($('.locale-bar__container').is(':visible')){
+        $("body .mobile_header_oth.wrap-side-menu").css("top","73px");
+    }
+    }
+       $(".main-menu").css("right","0px");
+      $(".main-menu").css("left","auto");
+      $(".mobile_header_oth.wrap-side-menu").css("right","0px");
+       $(".mob_right_menu").removeClass("open_sub_menu"); 
+      $(".closeMenu").css("left","0px");
+      
+        $(this).hide();
+        $("header").addClass("menu_is_open");
+        $(".closeMenu").show();
+      $("html").css("overflow","hidden");
+    });
+    
+       $("#search-header .menu").click(function(){
+        $("header.header2").addClass("fix_menu_is_open");
+    });
+    
+           $("#search-header .closeMenu").click(function(){
+        $("header.header2").removeClass("fix_menu_is_open");
+              $(".closeMenu").hide();
+    });
+  
+    $(".closeMenu").click(function(){
+        $(".mobile_header_oth.wrap-side-menu ul").css("height",main_menu_height);
+      $(".mobile_header_oth.wrap-side-menu").css("right",-window_width);
+        $(".cust_sub_menu").css("right",-window_width);
+        $(".mobile_header_oth.wrap-side-menu ul.main-menu").css("right","0px");
+        $(this).hide();
+        $(".return_arrow").css("left","-25px");
+        $("header").removeClass("menu_is_open");
+        $("html").css("overflow","visible");
+       $(".mob_right_menu").removeClass("open_sub_menu"); 
+      
+     
+      
+
+    });
+  
+    
+  $(".logo-mobile, .header-icons-mobile i").click(function(){
+      $(".mobile_header_oth.wrap-side-menu").css("right",-window_width);
+        $(".collection_sub_menu, .shop_sub_menu").css("right",-window_width);
+        $(".mobile_header_oth.wrap-side-menu ul.main-menu").css("left","0px");
+        $(".return_arrow").css("left","-25px");
+        $("header").removeClass("menu_is_open");
+        $("html").css("overflow","visible");
+    	$(".closeMenu").hide();
+     $(".mob_right_menu").removeClass("open_sub_menu"); 
+      
+
+    });
+    $(".return_arrow").click(function(){
+      $(".mobile_header_oth.wrap-side-menu.nav-down").css("right","0px");
+     $(".mobile_header_oth.wrap-side-menu ul").css("height",main_menu_height);
+        $(".cust_sub_menu").css("right",-window_width);
+      $(".cust_sub_menu").css("left","auto");
+      $(".cust_sub_menu").css("right",-window_width);
+      $(".cust_sub_menu").css("left","auto");
+        
+        $(".mobile_header_oth.wrap-side-menu.nav-down ul.main-menu").css("right","0px");
+        $(".mobile_header_oth.wrap-side-menu.nav-down ul.main-menu").css("left","auto");
+      
+      $(".return_arrow").css("left","-25px");
+        $(".closeMenu").css("left","0px");
+      $(".mob_right_menu").removeClass("open_sub_menu"); 
+     
+    });
+    $(".mobile_header_oth .side-menu ul > li a").each(function (i) {
+       if ($(this).attr('href') != '') { 
+       
+    }
+else{
+    $(this).attr('href','javascript:void(0)')
+}
+    });
+  });
+
+  
+$( ".mobile_drop_menu" ).on( "click", function() {
+        $(this).children(".sub-menu").slideToggle();
+        $(this).children( ".arrow-main-menu" ).toggleClass('turn-arrow');
+    });
+  $(document).ready(function() { 
+   /*-------------------------- 
+      $(".header-icons-mobile i").click(function(){
+          $(this).parent().toggleClass("hide_drop");
+        });
+  $(".header-icons-mobile.hide_drop i").click(function(){
+    $(".header-icons-mobile #cart-mobile").each(function(){
+          $(this).removeClass("show-header-dropdown");
+    });
+        });
+        ---------------------------- */ 
+    
+      /*--------------------------
+    Newsletter Popup Js 
+---------------------------- */ 
+      $("#newsletter-popup-conatiner").mouseup(function(e){
+        var popContainer = $("#newsletter-popup-conatiner");
+        var newsLatterPop = $("#newsletter-pop-up"); 
+        if(e.target.id != newsLatterPop.attr('id') && !newsLatterPop.has(e.target).length)
+        {
+          popContainer.fadeOut();
+        }
+      });
+      $('.hide-popup').on("click", function(){
+        var popContainer = $("#newsletter-popup-conatiner");
+        $('#newsletter-popup-conatiner')
+        {
+          popContainer.fadeOut();
+        }
+      });
+
+      $('#dont_show').on("click", function(){
+        $.cookie('popup_cookie', 'pclosed', {
+          expires: 3,
+          path: '/'
+        });
+        $('.hide-popup').trigger('click');
+      });
+      // console.log($.cookie('popup_cookie'));
+
+      {% if settings.show_pupup and template == 'index'%}
+      if($.cookie('popup_cookie') == 'pclosed') {
+        $('.hide-popup').trigger('click');
+      }
+      {% endif %}
+
+    });
+</script>
+{% schema %}
+{
+"name": "Header",
+  "max_blocks": 100,
+  "blocks": [
+      {
+      "type": "text",
+        "name": "Menu",
+        "settings": [
+    {
+        "id": "menu_title",
+        "type": "text",
+        "label": "Menu Name"
+      },
+    {
+        "id": "menu_url",
+        "type": "url",
+        "label": "Menu URL"
+      },
+    {
+    "id": "menu_image",
+        "type": "image_picker",
+        "label": "Menu Image"
+    }
+
+       ]
+      },
+   {
+      "type": "text-2",
+        "name": "Special collection menu",
+        "settings": [
+    {
+        "id": "menu_title",
+        "type": "text",
+        "label": "Menu Name"
+      },
+    {
+        "id": "menu_url",
+        "type": "url",
+        "label": "Menu URL"
+      },
+    {
+    "id": "menu_image",
+        "type": "image_picker",
+        "label": "Menu Image"
+    }
+
+       ]
+      },
+  {
+      "type": "text-3",
+        "name": "Shop now menu",
+        "settings": [
+    {
+        "id": "menu_title",
+        "type": "text",
+        "label": "Menu Name"
+      },
+    {
+        "id": "menu_url",
+        "type": "url",
+        "label": "Menu URL"
+      },
+    {
+    "id": "menu_image",
+        "type": "image_picker",
+        "label": "Menu Image"
+    }
+
+       ]
+      },
+     {
+      "type": "text-4",
+        "name": "About us menu",
+        "settings": [
+    {
+        "id": "menu_title",
+        "type": "text",
+        "label": "Menu Name"
+      },
+    {
+        "id": "menu_url",
+        "type": "url",
+        "label": "Menu URL"
+      },
+    {
+    "id": "menu_image",
+        "type": "image_picker",
+        "label": "Menu Image"
+    }
+
+       ]
+      },
+      {
+      "type": "text-5",
+        "name": "Gift shop menu",
+        "settings": [
+    {
+        "id": "menu_title",
+        "type": "text",
+        "label": "Menu Name"
+      },
+    {
+        "id": "menu_url",
+        "type": "url",
+        "label": "Menu URL"
+      },
+    {
+    "id": "menu_image",
+        "type": "image_picker",
+        "label": "Menu Image"
+    }
+
+       ]
+      },
+      {
+      "type": "text-6",
+        "name": "Subscription box menu",
+        "settings": [
+    {
+        "id": "menu_title",
+        "type": "text",
+        "label": "Menu Name"
+      },
+    {
+        "id": "menu_url",
+        "type": "url",
+        "label": "Menu URL"
+      },
+    {
+    "id": "menu_image",
+        "type": "image_picker",
+        "label": "Menu Image"
+    }
+
+       ]
+      },
+      {
+      "type": "text-7",
+        "name": "Book stylist menu",
+        "settings": [
+    {
+        "id": "menu_title",
+        "type": "text",
+        "label": "Menu Name"
+      },
+    {
+        "id": "menu_url",
+        "type": "url",
+        "label": "Menu URL"
+      },
+    {
+    "id": "menu_image",
+        "type": "image_picker",
+        "label": "Menu Image"
+    }
+
+       ]
+      },
+      {
+      "type": "text-8",
+        "name": "Gift cards menu",
+        "settings": [
+    {
+        "id": "menu_title",
+        "type": "text",
+        "label": "Menu Name"
+      },
+    {
+        "id": "menu_url",
+        "type": "url",
+        "label": "Menu URL"
+      },
+    {
+    "id": "menu_image",
+        "type": "image_picker",
+        "label": "Menu Image"
+    }
+
+       ]
+      }
+    ],
+"settings": [
+    {
+      "type": "select",
+      "id": "header_layout",
+      "label": "Select header layout",
+      "options": [
+        {
+        "value": "header-1",
+        "label": "Design 1"
+        },
+        {
+        "value": "header-2",
+        "label": "Design 2"
+        },
+        {
+        "value": "header-3",
+        "label": "Design 3"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Top Bar"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_top_bar",
+      "label": "Use Top Bar"
+    },
+    {
+      "type": "checkbox",
+      "id": "white_head",
+      "label": "White sticky header"
+    },
+    {
+      "type": "text",
+      "id": "top_bar_message",
+      "label": "Top Bar Message"
+    },
+  {
+      "type": "checkbox",
+      "id": "plain_bg_header",
+      "label": "Show plain background header for mobile"
+    },
+  {
+      "type": "html",
+      "id": "copyright_text",
+      "label": "Copyright text"
+    },
+  {
+      "type": "image_picker",
+      "id": "logo_image_for_plain_bg",
+      "label": "Logo for plain background header"
+    },
+	{
+      "type": "text",
+      "id": "facebook_link",
+      "label": "Facebook link"
+    },
+	{
+      "type": "text",
+      "id": "instagram_link",
+      "label": "Instagram link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_email",
+      "label": "Show email text"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social_links",
+      "label": "Show social media icons",
+      "info": "Add accounts in Social media section"
+    },
+    {
+      "type": "text",
+      "id": "header_email_text",
+      "label": "Email Text"
+    },
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "checkbox",
+      "id": "logo_use_image",
+      "label": "Use a custom logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "logo",
+      "info": "400px wide .png recommended"
+    },
+  {
+      "type": "image_picker",
+      "id": "sticky_logo",
+      "label": "Sticky logo",
+      "info": "400px wide .png recommended"
+    },
+    {
+      "type": "link_list",
+      "id": "header_menu_1",
+      "label": "Header Navigational Menu To Use"
+    },
+    {
+      "type": "checkbox",
+      "id": "video_status",
+      "label": "Show header video"
+    },  
+   {
+      "type": "text",
+      "id": "video_height",
+      "label": "GIF Height",
+    "placeholder": "205px",
+      "info": "Max GIF height 205px"
+    }, 
+
+  {
+      "type": "image_picker",
+      "id": "mobile_gif_video",
+      "label": "Upload GIF Image",
+      "info": ".GIF recommended"
+    },
+	{
+      "type": "html",
+      "id": "top_bar_phone_text",
+      "label": "Text before top bar mobile no"
+    },
+	{
+      "type": "text",
+      "id": "top_bar_phone",
+      "label": "Top bar mobile no"
+    },
+    {
+      "type": "text",
+      "id": "free_shipping_title",
+      "label": "Free Shipping Title",
+      "info": "Free Shipping in Header dropdown"
+    },
+  {
+      "type": "text",
+      "id": "free_shipping_info",
+      "label": "Free Shipping Info",
+      "info": "Free Shipping in Header dropdown detail"
+    },
+  {
+      "type": "checkbox",
+      "id": "use_free_shipping_bar",
+      "label": "Show Free Shipping Bar",
+      "default": false
+    },
+  {
+      "type": "text",
+      "id": "free_shipping_bar_content",
+      "label": "Free Shipping Bar Content",
+      "info": "Free Shipping Bar floating on top of page"
+    },
+  {
+      "type": "text",
+      "id": "free_shipping_bar_halfway",
+      "label": "Free Shipping Bar Away",
+      "info": "Free Shipping Bar floating on top of page"
+    },
+  {
+      "type": "text",
+      "id": "free_shipping_bar_success",
+      "label": "Free Shipping Bar Success Message",
+      "info": "Free Shipping Bar floating on top of page"
+    },
+  {
+      "type": "color",
+      "id": "free_shipping_bar_money",
+      "label": "Free Shipping Bar Money",
+      "info": "Free Shipping Bar floating on top of page"
+    },
+  {
+      "type": "color",
+      "id": "free_shipping_bar_bg",
+      "label": "Free Shipping Bar Background",
+      "info": "Free Shipping Bar floating on top of page"
+    },
+  {
+      "type": "color",
+      "id": "free_shipping_bar_color",
+      "label": "Free Shipping Bar Color",
+      "info": "Free Shipping Bar floating on top of page"
+    },
+    {
+      "type": "text",
+      "id": "free_gift_content",
+      "label": "Free Gift Default Content",
+      "info": "Free Shipping Bar floating on top of page"
+    },
+  {
+      "type": "text",
+      "id": "free_gift_halfway",
+      "label": "Free Gift Away",
+      "info": "Free Shipping Bar floating on top of page"
+    },
+  {
+      "type": "text",
+      "id": "free_gift_success",
+      "label": "Free Gift Success Message",
+      "info": "Free Shipping Bar floating on top of page"
+    }
+  ]
+
+}
+{% endschema %}
+<!--    
+
+{
+      "type": "text",
+      "id": "video_id",
+      "label": "Video ID",
+    "info": "Enter Youtube Video ID" 
+    },-->

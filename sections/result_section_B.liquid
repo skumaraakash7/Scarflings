@@ -1,0 +1,258 @@
+
+
+<div class="resultProduct">
+  
+    <h2>{{ section.settings.resultB_heading }}</h2>
+<div class="option option1">
+		{% assign p1 = all_products[section.settings.Boption1url1] %}
+
+		{% if p1.available %}
+			{% assign p1_availablity = "instock" %}
+		{% else %}
+			{% assign p1_availablity = "outofstock" %}
+		{% endif %}
+		<div class="product1">
+          
+
+		    <div class="product_image">
+		        	{% assign image_count = 0 %}
+			        {% for image in p1.images %}
+			          {% unless image contains featured_image %}
+			            <div class="product-single__photo-wrapper">
+			              <img class="product-single__photo" src="{{ image.src | img_url: 'grande' }}" {% if settings.product_zoom_enable %}data-mfp-src="{{ image.src | img_url: '1024x1024' }}"{% endif %} alt="{{ image.alt | escape }}" data-image-id="{{ image.id }}">
+			            </div>
+					   {% assign image_count = image_count | plus: 1 %}
+					    {% endunless %}
+					   {% if image_count >= 2 %}{% break %}{% endif %}
+			        {% endfor %}
+		    </div>
+
+		    <h5 class="productTitle">{{ p1.title }}</h5>
+
+		    <h5 class="productPrice"><span class="money">{{ p1.price | money_without_trailing_zeros }}</span></h5>
+
+		    <div class="description">{{ p1.description }}</div>
+
+		    <a href="{{ p1.url }}" class="btn">Take me to Product<img src="{{ "ezgif.png" | asset_url }}"></a>
+
+
+
+		</div>
+		{% assign p2 = all_products[section.settings.Boption1url2] %}
+      	{% if p2.available %}
+			{% assign p2_availablity = "instock" %}
+		{% else %}
+			{% assign p2_availablity = "outofstock" %}
+		{% endif %}
+		<div class="product2">
+			
+		    <div class="product_image">
+		        	{% assign image_count = 0 %}
+			        {% for image in p2.images %}
+			          {% unless image contains featured_image %}
+			            <div class="product-single__photo-wrapper">
+			              <img class="product-single__photo" src="{{ image.src | img_url: 'grande' }}" {% if settings.product_zoom_enable %}data-mfp-src="{{ image.src | img_url: '1024x1024' }}"{% endif %} alt="{{ image.alt | escape }}" data-image-id="{{ image.id }}">
+			            </div>
+					   {% assign image_count = image_count | plus: 1 %}
+					    {% endunless %}
+					   {% if image_count >= 2 %}{% break %}{% endif %}
+			        {% endfor %}
+		    </div>
+
+		    <h5 class="productTitle">{{ p2.title }}</h5>
+
+		    <h5 class="productPrice"><span class="money">{{ p2.price | money_without_trailing_zeros }}</span></h5>
+
+		    <div class="description">{{ p2.description }}</div>
+
+		    <a href="{{ p2.url }}" class="btn">Take me to Product<img src="{{ "ezgif.png" | asset_url }}"></a>
+		</div>
+		
+
+	</div>
+	
+	<div class="option option2">
+      {% assign p3 = all_products[section.settings.Boption2url1] %}
+      	{% if p3.available %}
+			{% assign p3_availablity = "instock" %}
+		{% else %}
+			{% assign p3_availablity = "outofstock" %}
+		{% endif %}
+		<div class="product1">
+			
+		    <div class="product_image">
+		        	{% assign image_count = 0 %}
+			        {% for image in p3.images %}
+			          {% unless image contains featured_image %}
+			            <div class="product-single__photo-wrapper">
+			              <img class="product-single__photo" src="{{ image.src | img_url: 'grande' }}" {% if settings.product_zoom_enable %}data-mfp-src="{{ image.src | img_url: '1024x1024' }}"{% endif %} alt="{{ image.alt | escape }}" data-image-id="{{ image.id }}">
+			            </div>
+					   {% assign image_count = image_count | plus: 1 %}
+					    {% endunless %}
+					   {% if image_count >= 2 %}{% break %}{% endif %}
+			        {% endfor %}
+		    </div>
+
+		    <h5 class="productTitle">{{ p3.title }}</h5>
+
+		    <h5 class="productPrice"><span class="money">{{ p3.price | money_without_trailing_zeros }}</span></h5>
+
+		    <div class="description">{{ p3.description }}</div>
+
+		    <a href="{{ p3.url }}" class="btn">Take me to Product<img src="{{ "ezgif.png" | asset_url }}"></a>
+		</div>
+      {% assign p4 = all_products[section.settings.Boption2url2] %}
+      {% if p4.available %}
+			{% assign p4_availablity = "instock" %}
+		{% else %}
+			{% assign p4_availablity = "outofstock" %}
+		{% endif %}
+		
+		<div class="product2">
+
+		    <div class="product_image">
+		        	{% assign image_count = 0 %}
+			        {% for image in p4.images %}
+			          {% unless image contains featured_image %}
+			            <div class="product-single__photo-wrapper">
+			              <img class="product-single__photo" src="{{ image.src | img_url: 'grande' }}" {% if settings.product_zoom_enable %}data-mfp-src="{{ image.src | img_url: '1024x1024' }}"{% endif %} alt="{{ image.alt | escape }}" data-image-id="{{ image.id }}">
+			            </div>
+					   {% assign image_count = image_count | plus: 1 %}
+					    {% endunless %}
+					   {% if image_count >= 2 %}{% break %}{% endif %}
+			        {% endfor %}
+		    </div>
+		    <h5 class="productTitle">{{ p4.title }}</h5>
+
+		    <h5 class="productPrice"><span class="money">{{ p4.price | money_without_trailing_zeros }}</span></h5>
+
+		    <div class="description">{{ p4.description }}</div>
+
+		    <a href="{{ p4.url }}" class="btn">Take me to Product<img src="{{ "ezgif.png" | asset_url }}"></a>
+		</div>
+		
+	</div>
+	
+  	
+	<div class="option option3">
+      
+		{% assign p5 = all_products[section.settings.Boption3url1] %}
+      {% if p5.available %}
+			{% assign p5_availablity = "instock" %}
+		{% else %}
+			{% assign p5_availablity = "outofstock" %}
+		{% endif %}
+		<div class="product1">
+			
+		    <div class="product_image">
+		        	{% assign image_count = 0 %}
+			        {% for image in p5.images %}
+			          {% unless image contains featured_image %}
+			            <div class="product-single__photo-wrapper">
+			              <img class="product-single__photo" src="{{ image.src | img_url: 'grande' }}" {% if settings.product_zoom_enable %}data-mfp-src="{{ image.src | img_url: '1024x1024' }}"{% endif %} alt="{{ image.alt | escape }}" data-image-id="{{ image.id }}">
+			            </div>
+					   {% assign image_count = image_count | plus: 1 %}
+					    {% endunless %}
+					   {% if image_count >= 2 %}{% break %}{% endif %}
+			        {% endfor %}
+		    </div>
+
+		    <h5 class="productTitle">{{ p5.title }}</h5>
+
+		    <h5 class="productPrice"><span class="money">{{ p5.price | money_without_trailing_zeros }}</span></h5>
+
+
+
+		    <div class="description">{{ p5.description }}</div>
+
+		    <a href="{{ p5.url }}" class="btn">Take me to Product<img src="{{ "ezgif.png" | asset_url }}"></a>
+		</div>
+		{% assign p6 = all_products[section.settings.Boption3url2] %}
+      	{% if p6.available %}
+			{% assign p6_availablity = "instock" %}
+		{% else %}
+			{% assign p6_availablity = "outofstock" %}
+		{% endif %}
+		<div class="product2">
+			
+		    <div class="product_image">
+		        	{% assign image_count = 0 %}
+			        {% for image in p6.images %}
+			          {% unless image contains featured_image %}
+			            <div class="product-single__photo-wrapper">
+			              <img class="product-single__photo" src="{{ image.src | img_url: 'grande' }}" {% if settings.product_zoom_enable %}data-mfp-src="{{ image.src | img_url: '1024x1024' }}"{% endif %} alt="{{ image.alt | escape }}" data-image-id="{{ image.id }}">
+			            </div>
+					   {% assign image_count = image_count | plus: 1 %}
+					    {% endunless %}
+					   {% if image_count >= 2 %}{% break %}{% endif %}
+			        {% endfor %}
+		    </div>
+
+		    <h5 class="productTitle">{{ p6.title }}</h5>
+
+		    <h5 class="productPrice"><span class="money">{{ p6.price | money_without_trailing_zeros }}</span></h5>
+
+		    <div class="description">{{ p6.description }}</div>
+
+		    <a href="{{ p6.url }}" class="btn">Take me to Product<img src="{{ "ezgif.png" | asset_url }}"></a>
+		</div>
+
+	</div>
+  	
+  	
+
+	</div>
+
+  
+
+
+
+
+{% schema %}
+{
+  "name": "Group B options",
+  "settings": [
+      {
+      "id": "resultB_heading",
+      "type": "text",
+      "label": "Result section heading"
+      },
+	{
+      "id": "Boption1url1",
+      "type": "product",
+      "label": "First option product 1"
+      },
+	{
+      "id": "Boption1url2",
+      "type": "product",
+      "label": "First option product 2"
+      },
+	  {
+      "id": "Boption2url1",
+      "type": "product",
+      "label": "Second option product 1"
+      },
+	{
+      "id": "Boption2url2",
+      "type": "product",
+      "label": "Second option product 2"
+      },
+	  {
+      "id": "Boption3url1",
+      "type": "product",
+      "label": "Third option product 1"
+      },
+	{
+      "id": "Boption3url2",
+      "type": "product",
+      "label": "Third option product 2"
+      }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

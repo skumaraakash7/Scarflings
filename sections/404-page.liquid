@@ -1,0 +1,60 @@
+<div class="errorLeftbg">
+  	<img src="{{ section.settings.left_bg | img_url: 'master' }}">
+</div>
+<div class="errorcenterbg">
+  	<img src="{{ section.settings.center_bg | img_url: 'master' }}">
+  	<h2>{{ section.settings.error_text }}</h2>
+  	<a href="{{ section.settings.button_url }}" class="btn btn--cta cpsgts bg1 hov1">{{ section.settings.button_text }}</a>
+</div>
+<div class="errorrightbg">
+  	<img src="{{ section.settings.right_bg | img_url: 'master' }}">
+</div>
+{% schema %}
+  {
+    "name": "404 Page content",
+    "settings": [
+		{
+		"id": "left_bg",
+        "type": "image_picker",
+        "label": "Left Image"
+		}
+	  ,
+		{
+		"id": "center_bg",
+        "type": "image_picker",
+        "label": "Center Image"
+		}
+	  , 
+		{
+		"id": "right_bg",
+        "type": "image_picker",
+        "label": "Right Image"
+		}
+		,
+		{
+		"id": "error_text",
+        "type": "html",
+        "label": "Text"
+		}
+	  ,
+		{
+		"id": "button_text",
+        "type": "html",
+        "label": "Button Text"
+		}
+	  ,
+		{
+		"id": "button_url",
+        "type": "url",
+        "label": "Button Url"
+		}
+	 
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

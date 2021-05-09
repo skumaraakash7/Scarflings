@@ -1,0 +1,76 @@
+ <div class="careSection">
+   <h5 class="">{{ section.settings.care_title }}</h5>
+   <div class="content_centered">
+     <div class="care_row">
+       <div class="care_img">
+         <img class"care_img" src="{{ section.settings.img1 | img_url: 'master' }}">
+       </div>
+       <div class="care_text">
+         <p>{{ section.settings.text1 }}</p>
+       </div>
+     </div>
+     <div class="care_row">
+       <div class="care_img">
+         <img class"care_img" src="{{ section.settings.img2 | img_url: 'master' }}">
+       </div>
+       <div class="care_text">
+         <p>{{ section.settings.text2 }}</p>
+       </div>
+     </div>
+     <div class="care_row">
+       <div class="care_img">
+         <img class"care_img" src="{{ section.settings.img3 | img_url: 'master' }}">
+       </div>
+       <div class="care_text">
+         <p>{{ section.settings.text3 }}</p>
+       </div>
+     </div>      
+   </div>
+</div>
+{% schema %}
+  {
+    "name": "Caring Section",
+    "settings": [
+      {
+        "id": "care_title",
+        "type": "text",
+        "label": "Heading",
+        "default": "Title"
+      },
+		{
+		"id": "img1",
+        "type": "image_picker",
+        "label": "Image 1"
+		}
+	  ,
+		{
+		"id": "text1",
+        "type": "html",
+        "label": "Text 1"
+		}
+      ,
+		{
+		"id": "img2",
+        "type": "image_picker",
+        "label": "Image 2"
+		}
+	  ,{
+		"id": "text2",
+        "type": "html",
+        "label": "Text 2"
+		}
+      ,
+		{
+		"id": "img3",
+        "type": "image_picker",
+        "label": "Image 3"
+		}
+	  ,{
+		"id": "text3",
+        "type": "html",
+        "label": "Text 3"
+		}
+      
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,54 @@
+<div class="scarvesSlider">
+  
+{% for block in section.blocks %}
+  <div class="imageSlide">
+    <input type="radio" name="seven" id="" value="{{block.settings.value}}">
+    <label for="" class="overlay">
+      <img src="{{ section.settings.check_image | img_url: 'master' }}">
+    </label>
+    <img src="{{ block.settings.scarves_slide | img_url: 'master' }}">
+  </div>
+{% endfor %}
+
+</div>
+ 
+
+{% schema %}
+  {
+    "name": "Scarves Slider",
+    "settings": [
+    
+     {
+            "type": "image_picker",
+            "id": "check_image",
+            "label": "Check Image",
+            "info": "add image"
+       }
+      
+    ],
+  "blocks": [
+    {
+      "type": "box",
+      "name": "scarves Slide",
+      "settings": [
+  
+    {
+            "type": "image_picker",
+            "id": "scarves_slide",
+            "label": "Slides Image",
+            "info": "add image"
+       },
+		{
+            "type": "text",
+            "id": "value",
+            "label": "Value"
+       }
+      ]
+
+    }
+  ]
+ }
+{% endschema %}
+
+
+

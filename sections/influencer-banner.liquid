@@ -1,0 +1,260 @@
+<style>
+.FirstSectImage{
+background-repeat:no-repeat;
+}
+.shipBannersection {
+    padding: 0px !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+    height: 550px;
+    display: flex;
+    align-items: center;
+}
+.shipBannersection .simpletext {
+    padding: 0px 0px 0px 50px;
+  	margin-top: -50px;
+}
+.shipBannersection .row {
+    padding: 0px;
+    width: 850px;
+    margin: 0 auto;
+  	max-width: 100%;
+}
+.shipBannersection .simpletext h2 {
+    color: #000 !important;
+    font-size: 40px !important;
+    width: 400px;
+}
+  .shipBannersection .simpletext h2 sup {
+    font-size: 18px !important;
+    position: relative;
+    top: -7px;
+}
+.shipBannersection .simpletext h2 span {
+    color: #fff !important;
+  font-size: 22px !important;
+}
+section#section_k_post-banner {
+    padding: 0px 0px 0px 0px;
+}
+.FirstSectImage {
+    background-size: contain;
+    background-position: 60px bottom !important;
+    background-repeat: no-repeat;
+}
+.shipBannersection h2 {
+    margin-bottom: 7px;
+}
+.shipBannersection .row {
+    padding: 0px;
+    width: 900px;
+    margin: 0 auto;
+    max-width: 100%;
+}
+  
+
+.shipBannersection {
+    padding: 0px !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+    height: 550px;
+    display: flex;
+    align-items: center;
+}
+  .shipBannersection .row {
+    padding: 0px;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 100%;
+}
+  .shipBannersection .simpletext {
+    padding: 0px 0px 0px 0px;
+    margin-top: -100px;
+}
+  .shipBannersection .simpletext h2 {
+    color: #fff!important;
+    font-size: 29px !important;
+    width: 400px;
+}
+  .shipBannersection p {
+    color: #fff !important;
+}
+  .hero_play_button {
+    margin: 0px 0px 0px 0px;
+    display: flex;
+    align-items: center;
+}
+  .hero_play_button a.btn {
+    margin: 0px 15px 0px 0px !important;
+}
+  .hero_play_button a.btn img {
+    transform: unset !important;
+    width: 22px !important;
+    margin: -4px 0px 0px 3px;
+}
+@media (min-width: 1400px) {
+.shipBannersection {
+    height: 550px;
+}
+}
+
+  @media (min-width: 1600px) {
+.shipBannersection {
+    height: 650px;
+}
+}
+
+    @media (min-width: 1750px) {
+.shipBannersection {
+    height: 750px;
+}
+}
+@media (min-width:768px) and (max-width:991px){
+.shipBannersection .simpletext p{
+font-size:15px!important;
+}
+.shipBannersection .simpletext{
+padding:50px 0px 50px 0px;
+}
+}
+
+
+@media (max-width:767px){
+
+.shipBannersection .simpletext h2 {
+    font-size: 19px !important;
+    width: 175px;
+    line-height: 1.3em;
+    max-width: 100%;
+}
+ .shipBannersection {
+    padding: 0px !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-image:url('{{ section.settings.in_banner_heading_bg_image_mob | img_url: 'master' }}') !important;
+}
+.shipBannersection .row {
+    padding: 15px 0px 0px 0px;
+    margin: 0px 0px !important;
+    width: auto;
+    max-width: unset;
+}
+.shipBannersection .simpletext {
+    padding: 0px 0px 30px 45px;
+    margin-top: 0px;
+}
+
+section#section_k_shipping-banner .col-8 {
+    padding-right: 0px;
+}
+}
+@media (min-width: 481px) and (max-width: 620px){
+  .shipBannersection {
+    height: 300px;
+  }
+  .shipBannersection .simpletext {
+      padding: 0px 0px 30px 25px;
+      margin-top: 0px;
+  }
+}
+@media (min-width: 381px) and (max-width: 480px){
+  .shipBannersection {
+    height: 250px;
+  }
+  .shipBannersection .simpletext {
+      padding: 0px 0px 30px 15px;
+      margin-top: 0px;
+  }
+}
+@media (max-width: 380px){
+  .shipBannersection {
+    height: 200px;
+  }
+  .shipBannersection .simpletext {
+      padding: 0px 0px 30px 7px;
+      margin-top: 0px;
+  }
+}
+@media (min-width:768px){
+
+.shipBannersection .FirstSectImage{
+margin-top:20px!important;
+}
+}
+
+</style>
+<section class="page_content_section shipBannersection desktop_only p-t-66 p-b-38" id="section_k_{{ section.id }}" style="background-image:url('{{ section.settings.in_heading_bg_image | img_url: 'master' }}')" >
+<div class="container">
+   <div class="row">
+      <div class="col-6">
+      <div class="simpletext">
+        <h2> {{ section.settings.in_banner_heading }} </h2>
+        <p> {{ section.settings.in_text_box_left_text }} </p>
+    <div class="hero_play_button">
+     <video controls>
+              <source src="https://cdn.shopify.com/s/files/1/0070/0835/4356/t/69/assets/{{ section.settings.in_video }}" type="video/mp4">
+            </video>
+      <a href="javascript:void(0)" class="btn btn--cta cpsgts"> {{ section.settings.in_button }} <img src='{{ section.settings.in_button_emoji | img_url: 'master'}}'></a>
+    </div>
+	
+      </div>
+    </div>
+  
+    <div class="col-6 FirstSectImage" >
+    
+     </div>
+     </div>
+  </div>
+</section>
+{% schema %}
+  {
+    "name": "Influencer Banner",
+    "settings": [
+	  {
+        "id": "in_banner_heading",
+        "type": "html",
+        "label": "Heading",
+        "default": "<p>Add your text here</p>"
+      },
+		{
+		"id": "in_heading_bg_image",
+        "type": "image_picker",
+        "label": "Background"
+		},
+		 {
+        "id": "in_text_box_left_text",
+        "type": "html",
+        "label": "Add custom text below",
+        "default": "<p>Add your text here</p>"
+      },
+	{
+      "id": "in_button",
+      "type": "text",
+      "label": "Button text"
+    },
+	{
+		"id": "in_button_emoji",
+        "type": "image_picker",
+        "label": "Button_emoji"
+		},
+	{
+        "id": "in_video",
+        "type": "text",
+        "label": "Video name"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

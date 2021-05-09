@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<!--[if IE 8 ]>
+<html dir="ltr" lang="en" class="ie8">
+<![endif]-->
+<!--[if IE 9 ]>
+<html dir="ltr" lang="en" class="ie9">
+<![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html dir="ltr" lang="en">
+<!--<![endif]-->
+	<head>
+		{% include 'gtm-container' %}
+		{% include 'adwords-remarketing' %}
+		<!-- Basic page needs ================================================== -->
+		<meta charset="UTF-8">
+		<meta name = "viewport" content = "width=device-width, minimum-scale=1.0, maximum-scale = 1.0, user-scalable = no">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		{% if settings.favicon_enable %}
+		<link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}">
+		<link rel="apple-touch-icon" href="{{ 'favicon.png' | asset_url }}">
+		{% endif %}
+		<meta name="google-site-verification" content="yxH3P-bGonrSLN2YpbDkUGhQ6hMzHvPGf5fBekO9J0U">
+		<meta name="msvalidate.01" content="8986DCAAD39B5CEE70B0D5C8BE3944BC">
+		<script type="lazyload2">(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"25058976"};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");</script>
+		<!-- Title and description ================================================== -->
+		<title>
+			{% if template != 'index' %}
+				{{ page_title }}
+			{% endif %}
+			{% if current_tags %}
+				{% assign current_tags_joined = current_tags | join: ', ' %} 
+				&ndash; 
+				{{ 'general.meta.tags' | t: tags: current_tags_joined }}
+			{% endif %}
+			{% if current_page != 1 %} 
+				&ndash; {{ 'general.meta.page' | t: page: current_page }}
+			{% endif %}
+			{% unless page_title contains shop.name %} 
+				{% if template == 'index' %}
+					{{ shop.name }}
+				{% endif %}
+				{% if template != 'index' %}
+					&ndash; {{ shop.name }}
+				{% endif %}
+			{% endunless %}
+		</title>
+		{% if page_description %}
+		<meta name="description" content="{{ page_description | escape }}">
+		{% endif %}
+		<base href="{{ canonical_url }}">
+		{% include 'critical_path_css' %}
+		{% if template == 'product' %}
+			{% include 'product_css' %}
+		{% endif %}
+
+		<!-- Product meta ================================================== -->
+		{% include 'open-graph-tags' %}
+		{% include 'twitter-card' %}
+		<!-- App ================================================== -->
+
+		{% if template == 'product.book_a_stylist_booking' %}
+			{% render 'header-scripts.zipifypages', renderctx: 'thm' %}
+		{% endif %}
+
+		{% if request.host == "scarflings.myshopify.com" or template contains 'cart' or template contains 'checkout' %}
+			{{ content_for_header }}
+		{% else %}
+			{% capture content_for_header2 %}
+				{{ content_for_header }}
+			{% endcapture %}
+			{{ content_for_header2 | replace: ' defer="defer" ', ' type="no-load" ' | replace: " src=", " data-src=" | replace: "window.addEventListener('load', asyncLoad, false);", "window.addEventListener('ks_load', asyncLoad, false);" | replace: "DOMContentLoaded", "" }}
+		{% endif %}
+
+		<script>var loox_global_hash = '1619192753693';</script>
+
+		{% case template %}
+			{% when 'index' %}
+			<script>
+				window.onload = function() {
+					lazy_config_function()
+				};
+				function lazy_config_function() {
+					window.lazySizesConfig = window.lazySizesConfig || {};
+					lazySizesConfig.loadMode = 0;
+					lazySizesConfig.expFactor = 0.1;
+					lazySizesConfig.hFac = 1;
+					lazySizesConfig.init = true;
+				}
+
+				window.onscroll = function() {
+					lazy_config_change_function()
+				};
+
+				function lazy_config_change_function() {
+					window.lazySizesConfig = window.lazySizesConfig || {};
+					lazySizesConfig.expFactor = 0.1;
+					lazySizesConfig.loadMode = 1;
+					lazySizesConfig.init = true;
+				}
+			</script>
+			{% else %}
+
+		{% endcase %}
+
+		<script>var theme_by_raj ="Scarflings_Performance";</script>
+
+		<script id="sg-js-global-vars">
+			sgGlobalVars = {{ shop.metafields['sg-cc']['sg-metafield'] | json }};
+			if(sgGlobalVars) {
+				sgGlobalVars.cart = {{ cart | json }};
+				sgGlobalVars.currentProduct = {{ product | json }};
+				sgGlobalVars.isAdmin = {% if content_for_header contains 'adminBarInjector' or content_for_header contains 'previewBarInjector' %}true{% else %}false{% endif %};
+			}
+		</script>
+
+		{% if template == 'product.book_a_stylist_booking'%}
+			{% include 'bookthatapp-widgets' %}
+		{% endif %}
+
+		<meta name="locale-bar--browsing-context-suggestions-url" content="{{ routes.browsing_context_suggestions_url }}">
+		<meta name="locale-bar--current-language" content="{{ request.locale.iso_code }}">
+		<meta name="locale-bar--current-currency" content="{{ cart.currency.iso_code }}">
+		<style>.vimeo-wrapper img{width:100%}#ffsbmsg .slick-arrow{display:none!important}.cart .cart-client-sec .quote-icon img{object-fit:cover;width:75px!important;height:75px!important;border-radius:50%;margin:0!important;position:relative;border:none!important;max-width:none!important;top:unset!important;right:unset;left:unset}.cart .cart-client-sec .client_section .quote-icon{width:75px!important;height:75px!important}.cart .client_section .quotes-slider__text{height:auto!important;margin:0!important}.cart section.client_section{margin:0!important}.cart .client_section .slick-slider{margin-top:0!important}</style>
+	</head>
+<!--
+	<link href="https://fonts.googleapis.com/css?family=DM+Serif+Text:400,400i|Poppins:300,400,500,600,700&display=swap" rel="stylesheet"> 
+-->
+	<div id="qab_placeholder"></div>
+	<body
+	id="body" class=" {% case template %}
+	{% when 'index' %}
+	{% when 'collection' %}
+	collection
+	{% when 'blog' %}
+	blog-blog
+	{% when 'article' %}
+	blog-article
+	{% when 'cart' %}
+	checkout-cart
+	{% when 'customers/login' %}
+	account-login
+	{% else %}
+	{% endcase %}">
+
+		<!-- Google Tag Manager (noscript) -->
+		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-55QTHZX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<!-- End Google Tag Manager (noscript) -->
+		<!-- JS ================================================== -->
+		{% include 'jquery-min' %}
+		{% include 'jquery-cookie' %}
+		{% include 'top-currency-bar' %}
+		<script>	
+			var qab_adjusted = false;
+			$( "#qab_placeholder" ).on( "qab_fully_loaded", function(event, p1) {
+				if ((p1=='inserted' || p1=='inserted_sticky') && !qab_adjusted ) {
+					qab_adjusted = true;
+					var qab_height = $("#qab_background").height();
+					$("<div />", {html: '<style>' + 'nav.isStuck{top:' + qab_height + 'px !important;}' + '</style>'}).appendTo("body");
+				}
+			});
+		</script>
+
+		<!--[if lt IE 8]>
+			<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+		<![endif]-->
+		{% section 'header' %}
+		{% section 'remove_collection_from_search' %}
+		<div class="contentforlayout">
+			{{ content_for_layout }}
+
+			{% section 'footer' %}
+		</div>
+		<!-- Back to top -->
+		<div class="btn-back-to-top bg0-hov" id="myBtn"><span class="symbol-btn-back-to-top"><i class="fa fa-angle-double-up" aria-hidden="true"></i></span></div>
+		<!-- Container Selection1 -->
+		<div id="dropDownSelect1"></div>
+		{% if settings.show_pupup and template == 'index'%}
+			{% include 'popup' %}
+		{% endif %}
+		<!-- JS ================================================== -->
+		{% include 'header-js-file' %}
+		<!-- CSS ================================================== -->
+		{% include 'header-css-file' %} 
+		<!-- JavaScripts Start-->
+		<script defer src="{{ 'mix.js' | asset_url }}" ></script>
+		<!-- special collection sub menu jquery -->
+		<script defer src="{{ 'special_submenu.js' | asset_url }}" ></script>
+		<!-- special collection sub menu jquery -->
+		<script defer src="{{ 'popper.js' | asset_url }}" ></script>
+		<script defer src="{{ 'bootstrap.min.js' | asset_url }}" ></script>
+		<script defer src="{{ 'main.js' | asset_url }}" ></script>
+		<script defer src="{{ 'common.js' | asset_url }}" ></script>
+		<script defer src="{{ 'jquery.magnific-popup.min.js' | asset_url }}" ></script>
+		<script defer src="{{ 'jquery.cookie.js' | asset_url }}" ></script>
+		<script defer src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.js" ></script>
+		<script defer src="{{ 'ajaxify.js' | asset_url }}" ></script>
+		<script defer src="{{ 'fastclick.min.js' | asset_url }}" ></script>
+		<script defer src="{{ 'ajaxinate.min.js' | asset_url }}" ></script>
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				if($(".selection-1").get(0)) {
+					$(".selection-1").select2({
+						minimumResultsForSearch: 20,
+						dropdownParent: $('#dropDownSelect1')
+					});
+				}
+
+				$('.block2-btn-addwishlist').each(function() {
+					var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+					$(this).on('click', function() {
+						swal(nameProduct, "is added to wishlist !", "success");
+					});
+				});
+
+				if($(".parallax100").get(0)) {
+					$('.parallax100').parallax100();
+				}
+			});
+		</script>
+		<!--===============================================================================================-->
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
+		{% if template contains 'customers' %}
+			{{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+			{{ 'customer_area.js'  | shopify_asset_url | script_tag }}
+		{% endif %}
+		<script>var moneyFormat = '{{ shop.money_format }}';</script>
+		{% if template == 'product' %}
+			{{ 'handlebars.min.js' | asset_url | script_tag }}
+		{% endif %}
+		{% if settings.ajax_cart_method != 'page' %}
+			{% include 'ajax-cart-template' %}
+			<script>
+				jQuery(function($) {
+					ajaxifyShopify.init({
+						method: '{{ settings.ajax_cart_method }}',
+						wrapperClass: 'product-detail',
+						formSelector: '#addToCartForm',
+						addToCartSelector: '#addToCart',
+						cartCountSelector: '.cart-count',
+						cartCostSelector: '.cart-cost',
+						toggleCartButton: '.cart-toggle',
+						useCartTemplate: true,
+						btnClass: 'btn',
+						moneyFormat: {{ shop.money_format | json }},
+						disableAjaxCart: false,
+						enableQtySelectors: true
+					});
+				});
+			</script>
+		{% endif %}
+		{% if template  == 'product' %}
+			{{ 'shop.js' | asset_url | script_tag }}
+		{% endif %}
+
+		{{ shop.metafields.loox["global_html_body"] }}
+		<script>
+			jQuery(document).ready(function($) {
+				$('img.lazyload').lazyload();
+			});
+		</script>
+
+		{% include 'smile-initializer' %}
+		<!-- This site is converting visitors into subscribers and customers with OptinMonster - https://optinmonster.com -->
+<!--
+		<script type="text/javascript" src="https://a.opmnstr.com/app/js/api.min.js" data-account="75274" data-user="66928" async></script>
+-->
+		<!-- / https://optinmonster.com -->
+		<div class="pgmsk">&nbsp;</div>
+		<script>window.KlarnaThemeGlobals={};{%case template.name%} {%when"product"%} window.KlarnaThemeGlobals.data_purchase_amount={{product.first_available_variant.price}};window.KlarnaThemeGlobals.productVariants={{product.variants|json}};window.KlarnaThemeGlobals.documentCopy=document.cloneNode(true);{%when"cart"%} window.KlarnaThemeGlobals.data_purchase_amount={{cart.total_price}};window.KlarnaThemeGlobals.documentCopy=document.cloneNode(true);{%endcase%}</script>
+
+		{% if template == "product" %}
+		<script>
+			setInterval(function() {
+				if(window.outerWidth<768) {
+					if($(".btns-cartBuy klarna-placement").length >0 ) {
+					} else {
+						if($("klarna-placement").length>0) {
+							var test = $("klarna-placement").parent();
+							$(test).prependTo( ".btns-cartBuy" );
+						}
+					}
+				}
+			}, 2000);
+		</script>
+		{% endif %}
+		{% if template == "cart" %}
+		<script type="lazyload2">
+			setInterval(function() {
+				if(window.innerWidth>881) {
+					if($("#ShopifyKlarnaOnSiteMessagingAppElement klarna-placement").length >0 ) {
+					} else {
+						if($("#mob_cart klarna-placement").length>0) {
+							var test = $("#mob_cart klarna-placement").parent();
+							$(test).prependTo( "#ShopifyKlarnaOnSiteMessagingAppElement" );
+						}
+					}
+				}
+			}, 600);
+		</script>
+		{% endif %}
+		<script>var _0x421b=['1TxsOri','mobstyle','lazyloaded','remove','length','https://cdn.shopify.com/shopifycloud/shopify/assets/storefront/features-87e8399988880142f2c62771b9d8f2ff6c290b3ff745dd426eb0dfe0db9d1dae.js','body','classList','src','iframe','dispatchEvent','platform','mobsrc','27542pngIZR','https://cdn.shopify.com/s/files/1/0070/0835/4356/t/99/assets/PT_Serif.css?v=','appendChild','createElement','https://cdn.shopify.com/s/files/1/0070/0835/4356/t/99/assets/DM_Serif.css?v=','1128005lYQqAY','GET','now','lazybg','Linux\x20x86_64','lazyload2','touchstart','https://a.opmnstr.com/app/js/api.min.js','/cart','style','1gzdZbZ','indexOf','228011IbWOKM','stylesheet','head','user','link','readyState','href','dataset','66928','open','967767zhOpND','4631881HNyYRm','querySelectorAll','play','https://cdn.shopify.com/shopifycloud/shopify/assets/storefront/load_feature-d8a6f1446d67009c524ed4e68648800ba9082eb75548ee28e1050331cbe7ba28.js','script','932613KLClUD','getElementById','text/javascript','onreadystatechange','DOMContentLoaded','type','1KKIMnx','/checkout','No-optimization','log','https://cdn.shopify.com/shopifycloud/shopify/assets/shopify_pay/storefront-b61f50798075db890698930c4405673937fe89353f7fea7be88b5ce16a9c0af8.js?v=','forEach','location','ks_load','getElementsByTagName','lazy2','onload','mousemove','75274','innerHTML','395713PaDVxW','addEventListener','.lazybg','responseText','status','account','getAttribute'];var _0x2dce72=_0x5d15;(function(_0x3fbf10,_0x50a164){var _0xc776a1=_0x5d15;while(!![]){try{var _0x28d2c9=-parseInt(_0xc776a1(0x20c))*parseInt(_0xc776a1(0x218))+-parseInt(_0xc776a1(0x1dd))*parseInt(_0xc776a1(0x1e4))+-parseInt(_0xc776a1(0x1f1))+-parseInt(_0xc776a1(0x1f6))+-parseInt(_0xc776a1(0x202))+-parseInt(_0xc776a1(0x212))*parseInt(_0xc776a1(0x200))+parseInt(_0xc776a1(0x20d));if(_0x28d2c9===_0x50a164)break;else _0x3fbf10['push'](_0x3fbf10['shift']());}catch(_0x34737c){_0x3fbf10['push'](_0x3fbf10['shift']());}}}(_0x421b,0xe87a6));var windowWidth,lazyImages,lazyBackground,lazyIframe,lazyScripts,lazyLoadedJS,lazybg,xmlhttp,src,s,i,j,flag;function ks_init(){flag&&(flag=0x0,lazyLoadImg(),lazyLoadBackground(),lazyLoadIframe(),load_all_js());}function lazyLoadImg(){var _0x25bc51=_0x5d15;lazyImages[_0x25bc51(0x21d)](function(_0x45468c){var _0x5e1003=_0x25bc51;null!==(src=windowWidth<0x258?void 0x0===_0x45468c[_0x5e1003(0x209)][_0x5e1003(0x1f0)]?_0x45468c[_0x5e1003(0x209)][_0x5e1003(0x1ec)]:_0x45468c['dataset'][_0x5e1003(0x1f0)]:_0x45468c['dataset']['src'])&&(_0x45468c[_0x5e1003(0x1ec)]=src),_0x45468c[_0x5e1003(0x1eb)]['remove'](_0x5e1003(0x221));});}function lazyLoadBackground(){var _0x199c33=_0x5d15;lazyBackground[_0x199c33(0x21d)](function(_0x3aa411){var _0x838ec6=_0x199c33;null!==(lazybg=windowWidth<0x258?void 0x0===_0x3aa411['dataset']['mobstyle']?_0x3aa411[_0x838ec6(0x209)]['style']:_0x3aa411[_0x838ec6(0x209)][_0x838ec6(0x1e5)]:_0x3aa411[_0x838ec6(0x209)][_0x838ec6(0x1ff)])&&(_0x3aa411[_0x838ec6(0x1ff)]=lazybg),_0x3aa411['classList'][_0x838ec6(0x1e7)](_0x838ec6(0x1f9));});}function lazyLoadCss2(_0x2f473e,_0x3ef78d){var _0x9167b2=_0x5d15;(xmlhttp=new XMLHttpRequest())[_0x9167b2(0x215)]=function(){var _0x1310f3=_0x9167b2;0x4==this[_0x1310f3(0x207)]&&0xc8==this[_0x1310f3(0x1e1)]&&(document[_0x1310f3(0x213)](_0x3ef78d)['innerHTML']=this[_0x1310f3(0x1e0)]);},xmlhttp[_0x9167b2(0x20b)](_0x9167b2(0x1f7),_0x2f473e,!0x0),xmlhttp['send']();}function lazyLoadIframe(){lazyIframe['forEach'](function(_0x18ef53){var _0x5b3479=_0x5d15;_0x18ef53[_0x5b3479(0x1ec)]=void 0x0===_0x18ef53[_0x5b3479(0x209)][_0x5b3479(0x1ec)]?_0x18ef53[_0x5b3479(0x1ec)]:_0x18ef53[_0x5b3479(0x209)][_0x5b3479(0x1ec)];});}function lazyLoadScripts(){var _0x5411fe=_0x5d15;j!=lazyScripts[_0x5411fe(0x1e8)]&&(_0x5411fe(0x1fb)==lazyScripts[j][_0x5411fe(0x1e3)]('type')?(lazyScripts[j]['setAttribute']('type',_0x5411fe(0x1e6)),void 0x0!==lazyScripts[j]['dataset'][_0x5411fe(0x1ec)]?((s=document[_0x5411fe(0x1f4)](_0x5411fe(0x211)))['src']=lazyScripts[j][_0x5411fe(0x209)][_0x5411fe(0x1ec)],document[_0x5411fe(0x1ea)]['appendChild'](s),s['onload']=function(){j++,lazyLoadScripts();}):((s=document['createElement'](_0x5411fe(0x211)))[_0x5411fe(0x225)]=lazyScripts[j]['innerHTML'],document[_0x5411fe(0x1ea)][_0x5411fe(0x1f3)](s),j++,lazyLoadScripts())):(j++,lazyLoadScripts()));}function _0x5d15(_0x2e3abe,_0x215c16){_0x2e3abe=_0x2e3abe-0x1dd;var _0x421bdb=_0x421b[_0x2e3abe];return _0x421bdb;}function lazyLoadCss(_0xb7d813){var _0x3e0859=_0x5d15;(s=document['createElement'](_0x3e0859(0x206)))['rel']=_0x3e0859(0x203),s[_0x3e0859(0x208)]=_0xb7d813,document[_0x3e0859(0x220)](_0x3e0859(0x204))[0x0][_0x3e0859(0x1f3)](s);}function lazyLoadJS(_0x10f2fc){var _0x55c7c7=_0x5d15;if(lazyLoadedJS)return setTimeout(function(){lazyLoadJS(_0x10f2fc);},0xc8),!0x1;lazyLoadedJS=0x1,(s=document[_0x55c7c7(0x1f4)](_0x55c7c7(0x211)))[_0x55c7c7(0x1ec)]=_0x10f2fc,s[_0x55c7c7(0x222)]=function(){lazyLoadedJS=0x0;},document[_0x55c7c7(0x1ea)][_0x55c7c7(0x1f3)](s);}function load_all_js(){var _0x5ce59e=_0x5d15;['https://cdn.shopify.com/s/files/1/0070/0835/4356/t/99/assets/lazy-style.css?v='+Date[_0x5ce59e(0x1f8)](),'https://fonts.googleapis.com/css?family=DM+Serif+Text:400,400i|Poppins:300,400,500,600,700&display=swap',_0x5ce59e(0x1f2)+Date['now'](),_0x5ce59e(0x1f5)+Date[_0x5ce59e(0x1f8)]()][_0x5ce59e(0x21d)](lazyLoadCss),window[_0x5ce59e(0x21e)]['href'][_0x5ce59e(0x201)]('scarflings.myshopify.com')>-0x1||window[_0x5ce59e(0x21e)][_0x5ce59e(0x208)][_0x5ce59e(0x201)](_0x5ce59e(0x1fe))>-0x1||window[_0x5ce59e(0x21e)][_0x5ce59e(0x208)][_0x5ce59e(0x201)](_0x5ce59e(0x219))>-0x1?console[_0x5ce59e(0x21b)](_0x5ce59e(0x21a)):(console['log']('Yes-optimization'),setTimeout(function(){var _0x35bd9c=_0x5ce59e;const _0x286dbe=new Event(_0x35bd9c(0x21f));window[_0x35bd9c(0x1ee)](_0x286dbe);},0xc8),lazyLoadJS(_0x5ce59e(0x210)),lazyLoadJS(_0x5ce59e(0x21c)+Date[_0x5ce59e(0x1f8)]()),lazyLoadJS(_0x5ce59e(0x1e9)),lazyLoadJS('https://cdn.shopify.com/shopifycloud/shopify/assets/storefront/features-87e8399988880142f2c62771b9d8f2ff6c290b3ff745dd426eb0dfe0db9d1dae.js')),j=0x0,lazyScripts=document[_0x5ce59e(0x220)]('script'),lazyLoadScripts(),jQuery('#vid_1584079521656')[0x0][_0x5ce59e(0x20f)]();var _0x108006=document['createElement'](_0x5ce59e(0x211));_0x108006[_0x5ce59e(0x217)]=_0x5ce59e(0x214),_0x108006['async']=!0x0,_0x108006[_0x5ce59e(0x1ec)]=_0x5ce59e(0x1fd),_0x108006[_0x5ce59e(0x209)][_0x5ce59e(0x1e2)]=_0x5ce59e(0x224),_0x108006[_0x5ce59e(0x209)][_0x5ce59e(0x205)]=_0x5ce59e(0x20a),document['body'][_0x5ce59e(0x1f3)](_0x108006),setInterval(function(){var _0x2b7ad1=_0x5ce59e;lazyImages=document[_0x2b7ad1(0x20e)]('img.lazy2'),lazyLoadImg(),lazyBackground=document['querySelectorAll']('.lazybg'),lazyLoadBackground();},0x7d0);}document[_0x2dce72(0x1de)](_0x2dce72(0x216),function(){var _0x57a482=_0x2dce72;windowWidth=screen['width'],lazyImages=document['querySelectorAll']('img.lazy2'),lazyBackground=document[_0x57a482(0x20e)](_0x57a482(0x1df)),lazyIframe=document[_0x57a482(0x20e)](_0x57a482(0x1ed)),lazyScripts=document[_0x57a482(0x220)](_0x57a482(0x211)),i=0x0,j=0x0,flag=0x1,window['addEventListener']('scroll',function(){ks_init();}),window[_0x57a482(0x1de)](_0x57a482(0x223),function(){ks_init();}),_0x57a482(0x1fa)!=navigator[_0x57a482(0x1ef)]&&ks_init(),window['addEventListener'](_0x57a482(0x1fc),function(){ks_init();});});</script>
+	</body>
+</html>

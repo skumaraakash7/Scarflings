@@ -1,0 +1,91 @@
+<style>
+  @media (max-width: 767px){
+   
+    section#section_k_subscription_banner_section_mobile .row {
+        margin: 0px;
+    }
+    .sub_features img {
+    margin-bottom: 10px;
+}
+.subFormsection {
+        padding: 55px 0px 0px 0px;
+    }
+   
+  }
+</style>
+<section class="page_content_section desktop p-t-66 p-b-38" id="section_k_{{ section.id }}" style="background-image:url('{{ section.settings.subscription_banner_bg | img_url: 'master' }}')">
+
+  <div class="container">
+    	<div class="row">
+<div class="col-md-5 FirstSectImage" >
+  
+</div>
+          
+<div class="col-md-7">
+  <div class="simpletext">
+    <h2> {{ section.settings.subscription_text_box_left_title }} </h2>
+    <p> {{ section.settings.subscription_description }} </p>
+    <div class="hero_play_button">
+      <video id="vid" controls>
+        <source src="https://cdn.shopify.com/s/files/1/0070/0835/4356/t/69/assets/{{ section.settings.sub_banner_video }}" type="video/mp4">
+   	  </video> 
+      <img src="{{ 'watch-button.png' | asset_url }}"><p>Watch Video</p>
+    </div>
+  </div>
+</div>
+
+          
+          </div>
+    </div>
+</section>
+
+{% schema %}
+  {
+    "name": "subscription_banner_d",
+    "settings": [
+      {
+        "id": "subscription_text_box_left_title",
+        "type": "text",
+        "label": "Heading",
+        "default": "Title"
+      },
+	{
+        "id": "subscription_button",
+        "type": "text",
+        "label": "Button text"
+      },
+	{
+		"id": "subscription_button_emoji",
+        "type": "image_picker",
+        "label": "Button_emoji"
+		},
+		{
+          "id": "subscription_description",
+          "type": "html",
+          "label": "Add custom text below",
+          "default": "<p>Add your text here</p>"
+       },
+		{
+		"id": "subscription_banner_bg",
+        "type": "image_picker",
+        "label": "Background Image"
+		},
+	  {
+		"id": "sub_banner_video_icon",
+        "type": "image_picker",
+        "label": "Play button icon"
+		},
+	  {
+        "id": "sub_banner_video",
+        "type": "text",
+        "label": "Video name"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

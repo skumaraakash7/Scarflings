@@ -1,0 +1,84 @@
+<div class="survey-step1">
+  <div class="text-center simpletext">
+
+    <h2>{{ section.settings.step1_heading}}</h2>
+        </div>
+ <div class="row">
+  <div class="imageSlide">
+    <div class="imageSlide_col">
+    <input type="radio" name="one" id="optionA" value="">
+    <label for="optionA" class="overlay">
+      <img src="{{ section.settings.check_image | img_url: 'master' }}">
+    </label>
+    <img src="{{ section.settings.optionA_image | img_url: 'master' }}">
+    <h3>{{ section.settings.optionA_title}}</h3>
+    <p>{{ section.settings.optionA_des}}</p>
+    </div>
+  </div>
+  <div class="imageSlide">
+    <div class="imageSlide_col">
+    <input type="radio" name="one" id="optionB" value="">
+    <label for="optionB" class="overlay">
+      <img src="{{ section.settings.check_image | img_url: 'master' }}">
+    </label>
+    <img src="{{ section.settings.optionB_image | img_url: 'master' }}">
+    <h3>{{ section.settings.optionB_title}}</h3>
+    <p>{{ section.settings.optionB_des}}</p>
+    </div>
+  </div>
+  </div>
+ 
+</div>
+
+
+{% schema %}
+  {
+    "name": "Step1",
+    "settings": [
+	  {
+            "type": "html",
+            "id": "step1_heading",
+            "label": "Step 1 Title"
+       },
+		{
+            "type": "image_picker",
+            "id": "check_image",
+            "label": "Check Image",
+            "info": "add image"
+       },
+	  {
+            "type": "image_picker",
+            "id": "optionA_image",
+            "label": "Option A Image"
+       },
+	  {
+            "type": "html",
+            "id": "optionA_title",
+            "label": "Option A Title"
+       },
+	  {
+            "type": "html",
+            "id": "optionA_des",
+            "label": "Option A Description"
+       },
+	  {
+            "type": "image_picker",
+            "id": "optionB_image",
+            "label": "Option B Image"
+       },
+	  {
+            "type": "html",
+            "id": "optionB_title",
+            "label": "Option B Title"
+       },
+	  {
+            "type": "html",
+            "id": "optionB_des",
+            "label": "Option B Description"
+       }
+      
+    ]
+ }
+{% endschema %}
+
+

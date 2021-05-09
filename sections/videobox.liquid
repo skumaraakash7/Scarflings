@@ -1,0 +1,83 @@
+<!-- Youtube video -->
+<section class="parallax0 parallax100 desktop-bg" style="background-image: url({% if section.settings.you--image != blank %}{{ section.settings.you--image | img_url: 'master' }}{% else %} {{ 'videobox.jpg' | asset_img_url: '1920x601' }} {% endif %});background-color:#244024 !important;">
+
+  <div class="mobile-video-bg" style="background-image: url({% if section.settings.you--image--mobile != blank %}{{ section.settings.you--image--mobile | img_url: 'master' }}{% else %} {{ 'videobox.jpg' | asset_img_url: '1920x601' }} {% endif %});">
+
+    <div class="overlay0 p-t-190 p-b-200">
+      <div class="flex-col-c-m p-l-15 p-r-15">
+        {% if section.settings.you--heading != blank %}  
+        <span class="m-text9 p-t-45 fs-20-sm">
+          {{ section.settings.you--heading }}
+        </span>
+        {% endif %}
+        {% if section.settings.you--heading2 != blank %}  
+        <h3 class="l-text1 fs-35-sm">
+          {{ section.settings.you--heading2 }}
+        </h3>
+        {% endif %}
+        <span class="btn-play s-text4 hov5 cs-pointer p-t-25" data-toggle="modal" data-target="#modal-video-01">
+          <i class="fa fa-play" aria-hidden="true"></i>
+          Play Video
+        </span>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- Modal Video 01-->
+<div class="modal fade" id="modal-video-01" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document" data-dismiss="modal">
+    <div class="close-mo-video-01 trans-0-4" data-dismiss="modal" aria-label="Close">&times;</div>
+    <div class="wrap-video-mo-01">
+      <div class="w-full wrap-pic-w op-0-0"></div>
+      <div class="video-mo-01">
+        
+        <iframe src="https://www.youtube.com/embed/{{ section.settings.you--video--src }}?rel=0&amp;showinfo=0" allowfullscreen></iframe>
+        
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+   "name": "Youtube Video Box",
+   "settings": [
+      {
+         "type": "image_picker",
+         "id": "you--image",
+         "label": "Image",
+         "info": "For Desktop resolution 1920 x 650px recommended for preload image"
+      },
+{
+         "type": "image_picker",
+         "id": "you--image--mobile",
+         "label": "Image",
+         "info": "For Mobile resolution 750 x 1000 recommended"
+      },
+      {
+        "type": "text",
+        "id": "you--heading",
+        "label": "Heading"
+      },
+      {
+        "type": "text",
+        "id": "you--heading2",
+        "label": "Heading 2"
+      },
+      {
+         "type": "text", 
+         "id": "you--video--src",
+         "label": "Youtube Video Src",
+         "default": "bLwl0gRbyrk",
+         "info": "Add id for youtube"
+      }
+   ],
+   "presets": [
+      {
+         "name": "Youtube Video Box",
+         "category": "Image"
+      }
+   ]
+}
+{% endschema %}
+

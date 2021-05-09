@@ -1,0 +1,55 @@
+<section class="page_content_section p-t-66 p-b-38 blocks-carousel" id="section_k_{{ section.id }}">
+ <div class="left_bg" style="background-image: url('{{ section.settings.section_bg | img_url: 'large' }}');"></div>
+  <div class="container">
+    <div class="bg_row row">
+      <div class="bgHeadText col-sm-8">
+           <div class="simpletext">
+             <h2> {{ section.settings.box_title }} </h2>
+             <p> {{ section.settings.box_description }} </p>
+          	</div>
+         </div>
+      <div class="bgHeadImage col-sm-4">
+        <img src="{{ section.settings.bg_head_img | img_url: 'large' }}">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+{% schema %}
+  {
+    "name": "Text with BG",
+	"settings": [
+	{
+        "id": "box_title",
+        "type": "text",
+        "label": "Heading",
+        "default": "Title"
+    },
+	{
+		"id": "section_bg",
+        "type": "image_picker",
+        "label": "Section Background"
+	},
+	{
+		"id": "bg_head_img",
+        "type": "image_picker",
+        "label": "Section Image"
+	},
+	{
+        "id": "box_description",
+        "type": "html",
+        "label": "Add custom text below",
+        "default": "<p>Add your text here</p>"
+      }
+     
+	
+	]
+  
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+

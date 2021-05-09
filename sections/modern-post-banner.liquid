@@ -1,0 +1,45 @@
+<section class="page_content_section desktop p-t-66 p-b-38" id="section_k_{{ section.id }}" style="background-image:url('{{ section.settings.post_banner_bg | img_url: 'master' }}')">
+
+  <div class="container">
+    	<div class="row">
+<div class="col-md-7">
+  <div class="simpletext">
+    <h2> {{ section.settings.post_text_box_left_title }} </h2>
+    <p>{{ section.settings.post_text_box_left_des }}</p>
+  </div>
+</div>
+<div class="col-md-5 FirstSectImage" > 
+</div>        
+          </div>
+    </div>
+</section>
+
+{% schema %}
+  {
+    "name": "post_banner_d",
+    "settings": [
+      {
+        "id": "post_text_box_left_title",
+        "type": "text",
+        "label": "Heading",
+        "default": "Title"
+      },
+		{
+        "id": "post_text_box_left_des",
+        "type": "html",
+        "label": "Description"
+      },
+		{
+		"id": "post_banner_bg",
+        "type": "image_picker",
+        "label": "Background Image"
+		}
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

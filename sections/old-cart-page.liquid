@@ -1,0 +1,647 @@
+{% assign free_shipping_threshold = all_products["free-shipping"].compare_at_price %}
+<!-- Title Page -->
+<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" {% if settings.show_cart_top_image %}
+         style="background-image:url({{ 'cart_top.jpg' | asset_url }});" {% endif %}>
+  <h2 class="l-text2 t-center">
+    {{ page_title }}
+  </h2>
+</section>
+<!-- Cart -->
+
+{% assign has_fg = 'false' %}
+<section class="cart bgwhite p-t-70">
+  <div class="container">
+    <div id="destop_cartform_item">
+      <div class="desktop_cart" id="dsk_cart">
+      {% if cart.item_count > 0 %}
+      <form action="/checkout" method="post" id="cart_form">
+        <!-- Cart item -->
+        <div class="container-table-cart pos-relative" >
+          <div class="wrap-table-shopping-cart bgwhite">
+            <table class="table-shopping-cart">
+              <tr class="table-head">
+                <th class="column-1"></th>
+                <th class="column-2">{{ 'cart.general.heading_product_name' | t }}</th>
+                <th class="column-3">{{ 'cart.general.heading_unit_price' | t }}</th>
+                <th class="column-4 p-l-70">{{ 'cart.general.heading_quantity' | t }}</th>
+                <th class="column-5">{{ 'cart.general.heading_total' | t }}</th>
+                <th class="column-5">Action</th>
+              </tr>
+              {% for item in cart.items %}
+                {% if item.product.handle == all_products[settings.free_gift].handle %}
+                  {% assign has_fg = 'true' %}
+                {%endif%}
+                <tr class="table-row" data-line="{{ forloop.index }}">
+                  <td class="column-1">
+                    <div class="cart-img-product b-rad-4 o-f-hidden" >
+                      <a href="{{ item.url }}">
+                        <img src="{{ item | img_url: '90x120' }}"  alt="{{ item.title | escape }}" title="{{ item.title | escape }}" class="" />
+                      </a>
+                    </div>
+                  </td>
+                  <td class="column-2">
+                    <a href="{{ item.url }}">{{ item.product.title }}</a>
+                    {% unless item.variant.title contains 'Default' %}
+                    <br />
+                    <small>{{ item.variant.title }}</small>
+                    {% endunless %}
+
+                    {% if settings.product_quantity_message and item.variant.inventory_management and item.variant.inventory_quantity <= 0 and item.variant.incoming %}
+                    {% assign date = item.variant.next_incoming_date | date: format: 'month_day_year' %}
+                    <br />
+                    <small>{{ 'products.product.will_not_ship_until' | t: date: date }}</small>
+                    {% endif %}
+
+                    {% assign property_size = item.properties | size %}
+                    {% if property_size > 0 %}
+                    {% for p in item.properties %}
+                    {% if forloop.first %}<br>{% endif %}
+                    {% unless p.last == blank or p.first == "subscription_id" or p.first == "shipping_interval_frequency" or p.first == "shipping_interval_unit_type" %}
+                    {{ p.first }}:
+
+                    {% if p.last contains '/uploads/' %}
+                    <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
+                    {% else %}
+                    {{ p.last }}
+                    {% endif %}
+
+                    <br>
+                    {% endunless %}
+                    {% endfor %}
+                    {% endif %}
+                  </td>
+                  <td class="column-3">
+                    <span class="money">
+                        {% if settings.hide_cents %}
+                        {{ item.price | money | remove: '.00' }}
+                         {% else %} 
+                        {{ item.price | money }}
+                        {% endif %}
+                    </span>
+                  </td>
+                  <td class="column-4">   
+                    {% unless item.product.tags contains 'hideproduct' %}
+                      <div class="flex-w bo5 of-hidden w-size17">
+                        <input type="hidden" value="{{ item.id }}" id="productid_{{ item.id }}">
+                        <button type="button" did="{{ item.id }}" class="btn_cart_down color1 flex-c-m size7 bg8 eff2">
+                          <i class="fs-12 fa fa-minus" aria-hidden="true"></i>
+                        </button>
+                       <input type="number"  did="{{ item.id }}" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" min="0" class="size8 m-text18 t-center num-product" data-line="{{ forloop.index }}">
+                        <button type="button" did="{{ item.id }}" class="btn_cart_up color1 flex-c-m size7 bg8 eff2">
+                          <i class="fs-12 fa fa-plus" aria-hidden="true"></i>
+                        </button>
+                      </div>
+                    {% endunless %}
+                  </td>
+                  <td class="column-5">
+                    <span class="money">
+                        {% if settings.hide_cents %}
+                        {{ item.line_price | money | remove: '.00' }}
+                         {% else %} 
+                        {{ item.line_price | money }}
+                        {% endif %}
+                    </span>
+                  </td>
+
+                  <td class="column-5">
+                    <button type="button" onclick="cart.remove('{{ item.variant_id }}');" title="Remove" class="btn btn-danger btn-xs">
+                        <i class="fa fa-trash-o cart_trash"></i>
+                    </button>
+                  </td> 
+                </tr>
+              {% endfor %}
+            </table>
+          </div>
+        </div>
+      {% comment %}  
+        <div class="flex-w flex-sb-m p-t-25 p-b-25 bo8 p-l-35 p-r-60 p-lr-15-sm">
+          <div class="flex-w flex-m w-full-sm">
+            <div class="size11 bo4 m-r-10">
+              <input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="discount" id="discount" placeholder="Coupon Code">
+            </div>
+            <div class="size12 trans-0-4 m-t-10 m-b-10 m-r-10">
+              <!-- Button -->
+              <!-- <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
+  Apply coupon
+  </button> -->
+            </div>
+          </div>
+          <div class="size10 trans-0-4 m-t-10 m-b-10">
+            <!-- Button
+            <button type="submit" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4 hvr-wobble-horizontal">
+              {{ 'cart.general.update' | t }}
+            </button> -->
+          </div>
+        </div>
+        {% endcomment %}
+        <!-- Total -->
+        
+        {% assign maxprice = section.settings.maxprice | plus: 0 %}
+		{% if cart.total_price >= free_shipping_threshold %}
+        <div class="cart-boxes-wrap">
+          
+          	
+          
+          {% endif %}
+          
+          
+          
+            <div class="bo9 w-size18 p-l-40 p-r-40 p-t-10 p-b-85 m-t-20 m-r-0 m-l-auto p-lr-15-sm">
+             {% comment %}  <h5 class="m-text20 p-b-24">
+                Cart Totals
+              </h5>{% endcomment %} 
+              <!--  -->
+              {% if cart.total_discounts > 0 %}
+             {% if settings.hide_cents %}		
+              {% assign savings = cart.total_discounts | money | remove: '.00'  %}
+               {% else %} 
+                 {% assign savings = cart.total_discounts | money %}
+                    {% endif %}
+              <div class="flex-w flex-sb-m p-b-12">
+                <span class="s-text18 w-size19 w-full-sm">
+                  {{ 'cart.general.discount' | t }}:
+                </span>
+                <span class="m-text21 w-size20 w-full-sm money">
+                  {{ 'cart.general.savings_html' | t: price: savings }}
+                </span>
+              </div>
+              {% endif %}
+              {% comment %} 
+              <div class="flex-w flex-sb bo10 p-t-15 p-b-20">
+                <span class="s-text18 w-size19 w-full-sm">
+                  Shipping:
+                </span>
+                <div class="w-size20 w-full-sm money">
+                  {% include 'shipping-calculator' %} 
+                </div>
+              </div>
+              {% endcomment %} 
+              <!--  -->
+              <div class="flex-w flex-sb-m p-t-10 p-b-20 relative-parent">
+                
+                {% assign maxprice = section.settings.maxprice | plus: 0 %}
+				{% if cart.total_price >= free_shipping_threshold %}
+                
+                  <div class="qualified-info">
+                    {{ section.settings.qualifiedinfo }}
+                    <span class="caret-right-side"></span>
+                  </div>
+                
+                {% endif %}
+                
+                <span class="m-text22 w-size19 w-full-sm cart_total_t">
+                  {{ 'cart.general.subtotal' | t }}:
+                </span>
+                <span class="m-text21 w-size20 w-full-sm cart_total_txt money">
+                   {% if settings.hide_cents %}	
+                  {{ cart.total_price | money | remove: '.00' }}
+                   {% else %} 
+                  {{ cart.total_price | money }}
+                    {% endif %}
+                </span>
+              </div>
+              <div>
+                {% assign maxprice = section.settings.maxprice | plus: 0 %}
+              {% if cart.total_price >= free_shipping_threshold %}
+				
+                <div class="flex-w flex-sb-m p-b-20" id="{{maxprice}}">
+                  <span class="m-text22 w-size19 w-full-sm cart_total_t">
+                    Free Shipping:
+                  </span>
+                  <span class="m-text21 w-size20 w-full-sm cart_total_txt">
+                    $0
+                  </span>
+                  </div>
+                
+                	
+                <div class="choose-option">
+                  <h4>{{ section.settings.deliveroptions }}</h4>
+<!--                   {{'now' | date: '%d %m %Y' }} -->
+<!--                   {{ "now" | date: "%s" | plus: 864000 | date: "%b %d, %Y" }} -->
+                  
+                  <div class="choose-info">
+                      <input type="radio" checked class="radio-choose">
+                      <span class="free-deliver">{{ section.settings.freedelivery }}:</span>
+                      <span class="get-by">
+                        	get it by
+<!--                             {{'now' | date: '%b. %d' }} + -->
+<!--                             {{'now' | date: '%B' }}  {{ "now" | date: "%s" | plus: 172800 | date: "%d" }}-{{ "now" | date: "%s" | plus: 604800 | date: "%d" }} -->
+                        
+                        {{ "now" | date: "%s" | plus: 172800 | date: "%A" }}
+                        {{ "now" | date: "%s" | plus: 172800 | date: "%B" }}
+                        {{ "now" | date: "%s" | plus: 172800 | date: "%d" }}
+                        
+                        -
+                        {{ "now" | date: "%s" | plus: 604800 | date: "%A" }}
+                        {{ "now" | date: "%s" | plus: 604800 | date: "%B" }}
+                        {{ "now" | date: "%s" | plus: 604800 | date: "%d" }}
+                      </span>
+                  </div>
+              </div>
+                
+                
+
+              {% endif %}  
+              </div>
+              <div class="size15 trans-0-4">
+                <!-- Button -->
+<!--                 <button onclick="document.getElementById('cart_form').submit(); return false;" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4 hvr-wobble-horizontal">
+                  {{ 'cart.general.proceed_checkout' | t }}
+                </button> -->
+                
+                <a href="/checkout" onclick="document.getElementById('cart_form').submit(); return false;" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4 hvr-wobble-horizontal">
+                  {{ 'cart.general.proceed_checkout' | t }}
+                </a>
+                
+                <br>
+                {% if additional_checkout_buttons %}
+                <span class="additional-checkout-buttons">{{ content_for_additional_checkout_buttons }}</span>
+                {% endif %}
+
+              </div>
+            </div>
+          
+		{% assign maxprice = section.settings.maxprice | plus: 0 %}
+		{% if cart.total_price >= free_shipping_threshold %}
+          
+        </div>
+        
+        {% endif %}
+      </form>
+      {% else %}
+      <h1 class="page-heading">{{ 'cart.general.empty' | t }}</h1>
+      <p>{{ 'cart.general.continue_browsing_html' | t }}</p>
+      {% endif %}
+      </div>
+      
+    </div>
+    
+    
+    <!------------------------------ mobile cart----------------------------------->
+    <div id="mobile_cartform_item">
+      <div class="mobile_cart" id="mob_cart">
+      {% if cart.item_count > 0 %}
+      <form action="/checkout" method="post" id="cart_form_mobile">
+        {% for item in cart.items %}   
+          <div class="mobile_cart_">
+            <ul class="cart-wrapitem">
+
+              <li class="cart-item">
+                <div class="cart-item-img" >
+                  <a href="{{ item.url }}">
+                      <img src="{{ item | img_url: '90x120' }}"  alt="{{ item.title | escape }}" title="{{ item.title | escape }}" class="" />
+                  </a>
+                </div>
+                <div class="cart-item-txt">
+                    <a href="{{ item.url }}">{{ item.product.title }}</a>
+                        {% unless item.variant.title contains 'Default' %}
+                        <br />
+                        <small>{{ item.variant.title }}</small>
+                        {% endunless %}
+
+                        {% if settings.product_quantity_message and item.variant.inventory_management and item.variant.inventory_quantity <= 0 and item.variant.incoming %}
+                        {% assign date = item.variant.next_incoming_date | date: format: 'month_day_year' %}
+                        <br />
+                        <small>{{ 'products.product.will_not_ship_until' | t: date: date }}</small>
+                        {% endif %}
+
+                        {% assign property_size = item.properties | size %}
+                        {% if property_size > 0 %}
+                        {% for p in item.properties %}
+                        {% if forloop.first %}<br>{% endif %}
+                        {% unless p.last == blank or p.first == "subscription_id" or p.first == "shipping_interval_frequency" or p.first == "shipping_interval_unit_type" %}
+                        {{ p.first }}:
+
+                        {% if p.last contains '/uploads/' %}
+                        <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
+                        {% else %}
+                        {{ p.last }}
+                        {% endif %}
+
+                        <br>
+                        {% endunless %}
+                        {% endfor %}
+                        {% endif %}
+                  <br> <span class='money'>
+                   {% if settings.hide_cents %}	
+                   {{ item.price | money | remove: '.00' }}
+                   {% else %} 
+                   {{ item.price | money }}
+                	{% endif %}
+                  
+                 </span>
+                </div>
+              </li>
+            </ul>
+            <div class="cart-buttons">
+              {% unless item.product.tags contains 'hideproduct' %}
+              <div class="cart-wrapbtn">
+                      <!-- Button -->
+                     <div class="flex-w bo5 of-hidden w-size17">
+                    <input type="hidden" value="{{ item.id }}" id="productid_{{ item.id }}">
+                    <button type="button" did="{{ item.id }}" class="btn_cart_down_m color1 flex-c-m size7 bg8 eff2">
+                      <i class="fs-12 fa fa-minus" aria-hidden="true"></i>
+                    </button>
+                   <input type="number" did="{{ item.id }}" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" min="0" class="size8 m-text18 t-center num-product" data-line="{{ forloop.index }}">
+                    <button type="button" did="{{ item.id }}" class="btn_cart_up_m color1 flex-c-m size7 bg8 eff2">
+                      <i class="fs-12 fa fa-plus" aria-hidden="true"></i>
+                    </button>
+                  </div>
+              </div>
+              {%endunless%}
+              <div class="cart-wrapbtn unit_subtotal">
+                <span class="money">
+                  {% if settings.hide_cents %}	
+                      {{ item.line_price | money | remove: '.00' }}
+                     {% else %} 
+                      {{ item.line_price | money }}
+                      {% endif %}
+                </span>
+                <button type="button" onclick="cart.remove('{{ item.variant_id }}');" title="Remove" class="btn btn-danger btn-xs" style="margin-left: 15px;">
+                      <i class="fa fa-trash-o cart_trash"></i>
+                  </button>
+              </div>
+          </div>
+          </div>
+
+        {% endfor %}
+
+         {% comment %} 
+        <div class="flex-w flex-sb-m p-t-25 p-b-25 bo8 p-l-35 p-r-60 p-lr-15-sm">
+          <div class="flex-w flex-m w-full-sm">
+            <div class="size11 bo4 m-r-10">
+              <input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="discount" id="discount" placeholder="Coupon Code">
+            </div>
+          </div>
+          <div class="size10 trans-0-4 m-t-10 m-b-10">
+            <!-- Button 
+            <button type="submit" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4 hvr-wobble-horizontal">
+              {{ 'cart.general.update' | t }}
+            </button> -->
+          </div>
+        </div>
+        {% endcomment %} 
+        <!-- Total -->
+        
+        
+        
+        
+          <div class="bo9 w-size18 p-l-40 p-r-40 p-t-10 p-b-40 m-t-30 m-r-0 m-l-auto p-lr-15-sm">
+            {% comment %} <h5 class="m-text20 p-b-24">
+              Cart Totals
+            </h5> {% endcomment %} 
+            <!--  -->
+            {% if cart.total_discounts > 0 %}
+
+             {% if settings.hide_cents %}	
+
+                      {% assign savings = cart.total_discounts | money | remove: '.00'  %}
+                     {% else %} 
+                      {% assign savings = cart.total_discounts | money  %}
+                      {% endif %}
+
+            <div class="flex-w flex-sb-m p-b-12">
+              <span class="s-text18 w-size19 w-full-sm">
+                {{ 'cart.general.discount' | t }}:
+              </span>
+              <span class="m-text21 w-size20 w-full-sm money">
+                {{ 'cart.general.savings_html' | t: price: savings }}
+              </span>
+            </div>
+            {% endif %}
+            {% comment %} 
+            <div class="flex-w flex-sb bo10 p-t-15 p-b-20">
+              <span class="s-text18 w-size19 w-full-sm">
+                Shipping:
+              </span>
+              <div class="w-size20 w-full-sm money">
+                {% include 'shipping-calculator' %}
+              </div>
+            </div>
+            {% endcomment %} 
+            <!--  -->
+            <div class="flex-w flex-sb-m p-t-10 p-b-20 cart_t_mobile relative-parent">
+
+              {% assign maxprice = section.settings.maxprice | plus: 0 %}
+                  {% if cart.total_price >= free_shipping_threshold %}
+
+                    <div class="qualified-info">
+                      {{ section.settings.qualifiedinfo }}
+                      <span class="caret-right-side"></span>
+                    </div>
+
+                  {% endif %}
+
+              <span class="m-text22 w-size19 span_1">
+                {{ 'cart.general.subtotal' | t }}:
+              </span>
+
+              <span class="m-text21 w-size20 money">
+                {% if settings.hide_cents %}	
+
+                    {{ cart.total_price | money | remove: '.00'  }}
+                     {% else %} 
+                     {{ cart.total_price | money }}
+                      {% endif %}
+              </span>
+
+
+              {% assign maxprice = section.settings.maxprice | plus: 0 %}
+                {% if cart.total_price >= free_shipping_threshold %}
+
+                  <div class="flex-w flex-sb-m p-b-20 mob-shp" id="{{maxprice}}">
+                    <span class="m-text22 w-size19 w-full-sm cart_total_t">
+                      Free Shipping:
+                    </span>
+                    <span class="m-text21 w-size20 w-full-sm cart_total_txt">
+                      $0
+                    </span>
+                    </div>
+
+
+                  <div class="choose-option">
+                    <h4>{{ section.settings.deliveroptions }}</h4>
+  <!--                   {{'now' | date: '%d %m %Y' }} -->
+  <!--                   {{ "now" | date: "%s" | plus: 864000 | date: "%b %d, %Y" }} -->
+
+                    <div class="choose-info">
+                        <input type="radio" checked class="radio-choose">
+                        <span class="free-deliver">{{ section.settings.freedelivery }}:</span>
+                        <span class="get-by">
+                              get it by
+<!--                             {{'now' | date: '%b. %d' }} + -->
+<!--                             {{'now' | date: '%B' }}  {{ "now" | date: "%s" | plus: 172800 | date: "%d" }}-{{ "now" | date: "%s" | plus: 604800 | date: "%d" }} -->
+                        
+                              {{ "now" | date: "%s" | plus: 172800 | date: "%A" }}
+                              {{ "now" | date: "%s" | plus: 172800 | date: "%B" }}
+                              {{ "now" | date: "%s" | plus: 172800 | date: "%d" }}
+
+                              -
+                              {{ "now" | date: "%s" | plus: 604800 | date: "%A" }}
+                              {{ "now" | date: "%s" | plus: 604800 | date: "%B" }}
+                              {{ "now" | date: "%s" | plus: 604800 | date: "%d" }}
+                        </span>
+                    </div>
+                </div>
+
+
+
+                {% endif %}  
+
+
+            </div>
+            <div class="size15 trans-0-4">
+              <!-- Button -->
+               <button onclick="document.getElementById('cart_form').submit(); return false;" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4 hvr-wobble-horizontal">
+                {{ 'cart.general.proceed_checkout' | t }}
+              </button> 
+              <!--<a href="/checkout" onclick="document.getElementById('cart_form').submit(); return false;" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4 hvr-wobble-horizontal">
+                  {{ 'cart.general.proceed_checkout' | t }}
+                </a>-->
+              <br>
+             {% if additional_checkout_buttons %}
+              <span class="additional-checkout-buttons">{{ content_for_additional_checkout_buttons }}</span>
+              {% endif %}
+
+            </div>
+          </div>
+        
+        
+        {% assign maxprice = section.settings.maxprice | plus: 0 %}
+        {% if cart.total_price >= free_shipping_threshold %}
+        <div class="cart-boxes-wrap">
+          	
+          	<div class="bo9 w-size18 p-l-40 p-r-40 p-t-10 p-b-85 m-t-20 m-r-0 m-l-auto p-lr-15-sm">          
+              <div class="new-box">
+                
+                {% for block in section.blocks %}
+                	<p>{{ block.settings.listcontain }}</p>
+                {% endfor %}
+                
+                <div class="mc-logo">
+                  <img  src="{{ section.settings.secure_image | img_url: 'master' }}">
+                </div>
+                <div class="shopping-continue-wrap">
+                  <a href="/collections" class="flex-c-m sizefull bg1 bo-rad-23 s-text1 trans-0-4 hvr-wobble-horizontal">Continue Shopping</a>
+                </div>
+              </div>
+            </div>
+          
+          {% endif %}
+		
+        {% assign maxprice = section.settings.maxprice | plus: 0 %}
+		{% if cart.total_price >= free_shipping_threshold %}
+          
+        </div>
+        
+        {% endif %}  
+          
+      </form>
+      {% else %}
+      <h1 class="page-heading">{{ 'cart.general.empty' | t }}</h1>
+      <p>{{ 'cart.general.continue_browsing_html' | t }}</p>
+      {% endif %}
+      </div>
+    </div>
+    <!---------------- close mobile cart-------------------------------------->
+     
+    
+    
+   {% include 'product-recommendations', product: cart.items.first.product%} 
+ <input type="hidden" value="cartpage" id="cartpage"> 
+  </div>
+</section>
+{% unless settings.shipping_calculator == 'Disabled' %}
+<script>
+  window.theme = window.theme || {};
+  theme.strings = {
+    shippingCalcSubmitButton: {{ settings.shipping_calculator_submit_button_label | default: 'Calculate shipping' | json }},
+    shippingCalcSubmitButtonDisabled: {{ settings.shipping_calculator_submit_button_label_disabled | default: 'Calculating...' | json }},
+    {% if customer %}shippingCalcCustomerIsLoggedIn: true,{% endif %}
+    shippingCalcMoneyFormat: {{ shop.money_with_currency_format | json }}
+  }
+</script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+<script src="/services/javascripts/countries.js"></script>
+<script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+{{ 'shipping-cart.js' | asset_url | script_tag }}
+
+<script>
+  Shopify.Cart.ShippingCalculator.show( {
+    submitButton: theme.strings.shippingCalcSubmitButton,
+    submitButtonDisabled: theme.strings.shippingCalcSubmitButtonDisabled,
+    customerIsLoggedIn: theme.strings.shippingCalcCustomerIsLoggedIn,
+    moneyFormat: theme.strings.shippingCalcMoneyFormat                                     
+  } );
+</script>
+{% endunless %}
+
+
+{% schema %}
+  {
+    "name": "Cart",
+	"max_blocks": 6,
+    "settings": [
+		{
+         "type": "text",
+         "id": "maxprice",
+         "label": "Price",
+         "default": "7500",
+		 "info": "Maximum Price where Free Shipping test will show. Please addd in following formate, 6500 or 7500. This is for $65 and $75 respectively."
+      },
+	  {
+         "type": "text",
+         "id": "qualifiedinfo",
+         "label": "qualified",
+		 "info": "After qualified"
+      },
+	  {
+            "type": "image_picker",
+            "id": "secure_image",
+            "label": "Image"
+       },
+	   {
+         "type": "text",
+         "id": "deliveroptions",
+         "label": "Delivery options"
+      },
+	  {
+         "type": "text",
+         "id": "freedelivery",
+         "label": "Free Delivery"
+      }
+	],
+
+	"blocks": [
+      {
+        "type": "text",
+        "name": "Left Box Info",
+        "settings": [
+          {
+            "type": "text",
+            "id": "listcontain",
+            "label": "Repeat Info"
+          }
+        ]
+      }
+    ]
+
+
+  }
+{% endschema %}
+{% if settings.enable_free_gift %}
+
+{% include 'free-gift' %}
+  <script>
+    $(document).ready(function(){
+      {% if has_fg == 'false' %}
+      if(parseInt('{{cart.total_price}}') >= parseInt('{{all_products[settings.free_gift].compare_at_price}}')){
+             setTimeout(function(){
+               $('#fgOffer').modal({backdrop: true, keyboard: true})}
+            , 3000);
+        } 
+     {% endif %}
+    });
+  </script>
+{% endif %}

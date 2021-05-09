@@ -1,0 +1,21 @@
+<div class='prparent'>
+  <div class="product-recommendations" data-product-id="{{ product.id }}" >
+    {%- if recommendations.products_count > 0 -%}
+      <h2>You might also like...</h2>
+      <div class="prslick1">
+        {%- for product in recommendations.products -%}
+        <div class="product">
+          <a href="{{ product.url }}">
+            <img class="product__img" src="{{ product.featured_image | img_url: '280x' }}" alt="{{ product.featured_image.alt }}" />
+            <p class="product__title">{{ product.title }}</p>
+            <p class="product__price">{{ product.price | money}}</p>
+          </a>
+          <button type="button" onclick='kartUpdatePromo("{{product.selected_or_first_available_variant.id}}",1);' class="pradd s-text1 btn btn-lg bo-rad-21 bg6 color2">
+            {{ 'products.product.add_to_cart' | t }}
+          </button>
+        </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>

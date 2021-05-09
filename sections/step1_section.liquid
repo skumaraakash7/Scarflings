@@ -1,0 +1,327 @@
+<style>
+.package_box .inner_package_div {
+    margin-left: 0px;
+    margin-right: 0px;
+    -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    padding: 35px 50px 35px 50px;
+    border-radius: 20px;
+    min-height: 325px;
+    box-shadow: 0px 0px 13px #ccc !important;
+    position: relative;
+    background: #fff;
+    z-index: 9;
+}
+.package_box {
+    padding: 0px 20px;
+}
+.inner_package_div.active {
+    border-bottom: 8px solid #d0a569;
+    border-right: 8px solid #d0a569;
+    box-shadow: -7px -4px 10px -2px #ddd;
+}
+.ribbon span {
+    font-size: 20px !important;
+    font-weight: normal;
+    color: #f2f2f2;
+    text-transform: uppercase;
+    text-align: center !important;
+    line-height: 1.5em;
+    transform: rotate(45deg);
+    /* -webkit-transform: rotate(45deg); */
+    width: 250px;
+    display: block;
+    background: #79A70A;
+    background: #b64d27;
+    box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+    position: absolute;
+    top: 40px;
+    padding: 8px 0px 8px 15px;
+    right: -52px;
+}
+.ribbon {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    z-index: 1;
+    overflow: hidden;
+    width: 200px;
+    height: 200px;
+    text-align: right;
+    background: transparent !important;
+}
+
+.stepBg{
+    background-size: 400px;
+    position: absolute;
+    top: -55px;
+    width: 400px;
+    right: 0px;
+    height: 450px;
+    background-position: calc(100% - -96px) 0px;
+    z-index: 1;
+    background-repeat: no-repeat;
+  	display: none;
+}
+#shopify-section-step1_section{
+    position: relative;
+}
+
+.inner_package_div:hover {
+    -webkit-transform: scale(1.25, 1.25);
+    transform: scale(1.05, 1.05);
+}
+.package_box.not_active .inner_package_div {
+    box-shadow: unset !important;
+    border: 1px solid transparent;
+    opacity: 0.3;
+}
+  .package_icon {
+    width: 31px;
+    height: 30px;
+}
+.step_label {
+    color: #c38834 !important;
+    padding-right: 10px !important;
+    font-size: 28px !important;
+    font-weight: 400 !important;
+    font-family: 'DM Serif Text', serif !important;
+    width: auto !important;
+}
+  
+ section .inner_package_div h3 {
+    width: 100% !important;
+   	margin:0px !Important;
+}
+.package_box ul li p {
+    padding: 0px 10px !important;
+    line-height: 1.4em !important;
+    margin-top: -3px;
+    text-align: left;
+}
+.package_icon {
+    width: 46px;
+    height: auto;
+    padding-top: 0px;
+    padding-bottom: 16px;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+  .inner_package_div{
+    cursor:pointer !important;
+  }
+
+@media (min-width:768px) and (max-width:991px) {
+  	.package_box .inner_package_div {
+        margin-left: 15px;
+        margin-right: 15px;
+        padding: 20px 15px;
+        min-height: 420px;       
+    }
+}
+@media (max-width: 767px){
+.stepBg {
+    background-size: 115px;
+    position: absolute;
+    top: 15px;
+    width: 200px;
+    right: 00px;
+    background-position: calc(100% - -10px) 0px;
+    display: block;
+    z-index: 1;
+}
+
+  .package_box {
+    padding: 0px 0px;
+}
+.ribbon {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    z-index: 1;
+    overflow: hidden;
+    width: 150px;
+    height: 150px;
+    text-align: right;
+    background: transparent !important;
+}
+.ribbon span {
+    font-size: 15px !important;
+    width: 200px;
+    top: 36px;
+    padding: 6px 7px 7px 0px;
+    right: -50px;
+}
+.package_box ul li p {
+    padding: 0px 20px 0px 7px !important;
+    margin-top: 0px;
+    text-align: left;
+}
+.package_box ul li {
+    align-items: flex-start;
+    margin: 9px 0px;
+}
+.inner_package_div.active {
+    border-bottom: 6px solid #d0a569;
+    border-right: 6px solid #d0a569;
+    box-shadow: -7px -4px 10px -2px #ddd;
+}
+.package_icon {
+    width: 36px;
+    height: auto;
+    padding-top: 3px;
+    padding-bottom: 0px;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+}
+</style>
+
+<section class="page_content_section" id="section_k_{{ section.id }}">
+  <div class="stepBg" style="background-image:url('{{ section.settings.step1_bg | img_url: 'master' }}');
+"></div>
+<div class="container">
+  <div class="step_title">
+    <p class="step_label">Step 1.</p><h3 class="step_name">{{ section.settings.step_name }}</h3>
+  </div>
+  <div class="package_section">
+    <div class="package_box standard">
+       <div class="inner_package_div" data-package="{{ section.settings.standard_package_variant }}">
+          <h3 class="package_title">{{ section.settings.standard_package_name }}</h3>
+          <h5 class="package_price">{{ section.settings.standard_package_price }}</h5>
+          <ul>
+            <li><img class="package_icon" src="{{ section.settings.standard_feature_img1 | img_url: 'master' }}"><p>{{ section.settings.standard_feature_text1 }}</p></li>
+            <li><img class="package_icon" src="{{ section.settings.standard_feature_img2 | img_url: 'master' }}"><p>{{ section.settings.standard_feature_text2 }}</p></li>
+            <li><img class="package_icon" src="{{ section.settings.standard_feature_img3 | img_url: 'master' }}"><p>{{ section.settings.standard_feature_text3 }}</p></li>	  
+          </ul>
+         </div>
+    </div>
+    <div class="package_box vip">
+      <div class="inner_package_div" data-package="{{ section.settings.vip_package_variant }}">
+        <div class="ribbon"><span>Most Popular </span></div>
+        <h3 class="package_title">{{ section.settings.vip_package_name }}</h3>
+        <h5 class="package_price">{{ section.settings.vip_package_price }}</h5>
+        <ul>
+          <li><img class="package_icon" src="{{ section.settings.vip_feature_img1 | img_url: 'master' }}"><p>{{ section.settings.vip_feature_text1 }}</p></li>
+          <li><img class="package_icon" src="{{ section.settings.vip_feature_img2 | img_url: 'master' }}"><p>{{ section.settings.vip_feature_text2 }}</p></li>
+          <li><img class="package_icon" src="{{ section.settings.vip_feature_img3 | img_url: 'master' }}"><p>{{ section.settings.vip_feature_text3 }}</p></li>	  
+        </ul>
+      </div>
+    </div>
+    
+  </div>
+</div>
+</section>
+
+{% schema %}
+  {
+    "name": "Step1",
+    "settings": [
+      {
+        "id": "step_name",
+        "type": "text",
+        "label": "Step name"
+      },
+		{
+        "id": "standard_package_name",
+        "type": "text",
+        "label": "Standard package name"
+      },{
+        "id": "standard_package_variant",
+        "type": "text",
+        "label": "Standard package Variant"
+      },
+		{
+        "id": "standard_package_price",
+        "type": "text",
+        "label": "Standard package price"
+      },
+	  {
+		"id": "standard_feature_img1",
+        "type": "image_picker",
+        "label": "Standard feature image 1"
+	  },
+	  {
+		"id": "standard_feature_img2",
+        "type": "image_picker",
+        "label": "Standard feature image 2"
+	  },
+	  {
+		"id": "standard_feature_img3",
+        "type": "image_picker",
+        "label": "Standard feature image 3"
+	  },
+	  {
+		"id": "standard_feature_text1",
+        "type": "text",
+        "label": "Standard feature text 1"
+	  },
+	  {
+		"id": "standard_feature_text2",
+        "type": "text",
+        "label": "Standard feature text 2"
+	  },
+	  {
+		"id": "standard_feature_text3",
+        "type": "text",
+        "label": "Standard feature text 3"
+	  },
+		{
+        "id": "vip_package_name",
+        "type": "text",
+        "label": "Vip package name"
+      },{
+        "id": "vip_package_variant",
+        "type": "text",
+        "label": "Vip package variant"
+      },
+		{
+        "id": "vip_package_price",
+        "type": "text",
+        "label": "Vip package price"
+      },
+	  {
+		"id": "vip_feature_img1",
+        "type": "image_picker",
+        "label": "Vip feature image 1"
+	  },
+	  {
+		"id": "vip_feature_img2",
+        "type": "image_picker",
+        "label": "Vip feature image 2"
+	  },
+	  {
+		"id": "vip_feature_img3",
+        "type": "image_picker",
+        "label": "Vip feature image 3"
+	  },
+	  {
+		"id": "vip_feature_text1",
+        "type": "text",
+        "label": "Vip feature text 1"
+	  },
+	  {
+		"id": "vip_feature_text2",
+        "type": "text",
+        "label": "Vip feature text 2"
+	  },
+	  {
+		"id": "vip_feature_text3",
+        "type": "text",
+        "label": "Vip feature text 3"
+	  },
+		{
+		"id": "step1_bg",
+        "type": "image_picker",
+        "label": "Background"
+		}
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

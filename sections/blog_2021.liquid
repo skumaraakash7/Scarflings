@@ -1,0 +1,310 @@
+
+<!-- content page -->
+<section class="bgwhite blog-back p-t-15 p-b-25" {% if article.image %}style="background-image: url({{ article | img_url: 'master' }});"{% endif %}>
+  <img src="{{ section.settings.mobile_banner | img_url: 'master' }}" alt="{{ product1.title | escape }}" style="display: none;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-lg-6 p-b-80">
+        <div class="blog-content">
+     		 {{ article.content }}
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-6 p-b-80 mobile-hide">
+        <div class="play_button">
+           <video id="vid" controls>
+             <source src="https://cdn.shopify.com/s/files/1/0070/0835/4356/t/69/assets/{{ section.settings.video_link }}" type="video/mp4">
+          </video>
+          <img src="{{ 'white-play.png' | asset_url }}">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% for block in section.blocks %}
+<section class="back-flower block-{{ block.id }} p-b-40{% if block.settings.img-back == 'left' %} left{% else %} right{% endif %}">
+  	{% if forloop.index == 1 %}
+      <hr class="golden-dash"/>
+    {% endif %}
+	<div class="container">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-lg-12 p-b-40 p-t-50">
+          <div class="inner-data">
+            <h2 class="text-center">{{ block.settings.heading }}</h2>
+            <div class="textdata">{{ block.settings.desc }}</div>
+            <h4 class="text-center our-pick">Our Favorite Picks:</h4>
+          </div>
+        </div>
+      </div>
+      {% assign product1 = all_products[block.settings.pro1] %}
+      {% assign product2 = all_products[block.settings.pro2] %}
+      {% assign product3 = all_products[block.settings.pro3] %}
+      {% assign product4 = all_products[block.settings.pro4] %}
+      <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" data-text="{{ block.settings.pro1 }}">
+          <a href="{{ product1.url }}" target="_blank" class="inr-blk">
+            <div class="img">
+              <div class="reveal">
+                 <img class=" lazyload" 
+                      src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+                      data-src="{{ product1.featured_image.src | img_url: 'large' }}" 
+                      alt="{{ product1.featured_image.alt | escape }}"
+                      >
+                 {% if product1.images[1] %}
+                 <img class=" hidden lazyload" 
+                      src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+                      data-src="{{ product1.images[1] | img_url: 'large' }}" alt="{{ product1.images[1].alt | escape }}" />
+                 {% else %}
+                   <img class=" hidden lazyload" 
+                      src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+                      data-src="{{ product1.images.last | img_url: 'large' }}" alt="{{ product1.images.last.alt | escape }}" />      	
+                 {% endif %}
+              </div>
+            </div>
+            <h5 class="pro-name">{{ product1.title }}</h5>
+            <div class="style-with">Style it with</div>
+            <div class="extra-text">{{ block.settings.pro1_text }}</div>
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" data-text="{{ block.settings.pro2 }}">
+          <a href="{{ product2.url }}" target="_blank" class="inr-blk">
+            <div class="img">
+            	<div class="reveal">
+                 <img class=" lazyload" 
+                      src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+                      data-src="{{ product2.featured_image.src | img_url: 'large' }}" 
+                      alt="{{ product2.featured_image.alt | escape }}"
+                      >
+                 {% if product2.images[1] %}
+                 <img class=" hidden lazyload" 
+                      src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+                      data-src="{{ product2.images[1] | img_url: 'large' }}" alt="{{ product2.images[1].alt | escape }}" />
+                 {% else %}
+                   <img class=" hidden lazyload" 
+                      src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+                      data-src="{{ product2.images.last | img_url: 'large' }}" alt="{{ product2.images.last.alt | escape }}" />      	
+                 {% endif %}
+              </div>
+            </div>
+            <h5 class="pro-name">{{ product2.title }}</h5>
+            <div class="style-with">Style it with</div>
+            <div class="extra-text">{{ block.settings.pro2_text }}</div>
+          </a> 
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" data-text="{{ block.settings.pro3 }}">
+          <a href="{{ product3.url }}" target="_blank" class="inr-blk">
+            <div class="img">
+              <div class="reveal">
+                 <img class=" lazyload" 
+                      src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+                      data-src="{{ product3.featured_image.src | img_url: 'large' }}" 
+                      alt="{{ product3.featured_image.alt | escape }}"
+                      >
+                 {% if product3.images[1] %}
+                 <img class=" hidden lazyload" 
+                      src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+                      data-src="{{ product3.images[1] | img_url: 'large' }}" alt="{{ product3.images[1].alt | escape }}" />
+                 {% else %}
+                   <img class=" hidden lazyload" 
+                      src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+                      data-src="{{ product3.images.last | img_url: 'large' }}" alt="{{ product3.images.last.alt | escape }}" />      	
+                 {% endif %}
+              </div>
+            </div>
+            <h5 class="pro-name">{{ product3.title }}</h5>
+            <div class="style-with">Style it with</div>
+            <div class="extra-text">{{ block.settings.pro3_text }}</div>
+          </a>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" data-text="{{ block.settings.pro4 }}">
+          <a href="{{ product4.url }}" target="_blank" class="inr-blk">
+            <div class="img">
+            	<div class="reveal">
+                 <img class=" lazyload" 
+                      src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+                      data-src="{{ product4.featured_image.src | img_url: 'large' }}" 
+                      alt="{{ product4.featured_image.alt | escape }}"
+                      >
+                 {% if product4.images[1] %}
+                 <img class=" hidden lazyload" 
+                      src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+                      data-src="{{ product4.images[1] | img_url: 'large' }}" alt="{{ product4.images[1].alt | escape }}" />
+                 {% else %}
+                   <img class=" hidden lazyload" 
+                      src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+                      data-src="{{ product4.images.last | img_url: 'large' }}" alt="{{ product4.images.last.alt | escape }}" />      	
+                 {% endif %}
+              </div>
+            </div>
+            <h5 class="pro-name">{{ product4.title }}</h5>
+            <div class="style-with">Style it with</div>
+            <div class="extra-text">{{ block.settings.pro4_text }}</div>
+          </a>
+        </div>
+      </div>
+    </div>
+</section>
+{% endfor %}
+
+<style>
+	{% for block in section.blocks %}
+  		{% if block.settings.img-back == 'left' %}
+            .block-{{ block.id }} {
+				background-image: url({{ 'flower_left.png' | asset_img_url: 'master' }});
+                background-position: left -15% top 12%;
+            }
+        {% else %}
+  			.block-{{ block.id }} {
+				background-image: url({{ 'flower_right.png' | asset_img_url: 'master' }});
+                background-position: right -15% top 45%;
+            }
+        {% endif %}
+        section.back-flower.block-b073e9f2-7748-4543-9566-449a1907f044 {
+            background-position: left -15% top 0;
+        }
+        .block-{{ block.id }} {
+            background-repeat: no-repeat;
+            background-size: auto 450px;
+        }
+  		@media (max-width: 1400px) {
+			.block-{{ block.id }} {
+                background-size: auto 380px;
+            }
+          	.block-{{ block.id }}.left {
+                background-position: left -17% top 30%;
+            }
+        }
+        @media (max-width: 1200px) {
+			.block-{{ block.id }} {
+                background-size: auto 300px;
+            }
+        }
+  
+  		@media (max-width: 991px) {
+          	.block-{{ block.id }} {
+                background-size: auto 200px;
+                
+            }
+          
+            section.back-flower.block-b073e9f2-7748-4543-9566-449a1907f044 {
+                background-position: left -120px top 0;
+            }
+            .block-{{ block.id }}.right {
+				background-position: right -125px top -5px;
+            }
+            .block-{{ block.id }}.left {
+				background-position: left -120px top -1%;
+            }
+        }
+ 	    @media (max-width: 576px) {
+/*           	.block-{{ block.id }} {
+                background-size: auto 150px;
+             
+            }  */
+          	section.back-flower.block-b073e9f2-7748-4543-9566-449a1907f044 {
+              	text-align: center;
+            }
+            .mobile-hide {
+                display: none;
+            }
+        }
+  	{% endfor %}
+</style>
+
+
+{% schema %}
+  {
+    "name": "Blog 2021",
+    "settings": [
+		{
+            "id": "mobile_banner",
+            "type": "image_picker",
+            "label": "Mobile banner"
+        },
+		{
+            "id": "video_link",
+            "type": "textarea",
+            "label": "Video Link"
+        }
+	],
+	"blocks": [
+      {
+        "type": "blog",
+        "name": "Section",
+        "settings": [
+		  {
+             "type": "select",
+             "id": "img-back",
+             "label": "Background Flower",
+             "options": [
+                {
+                   "value": "left",
+                   "label": "Left"
+                },
+				{
+                   "value": "right",
+                   "label": "Right"
+                }
+             ]
+          },
+		  {
+            "id": "heading",
+            "type": "text",
+            "label": "Heading"
+          },
+		  {
+            "id": "desc",
+            "type": "richtext",
+            "label": "Description"
+          },
+          {
+            "id": "pro1",
+            "type": "product",
+            "label": "Product 1"
+          },
+          {
+            "id": "pro1_text",
+            "type": "textarea",
+            "label": "Style it with text"
+          },
+          {
+            "id": "pro2",
+            "type": "product",
+            "label": "Product 2"
+          },
+          {
+            "id": "pro2_text",
+            "type": "textarea",
+            "label": "Style it with text"
+          },
+          {
+            "id": "pro3",
+            "type": "product",
+            "label": "Product 3"
+          },
+          {
+            "id": "pro3_text",
+            "type": "textarea",
+            "label": "Style it with text"
+          },
+          {
+            "id": "pro4",
+            "type": "product",
+            "label": "Product 4"
+          },
+          {
+            "id": "pro4_text",
+            "type": "textarea",
+            "label": "Style it with text"
+          }
+        ]
+	  }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

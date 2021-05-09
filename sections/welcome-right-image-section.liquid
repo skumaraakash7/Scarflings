@@ -1,0 +1,54 @@
+<section class="roundRightImage commonSection" id="section_k_{{ section.id }}">
+    <div class="bottomBg" style="background-image:url('{{ section.settings.bottom_bg | img_url: 'master' }}');
+"></div>
+	<div class="container">
+    	<div class="roundImageinner">
+            <div class="simpletext">
+              <h2> {{ section.settings.round_left_heading }} </h2>
+              <p>{{ section.settings.round_left_text }} </p>
+              <div class="chatButton">
+                <a href="https://scarflings.com/pages/book-stylist" class="btn">{{ section.settings.chatnow }}</a>
+              </div>
+            </div>
+            <img src="{{ section.settings.round_image_right | img_url: 'master' }}">
+       </div>
+   </div>
+</section>
+{% schema %}
+  {
+    "name": "Right image section",
+    "settings": [
+      {
+        "id": "round_left_heading",
+        "type": "html",
+        "label": "heading"
+      },
+		{
+        "id": "round_left_text",
+        "type": "html",
+        "label": "text"
+      },
+		{
+        "id": "chatnow",
+        "type": "text",
+        "label": "button"
+      },
+		{
+		"id": "bottom_bg",
+        "type": "image_picker",
+        "label": "Background"
+		},
+		{
+		"id": "round_image_right",
+        "type": "image_picker",
+        "label": "Image"
+		}	
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

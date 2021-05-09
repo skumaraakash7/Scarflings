@@ -1,0 +1,80 @@
+<section class="refund_section" id="section_k_{{ section.id }}">
+  <div class="leftBg" style="background-image:url('{{ section.settings.ref_left_bg | img_url: 'master' }}');
+"></div>
+    <div class="rightBg" style="background-image:url('{{ section.settings.ref_right_bg | img_url: 'master' }}');
+"></div>
+	<div class="container">
+      <div class="refund_note">
+         {{ section.settings.refund_note }}
+      </div>
+      <div class="accordion-container">
+        <h3>{{ section.settings.refund_head }}</h3>
+        {% for block in section.blocks %}
+
+          <div class="set ">
+            <a href="javascript:void(0)" class="active">
+              {{ block.settings.ref_question }}
+              <i class="fa fa-angle-right"></i>
+            </a>
+            <div class="content">
+              <p> {{ block.settings.ref_answer }}</p>
+            </div>
+          </div>
+
+         {% endfor %}
+       </div>
+   </div>
+</section>
+{% schema %}
+  {
+    "name": "Refund section",
+    "settings": [
+	  {
+        "id": "refund_note",
+        "type": "html",
+        "label": "Text"
+      },
+		{
+        "id": "refund_head",
+        "type": "html",
+        "label": "Heading"
+      },
+      {
+      "id": "ref_left_bg",
+      "type": "image_picker",
+      "label": "Left Background"
+      },
+      {
+      "id": "ref_right_bg",
+      "type": "image_picker",
+      "label": "Tright Background"
+      }
+    ],
+	"max_blocks": 20,
+	"blocks": [
+      {
+        "type": "accordian",
+        "name": "Accordian 1",
+        "settings": [
+         
+      {
+        "id": "ref_question",
+        "type": "html",
+        "label": "Question"
+      },
+		{
+        "id": "ref_answer",
+        "type": "html",
+        "label": "Answer"
+      }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

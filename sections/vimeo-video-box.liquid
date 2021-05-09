@@ -1,0 +1,90 @@
+<!-- Youtube video -->
+<section class="parallax0 parallax100 desktop-bg" style="background-image: url({% if section.settings.vim--image != blank %}{{ section.settings.vim--image | img_url: 'master' }}{% else %} {{ 'videobox.jpg' | asset_img_url: '1920x601' }} {% endif %});background-color:#244024 !important;">
+
+  <div class="mobile-video-bg" style="background-image: url({% if section.settings.vim--image--mobile != blank %}{{ section.settings.vim--image--mobile | img_url: 'master' }}{% else %} {{ 'videobox.jpg' | asset_img_url: '1920x601' }} {% endif %});">
+
+    <div class="overlay0 p-t-190 p-b-200">
+      <div class="flex-col-c-m p-l-15 p-r-15">
+        {% if section.settings.vim--heading != blank %}  
+        <span class="m-text9 p-t-45 fs-20-sm">
+          {{ section.settings.vim--heading }}
+        </span>
+        {% endif %}
+        {% if section.settings.vim--heading2 != blank %}  
+        <h3 class="l-text1 fs-35-sm">
+          {{ section.settings.vim--heading2 }}
+        </h3>
+        {% endif %}
+        <span class="btn-play s-text4 hov5 cs-pointer p-t-25 play_vimeo_video_{{ section.id }}" data-toggle="modal" data-target="#slideshow-{{ section.id }}">
+          <i class="fa fa-play" aria-hidden="true"></i>
+          Play Video
+        </span>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- Modal Video 02-->
+<div class="modal fade modal-video" id="slideshow-{{ section.id }}" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document" data-dismiss="modal">
+    <div class="close-mo-video-01 trans-0-4" data-dismiss="modal" aria-label="Close">&times;</div>
+    <div class="wrap-video-mo-01">
+      <div class="w-full wrap-pic-w op-0-0"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="{{ 'video-16-9.jpg' | asset_url }}" class="lazyload" alt="IMG"></div>
+      <div class="video-mo-02" id="vimeo_video_{{ section.id }}">
+        
+<!-- 347387207   347162335      	 -->
+ 
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $('.play_vimeo_video_{{ section.id }}').on('click', function(e){
+  	
+  	$("#vimeo_video_{{ section.id }}").html('<iframe src="https://player.vimeo.com/video/{{ section.settings.vim--video--src }}?color=ffffff&title=0&byline=0&portrait=0&autoplay={{ section.settings.video_autoplay }}" allowfullscreen></iframe>');
+  });
+</script>
+
+{% schema %}
+{
+   "name": "Vimeo Video Box",
+   "settings": [
+      {
+         "type": "image_picker",
+         "id": "vim--image",
+         "label": "Image",
+         "info": "For Desktop resolution 1920 x 650px recommended for preload image"
+      },
+{
+         "type": "image_picker",
+         "id": "vim--image--mobile",
+         "label": "Image",
+         "info": "For Mobile resolution 750 x 1000 recommended"
+      },
+      {
+        "type": "text",
+        "id": "vim--heading",
+        "label": "Heading"
+      },
+      {
+        "type": "text",
+        "id": "vim--heading2",
+        "label": "Heading 2"
+      },  
+	  {
+         "type": "text", 
+         "id": "vim--video--src",
+         "label": "Vimeo Video Src",
+         "default": "348304224",
+         "info": "Add id for vimeo"
+      }
+   ],
+   "presets": [
+      {
+         "name": "Vimeo VideoBox",
+         "category": "Image"
+      }
+   ]
+}
+{% endschema %}
+

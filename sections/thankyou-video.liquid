@@ -1,0 +1,103 @@
+<style>
+  #shopify-section-thankyou-video {
+      padding: 100px 0px 100px 0px;
+  }
+  .videoInnerSection {
+    padding: 0px 150px 60px 150px;
+  }
+  .videoInnerSection iframe {
+      width: 100%;
+      height: 450px;
+      position: relative;
+  }
+  .videoSection .simpletext {
+      text-align: center;
+      max-width: 100%;
+      width: 865px;
+      margin: 0 auto;
+  }
+  .videoSection .simpletext {
+      text-align: center;
+  }
+  @media (min-width: 768px) and (max-width: 991px){
+  	.videoInnerSection {
+    padding: 0px 50px 40px 50px;
+    }
+    #shopify-section-thankyou-video {
+        padding: 80px 0px 35px 0px;
+    }
+    .videoInnerSection iframe {
+        width: 100%;
+        height: 350px;
+      
+    }
+  }
+  @media (max-width: 767px){
+  	.videoInnerSection {
+        padding: 0px 0px 30px 0px;
+        text-align: center;
+    }
+    #shopify-section-thankyou-video {
+        padding: 60px 0px 0px 0px;
+    }
+    .videoInnerSection iframe {
+        width: 350px;
+        height: 225px;
+        max-width: 100%;
+    }
+    .videoSection p {
+        padding: 0px 0px;
+        text-align: center;
+    }
+  }
+  @media (max-width: 400px){
+  	.videoInnerSection {
+        padding: 20px 0px 0px 0px;
+        text-align: center;
+    }
+    #shopify-section-thankyou-video {
+        padding: 0px 0px 0px 0px;
+    }
+  }
+</style>
+<section class="videoSection">
+  <div class="container">
+    <div class="videoInnerSection">
+      <iframe src="{{ section.settings.thank_video}}" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      </div>
+      <div class="simpletext">
+        <h2>{{ section.settings.thank_video_heading}}</h2>
+        <p>{{ section.settings.thank_video_text}}</p>
+      </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Video Content",
+    "settings": [
+      {
+        "id": "thank_video",
+        "type": "text",
+        "label": "Video url"
+      },
+		{
+		"id": "thank_video_heading",
+        "type": "text",
+        "label": "Heading"
+		}
+	   ,
+		{
+		"id": "thank_video_text",
+        "type": "text",
+        "label": "Text"
+		}
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

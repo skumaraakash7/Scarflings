@@ -1,0 +1,55 @@
+<style>
+  .quote_section.first .right_top_image{
+    background-image: url('{{ section.settings.section_image | img_url: 'master' }}');
+  }
+  @media (max-width:768px){
+    
+    .quote_section.first .left_top_image{
+    	background-image: url('{{ section.settings.section_bg_image | img_url: 'master' }}');
+  	}
+    
+  }
+</style>
+<section class="quote_section first">
+  	<div class="left_top_image">
+	</div>
+  	<div class="right_top_image">
+	</div>
+	<div class="container">
+		<p>
+			{{ section.settings.section_title }}
+
+		</p>
+	
+		
+	</div>
+</section>
+
+{% schema %}
+  {
+    "name": "Holiday Quote First",
+    "settings": [
+     {
+        "id": "section_title",
+        "type": "text",
+        "label": "Section Title",
+        "default": "Title"
+      },{
+		"id": "section_image",
+        "type": "image_picker",
+        "label": "Bg Image Right"
+		},{
+		"id": "section_bg_image",
+        "type": "image_picker",
+        "label": "Bg Image left mobile"
+		}
+		
+]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

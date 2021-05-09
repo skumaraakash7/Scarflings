@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<!--[if IE 8 ]>
+<html dir="ltr" lang="en" class="ie8">
+<![endif]-->
+<!--[if IE 9 ]>
+<html dir="ltr" lang="en" class="ie9">
+<![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html dir="ltr" lang="en">
+  <!--<![endif]-->
+  <head> 
+     
+    <!-- Basic page needs ================================================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {% if settings.favicon_enable %}
+    <link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}" />
+    <link rel="apple-touch-icon" href="{{ 'favicon.png' | asset_url }}" />
+    {% endif %}
+    <meta name="google-site-verification" content="yxH3P-bGonrSLN2YpbDkUGhQ6hMzHvPGf5fBekO9J0U" />
+   <meta name="msvalidate.01" content="8986DCAAD39B5CEE70B0D5C8BE3944BC" />
+    <script>(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"25058976"};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");</script>
+    
+    <!-- Title and description ================================================== -->
+    <title>
+      {{ page_title }}{% if current_tags %}{% assign current_tags_joined = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: current_tags_joined }}{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+    </title>
+    {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+    <base href="{{ canonical_url }}" />
+
+    <!-- Product meta ================================================== -->
+    {% include 'open-graph-tags' %}
+    {% include 'twitter-card' %}
+
+    <!-- CSS ================================================== -->
+    {% include 'header-css-file' %}
+
+    <!-- App ================================================== -->
+    {% comment %}
+    {{ content_for_header }}
+    {% endcomment %}
+
+    {% assign content_header = content_for_header | replace: ' x.parentNode.insertBefore(s, x)', 'loadJS(urls[i])' | remove: "window.attachEvent('onload', asyncLoad)" | replace: "window.addEventListener('load', asyncLoad, false)", "window.addEventListener('load', function load(event){setTimeout(function(){asyncLoad();loadJS('//cdn.codeblackbelt.com/js/modules/frequently-bought-together/main.min.js?shop=scarflings.myshopify.com');}, 4000)},false)" | replace: "first.parentNode.insertBefore(script, first)", "window.addEventListener('load', function load(event){setTimeout(function(){loadJS('https://cdn.shopify.com/s/javascripts/tricorder/trekkie.storefront.min.js?v=2017.09.05.1')}, 5000)},false)" %}
+    {{ content_header }}
+
+    <!-- JS ================================================== -->
+    {% include 'header-js-file' %}    
+  
+	{{ shop.metafields.loox["global_html_head"] }}
+   
+<!-- Font-Awesome ================================================== -->
+	{{ 'font-awesome.min.css' | asset_url | stylesheet_tag }}
+    
+    
+</head>
+  <div id="qab_placeholder">
+    <script>
+      var qab_adjusted = false;
+      $( "#qab_placeholder" ).on( "qab_fully_loaded", function(event, p1) {
+        if ((p1=='inserted' || p1=='inserted_sticky') && !qab_adjusted ){
+          qab_adjusted = true;
+          var qab_height = $("#qab_background").height();
+          $("<div />", {html: '<style>' + 'nav.isStuck{top:' + qab_height + 'px !important;}' + '</style>'}).appendTo("body");
+        }
+      });
+    </script>
+  </div>
+  <body class="animsition{% case template %}
+               {% when 'index' %}
+
+               {% when 'collection' %}
+               collection
+               {% when 'blog' %}
+               blog-blog
+               {% when 'article' %}
+               blog-article
+               {% when 'cart' %}
+               checkout-cart
+               {% when 'customers/login' %}
+               account-login
+               {% else %}
+               {% endcase %}" >
+    <!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+    {% section 'header' %}
+        
+    <div class="contentforlayout">
+      {{ content_for_layout }}
+      <!-- End Content -->  
+
+      {% include 'quickview' %}
+
+      {% section 'footer' %}
+    </div>
+    <!-- Back to top -->
+    <div class="btn-back-to-top bg0-hov" id="myBtn">
+      <span class="symbol-btn-back-to-top">
+        <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+      </span>
+    </div>
+    <!-- Container Selection1 -->
+    <div id="dropDownSelect1"></div>
+    {% if settings.show_pupup and template == 'index'%}
+    {% include 'popup' %}
+    {% endif %}
+    <!-- JavaScripts-->
+
+    <script defer src="{{ 'animsition.min.js' | asset_url }}" ></script>
+    <script defer src="{{ 'popper.js' | asset_url }}" ></script>
+    <script defer src="{{ 'bootstrap.min.js' | asset_url }}" ></script>
+
+    <script defer src="{{ 'slick.min.js' | asset_url }}" ></script>
+    <script defer src="{{ 'slick-custom.js' | asset_url }}" ></script>
+    <script defer src="{{ 'lightbox.min.js' | asset_url }}" ></script>
+    <script defer src="{{ 'sweetalert.min.js' | asset_url }}" ></script>
+    
+    <script defer src="{{ 'main.js' | asset_url }}" ></script>
+    <script defer src="{{ 'owl.carousel.min.js' | asset_url }}" ></script>
+    <script defer src="{{ 'common.js' | asset_url }}" ></script>
+    <script defer src="{{ 'jquery.magnific-popup.min.js' | asset_url }}" ></script>
+    <script defer src="{{ 'quickview.js' | asset_url }}" ></script>
+    <script defer src="{{ 'jquery.cookie.js' | asset_url }}" ></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.js" ></script>
+    <script defer src="{{ 'ajaxify.js' | asset_url }}" ></script>
+    <script defer src="{{ 'fastclick.min.js' | asset_url }}" ></script>
+    <script defer src="{{ 'ajaxinate.min.js' | asset_url }}" ></script>
+    
+    <script src="{{ 'select2.min.js' | asset_url }}" ></script>
+    <script src="{{ 'parallax100.js' | asset_url }}" ></script>
+    
+    <script type="text/javascript">
+      $(".selection-1").select2({
+        minimumResultsForSearch: 20,
+        dropdownParent: $('#dropDownSelect1')
+      });
+
+      /* $('.block2-btn-addcart').each(function(){
+        var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+        $(this).on('click', function(){
+          swal(nameProduct, "is added to cart !", "success");
+        });
+      });*/
+
+      $('.block2-btn-addwishlist').each(function(){
+        var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+        $(this).on('click', function(){
+          swal(nameProduct, "is added to wishlist !", "success");
+        });
+      });
+
+      $('.parallax100').parallax100();
+    </script>
+    <!--===============================================================================================-->
+
+    {% if template contains 'customers' %}
+    {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+    {{ 'customer_area.js'  | shopify_asset_url | script_tag }}
+    {% endif %}
+
+    <script>
+      var moneyFormat = '{{ shop.money_format }}';
+    </script>
+
+    {% if template == 'product' %}
+    {{ 'handlebars.min.js' | asset_url | script_tag }}
+    {% endif %}
+    {% if settings.ajax_cart_method != 'page' %}
+    {% include 'ajax-cart-template' %}
+
+    <script>
+      jQuery(function($) {
+        ajaxifyShopify.init({
+          method: '{{ settings.ajax_cart_method }}',
+          wrapperClass: 'product-detail',
+          formSelector: '#addToCartForm',
+          addToCartSelector: '#addToCart',
+          cartCountSelector: '.cart-count',
+          cartCostSelector: '.cart-cost',
+          toggleCartButton: '.cart-toggle',
+          useCartTemplate: true,
+          btnClass: 'btn',
+          moneyFormat: {{ shop.money_format | json }},
+          disableAjaxCart: false,
+          enableQtySelectors: true
+        });
+      });
+    </script>
+    {% endif %}
+
+    {% if template  == 'product' %}
+    {{ 'shop.js' | asset_url | script_tag }}
+    {% endif %}
+   
+
+    {{ shop.metafields.loox["global_html_body"] }}
+    
+  
+    <script>
+      jQuery(document).ready(function($){
+        $('img.lazyload').lazyload();
+      });
+    </script>
+  {% include 'carro' %}
+  
+<!-- BEGIN KLAVIYO SIGNUP FORM CODE -->
+<script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=QCjJzy"></script>
+<!-- END BEGIN KLAVIYO SIGNUP FORM CODE -->
+
+  {% include 'mycurrencies' %}
+  
+  
+
+
+
+
+
+
+
+
+</body>
+</html>

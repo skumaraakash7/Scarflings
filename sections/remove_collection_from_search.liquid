@@ -1,0 +1,35 @@
+{% for block in section.blocks %}
+<script>
+  $('a[href*="{{ block.settings.menu_link}}"]').addClass('snize-exclude-link');  
+</script>
+{% endfor %}
+
+{% schema %}
+  {
+    "name": "Remove Link from search",
+    "settings": [],
+	"blocks": [
+      {
+        "type": "MenuLink",
+        "name": "Menu Link",
+        "settings": [
+          {
+            "id": "menu_link",
+            "type": "url",
+            "label": "Menu Link"
+          },{
+        "id": "exclude_from_searchandise",
+        "type": "checkbox",
+        "label": "Exclude From Search App"
+      }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

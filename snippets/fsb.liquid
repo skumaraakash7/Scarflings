@@ -1,0 +1,80 @@
+{% if section.settings.use_free_shipping_bar %}
+
+
+{% assign free_shipping_threshold = all_products["free-shipping"].compare_at_price %}
+{% assign cart_total = cart.total_price %}
+{% assign free_gift_threshold = all_products[settings.free_gift].compare_at_price %}
+<div class="ffsbcontent">
+  <div class="mob_no desktop_only"><a href="tel:{{section.settings.top_bar_phone}}">{{section.settings.top_bar_phone_text}} {{section.settings.top_bar_phone}}</a></div>
+  	
+<div id='ffsb' style="background-color: {{section.settings.free_shipping_bar_bg}}; color: {{section.settings.free_shipping_bar_color}}" data-free_ship_th="{{ free_shipping_threshold }}">
+
+    
+  <div id='ffsbmsg'>
+    
+    
+    {% if section.settings.free_shipping_bar_content != '' %}
+      <div class="announce_ment_slide">
+        
+        {% if free_shipping_threshold != '' and cart_total >= free_shipping_threshold %}
+            {{section.settings.free_shipping_bar_success }}
+
+        {% elsif cart_total == 0 %}
+            {% assign fsb_span = "<span style='color:" | append: section.settings.free_shipping_bar_money | append: "'>"%}
+            {% assign fsb_threshold = free_shipping_threshold | money_without_trailing_zeros  %}
+            {% assign fsb_span = fsb_span | append: fsb_threshold | append: '</span>' %}
+            {{section.settings.free_shipping_bar_content | replace: 'fsb_amount',fsb_span }}
+
+        {% else %}
+            {% assign fsb_span = "<span style='color:" | append: section.settings.free_shipping_bar_money | append: "'>"%}
+            {% assign fsb_diff = free_shipping_threshold | minus: cart_total | money %}
+            {% assign fsb_span = fsb_span | append: fsb_diff | append: '</span>' %}
+            {{section.settings.free_shipping_bar_halfway | replace: 'fsb_amount',fsb_span }}
+
+        {% endif %}
+        
+      </div>
+    {% endif %}
+    {% if section.settings.free_gift_content != '' %}
+      <div class="announce_ment_slide">
+          {% if free_gift_threshold != '' and cart_total >= free_gift_threshold %}
+            {{section.settings.free_gift_success }}
+
+          {% elsif cart_total == 0 %}
+              {% assign fg_span = "<span style='color:" | append: section.settings.free_shipping_bar_money | append: "'>"%}
+              {% assign fg_threshold = free_gift_threshold | money_without_trailing_zeros  %}
+              {% assign fg_span = fg_span | append: fg_threshold | append: '</span>' %}
+              {{section.settings.free_gift_content | replace: 'fg_amount',fg_span }}
+
+          {% else %}
+              {% assign fg_span = "<span style='color:" | append: section.settings.free_shipping_bar_money | append: "'>"%}
+              {% assign fg_diff = free_gift_threshold | minus: cart_total | money %}
+              {% assign fg_span = fg_span | append: fg_diff | append: '</span>' %}
+              {{section.settings.free_gift_halfway | replace: 'fg_amount',fg_span }}
+
+          {% endif %}
+      </div>
+    {% endif %}
+  </div>
+  </div>
+</div>
+<script>
+  
+  $(document).ready(function(){
+    $('#ffsbmsg').slick({
+    draggable: true,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    arrows: false,
+    dots: false,
+    fade: true,
+    speed: 500,
+    infinite: true,
+    cssEase: 'ease-in-out',
+    touchThreshold: 100
+  });
+  });
+</script>
+
+
+{% endif %}

@@ -1,0 +1,5089 @@
+{% include 'query_string_checker' %}
+<script>
+var encoded = false;
+  $(document).ready(function(){
+  	
+    
+    if(encoded){
+        var encrypted_email = window.atob(window.queryStrings["email"]);
+    	var encrypted_number = window.atob(window.queryStrings["otp"]);
+    
+    }else{
+      	var encrypted_email = window.queryStrings["email"];
+    	var encrypted_number =window.queryStrings["otp"];
+    }
+    
+      setTimeout(function(){
+        
+      
+          if(window.queryStrings["email"] != undefined){
+            $("#subscription_btn").hide();
+            $("#subscription_email").val(encrypted_email);
+            $("#subscription_verify_otp").show();
+            $("#subscription_verify_otp").trigger("click");
+          }
+        
+        },2000);
+  
+    });
+</script>
+<!-- Title Page -->
+<link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+<link href="https://fonts.googleapis.com/css?family=DM+Serif+Text:400,400i|Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
+<style>
+span.email_error {
+    margin-bottom: 10px !important;
+    display: flex;
+    color: red;
+    justify-content: center;
+  	
+}
+.hero_play_button {
+    margin: 0px 0px 15px 0px;
+    display: block;
+    width: 200px;
+}
+.take_ques{
+  display:none;
+}
+   html, body {
+  scroll-behavior: smooth;
+}
+span.code_error {
+    color: #79ff63;
+    margin-bottom: 10px !important;
+    display: flex;
+    justify-content: center;
+}
+body.modal-open {
+    overflow: visible;
+}
+.imageSlide input[type="radio"] {
+     display: none; 
+    /* height: 0px; */
+    position: absolute;
+    width: 100% !important;
+    height: 100%;
+  z-index: 9999;
+}
+.btn.focus, .btn:focus {
+    outline: 0;
+    box-shadow: unset !important;
+}
+ html {
+    padding: 0px !important;
+    overflow-x: hidden !important;
+}
+  header.header2 {
+    position: relative;
+}
+  .container-menu-header-v2 {
+    position: relative;
+    margin-top: 0px !important;
+}
+.simpletext h2 {
+    color: #b44b2b;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 1.2em;
+    margin-bottom: 15px;
+}
+section.subscription_information .simpletext h3 {
+    margin-top: 45px;
+    font-size: 40px !important;
+    margin-bottom: 10px !important;
+    color: #000 !important;
+}
+.simpletext a.btn.btn--cta.cpsgts img {
+    width: 19px;
+    margin: -4px 0 0 5px;
+}
+section.subscription_information .simpletext h3 span{
+    color: #c3872b !important;
+  
+}
+.subscription_information p span.date {
+    color: #c3872b;
+    padding: 0px 0px;
+    font-weight: bold;
+}
+section h1, section h2, section h3, section h4, section h5, section h6{
+        font-family: 'DM Serif Text', serif !important;
+}
+#section_k_subscription_banner_section_desktop .simpletext {
+    padding: 100px 0px 115px 0px;
+}
+section#section_k_subscription_banner_section_desktop {
+  	background: transparent;
+}
+section#section_k_subscription_banner_section_desktop .btn.btn--cta.cpsgts:hover {
+    background: #ab4618 !important;
+}
+ 
+#shopify-section-subscription_banner_section_desktop {
+    background: transparent;
+    padding: 0px;
+    height: 100%;
+}
+section#section_k_subscription_banner_section_desktop{
+    background-repeat: no-repeat;
+    position: relative;
+    background-size: cover;
+    background-position: bottom;
+    padding: 0px !important;
+  
+}
+#section_k_subscription_banner_section_desktop sup {
+    font-size: 10px;
+}
+ section#section_k_subscription_banner_section_mobile {
+    background-repeat: no-repeat;
+    position: relative;
+    background-size: cover;
+    padding: 0px !important;
+}
+#section_k_subscription_banner_section_desktop .simpletext, #section_k_subscription_banner_section_mobile .simpletext {
+    height: 100%;
+    padding: 0px 25px 0px 15px;
+}
+#shopify-section-subscription_banner_section_desktop .simpletext h2 {
+    color: #000 !important;
+    font-weight: 400;
+    font-size: 42px !important;
+    margin-top: 50px;
+    max-width: 100%;
+    width: 530px;
+}
+#section_k_subscription_banner_section_desktop .simpletext h2 span, #section_k_subscription_banner_section_mobile .simpletext h2 span {
+    color: #b64c28;
+}
+#section_k_subscription_banner_section_desktop .simpletext p span, #section_k_subscription_banner_section_mobile .simpletext p span {
+
+color: #c3872b;
+    padding: 0px 0px;
+    font-weight: bold;
+
+}
+section#section_k_subscription_banner_section_desktop {
+    height: 820px;
+}
+#shopify-section-subscription_banner_section_mobile{
+  display: none;
+}
+  .subscription_information {
+    text-align: center;
+    padding: 35px 0px 45px 0px;
+}
+.simpletext b {
+    color: #c3872b;
+}
+.subscription_information h3 {
+    color: #c3872b;
+    margin-top: 30px;
+}
+#section_k_slider_subscription_cta_section .row {
+    margin: 0 auto;
+    width: 100%;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+}
+#section_k_slider_subscription_cta_section .row h3 {
+    color: #fff !important;
+    font-size: 36px !important;
+    text-align: left !important;
+    margin-bottom: 0px !important;
+}
+#section_k_slider_subscription_cta_section .row p {
+    font-size: 16px;
+    color: #fff !important;
+}
+.simpletext a.btn.btn--cta.cpsgts, .submitButton button{
+    background: #b65327 !important;
+    color: #fff;
+    padding: 5px 32px;
+    margin-left: 15px;
+    font-family: 'DM Serif Text', serif !important;
+    font-weight: 400;
+    border-radius: 10px !important;
+    display: inline-block;
+    line-height: 1.6em;
+    font-size: 22px !important;
+    margin: 0px;
+    width: auto;
+}
+.submitButton button {
+    border-radius: 10px !important;
+    padding: 7px 35px;
+  text-transform: uppercase;
+}
+.submitButton button:hover, .monthly_btn button:hover, .yearly_btn button:hover, .resultSection button:hover, #imgRight_txt_ a.btn.btn--cta.cpsgts:hover {
+    background: #ab4618 !important;
+    animation-name: unset !important;
+  color:#fff !important;
+}
+.submitButton button {
+    border-radius: 10px !important;
+    padding: 7px 35px;
+    text-transform: uppercase;
+}
+  .submitButton {
+  	text-align: center;
+  }
+section#section_k_subscription_cta_section {
+    margin: 55px 0px 0px 0px;
+}
+.rondedImageLeft .SliderLeftImage {
+    height: 400px;
+    position: absolute;
+    background-repeat: no-repeat;
+    top: 0px;
+    background-size: contain;
+    width: 400px;
+    right: 0px;
+}
+.rondedImageLeft {
+    position: relative;
+    height: 400px;
+}
+div#section_k_slider_subscription_cta_section .row {
+    height: 100%;
+    padding: 0px;
+    display: flex;
+    align-items: center;
+    width: 875px;
+    max-width: 100%;
+}
+div#section_k_slider_subscription_cta_section {
+    margin: 0 auto;
+    width: 100%;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    height: 300px;
+    display: flex;
+    align-items: center;
+}
+.row{
+  flex-direction: row;
+}
+  .subForminnersection {
+    background: #ffffff;
+    box-shadow: -3px 3px 9px 1px #ddd;
+    padding: 50px 35px 55px 35px;
+    text-align: left;
+    position: relative;
+    border-radius: 10px;
+    z-index: 999;
+}
+.subFormsection {
+    background-repeat: no-repeat;
+    background-position: -102px 235px;
+    background-size: 400px;
+    max-width: 100%;
+    margin: 0px 0px 0px 0px;
+    padding: 100px 0px 50px 0px;
+    position: relative;
+}
+
+section.bg-title-page {
+    padding: 32px;
+}
+.subForminnersection .simpletext h2 {
+    color: #000;
+    font-weight: 400;
+    font-size: 40px;
+}
+.subForminnersection .simpletext h2 span {
+    color: #b64c28;
+}
+.formSection label {
+    font-size: 16px;
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 400;
+    color: #000;
+  	height: 100%;
+}
+  .imageSlide{
+  padding: 0px 10px;
+    position: relative;
+  }
+.imageSlide img {
+    width: 100%;
+    height: 275px;
+    object-position: top;
+    object-fit: cover;
+}
+ .slick-dots li button {
+    color: transparent;
+}
+.slick-dots li button {
+    height: 12px !important;
+}
+ul.slick-dots {
+    display: flex;
+    margin: 15px 0px 0px 0px;
+    justify-content: center;
+}
+.field-group {
+    margin-bottom: 42px;
+}
+.slick-dots li {
+    width: 12px;
+    height: 12px;
+    background: transparent;
+    border: 1px solid #c3872b;
+    margin: 0px 5px;
+    border-radius: 50px;
+    list-style-type: none !important;
+}
+.slick-dots li.slick-active {
+    background: #c3872b;
+}
+  .radio_circle {
+    width: 25px;
+    height: 25px;
+    border: 1px solid #c3872b;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    margin-right: 10px;
+}
+input[type=radio] {
+    width: 10px !important;
+    margin-left: 8px !important;
+}
+input:checked ~ .checkmark {
+    background-color: #C3872B;
+    border-radius: 50%;
+    width: 17px;
+    height: 17px;
+    margin-left: 3px;
+    left: 0px;
+    margin-top: 3px;
+}
+.checkmark {
+    position: absolute;
+    background-color: #fff;
+    border-radius: 50%;
+    width: 17px;
+    height: 17px;
+    margin-left: 3px;
+    margin-top: 3px;
+    left: 0px;
+}
+.radioInputs{
+  position: relative;
+}
+.radioInputs label{
+  position: relative;
+    left: 0px;
+    z-index: 999;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    display: block;
+    line-height: 1.7em;
+}
+.overlay {
+    position: absolute;
+    z-index: 999;
+    background: rgba(157,62,33,0);
+    width: 95%;
+    height: 0px;
+    top: 0px;
+    left: 10px;
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  	 height: 100%;
+}
+.imageSlide input[type="radio"]:checked + .overlay {
+    background: rgba(157,62,33,0.8);
+}
+.imageSlide input[type="radio"]:checked + .overlay > img{
+    opacity:1;
+}
+.overlay img{
+    width: 60px !important;
+  height: auto !important;
+  opacity:0;
+}
+.subForminnersection .simpletext {
+    padding: 0px 165px;
+}
+.subForminnersection .simpletext p {
+    margin: 0px 0px 34px 0px !important;
+    padding-top: 0px;
+}
+.close_section {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    color: #ccc;
+    font-size: 24px;
+}
+.bottom_bg {
+    background-repeat: no-repeat;
+    background-size: 400px;
+    position: absolute;
+    bottom: 99px;
+    height: 480px;
+    width: 480px;
+    background-position: 195px 0px;
+    right: 0px;
+    bottom: 135px;
+}
+  .Plan {
+    float: left;
+}
+
+.ribbon {
+    position: absolute;
+    right: 18px;
+    top: 0px;
+    z-index: 1;
+    overflow: hidden;
+    width: 130px;
+    height: 130px;
+    text-align: right;
+    background-color: transparent!important;
+}
+.ribbon span {
+    font-size: 15px !important;
+    font-weight: bold;
+    color: #FFF;
+    text-transform: uppercase;
+    text-align: center !important;
+    line-height: 1.5em;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    width: 225px;
+    display: block;
+    background: #79A70A;
+    background: #b64d27;
+    box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+    position: absolute;
+    top: 8px;
+    padding-left: 37px;
+    right: -49px;
+    padding: 5px 0px 5px 42px;
+}
+.ribbon span::before {
+  content: "";
+  position: absolute; left: 0px; top: 100%;
+  z-index: -1;
+  border-left: 3px solid #8F5408;
+  border-right: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #8F5408;
+}
+.ribbon span::after {
+  content: "";
+  position: absolute; right: 0px; top: 100%;
+  z-index: -1;
+  border-left: 3px solid transparent;
+  border-right: 3px solid #8F5408;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #8F5408;
+}
+.plan_section .switch {
+  position: relative;
+  display: inline-block;
+  width: 70px;
+  height: 34px;
+}
+
+.plan_section .switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.plan_section .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #b65327;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.plan_section .slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.plan_section input:checked + .slider {
+  background-color: #2196F3;
+}
+
+.plan_section input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+.plan_section input:checked + .slider:before {
+  -webkit-transform: translateX(36px);
+  -ms-transform: translateX(36px);
+  transform: translateX(36px);
+}
+
+/* Rounded sliders */
+.plan_section .slider.round {
+  border-radius: 34px;
+}
+
+.plan_section .slider.round:before {
+  border-radius: 50%;
+}
+.plan_section hr {
+    padding: 0px 30px;
+    width: 1000px;
+  max-width: 100%;
+    margin: 0 auto;
+    color: #808080;
+}
+.plan_section {
+    text-align: center;
+}
+.plan_section .month_year_switch {
+    margin: 55px 0px -15px 0px;
+}
+.plan_section input:checked + .slider {
+    background-color: #b65327;
+}
+.month_year_switch label {
+    font-size: 20px;
+    padding-bottom: 0px;
+    margin: 0px 8px;
+    color: #c3872b;
+    font-family: poppins;
+    font-weight: 600;
+}
+section h2.yearlydiscountedBill {
+    margin-bottom: 60px !important;
+}
+.month_year_switch h2 {
+    margin: 23px 0px 63px 0px;
+    color: #b65327;
+    font-size: 70px;
+    font-weight: 500;
+}
+.sub_features img {
+    width: auto;
+    height: 70px;
+}
+.sub_features p {
+    color: #000;
+    font-size: 18px;
+}
+.sub_features {
+    margin-bottom: 60px;
+}
+.plan_section {
+    padding: 0px;
+    background-repeat: no-repeat;
+    background-position: calc(100% - -110px) 510px;
+    background-size: 400px;
+}
+  .yearlydiscountedBill, .yearlytotalBill{
+  display: none;
+  }
+.yearlyBilled h2.monthBill {
+    display: none;
+}
+h2.yearlytotalBill {
+    color: #a6a6a6;
+    font-size: 24px;
+    margin-bottom: 0px;
+}
+h2.yearlydiscountedBill {
+    margin-top: 0px;
+}
+.yearlyBilled h2.yearlytotalBill, .yearlyBilled h2.yearlydiscountedBill {
+    display: block;
+}
+.yearlyBilled .offer_section{
+  display:flex;
+}
+  .yearlyBilled .yearly_btn{
+  display: block !important;
+  }
+ .yearlyBilled .monthly_btn{
+  display: none !important;
+  }
+
+.PlanInner {
+    box-shadow: -3px 3px 9px 1px #ddd;
+    padding: 60px 29px;
+    text-align: center;
+    margin: 0px 0px;
+    background: #fff;
+    border-radius: 10px;
+}
+.PlanInner img {
+    width: 100%;
+    height: 250px;
+    margin-bottom: 20px;
+    object-fit: cover;
+    object-position: top;
+}
+.PlanInner span {
+    text-align: left;
+    display: inline-block;
+    font-size: 16px;
+    font-family: poppins;
+    margin-top: 10px;
+}
+.PlanInner h5 {
+    color: #c3872b;
+    font-weight: bold;
+    font-size: 22px;
+    margin-bottom: 30px;
+    font-family: poppins !important;
+    margin: 00px auto 30px auto;
+    width: 180px;
+    text-align: center;
+}
+.monthly_btn, .yearly_btn {
+    display: block !important;
+    background: #b65327;
+    color: #fff;
+    padding: 0px;
+    margin-left: 15px;
+    font-family: 'DM Serif Text', serif !important;
+    font-weight: 400;
+    border-radius: 10px;
+    margin: 30px 0px 0px 0px;
+    font-size: 22px !important;
+    width: 100%;
+}
+  .yearly_btn{
+  
+  display: none !important;
+  }
+.monthly_btn button, .yearly_btn button {
+    background: #b65327;
+    color: #fff;
+    padding: 5px 10px;
+    font-family: 'DM Serif Text', serif !important;
+    font-weight: 400;
+    border-radius: 10px !important;
+    font-size: 22px !important;
+    transition: 0.3s ease;
+}
+.PlanInner img {
+    width: 100%;
+    height: 250px;
+    margin-bottom: 20px;
+}
+.PlanInner p {
+    text-align: left;
+}
+p.largePara {
+    min-height: 230px;
+    margin-bottom: 10px !important;
+    padding-bottom: 0px !important;
+}
+p.smallPara {
+    min-height: 60px;
+    margin-bottom: 10px !important;
+    padding-bottom: 0px !important;
+    font-weight: bold !important;
+}
+
+.month_year_switch label.bill_yearly {
+    color: #aaa;
+}
+
+.yearlyBilled label.bill_yearly {
+    color: #c3872b;
+}
+.yearlyBilled label.bill_monthly {
+    color: #aaa;
+}
+.progress2 {
+    background-color: #e6e6e6;
+    border-radius: 50px;
+}
+.cssProgress .cssProgress-bar {
+    display: block;
+    float: left;
+    width: 0%;
+    height: 100%;
+    background: #b65227;
+    /* box-shadow: inset 0px -1px 2px rgba(0, 0, 0, 0.1); */
+    -webkit-transition: width 0.8s ease-in-out;
+    transition: width 0.8s ease-in-out;
+    position: relative;
+  	    border-radius: 50px;
+  overflow: visible !important;
+}
+.cssProgress .progress1, .cssProgress .progress2, .cssProgress .progress3 {
+    position: relative;
+    height: 30px;
+    width: 100%;
+}
+.cssProgress .cssProgress-label {
+    position: absolute;
+    left: auto;
+    right: 0px;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    font-family: poppins;
+    width: 35px;
+    height: 35px;
+    top: -55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    background: #b65227;
+    justify-content: center;
+ 	
+}
+.cssProgress i {
+    position: absolute;
+    left: auto;
+    right: 9px;
+    color: #b2b2b2;
+    top: -27px;
+    font-size: 30px;
+}
+.progressPopup .bottom_bg {
+    display: none;
+}
+.questionnaireSection{
+	display:block;
+}
+.progressSection, .resultSection{
+	display:none;
+}
+.progressSection h2 {
+    color: #c3872b;
+    font-size: 36px;
+    text-align: center;
+}
+.progressSection p {
+    text-align: center;
+}
+.cssProgress {
+    width: 100%;
+    padding-top: 73px;
+}
+.progressPopup .subForminnersection {
+    width: 950px;
+    margin: 0 auto;
+    padding: 90px 135px 100px 135px;
+    max-width: 100%;
+}
+section.page_content_section.subFormsection.progressPopup {
+    background-size: 400px;
+    background-position: -90px 75px;
+}
+.progressPopup .bottom_bg {
+    display: none;
+}
+section.page_content_section.subFormsection.resultPopup .bottom_bg {
+    display: block;
+}
+section.page_content_section.subFormsection.resultPopup .subForminnersection {
+    width: 100%;
+    padding: 35px 120px;
+}
+.resultSection {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    margin: 0 auto;
+}
+.resultSection p.bigPara {
+    text-align: center;
+    font-size: 20px !important;
+    text-transform: uppercase;
+    margin-bottom: 0px !important;
+}
+.resultSection h5 {
+    text-align: center;
+    margin-bottom: 35px;
+    color: #b65327;
+    font-size: 36px;
+}
+.resultSection img {
+    height: auto;
+    width: 85%;
+    margin-bottom: 25px;
+    max-width: 100%;
+    object-fit: cover;
+    height: 450px;
+    object-position: top;
+}
+.resultSection p.smallPara {
+    display: none;
+}
+.resultSection p.largePara {
+    min-height: auto;
+}
+.resultSection .yearly_btn, .resultSection .monthly_btn{
+	background: transparent;
+	width: 100%;
+	text-align: center;
+}
+.resultSection button {
+    background: #b65327;
+    color: #fff;
+    padding: 10px 50px;
+    font-family: 'DM Serif Text', serif !important;
+    font-weight: 400;
+    border-radius: 10px !important;
+    font-size: 22px !important;
+    transition: 0.3s ease;
+    width: auto;
+    text-transform: uppercase;
+    margin: 45px auto 10px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  	height: auto !important;
+}
+.resultSection button img {
+    width: auto;
+    height: 20px;
+    margin: 0px 0px 0px 7px;
+}
+section.page_content_section.subFormsection.resultPopup .bottom_bg {
+    display: block;
+}
+section.page_content_section.subFormsection.resultPopup {
+    background-position: -100px 126px;
+}
+section.page_content_section.subFormsection.resultPopup .bottom_bg {
+    bottom: 60px;
+}
+.resultSectionInner .ribbon {
+    display: none;
+}
+.subFormError{
+  display: none;
+}
+.subFormError p {
+    color: red !important;
+    text-align: center;
+  	line-height: 1.4em;
+}
+section#section_k_subscription_banner_section_desktop .shape {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+
+section.subscription_information .simpletext h4 {
+    color: #000;
+    font-family: poppins !important;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 25px;
+}
+.reserveForm input[type="text"], .subscription_information #basicModal input {
+    border: 1px solid #c3872b !important;
+    width: 350px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 100%;
+    color: #777 !important;
+}
+.reserveForm input[type="text"]::placeholder, .subscription_information #basicModal input[type="text"]::placeholder  {
+    color: #777 !important;
+}
+  #verify_email_btn {
+    width: auto;
+    max-width: 400px !important;
+}
+.reserveForm a.btn, .subscription_information #basicModal a.btn,#subscription_btn ,#subscription_btn button:disabled,.klaviyo_submit_button,.klaviyo_submit_button button:disabled{
+    background: #b65327 !important;
+    color: #fff !important;
+    padding: 0px 22px !important;
+    font-family: 'DM Serif Text', serif !important;
+    font-weight: 400 !important;
+    border-radius: 5px !important;
+    font-size: 17px !important;
+    transition: 0.3s ease;
+    height: 40px !important;
+    text-transform: uppercase;
+    line-height: em;
+    margin-left: 10px;
+    line-height: 40px;
+  	max-width: 160px;
+}
+.subscription_information #basicModal a.btn {
+  margin-left: 0px;
+}
+.subscription_information #basicModal {
+    z-index: 999999;
+    background: rgba(0,0,0,0.7);
+}
+.subscription_information #basicModal .modal-dialog {
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    background-size: cover;
+    border-radius: 10px;
+    border: 0px;
+    background-repeat: no-repeat;
+  
+  
+}
+.subscription_information .modal-content {
+    background: rgba(0,0,0,0.5);
+    border: 0px;
+    box-shadow: unset;
+    padding: 80px 40px 60px 40px;
+}
+.subscription_information .modal-content .modal-header {
+    border: 0px;
+    text-align: right;
+    background: transparent;
+    padding: 5px 10px;
+    position: absolute;
+    display: inline-block;
+    right: 0px;
+    top: 0px;
+}
+.subscription_information .modal-content .modal-header button.close span {
+    color: #fff !important;
+    line-height: 1em;
+    font-size: 34px;
+    opacity: 01 !important;
+    text-shadow: unset !important;
+}
+.subscription_information .modal-content h1 {
+    color: #fff;
+    margin-bottom: 13px;
+    font-size: 32px !important;
+}
+.subscription_information .modal-content p {
+    color: #fff !important;
+    line-height: 1.5em !important;
+    font-size: 15px !important;
+}
+.modalForm {
+    margin: 40px 0px 0px 0px;
+}
+section .modalForm h3 {
+    color: #fff !important;
+    font-size: 24px !important;
+    margin-bottom: 17px;
+}
+.modalForm input {
+  text-align:center;
+}
+.subscription_information #basicModal input[type="text"] {
+    width: 225px !important;
+    display: block;
+    margin: 0px auto 12px auto;
+    border: 0px !important;
+}
+body:not(.showOtherContent) section#subscriptionFormsection, body:not(.showOtherContent) #shopify-section-subscription_plan_details_section, body:not(.showOtherContent) #shopify-section-subscription_cta_section, body:not(.showOtherContent) #subscriptionFormsection {
+    display:none;
+}
+.showOtherContent #shopify-section-subscription_plan_details_section, .showOtherContent #shopify-section-subscription_cta_section, .showOtherContent #subscriptionFormsection{
+  display: block;
+}
+.after_subscription{
+  display: none !important;
+}
+.reservePara b {
+    color: #000;
+}
+.showOtherContent .before_subscription, .showOtherContent .imageCounter, .showOtherContent .reserveForm{
+  display: none !important;
+}
+
+.showOtherContent .after_subscription{
+  display: block !important;
+}
+#shopify-section-testimonial__bg_title_user_image {
+    padding: 50px 0px 20px 0px;
+} 
+
+    #shopify-section-testimonial__bg_title_user_image section {
+        padding: 0px;
+    }
+    #section_k_testimonial__bg_title_user_image .container > div {
+        box-shadow: 0px 0px 13px #ccc !important;
+        padding: 65px 60px 60px 60px !important;
+        background: #fff !important;
+        border-radius: 10px;
+      
+    }
+    #section_k_testimonial__bg_title_user_image .container > div div {
+        padding: 0px;
+    }
+    #shopify-section-testimonial__bg_title_user_image h4 {
+        color: #bd812d;
+        margin: 35px 0px 55px 0px;
+    }
+    .user_card img {
+        width: 125px !important;
+        height: 125px !important;
+    }
+    .user_address {
+        color: #000 !important;
+        font-size: 16px !important;
+    }
+    .user_data .user_name {
+        color: #b54f28 !important;
+        font-size: 25px !important;
+        font-weight: 500 !important;
+    }
+    .user_position {
+        color: #c3882b !important;
+        text-transform: uppercase !important;
+        font-weight: bold !important;
+    }
+    .user_data {
+        margin-left: 30px !important;
+        text-align: left !important;
+    }
+    #section_k_testimonial__bg_title_user_image .container > div {
+        box-shadow: 0px 0px 13px #ccc !important;
+        padding: 65px 60px 60px 60px !important;
+        background: #fff !important;
+    }
+      #shopify-section-title_top_image_left_content_right_slider br {
+        display: none;
+    }
+    .user_card {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .user_data .user_name {
+        color: #b54f28 !important;
+        font-size: 25px !important;
+        font-weight: 500 !important;
+        margin: 0px !important;
+    }
+    .user_position {
+        color: #c3882b !important;
+        text-transform: uppercase !important;
+        font-weight: bold !important;
+        margin: 0px !important;
+        padding-bottom: 0px;
+    }
+      
+#shopify-section-testimonial__bg_title_user_image section {
+    padding: 0px;
+    background-repeat: no-repeat;
+    background-position: calc(100% - -185px) bottom;
+    background-size: 475px;
+    background-image: none !important;
+}
+      
+    .centered_image {
+        height: 400px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        border-radius: 10px;
+        width: 100%;
+    }
+      .SliderLeftImage{
+        background-size: cover;
+        width: 430px;
+        height: 430px;
+        margin: 0 auto;
+        border-radius: 50%;
+        background-repeat: no-repeat;
+      }
+
+#section_k_content_top_image_bottom .simpletext p, #section_k_content_top_image_bottom .simpletext h2 {
+    text-align: left;
+}
+#shopify-section-centered_image_content_above_image section .simpletext p {
+    text-align: left;
+}
+
+  
+.trademark {
+    font-weight: 500;
+    font-size: 10px;
+    position: relative;
+    top: -7px;
+}
+#shopify-section-testimonial__bg_title_user_image .text-center.simpletext h2 span.trademark {
+    font-size: 16px;
+    position: relative;
+    top: 0px;
+    font-weight: bold !important;
+}
+
+#imgRight_txt_ .simpletext a.btn.btn--cta.cpsgts:not(.scrollToForm):hover {
+    background: #fff !important;
+    border: 1px solid #fff !important;
+  	color: #b65327 !important;
+}
+.simpletext a.btn:hover, a.btn:hover {
+    background: #ab4618 !important;
+    color: #fff !important;
+}
+#imgRight_txt_ .simpletext a.btn.btn--cta.cpsgts:not(.scrollToForm) {
+    background: transparent !important;
+    border: 1px solid #fff;
+    padding: 5px 24px;
+}
+.sale_price {
+    padding: 3px 10px !important;
+    font-size: 15px;
+    line-height: 1.4em;
+    position: relative;
+    top: -3px;
+    border: 0px !important;
+    text-transform: unset;
+    border-radius: 4px !important;
+    background: #7fda69 !important;
+    color: #fff;
+    margin: 0px 0px 0px 15px;
+    text-transform: uppercase;
+}
+.month_year_switch label {
+    text-transform: uppercase;
+}
+h2.yearlytotalBill del {
+    color: #aaa;
+    font-size: 26px;
+}
+section h2.yearlydiscountedBill {
+    margin-top: -10px;
+    font-size: 48px !important;
+}
+section h2.monthBill, section h2.yearlydiscountedBill {
+    font-size: 60px !important;
+}
+#section_k_slider_subscription_cta_section .row p.or {
+    font-weight: 600 !important;
+    margin: 0px !important;
+    text-align: center;
+    width: 280px;
+}
+.PlanInner:hover {
+    box-shadow: 3px 10px 20px 13px #ddd;
+}
+.PlanInner {
+    transition: all 0.3s ease;
+}
+body:not(.showOtherContent) section#subscriptionFormsection div, body:not(.showOtherContent) #shopify-section-subscription_plan_details_section, body:not(.showOtherContent) #shopify-section-subscription_plan_details_section *, body:not(.showOtherContent) #shopify-section-subscription_cta_section, body:not(.showOtherContent) #shopify-section-subscription_cta_section *, body:not(.showOtherContent) #subscriptionFormsection, body:not(.showOtherContent) #subscriptionFormsection * {
+    visibility: hidden;
+    height: 0px;
+    margin: 0px;
+    padding: 0px !important;
+}
+.questionnaireSection button.slick-arrow.slick-prev {
+    left: -65px;
+    width: 45px;
+    text-align: left;
+}
+.questionnaireSection button.slick-arrow i {
+    background: transparent;
+    color: #c3862b;
+    border: 1px solid #c3862b;
+    width: 100%;
+    height: 45px;
+    display: flex;
+    font-size: 40px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    position: relative;
+}
+.questionnaireSection button.slick-arrow.slick-next {
+    right: -60px;
+    width: 45px;
+    text-align: left;
+}
+.questionnaireSection button.slick-arrow {
+    position: absolute;
+    width: 150px;
+    left: 0px;
+    bottom: -25px;
+    margin: 0 auto;
+    top: auto;
+    right: 0px;
+    z-index: 9;
+    height: 70px;
+}
+.questionnaireSection button.slick-arrow.slick-prev i:before {
+    position: relative;
+    top: -2px;
+    left: -1px;
+}
+.questionnaireSection button.slick-arrow.slick-next i:before {
+    position: relative;
+    top: -2px;
+    left: 1px;
+}
+p.smallPara img {
+    width: 30px !important;
+    height: 30px !important;
+    min-height: 30px;
+    margin-right: 10px;
+    margin-top: -3px;
+}
+p.smallPara {
+    display: flex;
+}
+.offer_section {
+    flex-direction: row;
+    width: 100%;
+    background: #b65327;
+    align-items: center;
+    color: #fff;
+    padding: 20px 0px 20px 110px;
+    position: relative;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0px 0px 70px 0px;
+    text-align: left;
+  	display:none;
+  	transition: 0.3s ease;
+}
+section h2.monthBill {
+    margin-bottom: 60px !important;
+}
+.offer_section img {
+    align-self: center;
+    position: absolute;
+    height: calc(100% + 60px);
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.imageCounter {
+    margin: 40px 0px 25px 0px;
+}
+.counter_image {
+    width: 750px;
+    margin: 0px;
+    max-width: 100%;
+}
+.counter {
+    width: 350px;
+    margin: -75px auto 0px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    max-width: 100%;
+}
+.counter_child {
+    padding: 0px 10px;
+}
+.counter .number {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background: #233f23;
+    justify-content: center;
+    color: #fff !important;
+    font-family: 'DM Serif Text', serif !important;
+    font-size: 32px !important;
+    border-radius: 5px;
+    margin: 0px !important;
+}
+.counter .time {
+    padding: 3px 0px;
+    text-align: center !important;
+}
+.counter span {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+}
+section .reservePara {
+    font-size: 15px !important;
+}
+.plan_image {
+    position: relative;
+}
+.PlanInner .plan_image:hover > .hover_img{
+  opacity: 1;
+
+}
+.hover_img {
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+  	display: block;
+     -webkit-transition: opacity 0.3s ease-out;
+  -moz-transition: opacity 0.3s ease-out;
+  -o-transition: opacity 0.3s ease-out;
+  transition: opacity 0.3s ease-out;
+  width: 100%;
+}
+.showOtherContent section.subscription_information .simpletext h3 {
+    font-size: 30px !important;
+    margin: 30px 0px 32px 0px;
+  	    color: #c3872b !important;
+}
+section.subscription_information .simpletext h4.after_subscription {
+    font-size: 21px;
+}
+section .reservePara.after_subscription {
+    font-size: 16px !important;
+}
+#section_k_subscription_information .simpletext p:not(.reservePara) {
+    text-align: left;
+}
+p {
+    line-height: 1.7em !important;
+}
+  #shopify-section-subscription_information p{
+    line-height: 1.7em !important;
+    padding: 10px 0px !important;
+  }
+.user_data p {
+    line-height: 1.2em !important;
+}
+#section_k_slider_subscription_cta_section .row p {
+    margin: 0 0px 10px 0px;
+}
+.plan_section.yearlyBilled {
+    background-position: calc(100% - -110px) 700px;
+}
+  @media (min-width: 1350px){
+  section#section_k_subscription_banner_section_desktop {
+    height: 870px;
+}
+  }
+  @media (min-width: 1450px){
+  section#section_k_subscription_banner_section_desktop {
+    height: 850px;
+}
+  }
+  @media (min-width: 1600px){
+  section#section_k_subscription_banner_section_desktop {
+    height: 900px;
+}
+  }
+    @media (min-width: 1700px){
+  section#section_k_subscription_banner_section_desktop {
+    height: 1000px;
+}
+  }
+    @media (min-width: 1900px){
+  section#section_k_subscription_banner_section_desktop {
+    height: 1100px;
+}
+  }
+@media (min-width:992px) and (max-width:1160px){
+
+.roundRightImage .roundImageinner {
+    padding-right: 0px;
+}
+.roundLeftImage .roundImageinner {
+    padding-right: 0px;
+}
+p {
+    font-size: 16px !important;
+}
+section#section_k_subscription_banner_section_desktop {
+    background-repeat: no-repeat;
+    position: relative;
+    background-size: cover;
+    height: 700px;
+    padding: 0px !important;
+}
+#shopify-section-subscription_banner_section_desktop .simpletext h2 {
+    color: #000 !important;
+    font-weight: 400;
+    margin-top: -125px;
+    font-size: 40px !important;
+}
+}
+
+@media (min-width:768px) and (max-width:1160px){
+.container {
+    width: 100%!important;
+    max-width: 100% !important;
+    padding: 0px 30px !important;
+}  
+.plan_section hr {
+    width: 635px;
+}
+.month_year_switch h2 {
+    margin: 23px 0px 50px 0px;
+    font-size: 50px;
+}
+section p {
+    font-size: 15px !important;
+    line-height: 1.5em !important;
+}
+.PlanInner {
+    margin: 10px 0px;
+}
+div#section_k_slider_subscription_cta_section .row {
+    padding: 0px 0px;
+}
+.rondedImageLeft .SliderLeftImage {
+    height: 325px;
+    width: 315px;
+    right: 0px;
+}
+div#section_k_slider_subscription_cta_section {
+    background-size: cover !important;
+    height: 250px;
+}
+.rondedImageLeft .SliderLeftImage {
+    height: 375px;
+    top: 10px;
+    width: 350px;
+    right: 10px;
+}
+.subForminnersection .simpletext {
+    padding: 0px 0px;
+}
+.subForminnersection .simpletext h2 {
+    font-size: 36px;
+}
+.imageSlide img {
+    height: 200px;
+}
+.formSection label {
+    font-size: 15px;
+    margin-bottom: 15px;
+  	
+}
+.Plan {
+    padding: 0px 10px;
+}
+.planSlider {
+    padding: 0px !important;
+}
+.PlanInner {
+    margin: 0px 0px;
+    padding: 50px 20px;
+}
+p.largePara {
+    min-height: 250px;
+}
+p.smallPara {
+    min-height: 73px;
+}
+.plan_section {
+    background-size: 300px;
+}
+section.bg-title-page {
+    padding: 20px;
+}
+section.bg-title-page h1 {
+    font-size: 36px;
+}
+div#shopify-section-subscription_banner_section_desktop .simpletext h2, div#shopify-section-subscription_banner_section_mobile .simpletext h2 {
+    color: #000;
+    font-weight: 400;
+    font-size: 32px !important;
+}
+.PlanInner img {
+    height: 175px;
+    object-fit: cover;	
+}
+.resultSection img {
+    width: 85%;
+    height: 350px;
+}
+ .rondedImageLeft p {
+    width: 265px;
+}
+div#shopify-section-subscription_banner_section_desktop .simpletext h2, div#shopify-section-subscription_banner_section_mobile .simpletext h2 {
+    font-size: 31px !important;
+    width: 400px;
+    text-align: left;
+    padding: 0px;
+    margin: 45px 0px 20px 0px !important;
+    max-width: 100%;
+}
+}
+  
+@media (min-width: 768px){
+  .planSlider {
+    align-items: center;
+    margin: 0px -15px;
+}
+
+.planSlider .Plan:nth-child(1), .planSlider .Plan:nth-child(3) {
+    width: 32% !important;
+    max-width: 32% !important;
+    flex: 0 0 32% !important;
+}
+.planSlider .Plan {
+    padding: 0px 20px !important;
+}
+.planSlider .Plan:nth-child(2) {
+    width: 36% !important;
+    max-width: 36% !important;
+    flex: 0 0 36% !important;
+    margin-top: 0px;
+}
+.planSlider .Plan:nth-child(2) .PlanInner {
+    padding: 80px 40px;
+    box-sizing: unset !important;
+}
+.planSlider .Plan:nth-child(2) .PlanInner h5.productTitle {
+    font-size: 24px !important;
+}
+.planSlider .Plan:nth-child(2) .PlanInner img {
+    height: 280px;
+    object-fit: cover;
+}
+.planSlider .Plan:nth-child(2) .PlanInner p {
+    font-size: 17px !important;
+}
+.planSlider .Plan:nth-child(2) .PlanInner button {
+    font-size: 24px !important;
+}
+.planSlider .Plan .PlanInner p.smallPara {
+    font-size: 15px !important;
+}
+}
+  
+  
+@media (min-width:768px) and (max-width:991px){
+.roundRightImage .roundImageinner {
+    padding-right: 0px;
+}
+.roundLeftImage .roundImageinner {
+    padding-right: 0px;
+}
+.commonSection img {
+        height: 325px;
+}
+.planSlider .Plan:nth-child(2) .PlanInner {
+    padding: 60px 20px;
+    box-sizing: unset !important;
+}
+.planSlider .Plan:nth-child(2) .PlanInner p {
+    font-size: 16px !important;
+}
+.planSlider .Plan:nth-child(2) .PlanInner img {
+    height: 200px;
+    object-fit: cover;
+}
+
+.planSlider .Plan:nth-child(2) .PlanInner button {
+    font-size: 21px !important;
+}
+.monthly_btn button, .yearly_btn button {
+    font-size: 20px !important;
+}
+.planSlider .Plan {
+    padding: 0px 10px !important;
+}
+#shopify-section-subscription_banner_section_desktop .simpletext h2, div#shopify-section-subscription_banner_section_mobile .simpletext h2 {
+    color: #000;
+    font-weight: 400;
+    font-size: 30px !important;
+    margin: -25px 0px 0px 0px;
+}
+section#section_k_subscription_banner_section_desktop {
+    background-repeat: no-repeat;
+    position: relative;
+    background-size: cover;
+    height: 720px;
+    padding: 0px !important;
+}
+p {
+    font-size: 15px !important;
+}
+div#shopify-section-subscription_banner_section_desktop .simpletext h2, div#shopify-section-subscription_banner_section_mobile .simpletext h2 {
+    font-size: 31px !important;
+    width: 400px;
+    text-align: left;
+    padding: 0px;
+    margin: 45px 0px 20px 0px !important;
+    max-width: 100%;
+}
+#shopify-section-subscription_banner_section_desktop .simpletext h2 {
+    color: #000 !important;
+    margin-top: -150px !important;
+    padding: 0px 0px 0px 35px;
+}
+#section_k_subscription_banner_section_desktop .simpletext, #section_k_subscription_banner_section_mobile .simpletext {
+    padding: 0px 0px 0px 10px;
+}
+div#shopify-section-subscription_banner_section_desktop .simpletext h2, div#shopify-section-subscription_banner_section_mobile .simpletext h2 {
+    
+    font-size: 23px !important;
+    width: 400px;
+}
+}
+  @media (min-width: 992px) and (max-width: 1199px){
+  div#shopify-section-subscription_banner_section_desktop .simpletext h2, div#shopify-section-subscription_banner_section_mobile .simpletext h2 {
+   
+    font-size: 28px !important;
+    width: 450px;
+}
+  #section_k_subscription_banner_section_desktop .simpletext, #section_k_subscription_banner_section_mobile .simpletext {
+   
+    padding: 0px 0px 0px 10px;
+}
+  }
+@media (min-width: 1024px) and (max-width: 1500px){
+  .container {
+    max-width: 100% !important;
+    padding: 0px 110px !important;
+  }
+  p.largePara {
+    min-height: 277px;
+	}
+  
+}
+@media (min-width: 1025px) and (max-width: 1200px){
+    .plan_section {
+        background-size: 400px;
+    }
+    p.largePara {
+        min-height: 250px;
+    }
+    section p {
+        font-size: 15px !important;
+        line-height: 1.5em !important;
+    }
+  	.PlanInner img {
+        height: 175px;
+    }
+}
+  @media (min-width: 1200px) and (max-width: 1320px){
+  .planSlider {
+    align-items: center;
+    margin: 0px -50px !important;
+}
+  }
+@media (min-width: 1260px) and (max-width: 1500px){
+    p.largePara {
+      min-height: 240px;
+    }
+}
+@media (min-width: 768px) and (max-width: 860px){
+	.rondedImageLeft .SliderLeftImage {
+          height: 325px;
+          top: 35px;
+          width: 300px;
+          right: 10px;
+      }
+      #imgRight_txt_ {
+          padding-right: 0px !important;
+      }
+      div#section_k_slider_subscription_cta_section .row {
+          padding: 0px 0px;
+          margin: 0px -15px !important;
+      }
+      .simpletext a.btn.btn--cta.cpsgts, .submitButton button {
+          font-size: 20px !important;
+      }
+ 	  p.largePara {
+          min-height: 290px;
+      }
+  	  p.smallPara {
+          min-height: 90px;
+      }
+}
+
+  @media (max-width: 767px){
+form#reserveForm {
+    width: 100%;
+}
+ {% include 'query_string_checker' %}
+<script>
+var encoded = false;
+  $(document).ready(function(){
+  	
+    
+    if(encoded){
+        var encrypted_email = window.atob(window.queryStrings["email"]);
+    	var encrypted_number = window.atob(window.queryStrings["otp"]);
+    
+    }else{
+      	var encrypted_email = window.queryStrings["email"];
+    	var encrypted_number =window.queryStrings["otp"];
+    }
+    
+      setTimeout(function(){
+        
+      
+          if(window.queryStrings["email"] != undefined){
+            $("#subscription_btn").hide();
+            $("#subscription_email").val(encrypted_email);
+            $("#subscription_verify_otp").show();
+            $("#subscription_verify_otp").trigger("click");
+          }
+        
+        },2000);
+  
+    });
+</script>
+<!-- Title Page -->
+<link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+<link href="https://fonts.googleapis.com/css?family=DM+Serif+Text:400,400i|Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
+<style>
+span.email_error {
+    margin-bottom: 10px !important;
+    display: flex;
+    color: red;
+    justify-content: center;
+  	
+}
+.take_ques{
+  display:none;
+}
+   html, body {
+  scroll-behavior: smooth;
+}
+span.code_error {
+    color: #79ff63;
+    margin-bottom: 10px !important;
+    display: flex;
+    justify-content: center;
+}
+body.modal-open {
+    overflow: visible;
+}
+.imageSlide input[type="radio"] {
+     display: none; 
+    /* height: 0px; */
+    position: absolute;
+    width: 100% !important;
+    height: 100%;
+  z-index: 9999;
+}
+.btn.focus, .btn:focus {
+    outline: 0;
+    box-shadow: unset !important;
+}
+ html {
+    padding: 0px !important;
+    overflow-x: hidden !important;
+}
+  header.header2 {
+    position: relative;
+}
+  .container-menu-header-v2 {
+    position: relative;
+    margin-top: 0px !important;
+}
+.simpletext h2 {
+    color: #b44b2b;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 1.2em;
+    margin-bottom: 15px;
+}
+section.subscription_information .simpletext h3 {
+    margin: 60px 0px 10px 0px;
+    font-size: 26px !important;
+}
+.subscription_information p span.date {
+    color: #c3872b;
+    padding: 0px 0px;
+    font-weight: bold;
+}
+section h1, section h2, section h3, section h4, section h5, section h6{
+        font-family: 'DM Serif Text', serif !important;
+}
+#section_k_subscription_banner_section_desktop .simpletext {
+    padding: 100px 0px 115px 0px;
+}
+section#section_k_subscription_banner_section_desktop {
+  	background: transparent;
+}
+#shopify-section-subscription_banner_section_desktop {
+    background: transparent;
+    padding: 0px;
+    height: 100%;
+}
+section#section_k_subscription_banner_section_desktop{
+    background-repeat: no-repeat;
+    position: relative;
+    background-size: cover;
+    background-position: bottom;
+    padding: 0px !important;
+  
+}
+ section#section_k_subscription_banner_section_mobile {
+    background-repeat: no-repeat;
+    position: relative;
+    background-size: cover;
+    padding: 0px !important;
+}
+#section_k_subscription_banner_section_desktop .simpletext, #section_k_subscription_banner_section_mobile .simpletext {
+    height: 100%;
+    padding: 0px 25px 0px 15px;
+}
+div#shopify-section-subscription_banner_section_desktop .simpletext h2 {
+    color: #000 !important;
+    font-weight: 400;
+    margin-top: -75px;
+    font-size: 36px !important;
+}
+#section_k_subscription_banner_section_desktop .simpletext h2 span, #section_k_subscription_banner_section_mobile .simpletext h2 span {
+    color: #b64c28;
+}
+section#section_k_subscription_banner_section_desktop .row {
+    height: 450px;
+}
+#shopify-section-subscription_banner_section_mobile{
+  display: none;
+}
+  .subscription_information {
+    text-align: center;
+    padding: 35px 0px 45px 0px;
+}
+.simpletext b {
+    color: #c3872b;
+}
+.subscription_information h3 {
+    color: #c3872b;
+    margin-top: 30px;
+}
+#section_k_slider_subscription_cta_section .row {
+    margin: 0 auto;
+    width: 100%;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+}
+#section_k_slider_subscription_cta_section .row h3 {
+    color: #fff !important;
+    font-size: 36px !important;
+    text-align: left !important;
+    margin-bottom: 0px !important;
+}
+#section_k_slider_subscription_cta_section .row p {
+    font-size: 16px;
+    color: #fff !important;
+}
+.simpletext a.btn.btn--cta.cpsgts, .submitButton button{
+    background: #b65327 !important;
+    color: #fff;
+    padding: 5px 32px;
+    margin-left: 15px;
+    font-family: 'DM Serif Text', serif !important;
+    font-weight: 400;
+    border-radius: 10px !important;
+    display: inline-block;
+    line-height: 1.6em;
+    font-size: 22px !important;
+    margin: 0px;
+    width: auto;
+}
+.submitButton button {
+    border-radius: 10px !important;
+    padding: 7px 35px;
+  text-transform: uppercase;
+}
+.submitButton button:hover, .monthly_btn button:hover, .yearly_btn button:hover, .resultSection button:hover, #imgRight_txt_ a.btn.btn--cta.cpsgts:hover {
+    background: #ab4618 !important;
+    animation-name: unset !important;
+  color:#fff !important;
+}
+.submitButton button {
+    border-radius: 10px !important;
+    padding: 7px 35px;
+    text-transform: uppercase;
+}
+  .submitButton {
+  	text-align: center;
+  }
+section#section_k_subscription_cta_section {
+    margin: 55px 0px 0px 0px;
+}
+.rondedImageLeft .SliderLeftImage {
+    height: 400px;
+    position: absolute;
+    background-repeat: no-repeat;
+    top: 0px;
+    background-size: contain;
+    width: 400px;
+    right: 0px;
+}
+.rondedImageLeft {
+    position: relative;
+    height: 400px;
+}
+div#section_k_slider_subscription_cta_section .row {
+    height: 100%;
+    padding: 0px;
+    display: flex;
+    align-items: center;
+    width: 875px;
+    max-width: 100%;
+}
+div#section_k_slider_subscription_cta_section {
+    margin: 0 auto;
+    width: 100%;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    height: 300px;
+    display: flex;
+    align-items: center;
+}
+.row{
+  flex-direction: row;
+}
+  .subForminnersection {
+    background: #ffffff;
+    box-shadow: -3px 3px 9px 1px #ddd;
+    padding: 50px 35px 55px 35px;
+    text-align: left;
+    position: relative;
+    border-radius: 10px;
+    z-index: 999;
+}
+.subFormsection {
+    background-repeat: no-repeat;
+    background-position: -102px 235px;
+    background-size: 400px;
+    max-width: 100%;
+    margin: 0px 0px 0px 0px;
+    padding: 100px 0px 50px 0px;
+    position: relative;
+}
+
+section.bg-title-page {
+    padding: 32px;
+}
+.subForminnersection .simpletext h2 {
+    color: #000;
+    font-weight: 400;
+    font-size: 40px;
+}
+.subForminnersection .simpletext h2 span {
+    color: #b64c28;
+}
+.formSection label {
+    font-size: 16px;
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 400;
+    color: #000;
+  	height: 100%;
+}
+  .imageSlide{
+  padding: 0px 10px;
+    position: relative;
+  }
+.imageSlide img {
+    width: 100%;
+    height: 275px;
+    object-position: top;
+    object-fit: cover;
+}
+ .slick-dots li button {
+    color: transparent;
+}
+.slick-dots li button {
+    height: 12px !important;
+}
+ul.slick-dots {
+    display: flex;
+    margin: 15px 0px 0px 0px;
+    justify-content: center;
+}
+.field-group {
+    margin-bottom: 42px;
+}
+.slick-dots li {
+    width: 12px;
+    height: 12px;
+    background: transparent;
+    border: 1px solid #c3872b;
+    margin: 0px 5px;
+    border-radius: 50px;
+    list-style-type: none !important;
+}
+.slick-dots li.slick-active {
+    background: #c3872b;
+}
+  .radio_circle {
+    width: 25px;
+    height: 25px;
+    border: 1px solid #c3872b;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    margin-right: 10px;
+}
+input[type=radio] {
+    width: 10px !important;
+    margin-left: 8px !important;
+}
+input:checked ~ .checkmark {
+    background-color: #C3872B;
+    border-radius: 50%;
+    width: 17px;
+    height: 17px;
+    margin-left: 3px;
+    left: 0px;
+    margin-top: 3px;
+}
+.checkmark {
+    position: absolute;
+    background-color: #fff;
+    border-radius: 50%;
+    width: 17px;
+    height: 17px;
+    margin-left: 3px;
+    margin-top: 3px;
+    left: 0px;
+}
+.radioInputs{
+  position: relative;
+}
+.radioInputs label{
+  position: relative;
+    left: 0px;
+    z-index: 999;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    display: block;
+    line-height: 1.7em;
+}
+.overlay {
+    position: absolute;
+    z-index: 999;
+    background: rgba(157,62,33,0);
+    width: 95%;
+    height: 0px;
+    top: 0px;
+    left: 10px;
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  	 height: 100%;
+}
+.imageSlide input[type="radio"]:checked + .overlay {
+    background: rgba(157,62,33,0.8);
+}
+.imageSlide input[type="radio"]:checked + .overlay > img{
+    opacity:1;
+}
+.overlay img{
+    width: 60px !important;
+  height: auto !important;
+  opacity:0;
+}
+.subForminnersection .simpletext {
+    padding: 0px 165px;
+}
+.subForminnersection .simpletext p {
+    margin: 0px 0px 34px 0px !important;
+    padding-top: 0px;
+}
+.close_section {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    color: #ccc;
+    font-size: 24px;
+}
+.bottom_bg {
+    background-repeat: no-repeat;
+    background-size: 400px;
+    position: absolute;
+    bottom: 99px;
+    height: 480px;
+    width: 480px;
+    background-position: 195px 0px;
+    right: 0px;
+    bottom: 135px;
+}
+  .Plan {
+    float: left;
+}
+
+.ribbon {
+    position: absolute;
+    right: 18px;
+    top: 0px;
+    z-index: 1;
+    overflow: hidden;
+    width: 130px;
+    height: 130px;
+    text-align: right;
+    background-color: transparent!important;
+}
+.ribbon span {
+    font-size: 12px !important;
+    font-weight: bold;
+    color: #FFF;
+    text-transform: uppercase;
+    text-align: center !important;
+    line-height: 1.7em;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    width: 200px;
+    display: block;
+    background: #79A70A;
+    background: #b64d27;
+    box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+    position: absolute;
+    top: 10px;
+    padding-left: 15px;
+    right: -55px;
+}
+.ribbon span::before {
+  content: "";
+  position: absolute; left: 0px; top: 100%;
+  z-index: -1;
+  border-left: 3px solid #8F5408;
+  border-right: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #8F5408;
+}
+.ribbon span::after {
+  content: "";
+  position: absolute; right: 0px; top: 100%;
+  z-index: -1;
+  border-left: 3px solid transparent;
+  border-right: 3px solid #8F5408;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #8F5408;
+}
+.plan_section .switch {
+  position: relative;
+  display: inline-block;
+  width: 70px;
+  height: 34px;
+}
+
+.plan_section .switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.plan_section .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #b65327;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.plan_section .slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.plan_section input:checked + .slider {
+  background-color: #2196F3;
+}
+
+.plan_section input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+.plan_section input:checked + .slider:before {
+  -webkit-transform: translateX(36px);
+  -ms-transform: translateX(36px);
+  transform: translateX(36px);
+}
+
+/* Rounded sliders */
+.plan_section .slider.round {
+  border-radius: 34px;
+}
+
+.plan_section .slider.round:before {
+  border-radius: 50%;
+}
+.plan_section hr {
+    padding: 0px 30px;
+    width: 1000px;
+  max-width: 100%;
+    margin: 0 auto;
+    color: #808080;
+}
+.plan_section {
+    text-align: center;
+}
+.plan_section .month_year_switch {
+    margin: 55px 0px -15px 0px;
+}
+.plan_section input:checked + .slider {
+    background-color: #b65327;
+}
+.month_year_switch label {
+    font-size: 20px;
+    padding-bottom: 0px;
+    margin: 0px 8px;
+    color: #c3872b;
+    font-family: poppins;
+    font-weight: 600;
+}
+section h2.yearlydiscountedBill {
+    margin-bottom: 60px !important;
+}
+.month_year_switch h2 {
+    margin: 23px 0px 63px 0px;
+    color: #b65327;
+    font-size: 70px;
+    font-weight: 500;
+}
+.sub_features img {
+    width: auto;
+    height: 70px;
+}
+.sub_features p {
+    color: #000;
+    font-size: 18px;
+}
+.sub_features {
+    margin-bottom: 60px;
+}
+.plan_section {
+    padding: 0px;
+    background-repeat: no-repeat;
+    background-position: calc(100% - -110px) 510px;
+    background-size: 400px;
+}
+  .yearlydiscountedBill, .yearlytotalBill{
+  display: none;
+  }
+.yearlyBilled h2.monthBill {
+    display: none;
+}
+h2.yearlytotalBill {
+    color: #a6a6a6;
+    font-size: 24px;
+    margin-bottom: 0px;
+}
+h2.yearlydiscountedBill {
+    margin-top: 0px;
+}
+.yearlyBilled h2.yearlytotalBill, .yearlyBilled h2.yearlydiscountedBill {
+    display: block;
+}
+.yearlyBilled .offer_section{
+  display:flex;
+}
+  .yearlyBilled .yearly_btn{
+  display: block !important;
+  }
+ .yearlyBilled .monthly_btn{
+  display: none !important;
+  }
+
+.PlanInner {
+    box-shadow: -3px 3px 9px 1px #ddd;
+    padding: 60px 29px;
+    text-align: center;
+    margin: 0px 0px;
+    background: #fff;
+    border-radius: 10px;
+}
+.PlanInner img {
+    width: 100%;
+    height: 250px;
+}
+.PlanInner span {
+    text-align: left;
+    display: inline-block;
+    font-size: 16px;
+    font-family: poppins;
+    margin-top: 10px;
+}
+.PlanInner h5 {
+    color: #c3872b;
+    font-weight: bold;
+    font-size: 22px;
+    margin-bottom: 30px;
+    font-family: poppins !important;
+    margin: 00px auto 30px auto;
+    width: 180px;
+    text-align: center;
+}
+.monthly_btn, .yearly_btn {
+    display: block !important;
+    background: #b65327;
+    color: #fff;
+    padding: 0px;
+    margin-left: 15px;
+    font-family: 'DM Serif Text', serif !important;
+    font-weight: 400;
+    border-radius: 10px;
+    margin: 30px 0px 0px 0px;
+    font-size: 22px !important;
+    width: 100%;
+}
+  .yearly_btn{
+  
+  display: none !important;
+  }
+.monthly_btn button, .yearly_btn button {
+    background: #b65327;
+    color: #fff;
+    padding: 5px 10px;
+    font-family: 'DM Serif Text', serif !important;
+    font-weight: 400;
+    border-radius: 10px !important;
+    font-size: 22px !important;
+    transition: 0.3s ease;
+}
+.PlanInner img {
+    width: 100%;
+    height: 250px;
+    margin-bottom: 20px;
+}
+.PlanInner p {
+    text-align: left;
+}
+p.largePara {
+    min-height: 230px;
+    margin-bottom: 10px !important;
+    padding-bottom: 0px !important;
+}
+p.smallPara {
+    min-height: 60px;
+    margin-bottom: 10px !important;
+    padding-bottom: 0px !important;
+    font-weight: bold !important;
+}
+
+.month_year_switch label.bill_yearly {
+    color: #aaa;
+}
+
+.yearlyBilled label.bill_yearly {
+    color: #c3872b;
+}
+.yearlyBilled label.bill_monthly {
+    color: #aaa;
+}
+.progress2 {
+    background-color: #e6e6e6;
+    border-radius: 50px;
+}
+.cssProgress .cssProgress-bar {
+    display: block;
+    float: left;
+    width: 0%;
+    height: 100%;
+    background: #b65227;
+    /* box-shadow: inset 0px -1px 2px rgba(0, 0, 0, 0.1); */
+    -webkit-transition: width 0.8s ease-in-out;
+    transition: width 0.8s ease-in-out;
+    position: relative;
+  	    border-radius: 50px;
+  overflow: visible !important;
+}
+.cssProgress .progress1, .cssProgress .progress2, .cssProgress .progress3 {
+    position: relative;
+    height: 30px;
+    width: 100%;
+}
+.cssProgress .cssProgress-label {
+    position: absolute;
+    left: auto;
+    right: 0px;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    font-family: poppins;
+    width: 35px;
+    height: 35px;
+    top: -55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    background: #b65227;
+    justify-content: center;
+ 	
+}
+.cssProgress i {
+    position: absolute;
+    left: auto;
+    right: 9px;
+    color: #b2b2b2;
+    top: -27px;
+    font-size: 30px;
+}
+.progressPopup .bottom_bg {
+    display: none;
+}
+.questionnaireSection{
+	display:block;
+}
+.progressSection, .resultSection{
+	display:none;
+}
+.progressSection h2 {
+    color: #c3872b;
+    font-size: 36px;
+    text-align: center;
+}
+.progressSection p {
+    text-align: center;
+}
+.cssProgress {
+    width: 100%;
+    padding-top: 73px;
+}
+.progressPopup .subForminnersection {
+    width: 950px;
+    margin: 0 auto;
+    padding: 90px 135px 100px 135px;
+    max-width: 100%;
+}
+section.page_content_section.subFormsection.progressPopup {
+    background-size: 400px;
+    background-position: -90px 75px;
+}
+.progressPopup .bottom_bg {
+    display: none;
+}
+section.page_content_section.subFormsection.resultPopup .bottom_bg {
+    display: block;
+}
+section.page_content_section.subFormsection.resultPopup .subForminnersection {
+    width: 100%;
+    padding: 35px 120px;
+}
+.resultSection {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    margin: 0 auto;
+}
+.resultSection p.bigPara {
+    text-align: center;
+    font-size: 20px !important;
+    text-transform: uppercase;
+    margin-bottom: 0px !important;
+}
+.resultSection h5 {
+    text-align: center;
+    margin-bottom: 35px;
+    color: #b65327;
+    font-size: 36px;
+}
+.resultSection img {
+    height: auto;
+    width: 85%;
+    margin-bottom: 25px;
+    max-width: 100%;
+    object-fit: cover;
+    height: 450px;
+    object-position: top;
+}
+.resultSection p.smallPara {
+    display: none;
+}
+.resultSection p.largePara {
+    min-height: auto;
+}
+.resultSection .yearly_btn, .resultSection .monthly_btn{
+	background: transparent;
+	width: 100%;
+	text-align: center;
+}
+.resultSection button {
+    background: #b65327;
+    color: #fff;
+    padding: 10px 50px;
+    font-family: 'DM Serif Text', serif !important;
+    font-weight: 400;
+    border-radius: 10px !important;
+    font-size: 22px !important;
+    transition: 0.3s ease;
+    width: auto;
+    text-transform: uppercase;
+    margin: 45px auto 10px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  	height: auto !important;
+}
+.resultSection button img {
+    width: auto;
+    height: 20px;
+    margin: 0px 0px 0px 7px;
+}
+section.page_content_section.subFormsection.resultPopup .bottom_bg {
+    display: block;
+}
+section.page_content_section.subFormsection.resultPopup {
+    background-position: -100px 126px;
+}
+section.page_content_section.subFormsection.resultPopup .bottom_bg {
+    bottom: 60px;
+}
+.resultSectionInner .ribbon {
+    display: none;
+}
+.subFormError{
+  display: none;
+}
+.subFormError p {
+    color: red !important;
+    text-align: center;
+  	line-height: 1.4em;
+}
+section#section_k_subscription_banner_section_desktop .shape {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+section.subscription_information .simpletext h3 {
+    margin-top: 60px;
+    font-size: 26px !important;
+}
+section.subscription_information .simpletext h4 {
+    color: #000;
+    font-family: poppins !important;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 25px;
+}
+.reserveForm input[type="text"], .subscription_information #basicModal input {
+    border: 1px solid #c3872b !important;
+    width: 350px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 100%;
+    color: #777 !important;
+}
+.reserveForm input[type="text"]::placeholder, .subscription_information #basicModal input[type="text"]::placeholder  {
+    color: #777 !important;
+}
+  #verify_email_btn {
+    width: auto;
+    max-width: 400px !important;
+}
+.reserveForm a.btn, .subscription_information #basicModal a.btn,#subscription_btn ,#subscription_btn button:disabled,.klaviyo_submit_button,.klaviyo_submit_button button:disabled{
+    background: #b65327 !important;
+    color: #fff !important;
+    padding: 0px 22px !important;
+    font-family: 'DM Serif Text', serif !important;
+    font-weight: 400 !important;
+    border-radius: 5px !important;
+    font-size: 17px !important;
+    transition: 0.3s ease;
+    height: 40px !important;
+    text-transform: uppercase;
+    line-height: em;
+    margin-left: 10px;
+    line-height: 40px;
+  	max-width: 160px;
+}
+.subscription_information #basicModal a.btn {
+  margin-left: 0px;
+}
+.subscription_information #basicModal {
+    z-index: 999999;
+    background: rgba(0,0,0,0.7);
+}
+.subscription_information #basicModal .modal-dialog {
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    background-size: cover;
+    border-radius: 10px;
+    border: 0px;
+    background-repeat: no-repeat;
+}
+.subscription_information .modal-content {
+    background: rgba(0,0,0,0.5);
+    border: 0px;
+    box-shadow: unset;
+    padding: 80px 40px 60px 40px;
+}
+.subscription_information .modal-content .modal-header {
+    border: 0px;
+    text-align: right;
+    background: transparent;
+    padding: 5px 10px;
+    position: absolute;
+    display: inline-block;
+    right: 0px;
+    top: 0px;
+}
+.subscription_information .modal-content .modal-header button.close span {
+    color: #fff !important;
+    line-height: 1em;
+    font-size: 34px;
+    opacity: 01 !important;
+    text-shadow: unset !important;
+}
+.subscription_information .modal-content h1 {
+    color: #fff;
+    margin-bottom: 13px;
+    font-size: 32px !important;
+}
+.subscription_information .modal-content p {
+    color: #fff !important;
+    line-height: 1.5em !important;
+    font-size: 15px !important;
+}
+.modalForm {
+    margin: 40px 0px 0px 0px;
+}
+section .modalForm h3 {
+    color: #fff !important;
+    font-size: 24px !important;
+    margin-bottom: 17px;
+}
+.modalForm input {
+  text-align:center;
+}
+.subscription_information #basicModal input[type="text"] {
+    width: 225px !important;
+    display: block;
+    margin: 0px auto 12px auto;
+    border: 0px !important;
+}
+body:not(.showOtherContent) section#subscriptionFormsection, body:not(.showOtherContent) #shopify-section-subscription_plan_details_section, body:not(.showOtherContent) #shopify-section-subscription_cta_section, body:not(.showOtherContent) #subscriptionFormsection {
+    display:none;
+}
+.showOtherContent #shopify-section-subscription_plan_details_section, .showOtherContent #shopify-section-subscription_cta_section, .showOtherContent #subscriptionFormsection{
+  display: block;
+}
+.after_subscription{
+  display: none !important;
+}
+.reservePara b {
+    color: #000;
+}
+.showOtherContent .before_subscription, .showOtherContent .imageCounter, .showOtherContent .reserveForm{
+  display: none !important;
+}
+
+.showOtherContent .after_subscription{
+  display: block !important;
+}
+#shopify-section-testimonial__bg_title_user_image {
+    padding: 50px 0px 20px 0px;
+} 
+
+    #shopify-section-testimonial__bg_title_user_image section {
+        padding: 0px;
+    }
+    #section_k_testimonial__bg_title_user_image .container > div {
+        box-shadow: 0px 0px 13px #ccc !important;
+        padding: 65px 60px 60px 60px !important;
+        background: #fff !important;
+        border-radius: 10px;
+      
+    }
+    #section_k_testimonial__bg_title_user_image .container > div div {
+        padding: 0px;
+    }
+    #shopify-section-testimonial__bg_title_user_image h4 {
+        color: #bd812d;
+        margin: 35px 0px 55px 0px;
+    }
+    .user_card img {
+        width: 125px !important;
+        height: 125px !important;
+    }
+    .user_address {
+        color: #000 !important;
+        font-size: 16px !important;
+    }
+    .user_data .user_name {
+        color: #b54f28 !important;
+        font-size: 25px !important;
+        font-weight: 500 !important;
+    }
+    .user_position {
+        color: #c3882b !important;
+        text-transform: uppercase !important;
+        font-weight: bold !important;
+    }
+    .user_data {
+        margin-left: 30px !important;
+        text-align: left !important;
+    }
+    #section_k_testimonial__bg_title_user_image .container > div {
+        box-shadow: 0px 0px 13px #ccc !important;
+        padding: 65px 60px 60px 60px !important;
+        background: #fff !important;
+    }
+      #shopify-section-title_top_image_left_content_right_slider br {
+        display: none;
+    }
+    .user_card {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .user_data .user_name {
+        color: #b54f28 !important;
+        font-size: 25px !important;
+        font-weight: 500 !important;
+        margin: 0px !important;
+    }
+    .user_position {
+        color: #c3882b !important;
+        text-transform: uppercase !important;
+        font-weight: bold !important;
+        margin: 0px !important;
+        padding-bottom: 0px;
+    }
+      
+#shopify-section-testimonial__bg_title_user_image section {
+    padding: 0px;
+    background-repeat: no-repeat;
+    background-position: calc(100% - -185px) bottom;
+    background-size: 475px;
+    background-image: none !important;
+}
+      
+    .centered_image {
+        height: 400px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        border-radius: 10px;
+        width: 100%;
+    }
+      .SliderLeftImage{
+        background-size: cover;
+        width: 430px;
+        height: 430px;
+        margin: 0 auto;
+        border-radius: 50%;
+        background-repeat: no-repeat;
+      }
+
+#section_k_content_top_image_bottom .simpletext p, #section_k_content_top_image_bottom .simpletext h2 {
+    text-align: left;
+}
+#shopify-section-centered_image_content_above_image section .simpletext p {
+    text-align: left;
+}
+
+  
+.trademark {
+    font-weight: 500;
+    font-size: 10px;
+    position: relative;
+    top: -7px;
+}
+#shopify-section-testimonial__bg_title_user_image .text-center.simpletext h2 span.trademark {
+    font-size: 16px;
+    position: relative;
+    top: 0px;
+    font-weight: bold !important;
+}
+
+#imgRight_txt_ .simpletext a.btn.btn--cta.cpsgts:not(.scrollToForm):hover {
+    background: #fff !important;
+    border: 1px solid #fff !important;
+  	color: #b65327 !important;
+}
+.simpletext a.btn:hover, a.btn:hover {
+    background: #ab4618 !important;
+    color: #fff !important;
+}
+#imgRight_txt_ .simpletext a.btn.btn--cta.cpsgts:not(.scrollToForm) {
+    background: transparent !important;
+    border: 1px solid #fff;
+    padding: 5px 24px;
+}
+.sale_price {
+    padding: 3px 10px !important;
+    font-size: 15px;
+    line-height: 1.4em;
+    position: relative;
+    top: -3px;
+    border: 0px !important;
+    text-transform: unset;
+    border-radius: 4px !important;
+    background: #7fda69 !important;
+    color: #fff;
+    margin: 0px 0px 0px 15px;
+    text-transform: uppercase;
+}
+.month_year_switch label {
+    text-transform: uppercase;
+}
+h2.yearlytotalBill del {
+    color: #aaa;
+    font-size: 26px;
+}
+section h2.yearlydiscountedBill {
+    margin-top: -10px;
+    font-size: 48px !important;
+}
+section h2.monthBill, section h2.yearlydiscountedBill {
+    font-size: 60px !important;
+}
+#section_k_slider_subscription_cta_section .row p.or {
+    font-weight: 600 !important;
+    margin: 0px !important;
+    text-align: center;
+    width: 280px;
+}
+.PlanInner:hover {
+    box-shadow: 3px 10px 20px 13px #ddd;
+}
+.PlanInner {
+    transition: all 0.3s ease;
+}
+body:not(.showOtherContent) section#subscriptionFormsection div, body:not(.showOtherContent) #shopify-section-subscription_plan_details_section, body:not(.showOtherContent) #shopify-section-subscription_plan_details_section *, body:not(.showOtherContent) #shopify-section-subscription_cta_section, body:not(.showOtherContent) #shopify-section-subscription_cta_section *, body:not(.showOtherContent) #subscriptionFormsection, body:not(.showOtherContent) #subscriptionFormsection * {
+    visibility: hidden;
+    height: 0px;
+    margin: 0px;
+    padding: 0px !important;
+}
+.questionnaireSection button.slick-arrow.slick-prev {
+    left: -65px;
+    width: 45px;
+    text-align: left;
+}
+.questionnaireSection button.slick-arrow i {
+    background: transparent;
+    color: #c3862b;
+    border: 1px solid #c3862b;
+    width: 100%;
+    height: 45px;
+    display: flex;
+    font-size: 40px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    position: relative;
+}
+.questionnaireSection button.slick-arrow.slick-next {
+    right: -60px;
+    width: 45px;
+    text-align: left;
+}
+.questionnaireSection button.slick-arrow {
+    position: absolute;
+    width: 150px;
+    left: 0px;
+    bottom: -25px;
+    margin: 0 auto;
+    top: auto;
+    right: 0px;
+    z-index: 9;
+    height: 70px;
+}
+.questionnaireSection button.slick-arrow.slick-prev i:before {
+    position: relative;
+    top: -2px;
+    left: -1px;
+}
+.questionnaireSection button.slick-arrow.slick-next i:before {
+    position: relative;
+    top: -2px;
+    left: 1px;
+}
+p.smallPara img {
+    width: 30px !important;
+    height: 30px !important;
+    min-height: 30px;
+    margin-right: 10px;
+    margin-top: -3px;
+}
+p.smallPara {
+    display: flex;
+}
+.offer_section {
+    flex-direction: row;
+    width: 100%;
+    background: #b65327;
+    align-items: center;
+    color: #fff;
+    padding: 20px 0px 20px 110px;
+    position: relative;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0px 0px 70px 0px;
+    text-align: left;
+  	display:none;
+  	transition: 0.3s ease;
+}
+section h2.monthBill {
+    margin-bottom: 60px !important;
+}
+.offer_section img {
+    align-self: center;
+    position: absolute;
+    height: calc(100% + 60px);
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.imageCounter {
+    margin: 40px 0px 25px 0px;
+}
+.counter_image {
+    width: 750px;
+    margin: 0px;
+    max-width: 100%;
+}
+.counter {
+    width: 350px;
+    margin: -75px auto 0px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    max-width: 100%;
+}
+.counter_child {
+    padding: 0px 10px;
+}
+.counter .number {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff !important;
+    font-family: 'DM Serif Text', serif !important;
+    font-size: 32px !important;
+    border-radius: 15px;
+    margin: 0px !important;
+}
+.counter .time {
+    padding: 3px 0px;
+    text-align: center !important;
+}
+.counter span {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+}
+section .reservePara {
+    font-size: 15px !important;
+}
+.showOtherContent section.subscription_information .simpletext h3 {
+    font-size: 30px !important;
+    margin: 30px 0px 32px 0px;
+}
+section.subscription_information .simpletext h4.after_subscription {
+    font-size: 21px;
+}
+section .reservePara.after_subscription {
+    font-size: 16px !important;
+}
+#section_k_subscription_information .simpletext p:not(.reservePara) {
+    text-align: left;
+}
+p {
+    line-height: 1.7em !important;
+}
+  #shopify-section-subscription_information p{
+    line-height: 1.7em !important;
+    padding: 10px 0px !important;
+  }
+.user_data p {
+    line-height: 1.2em !important;
+}
+#section_k_slider_subscription_cta_section .row p {
+    margin: 0 0px 10px 0px;
+}
+
+@media (min-width:992px) and (max-width:1160px){
+
+.roundRightImage .roundImageinner {
+    padding-right: 0px;
+}
+.roundLeftImage .roundImageinner {
+    padding-right: 0px;
+}
+p {
+    font-size: 16px !important;
+}
+section#section_k_subscription_banner_section_desktop {
+    background-repeat: no-repeat;
+    position: relative;
+    background-size: cover;
+    height: 360px;
+    background-position: -60px bottom;
+    padding: 0px !important;
+}
+#shopify-section-subscription_banner_section_desktop .simpletext h2 {
+    color: #000 !important;
+    font-weight: 400;
+    margin-top: -125px;
+    font-size: 40px !important;
+}
+}
+
+@media (min-width:768px) and (max-width:1160px){
+.container {
+    width: 100%!important;
+    max-width: 100% !important;
+    padding: 0px 30px !important;
+}  
+.plan_section hr {
+    width: 635px;
+}
+.month_year_switch h2 {
+    margin: 23px 0px 50px 0px;
+    font-size: 50px;
+}
+section p {
+    font-size: 15px !important;
+    line-height: 1.5em !important;
+}
+.PlanInner {
+    margin: 10px 0px;
+}
+div#section_k_slider_subscription_cta_section .row {
+    padding: 0px 0px;
+}
+.rondedImageLeft .SliderLeftImage {
+    height: 325px;
+    width: 315px;
+    right: 0px;
+}
+div#section_k_slider_subscription_cta_section {
+    background-size: cover !important;
+    height: 250px;
+}
+.rondedImageLeft .SliderLeftImage {
+    height: 375px;
+    top: 10px;
+    width: 350px;
+    right: 10px;
+}
+.subForminnersection .simpletext {
+    padding: 0px 0px;
+}
+.subForminnersection .simpletext h2 {
+    font-size: 36px;
+}
+.imageSlide img {
+    height: 200px;
+}
+.formSection label {
+    font-size: 15px;
+    margin-bottom: 15px;
+  	
+}
+.Plan {
+    padding: 0px 10px;
+}
+.planSlider {
+    padding: 0px !important;
+}
+.PlanInner {
+    margin: 0px 0px;
+    padding: 50px 20px;
+}
+p.largePara {
+    min-height: 250px;
+}
+p.smallPara {
+    min-height: 73px;
+}
+.plan_section {
+    background-size: 300px;
+}
+section.bg-title-page {
+    padding: 20px;
+}
+section.bg-title-page h1 {
+    font-size: 36px;
+}
+div#shopify-section-subscription_banner_section_desktop .simpletext h2, div#shopify-section-subscription_banner_section_mobile .simpletext h2 {
+    color: #000;
+    font-weight: 400;
+    font-size: 32px !important;
+}
+.PlanInner img {
+    height: 175px;
+    object-fit: cover;	
+}
+.resultSection img {
+    width: 85%;
+    height: 350px;
+}
+ .rondedImageLeft p {
+    width: 265px;
+}
+section#section_k_subscription_banner_section_desktop {
+    background-repeat: no-repeat;
+    position: relative;
+    background-size: cover;
+    height: 360px;
+    background-position: bottom;
+    padding: 0px !important;
+}
+}
+  
+@media (min-width: 768px){
+  .planSlider {
+    align-items: center;
+    margin: 0px -15px;
+}
+
+.planSlider .Plan:nth-child(1), .planSlider .Plan:nth-child(3) {
+    width: 32% !important;
+    max-width: 32% !important;
+    flex: 0 0 32% !important;
+}
+.planSlider .Plan {
+    padding: 0px 20px !important;
+}
+.planSlider .Plan:nth-child(2) {
+    width: 36% !important;
+    max-width: 36% !important;
+    flex: 0 0 36% !important;
+    margin-top: 0px;
+}
+.planSlider .Plan:nth-child(2) .PlanInner {
+    padding: 80px 40px;
+    box-sizing: unset !important;
+}
+.planSlider .Plan:nth-child(2) .PlanInner h5.productTitle {
+    font-size: 24px !important;
+}
+.planSlider .Plan:nth-child(2) .PlanInner img {
+    height: 280px;
+    object-fit: cover;
+}
+.planSlider .Plan:nth-child(2) .PlanInner p {
+    font-size: 17px !important;
+}
+.planSlider .Plan:nth-child(2) .PlanInner button {
+    font-size: 24px !important;
+}
+.planSlider .Plan .PlanInner p.smallPara {
+    font-size: 15px !important;
+}
+}
+  
+  
+@media (min-width:768px) and (max-width:991px){
+.roundRightImage .roundImageinner {
+    padding-right: 0px;
+}
+.roundLeftImage .roundImageinner {
+    padding-right: 0px;
+}
+.commonSection img {
+        height: 325px;
+}
+.planSlider .Plan:nth-child(2) .PlanInner {
+    padding: 60px 20px;
+    box-sizing: unset !important;
+}
+.planSlider .Plan:nth-child(2) .PlanInner p {
+    font-size: 16px !important;
+}
+.planSlider .Plan:nth-child(2) .PlanInner img {
+    height: 200px;
+    object-fit: cover;
+}
+
+.planSlider .Plan:nth-child(2) .PlanInner button {
+    font-size: 21px !important;
+}
+.monthly_btn button, .yearly_btn button {
+    font-size: 20px !important;
+}
+.planSlider .Plan {
+    padding: 0px 10px !important;
+}
+#shopify-section-subscription_banner_section_desktop .simpletext h2, div#shopify-section-subscription_banner_section_mobile .simpletext h2 {
+    color: #000;
+    font-weight: 400;
+    font-size: 30px !important;
+    margin: -25px 0px 0px 0px;
+}
+p {
+    font-size: 15px !important;
+}
+section#section_k_subscription_banner_section_desktop {
+    background-repeat: no-repeat;
+    position: relative;
+    background-size: cover;
+    height: 600px;
+    padding: 0px !important;
+}
+#shopify-section-subscription_banner_section_desktop .simpletext h2 {
+    color: #000 !important;
+    margin-top: -150px !important;
+    padding: 0px 0px 0px 35px;
+}
+#section_k_subscription_banner_section_desktop .simpletext, #section_k_subscription_banner_section_mobile .simpletext {
+    padding: 0px 0px 0px 10px;
+}
+div#shopify-section-subscription_banner_section_desktop .simpletext h2, div#shopify-section-subscription_banner_section_mobile .simpletext h2 {
+    
+    font-size: 23px !important;
+    width: 400px;
+}
+}
+  @media (min-width: 992px) and (max-width: 1199px){
+  div#shopify-section-subscription_banner_section_desktop .simpletext h2, div#shopify-section-subscription_banner_section_mobile .simpletext h2 {
+   
+    font-size: 28px !important;
+    width: 450px;
+}
+  #section_k_subscription_banner_section_desktop .simpletext, #section_k_subscription_banner_section_mobile .simpletext {
+   
+    padding: 0px 0px 0px 10px;
+}
+  }
+@media (min-width: 1024px) and (max-width: 1500px){
+  .container {
+    max-width: 100% !important;
+    padding: 0px 110px !important;
+  }
+  p.largePara {
+    min-height: 277px;
+	}
+  
+}
+@media (min-width: 1025px) and (max-width: 1200px){
+    .plan_section {
+        background-size: 400px;
+    }
+    p.largePara {
+        min-height: 250px;
+    }
+    section p {
+        font-size: 15px !important;
+        line-height: 1.5em !important;
+    }
+  	.PlanInner img {
+        height: 175px;
+    }
+}
+  @media (min-width: 1200px) and (max-width: 1320px){
+  .planSlider {
+    align-items: center;
+    margin: 0px -50px !important;
+}
+  }
+@media (min-width: 1260px) and (max-width: 1500px){
+    p.largePara {
+      min-height: 240px;
+    }
+}
+@media (min-width: 768px) and (max-width: 860px){
+	.rondedImageLeft .SliderLeftImage {
+          height: 325px;
+          top: 35px;
+          width: 300px;
+          right: 10px;
+      }
+      #imgRight_txt_ {
+          padding-right: 0px !important;
+      }
+      div#section_k_slider_subscription_cta_section .row {
+          padding: 0px 0px;
+          margin: 0px -15px !important;
+      }
+      .simpletext a.btn.btn--cta.cpsgts, .submitButton button {
+          font-size: 20px !important;
+      }
+ 	  p.largePara {
+          min-height: 290px;
+      }
+  	  p.smallPara {
+          min-height: 90px;
+      }
+}
+
+  @media (max-width: 767px){
+form#reserveForm {
+    width: 100%;
+}
+section#section_k_subscription_banner_section_desktop a.btn.btn--cta.cpsgts {
+    display: none;
+}
+#section_k_subscription_banner_section_mobile sup {
+    font-size: 9px;
+}
+ p.largePara {
+    margin: 10px 0px 24px 0px !important;
+}   
+.resultSection button img {
+    margin: 0px 0px 0px 2px;
+}
+.resultSection .resultSectionInner button {
+    margin: 35px auto 10px auto;
+    font-size: 18px !important;
+    padding: 6px 20px !important;
+}
+.reserveForm a.btn, .subscription_information #basicModal a.btn, #subscription_btn, #subscription_btn button:disabled, .klaviyo_submit_button, .klaviyo_submit_button button:disabled {
+    padding: 6px 25px !important;
+    min-width: unset !important;
+    max-width: 100% !important;
+    line-height: 1.5em;
+    font-size: 21px !important;
+    min-width: 200px !important;
+    width: 100% !important;
+    margin: 25px 0px 0px 0px;
+    height: auto !important;
+}
+.subscription_information #basicModal a.btn {
+    
+    margin-top: 0px;
+}
+section h2.monthBill {
+    margin-bottom: 25px !important;
+}
+section h2.yearlydiscountedBill {
+    margin-bottom: 30px !important;
+}
+#subscription_notes h3 {
+    width: 240px;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.FirstSectImage {
+    position: relative;
+}
+ 	#shopify-section-subscription_banner_section_desktop{
+    display: none;
+  }
+section .reservePara {
+    font-size: 14px !important;
+}
+.showOtherContent section.subscription_information .simpletext h3 {
+    font-size: 20px !important;
+    margin: 25px 0px 20px 0px;
+}
+section.subscription_information .simpletext h4.after_subscription {
+    font-size: 14px;
+    padding: 0px 0px;
+    line-height: 1.4em !important;
+    margin: 0px -10px !important;
+}
+#shopify-section-subscription_information p.reservePara.after_subscription {
+    padding: 0px !important;
+    margin: 5px 0px !important;
+    width: 313px;
+    max-width: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    font-size: 14px !important;
+    line-height: 1.5em !important;
+}
+#shopify-section-subscription_information p.reservePara.before_subscription {
+    padding: 0px !important;
+    margin: 5px 0px !important;
+    width: 210px;
+    max-width: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    font-size: 14px !important;
+    line-height: 1.5em !important;
+}
+section .reservePara.after_subscription {
+    font-size: 15px !important;
+    line-height: 1.4em !important;
+    margin: 13px 0px 0px 0px !important;
+    padding: 0px !important;
+}
+.offer_section img {
+    position: unset;
+    transform: unset;
+    height: auto;
+    width: 50px;
+    margin: 0px 5px 0px 0px;
+}
+.offer_section {
+    padding: 10px 10px;
+    font-size: 14px;
+    text-align: center;
+    margin: 30px 0px 45px 0px;
+    flex-direction: row;
+  	border-radius: 5px;
+}
+h2.yearlytotalBill del {
+    font-size: 20px;
+}
+.sale_price {
+    font-size: 13px;
+}
+.reserveForm {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    justify-content: center;
+    max-width: 100%;
+    align-items: center;
+}
+section#section_k_subscription_banner_section_mobile .shape {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    left: 0px;
+    z-index: 9;
+}
+.FirstSectImage img.mainImg {
+    width: 243px;
+    margin: 0 auto;
+    position: relative;
+}
+.ribbon {
+    right: 5px;
+}
+.ribbon {
+    top: 15px;
+    width: 115px;
+    height: 115px;
+}
+.roundRightImage .roundImageinner .simpletext h2 {
+    margin: 0 auto 20px auto;
+    width: 230px;
+    max-width: 100%;
+}
+  section.page_content_section.subFormsection.progressPopup {
+    background-position: -135px 55px !important;
+}  
+.submitButton button {
+    border-radius: 10px !important;
+    padding: 8px 23px;
+    line-height: 1.3em;
+    font-size: 18px !important;
+}
+ .resultSection img {
+    width: 240px;
+    height: auto;
+}
+    section.bg-title-page {
+    padding: 12px;
+}
+section.bg-title-page h1 {
+    font-size: 24px !important;
+}
+#shopify-section-subscription_banner_section_mobile {
+    display: block;
+}
+section#section_k_subscription_banner_section_mobile {
+    padding: 0px 0px 0px 0px;
+    background: transparent;
+}
+#shopify-section-subscription_banner_section_mobile .simpletext h2 {
+    margin-bottom: 25px !important;
+    font-size: 19px !important;
+    color: #000 !important;
+    margin: 0px -6px;
+    width: auto;
+}
+.FirstSectImage {
+    height: 467px;
+    width: 100% !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    background-position: center;
+    padding: 30px 0px 0px 0px !important;
+}
+#shopify-section-subscription_banner_section_mobile .simpletext {
+    padding: 30px 25px 0px 25px;
+    text-align: center;
+}
+.subscription_information {
+    text-align: center;
+    padding: 5px 0px;
+}
+
+section p {
+    font-size: 14px !important;
+    line-height: 1.6em !important;
+    margin-bottom: 15px !important;
+}
+.subForminnersection .simpletext p {
+    margin: 0px 0px 25px 0px !important;
+}
+
+.plan_section .month_year_switch {
+    margin: 35px 0px;
+}
+.plan_section .switch {
+    width: 60px;
+    height: 30px;
+    top: -4px;
+    margin: 0px;
+}
+.plan_section .slider:before {
+    height: 23px;
+    width: 23px;
+}
+.month_year_switch label {
+    font-size: 15px;
+    margin: 0px 5px;
+}
+.month_year_switch h2 {
+    margin: 20px 0px 40px 0px;
+    font-size: 40px;
+}
+.sub_features img {
+    width: auto;
+    height: 35px;
+}
+.plan_section .col-4 {
+    padding: 0px 3px;
+}
+.sub_features {
+    margin-bottom: 40px;
+}
+.sub_features p {
+    font-size: 13px !important;
+    line-height: 1.5em !important;
+}
+.plan_section .row {
+    margin: 0px -5px;
+}
+.planSlider {
+    display: flex;
+    padding: 0px !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.PlanInner {
+    padding: 60px 29px;
+    text-align: center;
+    margin: 3px 0px 10px 0px;
+    background: #fff;
+  	box-shadow: -1px 1px 5px 1px #ddd;
+}
+.PlanInner {
+    width: 300px;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.PlanInner {
+    padding: 40px 25px; 
+}
+.PlanInner img {
+    height: 200px !important;
+    width: 100% !important;
+    margin-left: auto;
+    object-fit: cover;
+    margin-right: auto;
+  	object-position: top;
+}
+div#section_k_slider_subscription_cta_section .row {
+    height: 100%;
+    padding: 0px;
+    display: flex;
+    align-items: center;
+}
+section#section_k_subscription_cta_section {
+    margin: 90px 0px 0px 0px;
+}
+div#section_k_slider_subscription_cta_section {
+    margin: 0 auto;
+    width: 100%;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    height: 275px;
+    display: flex;
+    align-items: center;
+}
+div#section_k_slider_subscription_cta_section .row {
+    height: 100%;
+    padding: 0px;
+    display: flex;
+    align-items: center;
+}
+div#imgRight_txt_ {
+    width: 100% !important;
+    order: 2;
+    position: relative;
+    margin-top: -125px;
+}
+div#imgRight_txt_ .simpletext {
+    text-align: center;
+}
+div#section_k_slider_subscription_cta_section .row h3 {
+    color: #fff !important;
+    font-size: 20px !important;
+    text-align: center;
+  	margin-top: 30px;
+}
+div#section_k_slider_subscription_cta_section .row p {
+    font-size: 14px !important;
+    text-align: center;
+    line-height: 1.5em !important;
+    color: #fff !important;
+    margin-bottom: 7px !important;
+    margin-top: 5px !important;
+}
+#imgRight_txt_ a.btn.btn--cta.cpsgts {
+    width: auto;
+    font-size: 18px !important;
+    height: auto;
+    margin: 0px auto;
+    display: inline-block;
+}
+.rondedImageLeft {
+    width: 100%;
+    text-align: center;
+    height: auto;
+    order: 1;
+    top: -115px;
+}
+.rondedImageLeft .SliderLeftImage {
+    height: 215px;
+    position: relative;
+    background-repeat: no-repeat;
+    top: 0px;
+    background-size: cover;
+    right: 0px;
+    left: 0px;
+    width: 200px;
+    margin: 0 auto;
+}
+.monthly_btn button, .yearly_btn button {
+    font-size: 20px !important;
+    height: auto;
+}
+.subForminnersection .simpletext {
+    padding: 0px;
+}
+.subFormsection {
+    margin: 60px 0px 60px 0px;
+    position: relative;
+}
+.subForminnersection .simpletext h2 {
+    color: #000;
+    font-weight: 400;
+    font-size: 19px;
+}
+.formSection label {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+.field-group {
+    margin-bottom: 30px;
+}
+.subForminnersection {
+    background: #ffffff;
+    padding: 49px 25px 40px 25px;
+    text-align: left;
+    position: relative;
+    border-radius: 10px;
+    z-index: 999;
+  	box-shadow: -1px 1px 5px 1px #ddd;
+}
+.plan_section hr {
+    padding: 0px 0px;
+    width: 85%;
+    max-width: 100%;
+    margin: 0 auto;
+    color: #808080;
+}
+.imageSlide img {
+    width: 235px;
+    height: 200px;
+    object-fit: cover;
+    margin: 0 auto;
+}
+.overlay {
+    width: 91%;
+}
+.planSlider {
+    padding: 0px !important;
+}
+.month_year_switch h2 {
+    margin: 5px 0px 40px 0px;
+    font-size: 36px;
+}
+.yearlytotalBill {
+    font-size: 18px !important;
+    margin: 10px 0px 0px 0px !important;
+}
+.monthBill {
+    margin: 17px 0px 40px 0px !important;
+}
+.plan_section input:checked + .slider:before {
+    -webkit-transform: translateX(29px);
+    -ms-transform: translateX(29px);
+    transform: translateX(29px);
+}
+.Plan {
+    padding: 12px 5px !important;
+    width: 300px !important;
+    max-width: 100% !important;
+}
+.plan_section {
+    padding: 30px 0px 0px 0px;
+    background-repeat: no-repeat;
+    background-position: calc(100% - -107px) 425px;
+    background-size: 250px;
+}
+.plan_section.yearlyBilled {
+    background-position: calc(100% - -107px) 570px;
+}
+.PlanInner img {
+    height: 175px;
+}
+.subFormsection {
+    margin: 0px;
+    position: relative;
+    padding: 55px 0px 30px 0px;
+}
+.radio_circle {
+    width: 22px;
+    height: 22px;
+    border: 2px solid #c3872b;
+    margin-right: 5pz;
+}
+input[type=radio] {
+    width: 10px !important;
+    margin-left: 4px !important;
+}
+.checkmark {
+    width: 13px;
+    height: 13px;
+    margin-left: 2px;
+    margin-top: 0px;
+    left: 0px;
+    top: 3px;
+}
+input:checked ~ .checkmark {
+    width: 14px;
+    height: 14px;
+    margin-left: 2px;
+    left: 0px;
+    margin-top: 0px;
+    top: 2px;
+}
+.radioInputs label {
+    padding-left: 30px;
+    line-height: 1.5em;
+}
+section.page_content_section.subFormsection.resultPopup .subForminnersection {
+    width: 100%;
+    padding: 35px 25px;
+}
+.resultSection h5 {
+    margin-bottom: 30px;
+    font-size: 26px;
+}
+.resultSection p.bigPara {
+    font-size: 18px !important;
+    padding-bottom: 0px;
+}
+section.page_content_section.subFormsection {
+    background-size: 275px !important;
+    background-position: -122px 215px !important;
+}
+.bottom_bg {
+    display: block;
+    background-size: 275px !important;
+    background-position: 323px calc(100% - 80px) !important;
+}
+.progressPopup .subForminnersection {
+    padding: 50px 30px;
+    max-width: 100%;
+}
+.cssProgress {
+    width: 100%;
+    padding-top: 55px;
+}
+.progressSection h2 {
+    font-size: 24px;
+}
+.resultSection button {
+    margin: 35px auto 10px auto;
+}
+  .overlay img {
+    width: 60px !important;
+    height: auto !important;
+    opacity: 0;
+}
+.container {
+    padding: 0px 20px !important;
+}
+section h2.monthBill, section h2.yearlydiscountedBill {
+    font-size: 32px !important;
+}
+section h2.yearlydiscountedBill {
+    margin-top: 0px;
+    font-size: 32px !important;
+}
+p.smallPara, p.largePara {
+    min-height: unset;
+}
+.reservePara{
+  text-align: center !important;
+}
+.Plan .monthly_btn, .Plan .yearly_btn {
+    position: unset;
+    bottom: 40px;
+    left: 0px;
+    right: 0px;
+    background: transparent;
+    margin: 0 auto;
+    padding: 20px 0px 0px 0px;
+    width: 100%;
+}
+.monthly_btn button, .yearly_btn button {
+    font-size: 20px !important;
+    height: auto;
+    padding: 8px 10px;
+    width: 100%;
+}
+.plan_section .month_year_switch {
+    margin: 35px -5px;
+}
+.month_year_switch label {
+    font-size: 14px;
+    margin: 0px 5px;
+}
+.subscription_information .simpletext p {
+    text-align: left;
+}
+#shopify-section-about-right-image-section {
+    padding: 0px 0px 50px 0px;
+}
+#shopify-section-testimonial__bg_title_user_image {
+        padding: 0px 0px 60px 0px;
+    }
+    #section_k_testimonial__bg_title_user_image .container > div {
+        box-shadow: 0px 0px 13px #ccc !important;
+        padding: 40px 25px 40px 25px !important;
+        background: #fff !important;
+        border-radius: 10px;
+    }
+    .user_card img {
+        width: 75px !important;
+        height: 75px !important;
+    }
+    .user_data .user_name {
+        font-size: 18pt !important;
+        margin: 0px 0px 0px 0px !important;
+        line-height: 18pt;
+    }
+    p.user_address {
+        margin: 0px !important;
+    }
+    .user_position {
+        font-size: 10pt !important;
+        line-height: 1.2em !important;
+    }
+    .user_address {
+        font-size: 10pt !important;
+        line-height: 1.3em !important;
+    }
+    .user_data {
+        margin-left: 12px !important;
+        text-align: left !important;
+    }
+    #shopify-section-testimonial__bg_title_user_image h4 {
+        color: #bd812d;
+        margin: 20px 0px 30px 0px;
+    font-size: 12pt;
+    }
+    
+    section .rondedImageLeft p {
+        font-size: 10pt !important;
+        text-align: center;
+        width: 100%;
+        margin: 20px auto 0px auto !important;
+        line-height: 17pt !important;
+        padding: 0px;
+    }
+  
+    #shopify-section-testimonial__bg_title_user_image section {
+        background-image: none !important;
+    }
+
+#shopify-section-testimonial__bg_title_user_image .text-center.simpletext h2 span.trademark {
+    font-size: 14px !important;
+}
+.trademark {
+    font-size: 9px !important;
+}
+  
+.about_us_section_title h2{
+    color: #b44b2b;
+font-weight: 400;
+margin-bottom: 20px;
+font-size: 13pt;
+line-height: 1.2em;
+}
+
+.subForminnersection .slick-slider {
+    position: relative;
+    padding-bottom: 0px;
+}
+.questionnaireSection button.slick-arrow.slick-next {
+    right: -35px;
+    width: 35px;
+}
+.questionnaireSection button.slick-arrow i {
+    height: 35px;
+    font-size: 30px;
+}
+.questionnaireSection button.slick-arrow.slick-prev {
+    left: -55px;
+    width: 35px;
+    text-align: left;
+}
+section.subscription_information .simpletext h3 {
+    margin-top: 20px;
+    font-size: 20px !important;
+}
+section.subscription_information .simpletext h4 {
+    font-size: 14px;
+    margin-top: 15px;
+}
+.simpletext a.btn {
+    padding: 6px 25px;
+    font-size: 19px !important;
+}
+
+#shopify-section-testimonial__bg_title_user_image {
+    padding: 50px 0px 0px 0px;
+}
+.simpletext a.btn {
+    padding: 6px 25px;
+    font-size: 19px !important;
+    margin: 15px 0px 0px 0px !important;
+}
+.roundImageinner .simpletext a.btn {
+    padding: 6px 25px;
+    font-size: 19px !important;
+    margin: 0px 0px 0px 0px !important;
+}
+.subscription_information .modal-content {
+    background: rgba(0,0,0,0.5);
+    border: 0px;
+    box-shadow: unset;
+    padding: 20px 15px 25px 15px;
+}
+.subscription_information .modal-content h1 {
+    color: #fff;
+    margin-bottom: 10px;
+    font-size: 21px !important;
+}
+.subscription_information .modal-content p {
+    color: #fff !important;
+    line-height: 1.5em !important;
+    font-size: 14px !important;
+}
+.modalForm {
+    margin: 0px 0px 0px 0px;
+}
+section .modalForm h3 {
+    color: #fff !important;
+    font-size: 18px !important;
+    margin-bottom: 15px;
+    margin-top: 0px;
+}
+div#section_k_slider_subscription_cta_section .row h3 {
+    color: #fff !important;
+    font-size: 20px !important;
+    text-align: center !important;
+}
+div#section_k_slider_subscription_cta_section {
+    margin: 0 auto;
+    width: 100%;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    height: auto;
+    padding: 0px 0px 35px 0px;
+    display: flex;
+    align-items: center;
+}
+#imgRight_txt_ .simpletext a.btn.btn--cta.cpsgts:not(.scrollToForm) {
+    background: transparent !important;
+    border: 1px solid #fff;
+    padding: 5px 24px;
+    margin: 0px !important;
+}
+#section_k_slider_subscription_cta_section .row p.or {
+    font-weight: 600 !important;
+    margin: 0px !important;
+    text-align: center;
+    margin: 0 auto !important;
+    width: 250px;
+    max-width: 100%;
+}
+.counter {
+    margin: 0px auto;
+}
+.counter .number {
+    width: 45px;
+    height: 45px;
+    font-size: 23px !important;
+}
+.counter span {
+    height: 45px;
+    font-size: 22px;
+}
+.imageCounter {
+    margin: 30px 0px 10px 0px;
+}
+.counter {
+    margin: 20px auto 0px auto;
+}
+.bgWhite {
+    background: #fff;
+    margin-top: 0px;
+}
+.FirstSectImage img.mainImg {
+    width: 243px;
+    margin: 0 auto;
+    position: relative;
+    top: 15px;
+}
+section#section_k_subscription_banner_section_mobile .shape {
+    position: absolute;
+    bottom: 36px;
+    width: 100%;
+    left: 0px;
+    z-index: 9;
+}
+p {
+    font-size: 14px !important;
+}
+ .show_on_btn {
+
+    display: none;
+
+}
+#shopify-section-subscription_banner_section_mobile .simpletext p {
+    text-align: left;
+}
+section#section_k_subscription_banner_section_mobile a.btn {
+    margin-bottom: 15px !important;
+}
+.bgWhite {
+    padding: 0px !important;
+}
+  }
+@media (max-width: 600px){
+   .FirstSectImage {
+        height: 400px;
+    } 
+ }
+@media (max-width: 480px){
+ .imageSlide {
+    padding: 0px 0px;
+    position: relative;
+}
+  #shopify-section-subscription_banner_section_mobile .simpletext {
+    padding: 30px 0px 0px 0px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+.PlanInner img {
+    height: auto;
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.overlay {
+    position: absolute;
+    z-index: 999;
+    background: rgba(157,62,33,0);
+    width: 235px;
+    height: 0px;
+    top: 0px;
+    left: 0px;
+    margin: 0px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 0px;
+}
+.FirstSectImage {
+    height: 350px;
+}
+}
+@media (max-width: 420px){
+ .FirstSectImage {
+    height: 260px;
+}
+}   
+  @media (max-width: 358px){
+  .user_position {
+    font-size: 9pt !important;
+    line-height: 1.2em !important;
+}
+.FirstSectImage {
+    height: 220px;
+}
+    .user_address {
+    font-size: 9pt !important;
+    line-height: 1.3em !important;
+}
+   #shopify-section-subscription_banner_section_mobile .simpletext h2 {
+    font-size: 18px !important;
+}
+  }
+@media (max-width: 350px){
+#shopify-section-subscription_banner_section_mobile .simpletext h2 {
+    margin: 0px -5px;
+    font-size: 17px !important;
+    width: auto;
+}
+}
+@media (max-width: 340px){  
+section.subscription_information .simpletext h4.after_subscription {
+    font-size: 13px;
+}
+#shopify-section-subscription_information p.reservePara.after_subscription{
+    font-size: 13px !important;
+}
+#shopify-section-subscription_information p.reservePara.before_subscription{
+  width: 187px;
+}
+
+}
+@media (max-width: 330px){
+
+    .container {
+        padding: 0px 15px !important;
+    }
+  
+  .plan_section .row {
+        margin: 0px 0px;
+    }
+  
+}
+</style>
+{% assign img_bg = '' %}
+{% if page %}
+           {% capture mybanner %}{{page.handle}}.jpg {% endcapture %}
+           {% assign img_bg = mybanner | asset_url %}
+{% endif %}
+<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m"  {% if img_bg %} style="background-image:url({{ img_bg }});" {% else %} style="background-color:#000;" {% endif %}>
+  <h1 class="snize-search-results-page-title l-text2 t-center">{{ page.title }}</h1>
+</section>
+{% comment %}
+<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m"  style="background-color:#000;">
+  <h2 class="l-text2 t-center">
+    {{ page.title }}
+  </h2>
+</section>
+  {% endcomment %}
+  
+<!-- content page -->
+
+{% section 'subscription_banner_section_desktop' %}
+
+{% section 'subscription_banner_section_mobile' %}
+
+ {% section 'subscription_information' %}
+
+{% section 'subscription_plan_details_section' %}
+
+{% section 'subscription_cta_section' %}
+<section class="page_content_section subFormsection" id="subscriptionFormsection"  style="background-image:url('{{ 'bg-left.png' | asset_url }}');
+">
+  
+  <div class="container">
+
+    <div class="subForminnersection">
+      <div class="questionnaireSection">
+        <div class="text-center simpletext">
+
+          <h2> Are you <span>Timelessly Minimal</span>, a <span>Modern Style-Seeker</span>, or a <span>Bold Trendsetter</span>?  </h2>
+          <p> Thank you for taking the quiz and joining our subscription service. Let's get started! </p>
+
+        </div>
+        
+        <form class="formSection">
+          	<div class="subFormError">
+                <p>* Please answer all the following questions.</p>
+            </div>
+            <div class="field-group">
+              <label>1. Which of the following outfits and accessories can best describe your style? </label>
+             {% section 'subscription_slider1' %}
+            </div>
+            <div class="field-group">
+              <label>2. Which of the following words resonate with you the most?</label>
+              <div class="radioInputs">
+                <span class="radio_circle">
+                  <input type="radio" name="two" id="two_one" value="Timelessly Minimal">
+                  <span class="checkmark">
+                  </span>
+                </span>
+                <label for="two_one">Delicate, Classy, Timeless, Minimal</label>
+              </div>
+              <div class="radioInputs">
+                <span class="radio_circle">
+                  <input type="radio" name="two" id="two_two" value="Modern Style-Seeker">
+                  <span class="checkmark">
+                  </span>
+                </span>
+                <label for="two_two">Versatile, Experimental, Trendy, Ever-changing</label>
+              </div>
+              <div class="radioInputs">
+                <span class="radio_circle">
+                  <input type="radio" name="two" id="two_three" value="Bold Trendsetter">
+                  <span class="checkmark">
+                  </span>
+                </span>
+                <label for="two_three">Unapologetic, Vibrant, Colorful</label>
+              </div>
+            </div>
+            <div class="field-group">
+              <label>3. Which of these color palettes would you pick for an outfit?</label>
+              <div class="radioInputs">
+                <span class="radio_circle">
+                  <input type="radio" name="three" id="three_one" value="Timelessly Minimal">
+                  <span class="checkmark">
+                  </span>
+                </span>
+                <label for="three_one">Layered neutrals and muted tones</label>
+              </div>
+              <div class="radioInputs">
+                <span class="radio_circle">
+                  <input type="radio" name="three" id="three_two" value="Modern Style-Seeker">
+                  <span class="checkmark">
+                  </span>
+                </span>
+                <label for="three_two">Classic shades with a pop of color</label>
+              </div>
+              <div class="radioInputs">
+                <span class="radio_circle">
+                  <input type="radio" name="three" id="three_three" value="Bold Trendsetter">
+                  <span class="checkmark">
+                  </span>
+                </span>
+                <label for="three_three">You have no rules or preferred color palettes when it comes to outfits</label>
+              </div>
+            </div>
+            <div class="field-group">
+              <label>4. Which of these trends do you enjoy the most?</label>
+              <div class="radioInputs">
+                <span class="radio_circle">
+                  <input type="radio" name="four" id="four_one" value="Timelessly Minimal">
+                  <span class="checkmark">
+                  </span>
+                </span>
+                <label for="four_one">Vintage inspired, simplistic pieces</label>
+              </div>
+              <div class="radioInputs">
+                <span class="radio_circle">
+                  <input type="radio" name="four" id="four_two" value="Modern Style-Seeker" >
+                  <span class="checkmark">
+                  </span>
+                </span>
+                <label for="four_two">Mix'n'match, modern street style trends</label>
+              </div>
+              <div class="radioInputs">
+                <span class="radio_circle">
+                  <input type="radio" name="four" id="four_three" value="Bold Trendsetter">
+                  <span class="checkmark">
+                  </span>
+                </span>
+                <label for="four_three">Colorblock, mixed patterns and unique silhouettes</label>
+              </div>
+            </div>
+            <div class="field-group">
+              <label>5. Which of the following wardrobes resemble yours the most?</label>
+             {% section 'subscription_slider2' %}
+            </div>
+            <div class="field-group">
+              <label>6. How would you describe your wardrobe?</label>
+              <div class="radioInputs">
+                <span class="radio_circle">
+                  <input type="radio" name="six" id="six_one" value="Timelessly Minimal">
+                  <span class="checkmark">
+                  </span>
+                </span>
+                <label for="six_one">A true classic with traditional silhouettes and shades</label>
+              </div>
+              <div class="radioInputs">
+                <span class="radio_circle">
+                  <input type="radio" name="six" id="six_two" value="Modern Style-Seeker">
+                  <span class="checkmark">
+                  </span>
+                </span>
+                <label for="six_two">The perfect mix of everyday go-tos and a few more vibrant designer creations</label>
+              </div>
+              <div class="radioInputs">
+                <span class="radio_circle">
+                  <input type="radio" name="six" id="six_three" value="Bold Trendsetter">
+                  <span class="checkmark">
+                  </span>
+                </span>
+                <label for="six_three">A personal wonderland filled with colors, patterns and different silhouettes</label>
+              </div>
+            </div>
+            <div class="field-group">
+              <label>7. Which of these scarves do you like most from our collection? </label>
+              {% section 'subscription_slider3' %}
+            </div>
+            <div class="field-group">
+              <label>8. You like your accessories...</label>
+              <div class="radioInputs">
+                <span class="radio_circle">
+                  <input type="radio" name="eight" id="eight_one" value="Timelessly Minimal">
+                  <span class="checkmark">
+                  </span>
+                </span>
+                <label for="eight_one">To effortlessly compliment your elegant aesthetic without overpowering the outfit</label>
+              </div>
+              <div class="radioInputs">
+                <span class="radio_circle">
+                  <input type="radio" name="eight" id="eight_two" value="Modern Style-Seeker">
+                  <span class="checkmark">
+                  </span>
+                </span>
+                <label for="eight_two">To adapt to your mood and outfit, whether you're wearing casual monochromes or a vibrant floral pattern</label>
+              </div>
+              <div class="radioInputs">
+                <span class="radio_circle">
+                  <input type="radio" name="eight" id="eight_three" value="Bold Trendsetter">
+                  <span class="checkmark">
+                  </span>
+                </span>
+                <label for="eight_three">To bring a pop of color and life to your looks</label>
+              </div>
+            </div>
+            <div class="field-group nine-que">
+              <label>9. With the Scarflings Subscription, you are hoping to...</label>
+              <div class="radioInputs">
+                <span class="radio_circle">
+                  <input type="radio" name="nine" id="nine_one" value="Timelessly Minimal">
+                  <span class="checkmark">
+                  </span>
+                </span>
+                <label for="nine_one">Find the perfect scarves to accompany your monochrome looks</label>
+              </div>
+              <div class="radioInputs">
+                <span class="radio_circle">
+                  <input type="radio" name="nine" id="nine_two" value="Modern Style-Seeker">
+                  <span class="checkmark">
+                  </span>
+                </span>
+                <label for="nine_two">Build up a scarf wardrobe blended with minimal and more experimental pieces</label>
+              </div>
+              <div class="radioInputs">
+                <span class="radio_circle">
+                  <input type="radio" name="nine" id="nine_three" value="Bold Trendsetter">
+                  <span class="checkmark">
+                  </span>
+                </span>
+                <label for="nine_three">Create an edit of unapologetic accessories to bring a sense of boldness to outfits</label>
+              </div>
+            </div>
+            <div class="submitButton scrollToForm">
+            	<button type="button" id="submitButton">WHICH SUBSCRIPTION BOX IS RIGHT FOR ME?</button>
+            </div>
+        </form>
+      </div>
+       <div class="progressSection">
+         <h2>Please Wait</h2>
+         <p>Calculating your results..</p>
+          <div class="cssProgress">
+        <div class="progress2">
+          <div class="cssProgress-bar" data-percent="100" style="width: 100%">
+            <span class="cssProgress-label">100%</span>
+            <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+     </div>
+      <div class="resultSection">
+        <p class="bigPara">You are a</p>
+        <img class="timeless" src="{{ 'timeless-result.png' | asset_url }}"  style="display:none;">
+         <img class="modern" src="{{ 'modern-result.png' | asset_url }}"  style="display:none;">
+         <img class="trendsetter" src="{{ 'trendsetter.png' | asset_url }}"  style="display:none;">
+       <div class="resultSectionInner">
+         
+        </div>
+      </div>
+   </div>
+  
+</div>
+  <div class="bottom_bg"  style="background-image:url(' //cdn.shopify.com/s/files/1/0070/0835/4356/files/Vector_Smart_Object_copy_15_1X.png?v=1573630720 ')">
+      </div>
+</section>
+
+{% section 'testimonial__bg_title_user_image' %}
+  
+{% section 'about-right-image-section' %}
+
+{% section 'welcome-cta-section' %}
+
+<script>
+ 
+    $(document).ready(function(){
+     	$('body').addClass("showOtherContent");
+      	
+      	 
+      
+      	localStorage.clear();
+      
+		var loopid = $(".outfitSlider .imageSlide input");
+        var i = 0; // define variable i as your "index"
+        $(loopid).each(function(index) {
+            i++; // Increase i by 1 each time you loop through your h2 elements
+            $(this).attr("id", "outfitSlider" + i);// Use $(this) to pull out the current element
+        	$(this).next().attr("for", "outfitSlider" + i);
+        });
+      
+      
+      var loopid = $(".wardrobeSlider .imageSlide input");
+        var i = 0; // define variable i as your "index"
+        $(loopid).each(function(index) {
+            i++; // Increase i by 1 each time you loop through your h2 elements
+            $(this).attr("id", "wardrobeSlider" + i); // Use $(this) to pull out the current element
+        	$(this).next().attr("for", "wardrobeSlider" + i);
+        });
+      
+      	var loopid = $(".scarvesSlider .imageSlide input");
+        var i = 0; // define variable i as your "index"
+        $(loopid).each(function(index) {
+            i++; // Increase i by 1 each time you loop through your h2 elements
+            $(this).attr("id", "scarvesSlider" + i); // Use $(this) to pull out the current element
+        	$(this).next().attr("for", "scarvesSlider" + i);
+        });
+      $('a.btn.btn--cta.cpsgts.scrollToForm').click(function() {
+          $(".progressSection, .resultSection").hide();
+          $(".subFormsection").removeClass("resultPopup");
+          $(".subFormsection").removeClass("progressPopup");
+          $(".questionnaireSection").show();
+
+        });
+      $('.switch input').click(function(){
+       $(".plan_section").toggleClass("yearlyBilled");
+       $(".resultSectionInner").toggleClass("yearlyBilled");
+     });
+
+       $(".formSection .submitButton").click(function(){
+         if ($('.formSection input:checked').length == 9) {
+          $(".questionnaireSection").hide();
+          $(".progressSection").show();
+          $(".subFormsection").addClass("progressPopup");
+        
+        setTimeout(function(){ 
+              $(".progressSection").hide();
+              $(".resultSection").show();
+              $(".subFormsection").addClass("resultPopup");
+          		$(".resultSectionInner button.ro-subscribe-btn.subscribe_button").html("YES, I WANT TO RESERVE MY SUBSCRIPTION BOX <img src='https://cdn.shopify.com/s/files/1/0070/0835/4356/t/69/assets/smiling-face-with-3-hearts.png?v=1586612736'>");
+ 
+     	 }, 5000);
+        
+        var arr = []; // take an array to store values
+        $('input[type="radio"]:checked').each(function(){
+           arr.push($(this).val());  //push values in array
+        });
+        var frequency = {};  // array of frequency.
+        var max = 0;  // holds the max frequency.
+        var result;   // holds the max frequency element.
+        for(var v in arr) {
+                frequency[arr[v]]=(frequency[arr[v]] || 0)+1; // increment frequency.
+                if(frequency[arr[v]] > max) { // is this frequency > max so far ?
+                        max = frequency[arr[v]];  // update max.
+                        result = arr[v];          // update result.
+                }
+        }
+		var timelessMinimal = $("#timelessly-minimal").html();
+        var modernStyleSeeker = $("#modern-style-seeker").html();
+        var boldTrendsetter = $("#bold-trendsetter").html();
+        var timelessImg = $(".timeless").attr("src");
+        var modernImg = $(".modern").attr("src");
+        var trendsetterImg = $(".trendsetter").attr("src");
+        if (result == "Timelessly Minimal"){
+			$(".resultSectionInner").html(timelessMinimal);
+          	$('.resultSectionInner img').attr("src",timelessImg);
+          	
+        }
+        else if(result == "Modern Style-Seeker"){
+			$(".resultSectionInner").html(modernStyleSeeker);
+          	$('.resultSectionInner img').attr("src",modernImg);
+        }
+        else{
+        	$(".resultSectionInner").html(boldTrendsetter);
+          	$('.resultSectionInner img').attr("src",trendsetterImg);
+        }
+      }else{
+         $('.subFormError').show(); 
+         }
+
+      });
+      
+       
+     
+       
+  		
+      
+      
+
+      
+      
+      
+     
+     
+      
+    });
+
+</script>  
+
+
+<script>
+$(document).ready(function(){
+  
+  $("p").each(function() {
+
+      if($.trim($(this).html()).length == 0) {
+         $(this).remove();
+      }
+
+  });
+  
+  
+  
+  
+  
+//   setTimeout(function(){
+//     $('.showOtherContent .scarvesSlider, .showOtherContent .wardrobeSlider, .showOtherContent .outfitSlider').not('.slick-initialized').slick({
+//         dots: false,
+//         infinite: true,
+//         speed: 300,
+//         slidesToShow: 3,
+//         slidesToScroll: 3,
+//          arrows:true,
+//         responsive: [
+//         {
+//           breakpoint: 1024,
+//           settings: {
+//             slidesToShow: 3,
+//             slidesToScroll: 3,
+//           }
+//         },
+//         {
+//           breakpoint: 600,
+//           settings: {
+//             slidesToShow: 2,
+//             slidesToScroll: 2
+//           }
+//         },
+//         {
+//           breakpoint: 480,
+//           settings: {
+//             slidesToShow: 1,
+//             slidesToScroll: 1
+//           }
+//         }
+//       ]
+      
+//       });
+     
+//       $('.showOtherContent .scarvesSlider .slick-prev.slick-arrow, .showOtherContent .wardrobeSlider .slick-prev.slick-arrow, .showOtherContent .outfitSlider .slick-prev.slick-arrow').html('<i class="fa fa-angle-left" aria-hidden="true"></i>');
+//   	  $('.showOtherContent .scarvesSlider .slick-next.slick-arrow, .showOtherContent .wardrobeSlider .slick-next.slick-arrow, .showOtherContent .outfitSlider .slick-next.slick-arrow').html('<i class="fa fa-angle-right" aria-hidden="true"></i>'); 
+    
+//   },4000);
+  
+});
+
+$(document).ready(function() {
+  // Month Day, Year Hour:Minute:Second, id-of-element-container
+  var monthLeft = $(".date .month").html();
+   		var dayLeft = $(".date .day").html();
+   		var yearLeft = $(".date .year").html();
+  countUpFromTime(monthLeft +"" + dayLeft + ", " + yearLeft + " 12:00:00", 'timer'); // ****** Change this line!
+});
+function countUpFromTime(countFrom, id) {
+  countFrom = new Date(countFrom).getTime();
+  var now = new Date(),
+      countFrom = new Date(countFrom),
+      timeDifference = (countFrom - now);
+    
+  var secondsInADay = 60 * 60 * 1000 * 24,
+      secondsInAHour = 60 * 60 * 1000;
+    
+  days = Math.floor(timeDifference / (secondsInADay) * 1);
+  years = Math.floor(days / 365);
+  if (years > 1){ days = days - (years * 365) }
+  hours = Math.floor((timeDifference % (secondsInADay)) / (secondsInAHour) * 1);
+  mins = Math.floor(((timeDifference % (secondsInADay)) % (secondsInAHour)) / (60 * 1000) * 1);
+  secs = Math.floor((((timeDifference % (secondsInADay)) % (secondsInAHour)) % (60 * 1000)) / 1000 * 1);
+
+  if (hours < "10") { hours = "0" + hours; }
+	if (mins < "10") { mins = "0" + mins; }
+  if (secs < "10") { secs = "0" + secs; }
+  
+  			$("#days").html(days);
+			$("#hours").html(hours);
+			$("#minutes").html(mins);
+			$("#seconds").html(secs);
+
+  clearTimeout(countUpFromTime.interval);
+  countUpFromTime.interval = setTimeout(function(){ countUpFromTime(countFrom, id); }, 1000);
+}
+// function makeTimer() {
+
+// 	//		var endTime = new Date("29 April 2018 9:56:00 GMT+01:00");	
+		
+//   		var monthLeft = $(".date .month").html();
+//   		var dayLeft = $(".date .day").html();
+//   		var yearLeft = $(".date .year").html();
+//   		var endTime = new Date(dayLeft +"" + monthLeft + "" + yearLeft + " 9:56:00 GMT+01:00");			
+// 			endTime = (Date.parse(endTime) / 1000);
+
+// 			var now = new Date();
+// 			now = (Date.parse(now) / 1000);
+
+// 			var timeLeft = endTime - now;
+
+// 			var days = Math.floor(timeLeft / 86400); 
+// 			var hours = Math.floor((timeLeft - (days * 86400)) / 3600);
+// 			var minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600 )) / 60);
+// 			var seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));
+  
+// 			if (hours < "10") { hours = "0" + hours; }
+// 			if (minutes < "10") { minutes = "0" + minutes; }
+// 			if (seconds < "10") { seconds = "0" + seconds; }
+
+// 			$("#days").html(days);
+// 			$("#hours").html(hours);
+// 			$("#minutes").html(minutes);
+// 			$("#seconds").html(seconds);		
+
+// 	}
+
+// 	setInterval(function() { makeTimer(); }, 1000);
+
+$(document).ready(function() {
+  
+  	$(".chatButton .or").css("display","none");
+	$(".chatButton a.btn.take_ques_btn.scrollToForm").css("display","none");
+
+  
+  if(localStorage.getItem("email_verified")){
+    
+  		var windowWidth = $(window).width();
+          if(windowWidth > 767){
+          	$('html, body').animate({
+                scrollTop: $("#subscription_notes").offset().top - parseInt(170)
+            });
+          }else{
+          	$('html, body').animate({
+                scrollTop: $("#subscription_notes").offset().top - parseInt(120)
+            });
+          }
+      	
+      	
+      	$(".take_ques_btn").attr("href","javascript:void(0)");
+      
+      	$(".take_ques_btn").attr("href","javascript:void(0)");
+      
+      	$(".take_ques_btn").attr("id","scrollToForm");
+      	
+      	
+      
+      	/*$(this).attr("data-target", "#basicModal");*/
+    	
+      	$('.code_error').hide();
+      	$('.email_error').hide();  
+    
+   
+
+      $('.showOtherContent .scarvesSlider .slick-prev.slick-arrow, .showOtherContent .wardrobeSlider .slick-prev.slick-arrow, .showOtherContent .outfitSlider .slick-prev.slick-arrow').html('<i class="fa fa-angle-left" aria-hidden="true"></i>');
+      $('.showOtherContent .scarvesSlider .slick-next.slick-arrow, .showOtherContent .wardrobeSlider .slick-next.slick-arrow, .showOtherContent .outfitSlider .slick-next.slick-arrow').html('<i class="fa fa-angle-right" aria-hidden="true"></i>'); 
+
+       $( ".formSection .field-group:not(.nine-que) input" ).each(function() {
+        var window_width = $(window).width();
+          $(this).on("click", function(){
+            if(window_width > 768){
+                var nextQue = $(this).parent().closest('.field-group').next();
+                  $('html, body').animate({
+                  scrollTop: $(nextQue).offset().top - parseInt(130)
+                });
+            }else{
+                var nextQue = $(this).parent().closest('.field-group').next();
+                  $('html, body').animate({
+                  scrollTop: $(nextQue).offset().top - parseInt(50)
+                });
+             }
+          });
+   		});
+    
+  }
+	if(localStorage.getItem("subscription_email") && !localStorage.getItem("email_verified")){
+		$("#subscription_email").attr("value",localStorage.getItem("subscription_email"));
+        $("#subscription_email").prop("disabled",true);
+		$("#subscription_btn").hide();
+		$("#subscription_verify_otp").show();
+      	$("#subscription_btn1").hide();
+      	$("#subscription_btn1").attr("data-target", "#basicModal");
+        $("#subscription_btn1").hide();
+        $("#subscription_btn1").trigger("click");
+		$("#subscription_btn1").hide();
+	}
+  
+  
+  $('.formSection .submitButton').on('click', function() {
+  $('.progressSection').progress_fnc();
+  });
+  
+  $(".sub_modal_close").on("click",function(){
+    $("#basicModal").hide();
+  });
+  
+
+
+  
+  $('#verify_email_btn').on('click', function() {
+    
+    var codevalue = $(".modalForm input").val();
+    if (codevalue == "631235") {
+      $('.subscription_information #basicModal .modal-dialog').hide();
+      localStorage.setItem("email_verified", true);
+      $("#basicModal").removeClass("show");
+      var windowWidth = $(window).width();
+          if(windowWidth > 767){
+          	$('html, body').animate({
+                scrollTop: $("#subscription_notes").offset().top - parseInt(170)
+            });
+          }else{
+          	$('html, body').animate({
+                scrollTop: $("#subscription_notes").offset().top - parseInt(120)
+            });
+          }
+      	
+      	
+      	$(".take_ques_btn").attr("href","javascript:void(0)");
+      
+      	$(".take_ques_btn").attr("href","javascript:void(0)");
+      
+      	$(".take_ques_btn").attr("id","scrollToForm");
+      	
+      	$(".chatButton .or").css("display","block");
+		$(".chatButton a.btn.take_ques_btn.scrollToForm").css("display","block");
+      
+      	/*$(this).attr("data-target", "#basicModal");*/
+    	$('body').addClass("showOtherContent");
+      	$('.code_error').hide();
+      	$('.email_error').hide();
+      	
+      
+    } 
+    else {
+    	$('.code_error').show();
+      	$(".take_ques_btn").attr("href","/pages/take-questionnaire");
+      	$(".take_ques_btn").removeClass("scrollToForm");
+        $(".chatButton .or").css("display","none");
+		$(".chatButton a.btn.take_ques_btn.scrollToForm").css("display","none");
+    }	
+  
+  });
+var encoded = false;  
+ setTimeout(function(){
+   
+   /*
+  $("#subscription_email").on("keyup",function(){
+    
+      var email_text = $(this).val();
+    
+      $("#section_k_subscription_information .reserveForm .klaviyo-form-KYc6Af [type='email']").trigger("click");
+      $("#section_k_subscription_information .reserveForm .klaviyo-form-KYc6Af [type='email']").val(email_text);
+      $("#section_k_subscription_information .reserveForm .klaviyo-form-KYc6Af [type='email']").attr("value",email_text);
+      $("#section_k_subscription_information .reserveForm .klaviyo-form-KYc6Af [type='email']").trigger("change");
+      
+
+  });
+   
+   */
+   /*
+   
+  $('.reserveForm #subscription_btn').on('click', function() {
+    
+    
+    $(this).hide();
+    $("#subscription_verify_otp").show();
+
+    var mailvalue = $(".reserveForm input").val();
+  	
+    var testEmail = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
+    var redirect_url = window.location.href;
+    var new_url = "";
+    
+    if (testEmail.test(mailvalue)) {
+      	
+        
+      	
+      
+      if(encoded){
+        var encrypted_email = window.atob(mailvalue);
+    	var encrypted_number = window.atob(otp_num);
+    
+    }else{
+      	var encrypted_email = mailvalue;
+    	var encrypted_number =otp_num;
+    }
+      
+      if(window.queryStrings["email"] ==undefined){ 
+        var otp_num = 631235;
+        new_url = redirect_url+"?email="+encrypted_email+"&otp="+window.btoa(encrypted_number);
+      }else{
+        new_url = redirect_url;
+      }
+      
+      
+      setTimeout(function(){
+        
+        $("#reserveForm").submit();
+      });
+      
+        
+	 
+    	$(this).attr("data-target", "#basicModal");
+        $('.email_error').html("");
+      	$('.email_error').hide();
+      	
+    } 
+    else {
+      	$('.email_error').html("Please enter valid email.");
+    	$('.email_error').show();
+      	
+    }
+    
+    
+  });
+   */
+   
+   $("body button.close").on("click",function(){
+	$("#subscription_verify_otp").show();	
+});
+   
+	
+
+
+
+   
+   /*
+   
+   window.addEventListener("klaviyoForms", function(e) { 
+  
+     console.log(e);
+     if(e.detail.formId == "KYc6Af"){
+       
+       
+       if (e.detail.type == 'submit') {
+         
+         	var email = $('#subscription_email').val();
+         $("#section_k_subscription_information .reserveForm .klaviyo-form-KYc6Af [type='email']").val(email);
+         
+         
+         console.log("pushing:",email);
+		 	_learnq.push(['identify', 'Submitted Form - SubScription Page', { "$email": $("#section_k_subscription_information .reserveForm .klaviyo-form-KYc6Af [type='email']").val() }]);
+         _learnq.push(['subscribe', 'Submitted Form - SubScription Page', { "$email": $("#section_k_subscription_information .reserveForm .klaviyo-form-KYc6Af [type='email']").val() }]);
+         
+          	_learnq.push(['track', 'Submitted Form - SubScription Page', {
+            'formId' : e.detail.formId
+          	}]);
+         
+         
+         
+         
+          
+        }
+     }
+     
+	});
+   */
+   
+   
+ }, 2000);
+  
+  $(".close").on("click",function(){
+        $(".email_error").hide();	
+    });
+  
+  
+  $("body .scrollToForm,#scrollToForm").on("click",function(){
+
+        $('html, body').animate({
+                scrollTop: $("#subscriptionFormsection").offset().top - parseInt(30)
+            });
+      });
+  
+  
+  $("body button.close").on("click",function(){
+	$("#subscription_verify_otp").show();	
+});
+  
+  
+});
+
+    
+  $("body .scrollToForm,#scrollToForm").on("click",function(){
+
+        $('html, body').animate({
+                scrollTop: $("#subscriptionFormsection").offset().top - parseInt(30)
+            });
+      });
+  
+   $("#section_k_subscription_banner_section_desktop .btn").on("click",function(){
+
+        $('html, body').animate({
+                scrollTop: $("#shopify-section-subscription_information").offset().top - parseInt(90)
+            });
+      });
+  
+
+
+(function($) {
+
+  $.fn.progress_fnc = function(options) {
+    var settings = $.extend({
+      type: 'start'
+    }, options);
+
+    var div = $(this);
+    var progress = div.find('.cssProgress');
+
+    progress.each(function() {
+      var self = $(this);
+      var progress_bar = self.find('.cssProgress-bar');
+      var progress_label = self.find('.cssProgress-label, .cssProgress-label2');
+      var progress_value = progress_bar.data('percent');
+      var percentage = parseInt(progress_value, 10) + '%';
+
+      progress_bar.css({'width': '0%', 'transition': 'none', '-webkit-transition': 'none', '-moz-transition': 'none'});
+
+      if(settings.type == 'start') {
+
+        progress_bar.animate({
+          width: percentage
+        }, {
+          duration: 5000,
+          step: function(x) {
+            progress_label.text(Math.round(x) + '%');
+          }
+        });
+       
+
+      } else if(settings.type == 'reset') {
+        progress_bar.css('width', '0%');
+        progress_label.text('0%');
+      }
+
+    });
+  }
+  
+  
+  
+}(jQuery));
+  
+$(document).ready(iconfunction);
+    $(window).on('resize',iconfunction);
+
+    function iconfunction() {
+
+   
+
+      $('.showOtherContent .scarvesSlider, .showOtherContent .wardrobeSlider, .showOtherContent .outfitSlider').slick({
+          dots: true,
+          infinite: true,
+          speed: 300,
+          slidesToShow: 3,
+          slidesToScroll: 3,
+           arrows:false,
+          responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 3,
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+        ]
+
+        });
+
+      $('.showOtherContent .scarvesSlider .slick-prev.slick-arrow, .showOtherContent .wardrobeSlider .slick-prev.slick-arrow, .showOtherContent .outfitSlider .slick-prev.slick-arrow').html('<i class="fa fa-angle-left" aria-hidden="true"></i>');
+      $('.showOtherContent .scarvesSlider .slick-next.slick-arrow, .showOtherContent .wardrobeSlider .slick-next.slick-arrow, .showOtherContent .outfitSlider .slick-next.slick-arrow').html('<i class="fa fa-angle-right" aria-hidden="true"></i>'); 
+
+       $( ".formSection .field-group:not(.nine-que) input" ).each(function() {
+        var window_width = $(window).width();
+          $(this).on("click", function(){
+            if(window_width > 768){
+                var nextQue = $(this).parent().closest('.field-group').next();
+                  $('html, body').animate({
+                  scrollTop: $(nextQue).offset().top - parseInt(130)
+                });
+            }else{
+                var nextQue = $(this).parent().closest('.field-group').next();
+                  $('html, body').animate({
+                  scrollTop: $(nextQue).offset().top - parseInt(50)
+                });
+             }
+          });
+   		});
+        
+      
+    }
+  
+  $("#shopify-section-subscription_banner_section_mobile .btn.btn--cta.cpsgts").click(function(){
+
+
+$(this).parent().find('p').removeClass("show_on_btn");
+
+$(this).parent().find('p').removeClass("desktop");
+
+$(this).hide();
+
+
+});
+    
+$("#shopify-section-subscription_banner_section_mobile .btn.btn--cta.cpsgts").click(function(){
+
+$("#shopify-section-subscription_banner_section_mobile").addClass("show_image");
+  
+$(this).parent().find('p').removeClass("show_on_btn");
+
+$(this).parent().find('p').removeClass("desktop");
+
+$(this).hide();
+
+
+});
+
+</script>   

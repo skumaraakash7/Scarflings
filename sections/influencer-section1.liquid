@@ -1,0 +1,60 @@
+<section class="roundRightImage postCommonsection influencerSection commonSection" id="section_k_{{ section.id }}">
+    <div class="leftBg" style="background-image:url('{{ section.settings.in_sec2_bg | img_url: 'master' }}');
+"></div>
+	<div class="container">
+    	<div class="row">
+            <div class="simpletext col-sm-6">
+                    <h2> {{ section.settings.in_sec2_heading }} </h2>
+                    <p> {{ section.settings.in_sec2_text }} </p>
+            </div>
+           <div class="col-sm-6">
+        <div class="outer_video">
+          <video id="vid" controls poster="{{ section.settings.in_sec2_poster | img_url: 'master' }}">
+            <source src="https://cdn.shopify.com/s/files/1/0070/0835/4356/t/69/assets/{{ section.settings.in_sec2_video }}" type="video/mp4">
+          </video>
+        </div>
+      </div>
+        </div>
+     
+    </div>
+</section>
+{% schema %}
+  {
+    "name": "influencer section 2",
+    "settings": [
+	  {
+        "id": "in_sec2_heading",
+        "type": "html",
+        "label": "Heading"
+      },
+	  {
+        "id": "in_sec2_text",
+        "type": "html",
+        "label": "Description"
+      },
+      {
+      "id": "in_sec2_bg",
+      "type": "image_picker",
+      "label": "Background"
+      },
+      {
+      "id": "in_sec2_poster",
+      "type": "image_picker",
+      "label": "Video poster"
+      },
+	  {
+        "id": "in_sec2_video",
+        "type": "text",
+        "label": "Video name"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+
+

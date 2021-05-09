@@ -1,0 +1,159 @@
+<section class="formSection" id="section_k_{{ section.id }}" style="background-image:url('{{ section.settings.form_bg_image | img_url: 'master' }}')">
+ 
+	<div class="container">
+      
+      <div class="appForm">
+        <h2>Scarflings Influencer Application Form</h2>
+        {% form "contact", id: "influencer-form", class: "influencer-form",method: "post" %}
+        
+        {%- if form.posted_successfully? -%}
+        <p class="note form-success">
+          {{ 'contact.form.post_success' | t }}
+        </p>
+        {%- endif -%}
+        {% assign error_order = "author, email, body, password, form" | split: ", " %}
+
+{%- if form.errors -%}
+
+  <div class="form-message form-message--error">
+    <h2 class="h3 form-message__title " tabindex="-1" data-form-status>{{ 'contact.form.error_heading' | t }}</h2>
+    <ul>
+      {% for error in error_order %}
+        {% for field in form.errors %}
+          {% if error == field %}
+
+            {% capture field_label %}
+              {% case field %}
+                {% when 'author' %}
+                  {{ 'contact.form.name' | t }}
+                {% when 'body' %}
+                  {{ 'contact.form.message' | t }}
+                {% else %}
+                  {{ form.errors.translated_fields[field] }}
+              {% endcase %}
+            {% endcapture %}
+
+            <li>
+              {%- if field == 'form' -%}
+                {{ form.errors.messages[field] }}
+              {%- else -%}
+                {% comment %} the href should match the input's id {% endcomment %}
+                <a href="#{{ form_id }}-{{ field }}" class="form-message__link">{{ field_label | strip | capitalize }} {{ form.errors.messages[field] }}</a>
+              {%- endif -%}
+            </li>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    </ul>
+  </div>
+{%- endif -%}
+          <div class="field_group required_field">
+            <input type="text" required name="contact[first_name]" placeholder="First name">
+          </div>
+          <div class="field_group required_field">
+            <input type="text" required name="contact[last_name]" placeholder="Last name">
+          </div>
+          <div class="field_group required_field mail_field">
+            <input type="email" name="contact[email]" required placeholder="Email address">
+            
+          </div>
+          <div class="field_group required_field">
+            <input type="text" required name="contact[country]" placeholder="Country">
+          </div>
+          <div class="field_group required_field">
+            <input type="text" required name="contact[city]" placeholder="City">
+          </div>
+          <div class="field_group half_group">
+            <div class="field_group required_field">
+            <input type="text"  name="contact[instagram_url]" placeholder="Instagram">
+            </div>
+            <div class="field_group required_field">
+            <input type="text" name="contact[instagram_followers]" placeholder="Followers">
+            </div>
+          </div>
+          <div class="field_group half_group">
+            <div class="field_group">
+            <input type="text" name="contact[facebook_url]" placeholder="Facebook">
+            </div>
+            <div class="field_group">
+            <input type="text" name="contact[facebook_likes]" placeholder="Likes">
+            </div>
+          </div>
+          <div class="field_group half_group">
+            <div class="field_group">
+            <input type="text" name="contact[youtube_url]" placeholder="Youtube">
+            </div>
+            <div class="field_group">
+            <input type="text" name="contact[youtube_subscribers]" placeholder="Subscribers">
+            </div>
+          </div>
+          <div class="field_group required_field">
+            <label>Average number of comments  (Per post for Youtube, Instagram, Facebook)</label>
+            <input type="text" name="contact[average_no_of_comments]" required>
+          </div>
+          <div class="field_group required_field">
+            <label>Average number of story views for Instagram, and Facebook</label>
+            <input type="text" name="contact[average_no_of_story_views]" required>
+          </div>
+          <div class="field_group required_field">
+            <label>Demographics (Age, sex, location)? </label>
+            <input type="text" name="contact[demographics]" required>
+          </div>
+          <div class="field_group required_field">
+            <label>Have you created sponsored content for other brands?</label>
+            <textarea required name="contact[sponsored_content]"></textarea>
+          </div>
+          <div class="field_group">
+            <label>Is there anything else you’d like to share?</label>
+            <textarea name="contact[anything_else]"></textarea>
+          </div>
+          <div class="field_group submit_btn">
+            <button type="submit" class="btn btn--cta cpsgts">SUBMIT APPLICATION<img src='{{ section.settings.form_button_emoji | img_url: 'master'}}'></button>
+          </div>
+          <div class="error" style="display:none;">
+            <p>Please fill all the mandatory fields.</p>
+          </div>
+        
+         <div class="mail_error" style="display:none;">
+            	<p>Please enter valid email address</p>
+          	</div>
+          <div class="success" style="display:none;">
+            <p>Form has been submitted successfully.</p>
+          </div>
+          
+        {% endform %}
+      </div>
+    	
+   </div>
+</section>
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1440 126" style="enable-background:new 0 0 1440 126;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#fff;}
+</style>
+<title>Rectangle 3</title>
+<desc>Created with Sketch.</desc>
+<path class="st0" d="M685.6,38.8C418.7-11.1,170.2,9.9,0,30v96h1440V30C1252.7,52.2,1010,99.4,685.6,38.8z"></path>
+</svg>
+{% schema %}
+  {
+    "name": "Form section",
+    "settings": [
+      {
+      "id": "form_bg_image",
+      "type": "image_picker",
+      "label": "Background"
+      },
+	{
+		"id": "form_button_emoji",
+        "type": "image_picker",
+        "label": "Button emoji"
+		}
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

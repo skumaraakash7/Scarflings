@@ -1,0 +1,14 @@
+{%for tag in product.tags%}
+  {% if tag contains 'limited'%}
+    {% assign ltd_tag = tag | replace: 'limited-','' %}
+    {% assign ltd_qty = ltd_tag | plus: 0 %}
+	{% if current_variant.inventory_quantity <= ltd_qty %}
+        <div class="prod_ltd">
+          <div class="prod_ltd_left">{{settings.limited_banner_text}}</div>
+          <div class="prod_ltd_right">{{current_variant.inventory_quantity}}/{{ltd_tag}} left</div>
+        </div>
+    {% endif %}
+	{% break %}
+  {% endif %}
+{%endfor%}
+

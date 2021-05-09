@@ -1,0 +1,161 @@
+<section class="page_content_section p-t-66 p-b-38 blocks-carousel" id="section_k_{{ section.id }}" style="background-image: url('{{ section.settings.img_left_bg | img_url: 'large' }}');">
+	<div class="row">
+	  
+		  <div class="col-md-12 simpletext desktop">
+			  <h2> {{ section.settings.text_box_left_title }} </h2>
+			</div>
+		
+	</div>
+<div class="container">  
+<div class="col-md-6" id="section_k_slider_{{ section.id }}">
+{% for block in section.blocks %}
+<div id="row block_k_{{ block.id }}">
+  
+	
+	  
+		  <div class="col-md-12">
+   
+			
+			<div class="col-md-12 rondedImageLeft" >
+			  <div class="SliderLeftImage" style="background-image:url('{{ block.settings.img_right | img_url: 'master' }}')"></div>
+				
+			  <h3> {{ block.settings.text_below_image }} </h3>
+
+			</div>
+			
+
+			<!--<div class="col-md-6">
+				<div class="simpletext">
+
+					<h3> {{ block.settings.text_box_left_text }} </h3>
+
+				</div>
+			</div>-->
+		  </div>
+	
+
+	  
+	
+	
+  
+  
+  
+</div>
+  {% endfor %}
+  </div>
+  
+<div class="col-md-6">
+				<div class="simpletext">
+
+			  <h2 class="mobile_only"> {{ section.settings.text_box_left_title }} </h2>
+		   
+					<p> {{ section.settings.box_description }} </p>
+			  
+
+				</div>
+</div>
+  <a href="javascript:void(0)" class="btn btn--cta cpsgts">{{ section.settings.linktext }}</a>
+  <div class="hero_play_button">
+	  <video id="vid" controls>
+		<source src="https://cdn.shopify.com/s/files/1/0070/0835/4356/t/69/assets/{{ section.settings.about_us_home }}" type="video/mp4">
+	  </video>
+	<img src="{{ 'watch-button.png' | asset_url }}"><p>Watch Video</p>
+  </div>
+  </div>
+  
+</section>
+
+<script type="lazyload2">
+setTimeout(function() {
+  $("#section_k_slider_{{ section.id }}").owlCarousel({
+	items: 1,
+	singleItem: true,
+	margin:10,
+	itemsScaleUp : true,
+	touchDrag : true,
+	dragEndSpeed: 300,
+	slideSpeed: 300,
+	autoPlay: 3000,
+  dots:true,
+	mouseDrag : true
+  });
+}, 500);
+</script>
+
+
+{% schema %}
+  {
+	"name": "TopImgLeContRig Slider",
+
+  
+  "settings": [
+   {
+		"id": "text_box_left_title",
+		"type": "text",
+		"label": "Heading",
+		"default": "Title"
+	  },
+	{
+	"id": "img_left_bg",
+		"type": "image_picker",
+		"label": "BG Image"
+	},
+  {
+		"id": "box_description",
+		"type": "html",
+		"label": "Box Description",
+		"default": "Box Description"
+	  },{
+	  "id": "link",
+	  "type": "url",
+	  "label": "Button link"
+	  },
+  {
+	  "id": "linktext",
+	  "type": "text",
+	  "label": "Button text",
+	  "default": "Read More"
+	},
+	{
+		"id": "about_us_home",
+		"type": "text",
+		"label": "Video name"
+	  }
+  ],
+  "max_blocks": 3,
+  "blocks": [
+	  {
+		"type": "slideshow",
+		"name": "SlideP",
+		"settings": [
+		 
+	  {
+		"id": "text_box_left_text",
+		"type": "richtext",
+		"label": "Add custom text below",
+		"default": "<p>Add your text here</p>"
+	  },
+	{
+	"id": "img_right",
+		"type": "image_picker",
+		"label": "Image"
+	},
+	
+	{
+		"id": "text_below_image",
+		"type": "richtext",
+		"label": "Add custom text below Image",
+		"default": "<p>Add your text here</p>"
+	  }
+		]
+	  }
+	]
+
+
+  
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+

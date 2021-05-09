@@ -1,0 +1,23 @@
+<style>
+.product-view-visitors-wrap{
+  padding: 10px;
+  text-align: center;
+  font-family: Courier New;
+  font-weight: bold;
+}
+</style>
+<div class="product-view-visitors-wrap">
+  <br>
+  &#x1F6CD;
+  <span class="product-view-visitors-count">202</span>
+  <span class="product-view-visitors-text"> people viewing this product right now!</span>
+</div>
+<script>
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+$(document).ready(function(){
+  var visitorCount = getRandomInt(34, 508);
+  $('.product-view-visitors-count').text(visitorCount);
+});
+</script>

@@ -1,0 +1,19 @@
+{% unless collection_item_width %}
+{% assign collection_item_width = 'text-center' %}
+{% endunless %}
+<div class="{{ collection_item_width }} ">
+  {% capture collection_title %}{{ collection.title | escape }}{% endcapture %}
+  <a class="block3-img dis-block hov-img-zoom" href="{{ collection.url }}" title="{{ 'collections.general.link_title' | t: title: collection_title }}">
+    {% if collection.image %}
+    {{ collection.image.src | img_url: '360x360' | img_tag: collection_title }}
+    {% else %}
+    {{ collection.products.first.featured_image | img_url: '360x360' | img_tag: collection_title }}
+    {% endif %}
+    <div class="block2-txt p-t-20 product_desc">
+    <a href="{{ collection.url }}">
+      {{ collection.title }}
+    </a>
+  </div>
+    
+  </a>
+</div>

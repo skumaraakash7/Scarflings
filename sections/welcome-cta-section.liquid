@@ -1,0 +1,129 @@
+<style>
+section#section_k_welcome-cta-section {
+    padding: 60px 0px 40px 0px;
+    background-size: cover;
+    background-position: center;
+}
+.ctaSection .simpletext {
+    text-align: center;
+}
+.ctaSection .simpletext h2 {
+    color: #fff !important;
+}
+.ctaSection .simpletext p {
+    color: #fff !important;
+    margin-bottom: 50px !important;
+    padding: 0px 100px;
+}
+.socialButton a {
+    width: 55px;
+    height: 55px;
+    background: #fff;
+    align-items: center;
+    display: flex;
+    margin: 0px 10px;
+    justify-content: center;
+    border: 1px solid #fff;
+    border-radius: 50% !important;
+}
+.socialButton a:hover {
+    background: #b54e28;
+}
+.socialButton a:hover i {
+    color: #fff;
+}
+.socialButton a i {
+    color: #b44b2b;
+    font-size: 34px;
+}
+.socialButton {
+    display: flex;
+    justify-content: center;
+}
+@media (min-width: 768px){
+  	
+  .ctaSection{
+    background-image:url('{{ section.settings.background_desktop | img_url: 'master' }}');
+      }
+
+}
+@media (max-width: 767px){
+  section#section_k_welcome-cta-section {
+    padding: 40px 0px 50px 0px;
+    background-size: cover;
+    background-position: center;
+}
+.ctaSection .simpletext p {
+    color: #fff !important;
+    margin-bottom: 40px !important;
+    padding: 0px 0px;
+}
+.socialButton a {
+    width: 45px;
+    height: 45px;
+}
+.socialButton a i {
+    color: #b44b2b;
+    font-size: 28px;
+}
+.ctaSection{
+  background-image:url('{{ section.settings.background_mobile | img_url: 'master' }}');
+}  
+  }
+</style>
+<section class="ctaSection" id="section_k_{{ section.id }}" >
+	<div class="container">
+      <div class="simpletext">
+        <h2> {{ section.settings.cta_heading }} </h2>
+        <p>{{ section.settings.cta_text }} </p>
+        <div class="socialButton">
+          <a href="{{ section.settings.facebook_url }}" target="_blank" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+          <a href="{{ section.settings.instagram_url }}" target="_blank" class="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+        
+        </div>
+      </div>
+   </div>
+</section>
+{% schema %}
+  {
+    "name": "CTA section",
+    "settings": [
+      {
+        "id": "cta_heading",
+        "type": "html",
+        "label": "heading"
+      },
+		{
+        "id": "cta_text",
+        "type": "html",
+        "label": "text"
+      },
+		{
+        "id": "facebook_url",
+        "type": "text",
+        "label": "Facebook Url"
+      },
+		{
+        "id": "instagram_url",
+        "type": "text",
+        "label": "Instagram Url"
+      },
+		{
+		"id": "background_desktop",
+        "type": "image_picker",
+        "label": "Desktop Background"
+		},
+	  {
+		"id": "background_mobile",
+        "type": "image_picker",
+        "label": "Mobile Background"
+		}
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

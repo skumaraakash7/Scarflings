@@ -1,0 +1,323 @@
+<style>
+  /*
+  section#section_k_subscription_information .reserveForm .klaviyo-form-KYc6Af {
+    display: none !important;
+}
+  */
+  .klaviyo.success_message {
+    color: #348a37 !important;
+    max-width: 513px !important;
+    margin: 0 auto !important;
+    text-align: left !important;
+}
+
+.klaviyo_messages .error_message {
+    color: #cd2122 !important;
+    max-width: 513px !important;
+    margin: 0 auto !important;
+    text-align: left !important;
+}
+.subscription_information #basicModal a.btn img {
+    width: 15px;
+    margin: -2px 0px 0px 7px;
+}
+.subscription_information #basicModal input[type="text"] {
+    width: 300px !important;
+  max-width: 100% !important;
+}
+.subscription_information #basicModal a.btn:hover {
+    background: #ab4618 !important;
+    color: #fff !important;
+}
+  @media (max-width:767px){
+ .subscription_information #basicModal a.btn {
+    margin-left: 0px;
+    padding: 8px 12px !important;
+    height: auto !important;
+    width: auto !important;
+    display: inline-block;
+    font-size: 15px !important;
+    line-height: 1.5em;
+    max-width: 100% !important;
+}
+.subscription_information #basicModal input[type="text"] {
+    width: 270px !important;
+}
+  }
+  
+</style>
+<section class="subscription_information" id="section_k_{{ section.id }}">
+ <div class="container">
+  	<div class="row">
+    	
+       		<div class="col-md-12 simpletext">
+              <div class="subscription_notes">
+               <h3 class="before_subscription">{{ section.settings.subscription_intro_heading }}</h3>
+               <p class="before_subscription mobile_only"><span class="available">{{ section.settings.subscription_box_avail }}</span></p>
+               <p class="before_subscription">{{ section.settings.subscription_intro_para }}<span class="available desktop_only"> {{ section.settings.subscription_box_avail }}</span></p>
+               <h3 class="after_subscription">{{ section.settings.subscription_form_after_heading }}</h3>
+                <p class="reservePara stock after_subscription"><b>{{ section.settings.subscription_welcome_text }}</b></p>
+               <p class="reservePara after_subscription">{{ section.settings.subscription_form_date }}</p>
+              </div>
+                 <div class="row features">
+                  <div class="col-12 col-md-4">
+                    <div class="sub_features" >
+                      <img src="{{ section.settings.plan_features_image_one | img_url: 'master'}}">
+                      <p>{{ section.settings.plan_features_text_one }}</p>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-4">
+                    <div class="sub_features" >
+                      <img src="{{ section.settings.plan_features_image_two | img_url: 'master'}}">
+                      <p>{{ section.settings.plan_features_text_two }}</p>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-4">
+                    <div class="sub_features" >
+                      <img src="{{ section.settings.plan_features_image_three | img_url: 'master'}}">
+                      <p>{{ section.settings.plan_features_text_three }}</p>
+                    </div>
+                  </div>
+                </div>
+              <div id="subscription_notes">
+                
+                <h3 class="before_subscription">{{ section.settings.subscription_form_before_heading }}</h3>
+                <p class="before_subscription">{{ section.settings.subscription_form_before_para }}</p> 
+      
+              </div>
+           
+              <div class="imageCounter">
+              	<p>Next box ships out in:</p>
+                <div class="counter" id="timer">
+                  	
+                	<div class="counter_child">
+                      <span class="number" id="days"></span>
+                      <p class="time">Days</p>
+                  	</div>
+                  	<span>:</span>
+                  	<div class="counter_child">
+                      <span class="number" id="hours"></span>
+                      <p class="time">Hrs</p>
+                  	</div>
+                  	<span>:</span>
+                  	<div class="counter_child">
+                      <span class="number" id="minutes"></span>
+                      <p class="time">Mins</p>
+                  	</div>
+                  	<span>:</span>
+                  	<div class="counter_child">
+                      <span class="number" id="seconds"></span>
+                      <p class="time">Secs</p>
+                  	</div>
+                </div>
+              </div>
+              <span class="email_error" style="display:none;">
+                
+              </span>
+              <div class="reserveForm">
+                
+                <form id="reserveForm" class="klaviyo_gdpr_embed_H8q8FY" action="//manage.kmail-lists.com/subscriptions/subscribe" data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe" method="GET" target="_blank" novalidate="novalidate">
+                  	<div class="klaviyo_messages">
+                  		<div class="success_message" style="display:none;"></div>
+                  		<div class="error_message" style="display:none;"></div>
+                	</div>
+                  <input type="hidden" name="g" value="H8q8FY">
+                  <input type="hidden" name="$fields" value="$consent">
+                  <input type="hidden" name="$list_fields" value="$consent">
+                  	
+              			<input type="text" placeholder="Enter your email" id="subscription_email" name="email">
+                  
+                	<a href="javascript:void(0)" id="subscription_btn1" class="btn btn-lg btn-success modal_btn"  data-toggle="modal" data-target="" style="display:none">Reserve now</a>
+                    <button type="submit" id="subscription_btn" class="klaviyo_submit_button">Reserve my spot now<img src="{{ 'smiling-face-with-heart-eyes.png' | asset_url }}"></button> 
+			    <a href="javascript:void(0)" id="subscription_verify_otp" class="btn btn-lg btn-success"  data-toggle="modal" data-target="#basicModal" style="display:none">Verify now</a>                    
+                  
+                
+                </form>
+            	
+                <script type="text/javascript" src="//www.klaviyo.com/media/js/public/klaviyo_subscribe.js"></script>
+  <script type="text/javascript">
+    var temail = $("#reserveForm").find('[name="email"]').val();
+    KlaviyoSubscribe.attachToForms('#reserveForm', {
+      hide_form_on_success: false,
+      extra_properties: {
+        $source: '$embed',
+        $method_type: "Klaviyo Form",
+        $method_id: 'embed',
+        $consent_version: 'Subscription Form'
+      },
+       custom_success_message: true,
+      success_message: "Thank you for signing up! Your special offer is on its way!",
+      
+      success: function ($form) {
+        var email = $form.find('[name="email"]').val();
+        $("#subscription_email").attr("value",email);
+        
+        $("#subscription_btn1").hide();
+      	$("#subscription_btn1").attr("data-target", "#basicModal");
+        $("#subscription_btn1").hide();
+        $("#subscription_btn1").hide();
+        $("#subscription_verify_otp").show();
+        $("#subscription_btn1").trigger("click");
+        
+        $("#subscription_btn").hide();
+                
+        localStorage.setItem("subscription_email", email);
+        
+        /*var email = $form.find('[name="email"]').val();
+        _learnq.push(['identify', { $email: email }]);
+        _learnq.push(['track', 'Signed Up for Newsletter']);*/
+      },
+
+
+    });
+  </script>
+                
+              </div>
+              
+            </div>
+        
+  	</div>
+  </div>
+ <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog" style="background-image:url('{{ section.settings.popup_banner_bg | img_url: 'master' }}')">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close sub_modal_close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h1>{{ section.settings.popup_heading }}</h1>
+         <p>{{ section.settings.popup_description }}</p>
+        <div class="modalForm">
+          <h3>Enter your code</h3>
+          <span class="code_error" style="display:none;">
+            Please enter valid code.
+          </span>
+          <input type="text">
+          <a href="javascript:void(0)" class="btn btn-lg btn-success" id="verify_email_btn">{{ section.settings.popup_button_text }}<img src="{{ section.settings.popup_button_icon | img_url: 'master' }}"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
+</section>
+
+
+
+{% schema %}
+  {
+    "name": "subscription information",
+
+	
+	"settings": [
+	    {
+          "id": "subscription_intro_heading",
+          "type": "html",
+          "label": "Intro heading"
+        },
+	{
+          "id": "subscription_intro_para",
+          "type": "html",
+          "label": "Intro description"
+        },
+	   {
+          "id": "subscription_box_avail",
+          "type": "html",
+          "label": "Box available"
+        },
+	   {
+          "id": "subscription_form_after_heading",
+          "type": "html",
+          "label": "After Subscription heading"
+       },
+	   {
+          "id": "subscription_welcome_text",
+          "type": "html",
+          "label": "Subscription welcome text"
+       },
+		{
+          "id": "subscription_form_date",
+          "type": "html",
+          "label": "Subscription date"
+       },
+      
+		{
+          "id": "subscription_form_before_heading",
+          "type": "html",
+          "label": "Before Subscription heading"
+       },
+	   {
+          "id": "subscription_form_before_para",
+          "type": "html",
+          "label": "Before Subscription description"
+       },
+		{
+          "id": "subscription_form_first_date",
+          "type": "html",
+          "label": "Subscription first date"
+       },
+	  
+	{
+          "id": "plan_features_text_one",
+          "type": "html",
+          "label": "plan features text 1"
+        },
+		{
+		"id": "plan_features_image_one",
+        "type": "image_picker",
+        "label": "feature image 1"
+		},
+	{
+          "id": "plan_features_text_two",
+          "type": "html",
+          "label": "plan features text 2"
+        },
+		{
+		"id": "plan_features_image_two",
+        "type": "image_picker",
+        "label": "feature image 2"
+		},
+{
+          "id": "plan_features_text_three",
+          "type": "html",
+          "label": "plan features text 3"
+        },
+		{
+		"id": "plan_features_image_three",
+        "type": "image_picker",
+        "label": "feature image 3"
+		},
+	  {
+          "id": "popup_banner_bg",
+          "type": "image_picker",
+          "label": "Popup banner Image"
+       },
+	  {
+          "id": "popup_heading",
+          "type": "html",
+          "label": "Popup heading"
+       },
+     {
+          "id": "popup_description",
+          "type": "html",
+          "label": "Popup description"
+       },
+     {
+          "id": "popup_button_text",
+          "type": "html",
+          "label": "Popup button label"
+       },
+	  {
+          "id": "popup_button_icon",
+          "type": "image_picker",
+          "label": "Popup button icon"
+       }
+	]
+  
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+

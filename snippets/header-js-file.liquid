@@ -1,0 +1,31 @@
+<!--<script src="{{ 'jquery-cookie.js' | asset_url }}" defer></script>
+
+<script src="{{ 'lazysizes.min.js' | asset_url }}" defer></script>
+
+<script src="{{ 'ls.rias.min.js' | asset_url }}" defer></script>
+
+<script src="{{ 'ls.bgset.min.js' | asset_url }}" defer></script>
+
+<script src="{{ 'ls.blur-up.min.js' | asset_url }}" async="async"></script>-->
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js" defer ></script>
+<!--<script defer src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.1/lazysizes.min.js" defer></script>-->
+
+
+
+<!--<script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js" ></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.1/lazysizes.min.js" ></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.1/plugins/rias/ls.rias.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.1/plugins/bgset/ls.bgset.min.js"></script>-->
+
+
+<script defer src="{{ 'shipping-cart.js' | asset_url }}"></script>
+<!--<script defer src="{{ 'jquery-ui.min.js' | asset_url }}"></script>-->
+
+{{ shop.metafields.loox["global_html_head"] }}
+{% include 'scapp-customerinfo' %} 
+
+<!-- BeginShopPopAddon -->
+<script>  
+  Shopify.shopPopSettings = {"proof_enabled":true,"proof_show_add_to_cart":true,"proof_mobile_enabled":true,"proof_mobile_position":"Bottom","proof_desktop_position":"Bottom Left","proof_show_on_product_page":true,"proof_hide_notification_after":30,"proof_display_time":6,"proof_interval_time":15,"proof_order_random":false,"proof_fetch_count":30,"proof_cycle":true,"proof_anonymize":false,"proof_anonymize_text":"","proof_hours_before_obscure":48,"proof_sequential":true,"proof_top":10,"proof_left":10,"proof_right":10,"proof_bottom":10,"proof_background_color":"#ffffff","proof_font_color":"#000000","proof_custom_css":null,"proof_border_radius":40,"proof_first_interval_time":10,"proof_locale":"en"};
+</script>
+<!-- EndShopPopAddon -->

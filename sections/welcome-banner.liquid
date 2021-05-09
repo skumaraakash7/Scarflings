@@ -1,0 +1,104 @@
+<style>
+  .FirstSectImage{
+background-repeat:no-repeat;
+}
+#shopify-section-welcome-banner section {
+    padding: 0px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+#shopify-section-welcome-banner p:last-child{
+margin-bottom:0px;
+}
+#shopify-section-welcome-banner section .row {
+    padding: 0px;
+    width: 850px;
+    margin: 0 auto;
+  	max-width: 100%;
+}
+.FirstSectImage {
+    background-size: contain;
+    background-position: left bottom !important;
+    background-repeat: no-repeat;
+}
+
+#shopify-section-welcome-banner .simpletext {
+    padding: 115px 0px 90px 0px;
+}
+
+@media (min-width:768px) and (max-width:991px){
+#shopify-section-welcome-banner .simpletext p{
+font-size:15px!important;
+}
+#shopify-section-welcome-banner .simpletext{
+padding:50px 0px 50px 70px;
+}
+}
+
+
+@media (max-width:767px){
+
+
+#shopify-section-welcome-banner section .row {
+    padding: 20px 0px 0px 0px;
+    margin: 0px -20px !important;
+    width: auto;
+    max-width: unset;
+}
+
+#shopify-section-welcome-banner .simpletext {
+    padding: 50px 0px 30px 0px;
+}
+}
+
+@media (min-width:768px){
+
+#shopify-section-welcome-banner .FirstSectImage{
+margin-top:20px!important;
+}
+}
+
+</style>
+<section class="page_content_section p-t-66 p-b-38" id="section_k_{{ section.id }}" style="background-image:url('{{ section.settings.bg_image | img_url: 'master' }}')" >
+<div class="container">
+   <div class="row">
+    <div class="col-7 col-md-8 col-lg-7">
+      <div class="simpletext">
+        <h2> {{ section.settings.left_text }} </h2>
+      </div>
+    </div>
+    <div class="col-5 col-md-4 col-lg-5 FirstSectImage" style="background-image:url('{{ section.settings.image_right | img_url: 'master' }}')" >
+    </div>      
+   </div>
+  </div>
+</section>
+{% schema %}
+  {
+    "name": "Banner",
+    "settings": [
+      {
+        "id": "left_text",
+        "type": "html",
+        "label": "Add custom text below",
+        "default": "<p>Add your text here</p>"
+      },
+		{
+		"id": "bg_image",
+        "type": "image_picker",
+        "label": "Image"
+		},
+		{
+		"id": "image_right",
+        "type": "image_picker",
+        "label": "Image"
+		}	
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

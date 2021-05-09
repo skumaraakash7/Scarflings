@@ -1,0 +1,81 @@
+<!-- content page -->
+<section class="bgwhite investor-back p-t-15 p-b-25" {% if section.settings.banner %}style="background-image: url({{ section.settings.banner | img_url: 'master' }});"{% endif %}>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7 col-sm-12 col-lg-7">
+        <div class="video-sec">
+     		 {{ section.settings.video }}
+        </div>
+      </div>
+      <div class="col-md-5 col-sm-12 col-lg-5">
+        <div class="data-sec">
+          <h2 class="text-center">{{ section.settings.heading }}</h2>
+     	  {{ section.settings.desc }}
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-lg-12 text-center">
+        <div class="find-more">
+     		 {{ section.settings.find_desc }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="calandly-section">
+	<div class="container">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-lg-12">
+          <div class="calendly-data">
+            {{ section.settings.calendly }}
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Investors",
+    "settings": [
+		{
+            "id": "banner",
+            "type": "image_picker",
+            "label": "Banner"
+        },
+		{
+            "id": "video",
+            "type": "textarea",
+            "label": "Video"
+        },
+		{
+            "id": "heading",
+            "type": "text",
+            "label": "Heading"
+        },
+		{
+            "id": "desc",
+            "type": "richtext",
+            "label": "Description"
+        },
+		{
+            "id": "find_desc",
+            "type": "richtext",
+            "label": "Find More Text"
+        },
+		{
+            "id": "calendly",
+            "type": "textarea",
+            "label": "Calendly Code"
+        }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,22 @@
+
+<section class="bannerSection">
+  <img src="{{ section.settings.mid_banner | img_url: 'master' }}">
+</section>
+{% schema %}
+  {
+    "name": "Middle Banner",
+    "settings": [
+		{
+		"id": "mid_banner",
+        "type": "image_picker",
+        "label": "Image"
+		}	
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

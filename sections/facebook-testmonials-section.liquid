@@ -1,0 +1,49 @@
+<section class="fbTestimonials">
+	<div class="container">
+      <div class="fbTestimonialsInner">
+        <h2>{{ section.settings.facebook_heading }}</h2>
+        <div class="fbImageSection showondesktop">
+          <img src="{{ section.settings.desktop_image | img_url: 'master' }}">
+        </div>
+        <div class="fbImageSection showonmobile">
+          <img class="fbMob1" src="{{ section.settings.mobile_image1 | img_url: 'master' }}">
+          <img class="fbMob2" src="{{ section.settings.mobile_image2 | img_url: 'master' }}">
+          <div class="arrowsSection">
+              <div class="arrowUp"></div>
+              <div class="arrowDown"></div>
+          </div>
+        </div>
+      </div>
+  	</div>
+</section>
+
+{% schema %}
+  {
+    "name": "Facebook Testimonials",
+    "settings": [
+     	{
+		"id": "facebook_heading",
+        "type": "html",
+        "label": "Heading"
+		}
+	  ,
+		{
+		"id": "desktop_image",
+        "type": "image_picker",
+        "label": "Desktop Image"
+		}
+	  ,
+		{
+		"id": "mobile_image1",
+        "type": "image_picker",
+        "label": "Mobile Image 1"
+		}
+      ,
+		{
+		"id": "mobile_image2",
+        "type": "image_picker",
+        "label": "Mobile Image 2"
+		}
+    ]
+  }
+{% endschema %}

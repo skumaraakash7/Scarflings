@@ -1,0 +1,58 @@
+<section class="page_content_section desktop p-t-66 p-b-38" id="section_k_{{ section.id }}">
+<div class="container">
+    	<div class="row">
+<div class="col-md-7">
+  <div class="simpletext">
+    <h2 class="bannerSectionheading"> {{ section.settings.text_box_left_title }} </h2>
+    <h3> {{ section.settings.text_box_left_text }} </h3>
+  </div>
+</div>
+<div class="col-md-5 FirstSectImage" style="background-image:url('{{ section.settings.img_right | img_url: 'master' }}')" >
+ <div class="play_button">
+   <video id="vid" controls>
+        <source src="https://cdn.shopify.com/s/files/1/0070/0835/4356/t/69/assets/{{ section.settings.about_banner_video }}" type="video/mp4">
+   	  </video>
+   <img src="{{ 'white-play.png' | asset_url }}">
+  </div>
+          
+  
+</div>
+          
+          </div>
+    </div>
+</section>
+{% schema %}
+  {
+    "name": "D Content Left Img Right",
+    "settings": [
+      {
+        "id": "text_box_left_title",
+        "type": "text",
+        "label": "Heading",
+        "default": "Title"
+      },
+      {
+        "id": "text_box_left_text",
+        "type": "html",
+        "label": "Add custom text below",
+        "default": "<p>Add your text here</p>"
+      },
+		{
+		"id": "img_right",
+        "type": "image_picker",
+        "label": "Image"
+		},
+	  {
+        "id": "about_banner_video",
+        "type": "text",
+        "label": "Video name"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

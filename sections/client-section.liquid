@@ -1,0 +1,170 @@
+{% if template == 'cart' %}
+
+	<section class="client_section bgwhite p-t-22 p-b-22" data-section-id="{{ section.id }}">
+		<div class="container-fluid" >
+
+		  <!-- Slide2 -->
+		  <div class="wrap-slick2 rs1-slick2">
+			<div class="slick1">
+			  {% for i in (1..6) %}
+		  {%  assign author = "author_" | append: i %}     
+		  {%  assign c_content = "c_content_" | append: i %}   
+		  {%  assign client_image = "client_image_" | append: i %}  
+			  {% if  settings[author] != blank  %} 
+			  <div class="item-slick2 p-l-15 p-r-15">
+				<blockquote class="quotes-slider__text text-center">
+				  <span class="quote-icon">
+					<img class="lazyload" 
+					  src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+					  data-src="{{ settings[client_image] | img_url: 'master' }}">
+					 
+				  </span>
+				  <div class="rte-setting"><p>{{ settings[c_content] }}</p>
+				  <cite>- {{ settings[author] }}</cite>
+				  </div>
+				  
+				 </blockquote>
+			  </div>
+			   {% endif %}
+	  {% endfor %}
+			</div>
+		  </div>
+		</div>
+	</section>
+{% comment %}
+{%elsif template == 'collection.special' %}
+
+<style>
+  
+
+.csbg-yellow {
+	background-image: url(//cdn.shopify.com/s/files/1/0070/0835/4356/t/68/assets/cs-bg.png?49192);
+	background-repeat: no-repeat;
+	background-position: 0 140px;
+	background-size: 100vw 270px;
+}
+.collspcl .client_section .quotes-slider__text {
+	background-image: url({{ 'cs-bg.svg' | asset_url }});
+}
+
+
+  </style>
+ <section class="client_section bgwhite p-t-22 p-b-22 csbg-yellow" >
+		<div class="container-fluid" >
+			<div class="sec-title p-b-22 m-p-t-22">
+			   <h3 class="m-text5 t-center">{{ settings.client_heading }}</h3>
+			</div>
+		  
+			<div class="slick6">
+				{% for i in (1..6) %}
+		  {%  assign author = "author_" | append: i %}     
+		  {%  assign c_content = "c_content_" | append: i %}
+		  {%  assign c_url = "c_url_" | append: i %}
+		  {%  assign c_anchortext = "c_anchortext_" | append: i %}
+		  {%  assign client_image = "client_image_" | append: i %}   
+			  {% if  settings[author] != blank  %} 
+			  <div class="csitem ">
+				<div class="quotes-slider__text text-center">
+				  <span class="quote-icon">
+					<img class="lazyload" 
+					  src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+					  data-src="{{ settings[client_image] | img_url: 'master' }}">
+					  <div class="url-details">
+					  <a href="{{ settings[c_url] }}" class="btn btn--cta cpsgts">{{ settings[c_anchortext] }}</a>
+				  </div>    
+				  <div class="url-overlay"></div>
+				  </span>
+				  <div class="csitem_txt">
+					<span>{{ settings[c_content] }}</span>
+					<br/>
+					<br/>
+					<span><b>{{ settings[author] }}</b></span>
+					<a href="{{ settings[c_url] }}" class="btn btn--cta cpsgts mobileBtn">{{ settings[c_anchortext] }}</a>
+				   
+				  </div>
+				  
+				 </div>
+			  </div>
+			  {% endif %}
+	  {% endfor %}
+			  
+			</div>
+			<div class='sldots'>&nbsp;</div>
+		  </div>
+		
+	</section>
+{% endcomment %}
+{% else %}
+
+
+<section class="client_section csbg-yellow bgwhite p-t-22 p-b-22" data-section-id="{{ section.id }}">
+		<div class="container-fluid" >
+			<div class="sec-title p-b-22 m-p-t-22">
+			  <h3 class="m-text5 t-center">{{ settings.client_heading }}</h3>
+			</div>
+  </div>
+   
+  <div class="client-mobile client-desktop lazyload"   data-sizes="auto" data-bgset="{{ 'book-personal-stylist-client-mobile.png' | asset_url }} [(max-width: 767px)] | {{ 'book-personal-stylist-client-desktop.png' | asset_url }} [(min-width: 768px)]">
+	<div class="container-fluid" >
+			<div class="slick6 ">
+					 {% for i in (1..6) %}
+		  {%  assign author = "author_" | append: i %}     
+		  {%  assign c_content = "c_content_" | append: i %}
+		  {%  assign c_url = "c_url_" | append: i %}
+		  {%  assign c_anchortext = "c_anchortext_" | append: i %}
+		  {%  assign client_image = "client_image_" | append: i %}     
+			{% if  settings[author] != blank  %} 
+			  <div class="csitem ">
+				<div class="quotes-slider__text text-center">
+				  <span class="quote-icon">
+					<img class="lazyload" 
+					  src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+					  data-src="{{ settings[client_image] | img_url: 'master' }}">
+					  <div class="url-details">
+					  <a href="{{ settings[c_url] }}" class="btn btn--cta cpsgts">{{ settings[c_anchortext] }}</a>
+				  </div>    
+				  <div class="url-overlay"></div>
+				  </span>
+				  <div class="csitem_txt">
+					<span>{{ settings[c_content] }}</span>
+					<br/>
+					<br/>
+					<span><b>{{ settings[author] }}</b></span>
+					<a href="{{ settings[c_url] }}" class="btn btn--cta cpsgts mobileBtn">{{ settings[c_anchortext] }}</a>
+				   
+				  </div>
+				  
+				 </div>
+			  </div>
+			{% endif %}
+	  {% endfor %}
+			  
+			</div>
+			<div class='sldots'>&nbsp;</div>
+	</div>
+	
+  </div>
+</section>
+
+
+{%endif%}
+
+
+{% schema %}
+{
+  "name": "Client Section",
+  "settings": [
+	{
+		"type": "text",
+		"id": "heading",
+		"label": "Heading",
+		"default": "Heading"   
+	}
+  ],
+  "presets": [{
+	"name": "Client Section",
+	"category": "Custom Section"
+	
+  }]
+}
+{% endschema %}

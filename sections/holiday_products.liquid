@@ -1,0 +1,159 @@
+<section class="three_row_sections" id="section_k_blocks_{{ section.id }}" >
+  <div class="product_section_bg" style="background-image:url('{{ section.settings.section_bg_image | img_url: 'master' }}')">
+  </div>
+  <div class="product_section_bg_mobile" style="background-image:url('{{ section.settings.section_bg_image_mobile | img_url: 'master' }}')">
+  </div>
+  <div class="container">
+  
+{% for block in section.blocks %}
+
+<div class="row current_block{{ block.id }}">
+  	{% if block.settings.block_bg_mobile_image %}
+	<div class="bgProduct" style="background-image:url('{{ block.settings.block_bg_mobile_image | img_url: 'master' }}');" >         
+  	</div>          
+  	{% endif %}
+            
+            {% if block.settings.block_image_position =='left' %}
+            
+            <div class="col-sm-6 round_circle_image" style="background-image:url('{{ block.settings.block_image | img_url: 'master' }}')" >
+              
+                
+              
+
+            </div>
+
+            <div class="col-sm-6 deal_details_sec">
+              <h2 class="product_t"> {{ block.settings.block_title }} </h2>
+              <h3 class="product_p">{{ block.settings.block_price }}</h3>
+                    
+              <p>{{ block.settings.block_txt }}</p>
+
+              <a class="btn btn--cta cpsgts" href="{{ block.settings.block_link }}">{{ block.settings.block_link_text }}</a>
+              
+
+            </div>
+            
+            {% endif %}
+            
+            {% if block.settings.block_image_position =='right' %}
+             <div class="col-sm-6 deal_details_sec">
+                
+                    <h2 class="product_t"> {{ block.settings.block_title }} </h2>
+                    <h3 class="product_p">{{ block.settings.block_price }}</h3>
+                    
+                    <p>{{ block.settings.block_txt }}</p>
+
+                  <a class="btn btn--cta cpsgts do_not_change_this_url" href="{{ block.settings.block_link }}">{{ block.settings.block_link_text }}</a>
+            </div>
+            
+            <div class="col-md-6 round_circle_image" style="background-image:url('{{ block.settings.block_image | img_url: 'master' }}')" >
+              
+                
+              
+
+            </div>
+           
+            
+            {% endif %}
+            
+            
+          
+        
+
+</div>
+
+  {% endfor %}
+  </div>
+</section>
+
+
+
+
+{% schema %}
+  {
+    "name": "Holiday Products",
+	"settings":[
+	{
+    "id": "section_bg_image",
+        "type": "image_picker",
+        "label": "Section Background"
+    },{
+    "id": "section_bg_image_mobile",
+        "type": "image_picker",
+        "label": "Section Background Mobile"
+    }
+
+],
+
+  
+  "max_blocks": 3,
+  "blocks": [
+  
+      {
+        "type": "slideshow",
+        "name": "Product",
+
+        "settings": [
+
+    {
+        "id": "block_title",
+        "type": "text",
+        "label": "Product Title",
+        "default": "Title"
+      },
+         
+      
+      {
+        "id": "block_price",
+        "type": "html",
+        "label": "Product Price",
+        "default": "<p>Add your text here</p>"
+      },{
+        "id": "block_txt",
+        "type": "html",
+        "label": "Product Desc",
+        "default": "<p>Add your text here</p>"
+      },
+    {
+    "id": "block_image_position",
+        "type": "radio",
+        "label": "Product Image Position",
+    "options": [ 
+    {"value" :"left"},
+    {"value":"right"} 
+    
+    ]
+    
+    },
+    {
+    "id": "block_image",
+        "type": "image_picker",
+        "label": "Product Image"
+    },{
+      "id": "block_link",
+      "type": "text",
+      "label": "Button link"
+      },
+  {
+      "id": "block_link_text",
+      "type": "text",
+      "label": "Button text",
+      "default": "VIEW NOW"
+    },
+    {
+    "id": "block_bg_mobile_image",
+        "type": "image_picker",
+        "label": "Product mobile BG Image"
+    }
+    
+    
+        ]
+      }
+    ]
+
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+

@@ -1,0 +1,83 @@
+{% comment %}
+  We want control over our error text, so we'll loop through them.
+
+  Alternatively, you can use the default layout to generate a
+  <ul> wrapped with <div class="errors">
+    - {{ form.errors | default_errors }}
+{% endcomment %}
+{% if form.errors %}
+<script>
+  $(document).ready(function(){
+    
+  	Swal.fire({
+  		title: "Errors", 
+  		html: '<div class="note form-error"> <ul class="disc"> {% assign message = 'contact.form.message' | t %} {% for field in form.errors %} {% if field == 'form' %} <li> {{ form.errors.messages[field] }} </li> {% else %} <li> {% assign field_name = field | replace: 'body', message %} {{ 'general.forms.post_field_error_html' | t: field: field_name, error: form.errors.messages[field] }} </li> {% endif %} {% endfor %} </ul> </div>',
+     	icon: "warning",
+    	confirmButtonText: 'Ok',
+       	
+	});
+    
+    });
+</script>
+<style>
+ .swal2-popup.swal2-modal.swal2-show {
+    background-image: url('//cdn.shopify.com/s/files/1/0070/0835/4356/files/6_large.png?v=1573653350');
+    background-size: 327px;
+    background-repeat: no-repeat;
+    background-position: -116px -112px;
+    padding: 50px 50px;
+    width: 650px;
+    max-width: 100%;
+ 
+}
+.swal2-popup.swal2-modal.swal2-show .swal2-title {
+    color: #c48821;
+    font-size: 44px !important;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.swal2-popup.swal2-modal.swal2-show p, .swal2-popup.swal2-modal.swal2-show li {
+    font-size: 18px !important;
+    color: #b64e26 !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 600;
+    line-height: 1.5em;
+    margin: 0px !important;
+    padding: 0px;
+}
+.swal2-popup.swal2-modal.swal2-show button {
+    background: #b64e26;
+    padding: 7px 38px;
+    border-radius: 10px !important;
+    font-size: 17px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 7px;
+    border: 0px !important;
+    box-shadow: 0px 0px 5px #777;
+}
+
+@media (max-width:767px){
+    .swal2-popup.swal2-modal.swal2-show {
+    background-size: 208px;
+    background-position: -89px -80px;
+    padding: 50px 30px;
+
+}
+.swal2-popup.swal2-modal.swal2-show .swal2-title {
+    font-size: 36px !important;
+}
+.swal2-popup.swal2-modal.swal2-show p {
+    font-size: 16px !important;
+}
+.swal2-popup.swal2-modal.swal2-show button {
+    padding: 7px 38px;
+    font-size: 17px;
+    margin-top: 7px;
+}
+}
+  .swal2-container.swal2-center.swal2-fade.swal2-shown {
+    z-index: 9999;
+}
+</style>
+{% endif %}

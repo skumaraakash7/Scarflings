@@ -1,0 +1,70 @@
+<section class="page_content_section p-t-66 p-b-38" id="section_k_{{ section.id }}" style="background-image: url('{{ section.settings.img_left_bg | img_url: 'large' }}');">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-12">
+            <div class="col-md-12 simpletext">
+              <h2> {{ section.settings.text_box_left_title }} </h2>
+            </div>
+            <div class="col-md-6 rondedImageLeft" >
+              <div class="SliderLeftImage" style="background-image:url('{{ section.settings.img_right | img_url: 'master' }}')"></div>
+                
+             	<h3> {{ section.settings.text_below_image }} </h3>
+
+            </div>
+
+            <div class="col-md-6">
+                <div class="simpletext">
+
+                    <h3> {{ section.settings.text_box_left_text }} </h3>
+
+                </div>
+            </div>
+          </div>
+
+
+      </div>
+  </div>
+</section>
+
+
+{% schema %}
+  {
+    "name": "T Top Img Left Cont Right",
+    "settings": [
+      {
+        "id": "text_box_left_title",
+        "type": "text",
+        "label": "Heading",
+        "default": "Title"
+      },
+      {
+        "id": "text_box_left_text",
+        "type": "richtext",
+        "label": "Add custom text below",
+        "default": "<p>Add your text here</p>"
+      },
+		{
+		"id": "img_right",
+        "type": "image_picker",
+        "label": "Image"
+		},
+		{
+		"id": "img_left_bg",
+        "type": "image_picker",
+        "label": "BG Image"
+		},
+		{
+        "id": "text_below_image",
+        "type": "richtext",
+        "label": "Add custom text below Image",
+        "default": "<p>Add your text here</p>"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

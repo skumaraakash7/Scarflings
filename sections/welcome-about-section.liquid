@@ -1,0 +1,285 @@
+<style>
+  
+
+#shopify-section-welcome-about-section section{
+padding:0px;
+}
+#shopify-section-welcome-about-section .container > div{
+box-shadow:0px 0px 13px #ccc!important;
+padding:65px 60px 60px 60px!important;
+background:#fff!important;
+border-radius:10px;
+}
+#shopify-section-welcome-about-section .container > div div{
+padding:0px;
+}
+#shopify-section-welcome-about-section h4{
+color:#bd812d;
+margin:35px 0px 55px 0px;
+}
+.user_card img{
+width:150px!important;
+height:150px!important;
+}
+.user_address {
+    color: #000!important;
+    margin: 0px;
+    font-size: 17px!important;
+    padding: 0px;
+}
+.user_data{
+margin-left:30px!important;
+text-align:left!important;
+}
+#shopify-section-welcome-about-section .container > div{
+box-shadow:0px 0px 13px #ccc!important;
+padding:65px 60px 60px 60px!important;
+background:#fff!important;
+}
+.user_card {
+    display: flex;
+    justify-content: center;
+    margin: 65px 0px 5px 0px;
+    align-items: center;
+}
+.user_data .user_name {
+    color: #b54f28!important;
+    font-size: 30px!important;
+    font-weight: 500!important;
+    margin: 0px!important;
+}
+.user_position {
+    color: #c3882b!important;
+    text-transform: uppercase!important;
+    font-weight: bold!important;
+    margin: 0px!important;
+    padding: 0px;
+  	font-size: 17px!important;
+}
+#shopify-section-welcome-about-section section {
+    padding: 0px;
+    background-position: -100px -35px;
+    background-size: 400px;
+    padding: 10px 0px 100px 0px;
+}
+
+@media (max-width:767px){
+
+#shopify-section-welcome-about-section .container > div{
+box-shadow:0px 0px 13px #ccc!important;
+padding:40px 25px 40px 25px!important;
+background:#fff!important;
+border-radius:10px;
+}
+.user_card img{
+width:75px!important;
+height:75px!important;
+}
+.user_data .user_name{
+font-size:18pt!important;
+margin:0px 0px 8px 0px!important;
+line-height:18pt;
+}
+.user_position{
+font-size:10pt!important;
+line-height:1.2em!important;
+}
+.user_address{
+font-size:10pt!important;
+line-height:1.3em!important;
+}
+.user_data{
+margin-left:12px!important;
+text-align:left!important;
+}
+#shopify-section-welcome-about-section h4{
+color:#bd812d;
+margin:20px 0px 30px 0px;
+font-size:12pt;
+}
+
+#shopify-section-welcome-about-section .text-center.simpletext h2 span.trademark{
+font-size:14px!important;
+}
+.trademark{
+font-size:9px!important;
+}
+#shopify-section-welcome-about-section section {
+    padding: 0px;
+    background-position: -88px 10px;
+    background-size: 225px;
+    padding: 10px 0px 0px 0px;
+}
+.user_card {
+    margin: 30px 0px 20px 0px;
+}
+.user_data .user_name {
+    font-size: 21px!important;
+    margin: 0px 0px 3px 0px!important;
+    line-height: 1.3em;
+}
+.user_card img {
+    width: 70px!important;
+    height: 70px!important;
+}
+#shopify-section-welcome-about-section .container > div {
+    padding: 40px 20px 40px 20px!important;
+}
+}
+@media (max-width: 358px){
+
+.user_position{
+font-size:9pt!important;
+line-height:1.2em!important;
+}
+.user_address{
+font-size:9pt!important;
+line-height:1.3em!important;
+}
+}
+.trademark{
+font-weight:500;
+font-size:10px;
+position:relative;
+top:-7px;
+}
+#shopify-section-welcome-about-section .text-center.simpletext h2 span.trademark{
+font-size:16px;
+position:relative;
+top:0px;
+font-weight:bold!important;
+}
+@media (max-width: 360px) {
+	.roundRightImage .roundImageinner .simpletext h2 {
+		font-size: 19px !important;
+	}
+  
+}
+@media (max-width: 340px) {
+	.roundRightImage .roundImageinner .simpletext h2 {
+		font-size: 18px !important;
+	}
+  
+}
+@media (max-width:330px){
+
+section p{
+font-size:13px!important;
+}
+}
+
+
+</style>
+<section class="welcomeAboutSection" id="section_k_{{ section.id }}" style="background-image:url('{{ section.settings.about_bg | img_url: 'master' }}');
+">
+<div class="container">
+
+
+<div class="welcomeAboutInnerSection">
+  	<div class="text-center simpletext">
+      
+      <h2> {{ section.settings.about_title }} </h2>
+      <p> {{ section.settings.about_text }} </p>
+  		
+      <div class="user_card">
+        <div class="user_image">
+        	<img src="{{ section.settings.user_image | img_url: 'master' }}" alt="Image R">
+        </div>
+        <div class="user_data">
+			<h4 class="user_name">
+          		{{ section.settings.user_name }}
+          		
+        	</h4>
+          
+          	<p class="user_position">
+              {{ section.settings.user_position }}
+          
+          	
+        	</p>
+          	<p class="user_address">
+              {{ section.settings.user_address }}
+          
+        	</p>
+          	
+        </div>
+      </div>
+      	
+      <div class="shopNowButton">
+        <a href="https://scarflings.com" class="btn">{{ section.settings.shopnow }}</a>
+      </div>
+  
+	</div>
+    
+  
+</div>
+
+
+          
+</div>
+  
+</section>
+    
+{% schema %}
+  {
+    "name": "About",
+    "settings": [
+		 {
+        "id": "about_title",
+        "type": "text",
+        "label": "Heading",
+        "default": "Title"
+      },
+
+		{
+        "id": "about_text",
+        "type": "html",
+        "label": "Add custom text below",
+        "default": "<p>Add your text here</p>"
+      },
+		{
+		"id": "about_bg",
+        "type": "image_picker",
+        "label": "Background"
+		},
+		
+        {
+		"id": "user_image",
+        "type": "image_picker",
+        "label": "Image"
+		},
+      {
+        "id": "user_name",
+        "type": "text",
+        "label": "User name",
+        "default": "your User name"
+      },
+		{
+        "id": "user_position",
+        "type": "text",
+        "label": "User position",
+        "default": "your User position"
+      },
+		{
+        "id": "user_address",
+        "type": "text",
+        "label": "User position",
+        "default": "your User position"
+      },
+		{
+        "id": "shopnow",
+        "type": "text",
+        "label": "button text"
+      }
+
+     
+      
+			
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

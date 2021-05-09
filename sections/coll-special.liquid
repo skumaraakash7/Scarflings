@@ -1,0 +1,119 @@
+
+{% assign bgimg-ttl-d = collection.handle | append: '-ttl-d.png' %}
+{% assign bgimg-ttl-m = collection.handle | append: '-ttl-m.png' %}
+{% assign bgimg-ttl-t = collection.handle | append: '-ttl-t.png' %}
+{% assign frimg-ttl-hero = collection.handle | append: '-hero.png' %}
+{% assign frimg-hero-m = collection.handle | append: '-hero-m.png' %}
+{% assign  coll-video = collection.handle | append: '.mov' %}
+
+
+
+
+{% if collection.handle == 'intricate-paisley'  %}
+
+{% assign bgimg-ttl-c = collection.handle | append: '-ttl-c.png' %}
+{% assign bgimg-ttl-lt = collection.handle | append: '-ttl-lt.png' %}
+{% assign bgimg-ttl-rb = collection.handle | append: '-ttl-rb.png' %}
+{% assign frimg-ttl-hero = collection.handle | append: '-hero.svg' %}
+
+{% endif %}
+
+{% if collection.handle == 'colors-of-courage' or collection.handle == 'flamboyant-baroque' or collection.handle == 'geometry-meets-art' or collection.handle == 'tropical-wanderlust' or collection.handle == 'timeless-classics'  or collection.handle == 'wild-bohemia' or collection.handle == 'pastel-patisseries' %}
+{% assign bgimg-lt = collection.handle | append: '-lt.png' %}
+{% assign bgimg-rb = collection.handle | append: '-rb.png' %}
+
+{% else %}
+
+{% assign bgimg-lt = collection.handle | append: '-lt.svg' %}
+{% assign bgimg-rb = collection.handle | append: '-rb.svg' %}
+
+{% endif %}
+
+<style>
+  @media (min-width: 1201px){
+    .collsp.collttl{
+    	background-image:url({{ bgimg-ttl-d | asset_url }});
+    }
+  }
+  @media (max-width: 1200px){
+    .collsp.collttl{
+    	background-image:url({{ bgimg-ttl-t | asset_url }});
+    }
+  }
+  @media (max-width: 767px){
+    .collsp.collttl{
+    	background-image:url({{ bgimg-ttl-m | asset_url }});
+    }
+    
+  }
+  
+   @media (max-width: 600px){
+    .collsp.collttl .colltitle {
+    	background-image:url({{ frimg-hero-m | asset_url }})!important;
+    }
+    
+  }
+	
+</style>
+
+
+
+
+  
+<section class="collsp collttl" >
+
+  <div class="colltitle" style="background-image:url({{ frimg-ttl-hero | asset_url }});">
+    <div class="flowerBg"></div>
+    <div class="ttlholder">
+      <span class="h2ttl"> {{ collection.title }}</span>
+      <span class="subttl">limited collection</span>
+      <div class="hero_play_button">
+    <video controls>
+        <source src="{{ coll-video | asset_url }}" type="video/mp4">
+      </video> 
+      <img src="{{ 'watch-button-free.png' | asset_url }}"><p>Watch Video</p>
+    </div> 
+    </div>
+  </div>
+</section>
+
+  
+<!-- Content page -->
+<section class="maincnt p-t-55 p-b-0"  style="background-image:url({{ bgimg-lt | asset_url }});">
+  <div class="container" >
+    <div class="colldesc">
+  	 {{ collection.description }}
+    </div>
+    <div class="row">
+  
+      <div class="col-sm-12 col-md-12 col-lg-12 p-b-0">
+        <div id="wraper_ajax" class="loadding_ajaxcart" ><i class="fa fa-spinner fa-spin"></i></div>
+        {% paginate collection.products by 12 %}
+        
+        <!-- Product -->
+        <div class="row AjaxinateLoop">
+          {% for product in collection.products %}
+          
+          <div class="col-6 col-sm-6 col-md-4 col-lg-4 p-b-50">
+            {% include 'qv-product-grid-item' %}
+          </div>
+          
+          {% endfor %}
+        </div>
+        
+
+        
+         <div class="AjaxinatePagination">
+          {% if paginate.next %}
+           <div class="w-size3 see_more">
+            <a href="{{ paginate.next.url }}" onclick="myJsFunc()" id="see_more_button" class="snize-exclude-link flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4 hvr-wobble-horizontal">
+              SEE MORE
+            </a>
+          </div>
+          {% endif %}
+        </div>
+        {% endpaginate %}        
+      </div>
+    </div>
+  </div>
+</section>

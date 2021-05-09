@@ -1,0 +1,40 @@
+<style>
+ 
+</style>
+
+<section class="page_content_section" id="section_k_{{ section.id }}">
+<div class="container">
+  <div class="step_title">
+    <p class="step_label">Step 3.</p><h3 class="step_name">{{ section.settings.step_name }}</h3>
+  </div>
+  <div class="info_section">
+    <p class="info_para">
+      {{ section.settings.step_para }}
+    </p>    
+  </div>
+</div>
+</section>
+
+{% schema %}
+  {
+    "name": "Step3",
+    "settings": [
+      {
+        "id": "step_name",
+        "type": "text",
+        "label": "Step name"
+      },
+		{
+        "id": "step_para",
+        "type": "html",
+        "label": "Paragraph"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

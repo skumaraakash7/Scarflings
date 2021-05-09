@@ -1,0 +1,92 @@
+<div id="footer_currency_bar">
+{% form 'currency',id : 'currency_form_footer' %}
+  Choose Region:
+  <select class="locale-bar__selector" name="currency" id="currenciesSel1" >
+    {% for currency in shop.enabled_currencies %}
+    
+    
+    {%- assign currency_code = currency.iso_code -%}
+
+{% case currency_code %}
+  	
+  	{% when 'USD' %}
+    {%- assign country_name = "United States " -%}
+  	
+  	{% when 'CAD' %}
+    {%- assign country_name = "Canada " -%}
+ 	
+ 	{% when 'JPY' %}
+	
+    {%- assign country_name = "Japan " -%}
+
+    {% when 'AUD' %}
+    {%- assign country_name = "Australia" -%}
+
+    {% when 'GBP' %}
+    {%- assign country_name = "United Kingdom " -%}
+
+    {% when 'EUR' %}
+    {%- assign country_name = "Europe " -%}
+
+    {% when 'NZD' %}
+    {%- assign country_name = "New Zealand " -%}
+
+    {% when 'HKD' %}
+    {%- assign country_name = "Hong Kong " -%}
+
+    {% when 'SGD' %}
+    {%- assign country_name = "Singapore " -%}	
+
+  	{% else %}
+    {%- assign country_name = "Uninted States" -%}
+
+{% endcase %}
+    
+    
+      {% if currency == cart.currency %}
+        <option selected value="{{currency.iso_code}}">{{ country_name }}</option>
+      {% else %}
+        <option value="{{currency.iso_code}}">{{ country_name }}</option>
+      {% endif %}
+    {% endfor %}
+  </select>
+  <!--<button id="currency_switcher_submit_button" class="locale-bar__button " type="button" style="background-color: rgb(181, 76, 38); color: rgb(255, 255, 255);">Change</button>-->
+{% endform %}
+  
+  <script>
+    $(document).ready(function(){
+      $("#currenciesSel1").on("change",function(){
+        $(this).closest('form').submit();
+      });
+    });
+  </script>
+</div>
+<script>
+  
+  
+  $(document).ready(function(){
+    
+    if(window.innerWidth < 768){
+      console.log("Width: ",window.innerWidth);
+      	var footer_currency_bar_div = $('#footer_currency_bar').remove();
+  		footer_currency_bar_div.appendTo('#last-content');
+    }
+    
+    
+  });
+  
+  setInterval(function(){ 
+  	$( window ).resize(function() {
+      
+      if(window.innerWidth < 768){
+          var footer_currency_bar_div = $('#footer_currency_bar').remove();
+          footer_currency_bar_div.appendTo('#last-content');
+      }
+      
+    });
+ 
+  
+  }, 1000);
+  
+  
+</script>

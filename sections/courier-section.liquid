@@ -1,0 +1,314 @@
+<style>
+ .corier_section ul.tabs {
+    margin: 30px auto 40px auto;
+    padding: 0px;
+    list-style: none;
+    width: 670px;
+   max-width: 100%;
+}
+ul.tabs li {
+    background: none;
+    color: #b64d2d;
+    display: inline-block;
+    padding: 8px 15px;
+    cursor: pointer;
+    min-width: 200px;
+    border-radius: 7px;
+    border: 1px solid #b64d2d;
+    margin: 0px 10px;
+    font-family: 'DM Serif Text', serif !important;
+    font-weight: 400;
+}
+
+ul.tabs li.current, ul.tabs li:hover {
+    background: #b64d2d;
+    color: #fff;
+}
+  .tab-content.current {
+    display: block;
+}
+
+.tab-content {
+    display: none;
+    background: transparent;
+    padding: 2px 0px;
+    width: 650px;
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+
+.corier_section .set > a.active {
+    background-color: #fff;
+    color: #000;
+}
+  .corier_section .set > a {
+    background-color: #fff;
+    color: #000;
+    padding: 18px 22px 18px 22px;
+}
+.corier_section .content {
+    background-color: #fff;
+    border: 0px;
+    padding: 0px 22px 18px 22px;
+    display: none;
+}
+.corier_section .content a {
+    padding: 0px !important;
+    margin: 0 0 5px 0 !important;
+    font-size: 15px !important;
+    color: #000;
+    font-family: 'Poppins', sans-serif !important;
+}
+.corier_section .set {
+    position: relative;
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
+ 
+    margin-bottom: 15px;
+}
+.corier_section {
+    text-align: center;
+    padding: 0 0 45px 0;
+}
+.corier_section .content li {
+    width: 33.33%;
+    display: inline-block;
+    margin: 15px 0 0px 0px;
+    float: left;
+  	padding: 0px 5px;
+}
+  .corier_section .content ul {
+    margin: 0px -5px;
+}
+.corier_section .content ul {
+    display: inline-block;
+    width: 100%;
+}
+@media (max-width:767px){
+  .corier_section .content a {
+    padding: 0px !important;
+    margin: 0 0 5px 0 !important;
+    font-size: 14px !important;
+    
+}
+  .mul_num .m_num, .mul_num .number {
+    min-height: 50px;
+    display: inline-block;
+}
+.location_list .place {
+    margin-bottom: 5px !important;
+}
+.location_list li {
+    margin-bottom: 7px !important;
+}
+  .corier_section ul.tabs {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 30px auto 30px auto;
+}
+ul.tabs li {
+    padding: 6px 14px;
+    cursor: pointer;
+    min-width: auto;
+    margin: 0px 3px;
+    font-weight: 400;
+    font-size: 15px;
+}
+.content p {
+    padding: 0;
+    margin: 0 0 12px 0 !important;
+    font-size: 14px !important;
+}
+.corier_section {
+    text-align: center;
+    padding: 0 0 10px 0;
+}
+.corier_section .set {
+    margin-bottom: 15px;
+}
+  .corier_section .set a{
+    padding: 14px 15px 16px 15px;
+}
+    .corier_section .content{
+    padding: 0px 15px 14px 15px;
+}
+  .corier_section .content ul {
+    margin: 0px -5px;
+}
+.corier_section .content li {
+    width: 50%;
+  margin: 5px 0 0px 0px;
+}
+
+}
+</style>
+<section class="corier_section" id="section_k_{{ section.id }}">
+	<div class="container">
+      <p>{{ section.settings.courier_note }}</p>
+      <ul class="tabs">
+		<li class="tab-link current" data-tab="tab-1">{{ section.settings.courier1 }}</li>
+		<li class="tab-link" data-tab="tab-2">{{ section.settings.courier2 }}</li>
+		<li class="tab-link" data-tab="tab-3">{{ section.settings.courier3 }}</li>
+	  </ul>
+
+    
+	<div id="tab-1" class="tab-content current">
+		 <div class="location_list">
+         {% for block in section.blocks %}
+          {% case block.type %}
+          {% when 'fedex' %}
+           	
+              <div class="set fedex">
+                <a href="javascript:void(0)">
+                  {{ block.settings.location }}
+                  <i class="fa fa-angle-down"></i>
+                </a>
+                <div class="content">
+                  {{ block.settings.location_with_numbers }}
+                  
+                </div>
+           	  </div>  
+             {% endcase %}
+ 
+		{% endfor %}
+            
+      	</div>
+	</div>
+      
+	<div id="tab-2" class="tab-content">
+		  <div class="location_list">
+       		{% for block in section.blocks %}
+              {% case block.type %}
+              {% when 'dhl' %}
+           
+              <div class="set dhl">
+                <a href="javascript:void(0)">
+                  {{ block.settings.location }}
+                  <i class="fa fa-angle-down"></i>
+                </a>
+                <div class="content">
+                   {{ block.settings.location_with_numbers }}
+                </div>
+           	  </div>  
+            {% endcase %}
+ 
+		{% endfor %}
+      </div>
+     </div>
+ 
+	<div id="tab-3" class="tab-content">
+		 <div class="location_list">
+			{% for block in section.blocks %}
+              {% case block.type %}
+              {% when 'tnt' %}
+           
+           	
+              <div class="set">
+                <a href="javascript:void(0)">
+                  {{ block.settings.location }}
+                  <i class="fa fa-angle-down"></i>
+                </a>
+                <div class="content">
+                   {{ block.settings.location_with_numbers }}
+                </div>
+           	  </div>  
+             {% endcase %}
+ 
+		{% endfor %} 
+      </div>
+     </div>
+              
+     </div>
+</section>
+{% schema %}
+  {
+    "name": "Courier Section",
+    "settings": [
+	  {
+        "id": "courier_note",
+        "type": "html",
+        "label": "Courier note"
+      },
+	  {
+        "id": "courier1",
+        "type": "html",
+        "label": "Courier 1"
+      },
+      {
+        "id": "courier2",
+        "type": "html",
+        "label": "Courier 2"
+      },
+	  {
+        "id": "courier3",
+        "type": "html",
+        "label": "Courier 3"
+      }
+    ],
+	"blocks": [
+      {
+        "type": "fedex",
+        "name": "FedEx",
+        "settings": [
+         
+      {
+        "id": "location",
+        "type": "html",
+        "label": "Location"
+      },
+		{
+        "id": "location_with_numbers",
+        "type": "html",
+        "label": "Location with numbers"
+      }
+        ]
+      },
+      {
+        "type": "dhl",
+        "name": "DHL EXPRESS",
+        "settings": [
+         
+      {
+        "id": "location",
+        "type": "html",
+        "label": "Location"
+      },
+		{
+        "id": "location_with_numbers",
+        "type": "html",
+        "label": "Location with numbers"
+      }
+        ]
+      },
+      {
+        "type": "tnt",
+        "name": "TNT",
+        "settings": [
+         
+      {
+        "id": "location",
+        "type": "html",
+        "label": "Location"
+      },
+	{
+        "id": "location_with_numbers",
+        "type": "html",
+        "label": "Location with numbers"
+      }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

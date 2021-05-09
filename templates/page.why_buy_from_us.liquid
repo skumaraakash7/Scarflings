@@ -1,0 +1,47 @@
+<!-- Title Page -->
+<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m"  {% if settings.show_about_top_image %}style="background-image:url({{ 'about_top.jpg' | asset_url }});" {% endif %}>
+  <h2 class="l-text2 t-center">
+    {{ page.title }}
+  </h2>
+</section>
+<!-- content page -->
+<section class="bgwhite p-t-66 p-b-38">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 p-b-30 why_buy_us">
+        {{ page.content }}
+        <div class="newsletter_border"><img src="https://cdn.shopify.com/s/files/1/0089/9950/1902/t/5/assets/type_5.png"> </div>
+        <div id="why_buy_newsletter" class="col-md-6 p-b-30 leave-comment">
+        
+        <div id="subscribe">
+  {% form 'customer' %}
+  {% if form.errors %}
+  <div role="alert" class="successError alert alert-danger alert-dismissible">{{ form.errors | default_errors }}
+    <button type="button" data-dismiss="alert" aria-hidden="true" aria-label="Close" class="close">x</button>
+  </div>
+  {% endif %}
+  {% if form.posted_successfully? %}
+  <div role="alert" class="successMessage alert alert-success alert-dismissible">{{ 'layout.footer.newsletter_confirmation' | t }}.
+    <button type="button" data-dismiss="alert" aria-hidden="true" aria-label="Close" class="close">x</button>
+  </div>
+  {% else %}
+  <input type="hidden" name="contact[tags]" value="newsletter">
+  <div class="effect1 w-size9">
+    <input class="s-text7 bg6 w-full p-b-5" type="text" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'layout.footer.newsletter_email_placeholder' | t }}" name="contact[email]" id="subscribe_email" required aria-label="{{ 'layout.footer.newsletter_email_placeholder' | t }}" autocorrect="off" autocapitalize="off">
+    <span class="effect1-line"></span>
+  </div>
+  <div class="w-size2 p-t-20">
+    <!-- Button -->
+    <button class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4 hvr-wobble-horizontal" >
+      Subscribe
+    </button>
+  </div>
+  {% endif %}
+  {% endform %}
+</div>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

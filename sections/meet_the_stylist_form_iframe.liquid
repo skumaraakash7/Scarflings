@@ -1,0 +1,95 @@
+<div id="redirect_form_section"></div>
+<section class="page_content_section p-t-66 p-b-38 blocks-carousel" id="section_k_{{ section.id }}" style="background-image: url('{{ section.settings.section_bg | img_url: 'large' }}');">
+   <div class="container">	
+  		<div class="row">
+    	
+       		<div class="col-md-12 simpletext">
+              <h2> {{ section.settings.box_title }} </h2>
+            </div>
+        
+  		</div>
+  </div>
+<div id="section_k_slider_{{ section.id }}">
+
+<div id="row block_k_{{ section.id }}">
+  <div class="container">
+    
+      <div class="row">
+          <div class="col-md-12">
+            
+            <div class="col-md-12 title" >
+              <div class="SliderLeftImage" style="background-image:url('{{ section.settings.img_right | img_url: 'master' }}')"></div>
+                
+             	<h3> {{ section.settings.text_below_image }} </h3>
+
+            </div>
+
+            <div class="col-md-12 description">
+                <div class="simpletext">
+
+                    <p> {{ section.settings.box_description }} </p>
+
+                </div>
+            </div>
+          </div>
+
+
+      </div>
+      	<!--<div class="row form_iframe">
+		{% comment %}
+          {{ section.settings.box_iframe_html }}
+		{% endcomment %}
+    	</div>-->
+    	
+    	<div class="row form_iframe">
+          {% include 'meet_the_style_hfdjfg_form' %}
+    	</div>
+    
+  </div>
+  
+  
+</div>
+  
+  </div>
+</section>
+
+
+
+{% schema %}
+  {
+    "name": "Form Iframe",
+
+	
+	"settings": [
+	{
+        "id": "box_title",
+        "type": "text",
+        "label": "Heading",
+        "default": "Title"
+    },
+	{
+		"id": "section_bg",
+        "type": "image_picker",
+        "label": "Section Background"
+	},
+	{
+        "id": "box_description",
+        "type": "html",
+        "label": "Add custom text below",
+        "default": "<p>Add your text here</p>"
+      },{
+        "id": "box_iframe_html",
+        "type": "html",
+        "label": "Add Box Iframe",
+        "default": "<p>Add your text here</p>"
+      }
+     
+	
+	]
+  
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+

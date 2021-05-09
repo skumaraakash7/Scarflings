@@ -1,0 +1,182 @@
+{% if settings.enable_free_gift or settings.enable_cart_promo %}
+	{% assign product = all_products[settings.cart_promo_product]%}
+    {% assign gift = all_products[settings.free_gift]%}
+	{% assign has_promo = false %}
+    {% assign has_fg = false %}
+	{% if cart.item_count > 0 %}
+		{% for item in cart.items %}
+			{% if item.product.handle == product.handle %}
+				{% assign has_promo = true %}
+			{% endif %}
+			{% if item.product.handle == gift.handle %}
+				{% assign has_fg = true %}
+			{% endif %}
+		{% endfor %}
+	{% endif %}
+
+	{% if settings.enable_cart_promo and has_promo == false%}
+	
+        <div class="header-cart-promo" onclick='kartUpdatePromo("{{product.selected_or_first_available_variant.id}}",1,"header-cart-promo");'>
+          &nbsp;
+        </div>
+	{% endif %}
+	{% if cart.total_price >= gift.compare_at_price and settings.enable_free_gift and has_fg == false%}
+	
+        <div class="header-cart-gift" onclick='kartUpdatePromo("{{gift.selected_or_first_available_variant.id}}",1,"header-cart-gift");'>
+          &nbsp;
+        </div>
+	{% endif %}
+
+{% endif %}
+{% if cart.item_count < 1 %}
+    <ul class="header-cart-wrapitem">
+      <li>
+        <p class="text-center cart-empty">{{ 'cart.general.no_items'| t }}</p>
+      </li>
+      <li>
+        <p class="text-center cart-empty">Let's start shopping!</p>
+      </li>
+    </ul>
+    {% else %}
+    <h2 id='just_added_msg'>{{ settings.popup_top_msg }}</h2>
+    <ul class="header-cart-wrapitem">
+      {% for item in cart.items %}
+      <li class="header-cart-item">
+        <div class="header-cart-item-img" >
+          <a href="{{ item.url }}">
+            <img class="" src="{{ item | img_url: '80x80' }}"  alt="{{ item.title | escape }}" title="{{ item.title | escape }}"/>
+          </a>
+        </div>
+        <div class="header-cart-item-txt" id="header_cartform_item">
+          <a href="{{ item.url }}" class="header-cart-item-name">
+            {{ item.product.title | truncate: 50}}
+          </a>
+          <span class="bold_ro_desc" data-product-id="{{item.id}}-{{ forloop.index0 }}"></span>
+          <span class="bold_load_cart_item_properties"></span>
+          
+          <div class="priceStockRow">
+            <span class="header-cart-item-info">
+             <span class="Bold-theme-hook-DO-NOT-DELETE bold_cart_item_price" style="display:none !important;"></span>
+              <span class="money">
+               
+              {% if settings.hide_cents %}
+                  {{ item.line_price | money | remove: '.00' }}
+                   {% else %} 
+                  {{ item.line_price | money }}
+                  {% endif %}
+              </span>
+            </span>
+            {% assign current_variant = item.product.selected_or_first_available_variant %}
+
+            {% unless current_variant.available %}
+            
+            <div id="variantQuantity" class="less-in-stock">
+              {% if item.product.metafields.bookthatapp.config %}
+              {% else %}
+              Out Of Stock!
+              {% endif %}
+            </div>
+            {% else %}
+            {% if current_variant.inventory_quantity > 25 %}
+            
+            <div id="variantQuantity" class="in-stock">
+               {% if item.product.metafields.bookthatapp.config %}
+              {% else %}
+              In Stock
+            	{% endif %}
+            </div>
+            	
+            {% endif %}
+
+            {% if current_variant.inventory_quantity < 25 %}
+            <div id="variantQuantity" class="less-in-stock">
+              {% if item.product.metafields.bookthatapp.config %}
+              {% else %}
+              Only {{ current_variant.inventory_quantity }} Left in stock - order soon
+              {% endif %}
+            </div>
+            {% endif %}
+          </div>
+          {% endunless %}
+          <div class="quantityRow">
+            {% unless item.product.tags contains 'hideproduct' %}
+            <div class="quantityBox" style="display: inline-flex">
+              <input type="hidden" value="{{ item.id }}" id="productid_{{ item.id }}">
+              <button type="button" did="{{ item.id }}" class="btn_cart_down color1 flex-c-m size7 eff2">
+                <span>-</span>
+              </button>
+
+
+              {% if item.product.metafields.bookthatapp.config %}
+             <input class="t-center num-product" type="number" value="{{ item.quantity }}">
+              <input type="hidden" name="updates[{{item.id}}]" id="updates_{{ item.id }}" value="{{ item.quantity }}" class="updates_input_bookthat_app" />
+              {% else %}
+              <input type="number"  did="{{ item.id }}" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" min="0" class="m-text18 t-center num-product" data-line="{{ forloop.index }}">
+              {% endif %}
+
+              <button type="button" did="{{ item.id }}" class="btn_cart_up color1 flex-c-m size7 eff2">
+                <span>+</span>
+              </button>
+
+            </div>
+            <button class="delete_btn" type="button" onclick="cart.remove('{{ item.variant_id }}');" title="Remove" class="" >
+              Delete
+            </button>
+            {%else%}
+            <button type="button" onclick="cart.remove('{{ item.variant_id }}');" title="Remove" class="" >
+              <i class="fa fa-trash-o cart_trash"></i>
+            </button>
+            {% endunless %}
+          </div>
+          
+        </div>
+        {% comment %}
+        <div class="header-cart-item-action">
+          <i class="fa fa-close cart_trash delkart" did="{{ item.variant_id }}" title="Remove" ></i>
+        </div>
+        {% endcomment %}
+      </li>
+      {% endfor %}
+    </ul>
+    <div class="header-cart-total">
+      {{ 'cart.general.subtotal' | t }} :
+       <span class="Bold-theme-hook-DO-NOT-DELETE bold_cart_total" style="display:none !important;"></span>
+      <span class="money">
+       
+     		 {% if settings.hide_cents %}
+				 {{ cart.total_price | money | remove: '.00' }}
+                 {% else %} 
+                {{ cart.total_price | money }}
+                {% endif %}
+      </span>
+    </div>
+    
+    
+    
+    <div class="header-cart-buttons">
+      <div class="header-cart-wrapbtn">
+        <!-- Button -->
+        <a href="/cart" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4 hvr-wobble-horizontal">
+          <i class="fa fa-shopping-bag"></i>{{ 'cart.general.view_cart' | t }}
+        </a>
+      </div>
+      <div class="header-cart-wrapbtn">
+        <!-- Button -->
+        <a href="/checkout" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4 hvr-wobble-horizontal">
+          {{ 'cart.general.checkout' | t }}
+        </a>
+      </div>
+    </div>
+
+	
+{% endif %}
+{% assign free_shipping_threshold = all_products["free-shipping"].compare_at_price %}
+<div class="header-cart-footer">
+  {% if cart.total_price > free_shipping_threshold %}
+  	You've earned free shipping!
+  {% elsif cart.item_count < 1 %}
+    Free shipping above {{free_shipping_threshold | money}}
+  {% else %}
+    You're {{free_shipping_threshold | minus: cart.total_price | money }} away from free shipping!
+  {% endif %}
+</div>

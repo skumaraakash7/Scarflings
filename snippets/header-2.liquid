@@ -1,0 +1,652 @@
+{% comment %}
+<link href="{{ 'PT_Serif.css' | asset_url}}" rel="stylesheet">
+<link href="{{ 'DM_Serif.css' | asset_url}}" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=PT+Serif:400,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=DM+Serif+Text:400,400i|Poppins:300,400,500,600,700&display=swap" rel="stylesheet"> 
+{% endcomment %}
+{% include 'fsb' %}
+{% assign logo_size = '500x250' %}
+
+{% if template == 'index'%}
+
+  <header class="header2 home">
+  <!-- Header desktop -->
+  <div class="container-menu-header-v2 p-t-26">
+	{% if section.settings.video_status %}
+  <div class="mobile_v lazybg" data-sizes="auto" style="background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=);" data-style="background-image: url({{ section.settings.mobile_gif_video | img_url: 'master' }});">
+	</div>
+	{% endif %} 
+	<div class="topbar2" style="opacity: 1; background-image: none; background-color: transparent;">
+
+	  <!-- Logo2 -->
+	  {% if section.settings.logo %}
+	  <a href="/" itemprop="url" class="logo2">
+		{% comment %}
+		<img class="lazy2"
+			 src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+			 data-src="{{ section.settings.logo | img_url: logo_size }}"
+			 alt="{{ section.settings.logo.alt | default: shop.name }}"
+			 itemprop="logo">
+		{% endcomment %}
+		<img src="{{ section.settings.logo | img_url: logo_size }}"
+			 alt="{{ section.settings.logo.alt | default: shop.name }}"
+			 itemprop="logo">
+	  </a>
+	  {% else %}
+	  <a href="/" itemprop="url" class="navbar-brand img-responsive">{{ shop.name }}</a>
+	  {% endif %} 
+	</div>
+	<div class="wrap_header">
+		   
+	  {% include 'logo' %}
+	  <!-- Menu -->
+	  <div class="wrap_menu">
+		<nav class="menu">
+		  {% include 'main-menu' %}
+		</nav>
+	  </div>
+	  <!-- Header Icon -->
+	  <div class="header-icons">
+	  </div>
+	  
+			<div class="topbar-child2">
+		 <form action="/search" method="POST" role="search" class="search_header_main" id="blog-search">
+		  <div id="search" class="search-product pos-relative bo4 of-hidden">
+			<input type="text" name="q" value="{{ search.terms | escape }}" placeholder="Search all products..." class="s-text7 size6 p-l-23 p-r-50" aria-label="Search all products..." />
+			<button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
+			  <i class="fs-12 fa fa-search" aria-hidden="true"></i>
+			</button>
+		  </div>
+		</form>
+		{% if section.settings.show_email %}
+		<span class="topbar-email">
+		  {{ section.settings.header_email_text }}
+		</span>
+		{% endif %}
+ 
+		
+		<div class="header-wrapicon2 m-r-13">
+		  {% include 'header-cart' %}
+		</div>
+		{% capture the_snippet_auth %}{% include 'socialshopwave-widget-auth' %}{% endcapture %}
+		{% if the_snippet_auth contains 'Liquid error' %}
+		{% else %}
+		<div id="ssw-topauth" class="ssw-topauth" style="float: right;">
+		  {% if customer %}
+		  <div class="ssw-tprofile ssw-dropdown">
+			<a class="ssw-dropdown-toggle" style="font-size: 31px; color: #b54d26;" data-toggle="ssw-dropdown" href="javascript:void(0);">
+			  <i class="ssw-icon-user"></i>
+			</a>
+			<ul class="ssw-dropdown-menu" role="menu" aria-labelledby="dLabel">
+			  <li id="customer_myorders_li"><a tabindex="-1" href="/account">{{ 'socialshopwave.my_orders' | t }}</a></li>
+			  {% include 'ssw-widget-dropdown' %}
+			  <li class="ssw-divider"></li>
+			  <li><a id="customer_logout_link" tabindex="-1" href="/account/logout">{{ 'socialshopwave.logout' | t }}</a></li>
+			</ul>
+		  </div>
+		  {% else %}
+		  <a id="customer_login_link" style="font-size: 31px; color: #b54d26;" href="javascript:void(0);" data-toggle="ssw-modal" data-target="#login_modal" onclick="trackShopStats('login_popup_view', 'all')"><i class="ssw-icon-user"></i></a>
+		  {% endif %}
+		</div>
+		{% endif %}
+	  </div>
+	</div>
+  </div>
+  <!-- Header Mobile -->
+	{% if section.settings.plain_bg_header %}
+	<div class="xmobile_header wrap_header_mobile plain_background_header" style="background: transparent">
+	  {% if section.settings.video_status %}
+	  <div class="mobile_v lazyload"  data-sizes="auto" data-bgset="{{ section.settings.mobile_gif_video | img_url: '767x400' }} [(max-width: 767px)] | {{ section.settings.mobile_gif_video | img_url: 'master' }} [(min-width: 768px)]">
+	  </div>
+	  {% endif %} 
+	   
+	  <!-- Logo moblie -->  
+	  {% if section.settings.logo %}
+	  <a href="/" class="logo-mobile">
+		{% comment %}
+		
+		<img class="lazy2" 
+			 src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+			 data-src="{{ section.settings.logo_image_for_plain_bg | img_url: '456x256' }}"
+			 alt="{{ section.settings.logo.alt | default: shop.name }}">
+		{% endcomment %}
+		
+		<img class="lazy2" 
+			 src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+			 data-src="{{ section.settings.logo_image_for_plain_bg | img_url: '456x256' }}"
+			 alt="{{ section.settings.logo.alt | default: shop.name }}">
+		
+	  </a>
+	  {% endif %}
+  <!--     <span class="icon_search"></span> -->
+	  <!-- Button show menu -->
+	<div class="mob_right_menu">
+	  <div class="btn-show-menu">
+		<!-- Header Icon mobile -->
+		<div class="header-icons-mobile">
+		  {% include 'header-cart-mob' %}
+		</div>
+
+	  </div>
+	  
+	   <div class="btn-show-menu-mobile ">
+		 
+		<span class="menu">
+			<span></span>
+			<span></span>
+			<span></span>
+		 </span>
+		<span class="lnr lnr-chevron-left return_arrow"></span>
+		 <span class="lnr lnr-cross closeMenu" style="left: 0px; display: none;"></span>
+		</div>
+	  </div>
+	</div>
+	<!-- Menu Mobile -->
+	{% else %}
+	<div class="xmobile_header wrap_header_mobile  " style="background: transparent">
+	  {% if section.settings.video_status %}
+	  <div class="mobile_v lazyload"  data-sizes="auto" data-bgset="{{ section.settings.mobile_gif_video | img_url: '767x400' }} [(max-width: 767px)] | {{ section.settings.mobile_gif_video | img_url: 'master' }} [(min-width: 768px)]">
+	  </div>
+	  {% endif %} 
+	   
+	  <!-- Logo moblie -->  
+	  {% if section.settings.logo %}
+	  <a href="/" class="logo-mobile">
+		{% comment %}
+		
+		<img class="lazyload" 
+			 src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+			 data-src="{{ section.settings.logo | img_url: 'master' }}"
+			 alt="{{ section.settings.logo.alt | default: shop.name }}">
+		{% endcomment %}
+		
+		<img class="lazy2" 
+			 src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+			 data-src="{{ section.settings.logo | img_url: '767X280' }}"
+			 alt="{{ section.settings.logo.alt | default: shop.name }}">
+		
+	  </a>
+	  {% endif %}
+  <!--     <span class="icon_search"></span> -->
+	  <!-- Button show menu -->
+	<div class="mob_right_menu">
+	  <div class="btn-show-menu">
+		<!-- Header Icon mobile -->
+		<div class="header-icons-mobile">
+		  {% include 'header-cart-mob' %}
+		</div>
+
+	  </div>
+	   <div class="btn-show-menu-mobile ">
+		 
+		<span class="menu">
+			<span></span>
+			<span></span>
+			<span></span>
+		 </span>
+		<span class="lnr lnr-chevron-left return_arrow"></span>
+		 <span class="lnr lnr-cross closeMenu" style="left: 0px; display: none;"></span>
+		</div>
+	  </div>
+	</div>
+   
+   {% endif %}<!-- Menu Mobile -->
+	<div class="mobile_header_oth wrap-side-menu nav-down" >
+	  <nav class="side-menu">
+		<ul class="main-menu">
+		  {% include 'header-mob-nav' %}
+		</ul>
+	  </nav>
+	</div>
+  
+{% if section.settings.white_head %} 
+  <div class="mobile_searchbar wrap_header_mobile mobile_header nav-down white_sticky_header" id="search-header">
+
+	<form action="/search" method="POST" role="search" class="search_header" id="blog-search">
+		  <div id="search" class="search-product pos-relative bo4 of-hidden">
+			<input type="text" name="q" value="{{ search.terms | escape }}" placeholder="Search Products" class="s-text7 size6 p-l-23 p-r-50" aria-label="Search Products" />
+			
+			<button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
+			  <i class="fs-12 fa fa-search" aria-hidden="true"></i>
+			</button>
+		  </div>
+		</form>
+	<div class="mob_right_menu">
+	  <div class="btn-show-menu">
+		<!-- Header Icon mobile -->
+		<div class="header-icons-mobile">
+		   {% include 'header-cart-mob-sticky' %}
+		</div>
+
+	  </div>
+	  <div class="btn-show-menu-mobile ">
+		 
+		<span class="menu">
+			<span></span>
+			<span></span>
+			<span></span>
+		 </span>
+		<span class="lnr lnr-chevron-left return_arrow"></span>
+		 <span class="lnr lnr-cross closeMenu" style="left: 0px; display: none;"></span>
+		</div>
+	  </div>
+	</div>
+  {% else %} 
+  <div class="mobile_searchbar wrap_header_mobile mobile_header nav-down" id="search-header">
+
+	<form action="/search" method="POST" role="search" class="search_header" id="blog-search">
+		  <div id="search" class="search-product pos-relative bo4 of-hidden">
+			<input type="text" name="q" value="{{ search.terms | escape }}" placeholder="Search Products" class="s-text7 size6 p-l-23 p-r-50" aria-label="Search Products" />
+			
+			<button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
+			  <i class="fs-12 fa fa-search" aria-hidden="true"></i>
+			</button>
+		  </div>
+		</form>
+	<div class="mob_right_menu">
+	  <div class="btn-show-menu">
+		<!-- Header Icon mobile -->
+		<div class="header-icons-mobile">
+		   {% include 'header-cart-mob-sticky' %}
+		</div>
+
+	  </div>
+	  <div class="btn-show-menu-mobile ">
+		 
+		<span class="menu">
+			<span></span>
+			<span></span>
+			<span></span>
+		 </span>
+		<span class="lnr lnr-chevron-left return_arrow"></span>
+		 <span class="lnr lnr-cross closeMenu" style="left: 0px; display: none;"></span>
+		</div>
+	  </div>
+	</div>
+  
+	  {% endif %}
+  
+	
+</header>   
+
+
+{% else %}
+	<header class="header2">
+  <!-- Header desktop -->
+  
+  <div class="container-menu-header-v2 p-t-33">
+	{% if section.settings.video_status %}
+	<div class="mobile_v lazyload" data-sizes="auto" data-bgset="{{ section.settings.mobile_gif_video | img_url: '767x400' }} [(max-width: 767px)] | {{ section.settings.mobile_gif_video | img_url: 'master' }} [(min-width: 768px)]">
+	</div>
+	{% endif %} 
+	
+	<div class="wrap_header">
+		   
+	  {% include 'logo' %}
+	  <!-- Menu -->
+	  <div class="wrap_menu">
+		<nav class="menu">
+		  {% include 'main-menu' %}
+		</nav>
+	  </div>
+	  <!-- Header Icon -->
+	  <div class="header-icons">
+	  </div>
+	  
+			<div class="topbar-child2">
+		 <form action="/search" method="POST" role="search" class="search_header_main" id="blog-search">
+		  <div id="search" class="search-product pos-relative bo4 of-hidden">
+			<input type="text" name="q" value="{{ search.terms | escape }}" placeholder="Search all products..." class="s-text7 size6 p-l-23 p-r-50" aria-label="Search all products..." />
+			<button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
+			  <i class="fs-12 fa fa-search" aria-hidden="true"></i>
+			</button>
+		  </div>
+		</form>
+		{% if section.settings.show_email %}
+		<span class="topbar-email">
+		  {{ section.settings.header_email_text }}
+		</span>
+		{% endif %}
+ 
+		
+		<div class="header-wrapicon2 m-r-13">
+		  {% include 'header-cart' %}
+		</div>
+		{% capture the_snippet_auth %}{% include 'socialshopwave-widget-auth' %}{% endcapture %}
+		{% if the_snippet_auth contains 'Liquid error' %}
+		{% else %}
+		<div id="ssw-topauth" class="ssw-topauth" style="float: right;">
+		  {% if customer %}
+		  <div class="ssw-tprofile ssw-dropdown">
+			<a class="ssw-dropdown-toggle" style="font-size: 31px; color: #b54d26;" data-toggle="ssw-dropdown" href="javascript:void(0);">
+			  <i class="ssw-icon-user"></i>
+			</a>
+			<ul class="ssw-dropdown-menu" role="menu" aria-labelledby="dLabel">
+			  <li id="customer_myorders_li"><a tabindex="-1" href="/account">{{ 'socialshopwave.my_orders' | t }}</a></li>
+			  {% include 'ssw-widget-dropdown' %}
+			  <li class="ssw-divider"></li>
+			  <li><a id="customer_logout_link" tabindex="-1" href="/account/logout">{{ 'socialshopwave.logout' | t }}</a></li>
+			</ul>
+		  </div>
+		  {% else %}
+		  <a id="customer_login_link" style="font-size: 31px; color: #b54d26;" href="javascript:void(0);" data-toggle="ssw-modal" data-target="#login_modal" onclick="trackShopStats('login_popup_view', 'all')"><i class="ssw-icon-user"></i></a>
+		  {% endif %}
+		</div>
+		{% endif %}
+	  </div>
+	</div>
+  </div>
+  <!-- Header Mobile -->
+	{% if section.settings.plain_bg_header %}
+	<div class="xmobile_header wrap_header_mobile plain_background_header" style="background: transparent">
+	  {% if section.settings.video_status %}
+	  <div class="mobile_v lazyload"  data-sizes="auto" data-bgset="{{ section.settings.mobile_gif_video | img_url: '767x400' }} [(max-width: 767px)] | {{ section.settings.mobile_gif_video | img_url: 'master' }} [(min-width: 768px)]">
+	  </div>
+	  {% endif %} 
+	   
+	  <!-- Logo moblie -->  
+	  {% if section.settings.logo %}
+	  <a href="/" class="logo-mobile">
+		{% comment %}
+		
+		<img class="lazyload" 
+			 src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+			 data-src="{{ section.settings.logo_image_for_plain_bg | img_url: '456x256' }}"
+			 alt="{{ section.settings.logo.alt | default: shop.name }}">
+		{% endcomment %}
+		
+		<img class="lazy2" 
+			 src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+			 data-src="{{ section.settings.logo_image_for_plain_bg | img_url: '456x256' }}"
+			 alt="{{ section.settings.logo.alt | default: shop.name }}">
+		
+	  </a>
+	  {% endif %}
+  <!--     <span class="icon_search"></span> -->
+	  <!-- Button show menu -->
+	 <div class="mob_right_menu">
+	  <div class="btn-show-menu">
+		<!-- Header Icon mobile -->
+		<div class="header-icons-mobile">
+		  {% include 'header-cart-mob' %}
+		</div>
+
+	  </div>
+	  <div class="btn-show-menu-mobile ">
+		 
+		<span class="menu">
+			<span></span>
+			<span></span>
+			<span></span>
+		 </span>
+		<span class="lnr lnr-chevron-left return_arrow"></span>
+		<span class="lnr lnr-cross closeMenu" style="left: 0px; display: none;"></span>
+		</div>
+	  </div>
+	</div>
+	<!-- Menu Mobile -->
+	{% else %}
+	<div class="xmobile_header wrap_header_mobile  " style="background: transparent">
+	  {% if section.settings.video_status %}
+	  <div class="mobile_v lazyload"  data-sizes="auto" data-bgset="{{ section.settings.mobile_gif_video | img_url: '767x400' }} [(max-width: 767px)] | {{ section.settings.mobile_gif_video | img_url: 'master' }} [(min-width: 768px)]">
+	  </div>
+	  {% endif %} 
+	   
+	  <!-- Logo moblie -->  
+	  {% if section.settings.logo %}
+	  <a href="/" class="logo-mobile">
+		{% comment %}
+		
+		<img class="lazyload" 
+			 src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+			 data-src="{{ section.settings.logo | img_url: 'master' }}"
+			 alt="{{ section.settings.logo.alt | default: shop.name }}">
+		{% endcomment %}
+		
+		<img class="lazy2" 
+			 src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+			 data-src="{{ section.settings.logo | img_url: '767X280' }}"
+			 alt="{{ section.settings.logo.alt | default: shop.name }}">
+		
+	  </a>
+	  {% endif %}
+  <!--     <span class="icon_search"></span> -->
+	  <!-- Button show menu -->
+	<div class="mob_right_menu">
+	  <div class="btn-show-menu">
+		<!-- Header Icon mobile -->
+		<div class="header-icons-mobile">
+		  {% include 'header-cart-mob' %}
+		</div>
+
+	  </div>
+	  <div class="btn-show-menu-mobile ">
+		 
+		<span class="menu">
+			<span></span>
+			<span></span>
+			<span></span>
+		 </span>
+		<span class="lnr lnr-chevron-left return_arrow"></span>
+		 <span class="lnr lnr-cross closeMenu" style="left: 0px; display: none;"></span>
+		</div>
+	  </div>
+	</div>
+   
+   {% endif %}<!-- Menu Mobile -->
+	<div class="mobile_header_oth wrap-side-menu nav-down" >
+	  <nav class="side-menu">
+		<ul class="main-menu">
+		  {% include 'header-mob-nav' %}
+		</ul>
+	  </nav>
+	</div>
+  {% if section.settings.white_head %} 
+  <div class="mobile_searchbar wrap_header_mobile mobile_header nav-down white_sticky_header" id="search-header">
+
+	<form action="/search" method="POST" role="search" class="search_header" id="blog-search">
+		  <div id="search" class="search-product pos-relative bo4 of-hidden">
+			<input type="text" name="q" value="{{ search.terms | escape }}" placeholder="Search Products" class="s-text7 size6 p-l-23 p-r-50" aria-label="Search Products" />
+			
+			<button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
+			  <i class="fs-12 fa fa-search" aria-hidden="true"></i>
+			</button>
+		  </div>
+		</form>
+	<div class="mob_right_menu">
+	  <div class="btn-show-menu">
+		<!-- Header Icon mobile -->
+		<div class="header-icons-mobile">
+		   {% include 'header-cart-mob-sticky' %}
+		</div>
+
+	  </div>
+	  <div class="btn-show-menu-mobile ">
+		 
+		<span class="menu">
+			<span></span>
+			<span></span>
+			<span></span>
+		 </span>
+		<span class="lnr lnr-chevron-left return_arrow"></span>
+		 <span class="lnr lnr-cross closeMenu" style="left: 0px; display: none;"></span>
+		</div>
+	  </div>
+	</div>
+  {% else %} 
+  <div class="mobile_searchbar wrap_header_mobile mobile_header nav-down" id="search-header">
+
+	<form action="/search" method="POST" role="search" class="search_header" id="blog-search">
+		  <div id="search" class="search-product pos-relative bo4 of-hidden">
+			<input type="text" name="q" value="{{ search.terms | escape }}" placeholder="Search Products" class="s-text7 size6 p-l-23 p-r-50" aria-label="Search Products" />
+			
+			<button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
+			  <i class="fs-12 fa fa-search" aria-hidden="true"></i>
+			</button>
+		  </div>
+		</form>
+	<div class="mob_right_menu">
+	  <div class="btn-show-menu">
+		<!-- Header Icon mobile -->
+		<div class="header-icons-mobile">
+		   {% include 'header-cart-mob-sticky' %}
+		</div>
+
+	  </div>
+	  <div class="btn-show-menu-mobile ">
+		 
+		<span class="menu">
+			<span></span>
+			<span></span>
+			<span></span>
+		 </span>
+		<span class="lnr lnr-chevron-left return_arrow"></span>
+		 <span class="lnr lnr-cross closeMenu" style="left: 0px; display: none;"></span>
+		</div>
+	  </div>
+	</div>
+  
+	  {% endif %}
+  
+	
+</header>
+{% endif %}
+<!-- code by RY -->
+<script>
+	setTimeout(function() {
+	$(".data-category:first-child").addClass("menu_active").siblings().removeClass('menu_active');
+	
+	$(".category-products:first-child").addClass("show_prod").siblings().removeClass('show_prod');
+	$(".data-category").on({
+		mouseenter: function () {
+	  $(this).addClass("menu_active").siblings().removeClass('menu_active');
+	
+	  var data_category = $(this).attr("data-category");
+	  console.log("data_category",data_category);
+	  $(".category-products[data-category-products~='" + data_category + "']").addClass("show_prod").siblings().removeClass('show_prod');
+	}
+	});
+	imageSquarefunction();
+  }, 100 );
+
+  $(window).on('resize',imageSquarefunction);
+
+  function imageSquarefunction() {
+  setTimeout(function(){
+		  $(".block2-img img").each(function() {
+			var fbtWidth = $(this).width();
+			$(this).css("height",fbtWidth);
+		  });
+	  }, 3000);
+	
+	$("#snize-search-results-grid-mode span.snize-thumbnail img").each(function() {
+	  var width = $(this).width();
+	  $(this).attr('style', 'height: '+width+'px !important');
+	  $(this).parent().attr('style', 'height: '+width+'px !important');
+	});
+	
+	setInterval(function(){
+		  $("li.header-cart-item").each(function() {
+			var value = $(this).find("input[type = 'number']").val();
+			if( value < "2") {
+			  $(this).find(".btn_cart_down span").html("<i class='fa fa-trash-o cart_trash'></i>");
+
+			}else{
+			  $(this).find(".btn_cart_down span").html("-");
+			}
+		  });
+		}, 1000);
+	  var tobar_height = $(".locale-bar__container").height();
+  $(".topbar_added .mobile_searchbar").css("top",tobar_height);
+	var cart_fixed_height = tobar_height + 33;
+	$(".topbar_added #mob_cart .fixedATC.cart-sec-chkout-box .size15.trans-0-4").css("top",cart_fixed_height);
+  
+	$(".locale-bar__close-button").click(function(){
+		$("body").removeClass("topbar_added");
+		$(".fixedATC.cart-sec-chkout-box .size15.trans-0-4").css("top","33px");
+   });
+  }
+  
+	setTimeout(function() {
+
+	var src= $("#product-image-carousel .slick-slide.slick-current img").attr('src');
+$("#xmain_btn_mobile").append("<img src=''>");
+$("#xmain_btn_mobile img").attr('src', src);
+	
+	$("body").append('<div class="video_popup"><div class="video_container"><span class="lnr lnr-cross close_popup"></span><div class="video_iframe"></div></div></div>');
+	
+	$(document).on('click','.play_button',function(e){
+	
+		$("html").addClass("show_vidpopup");
+		$(".video_popup").show();
+		var iframe = $(this).html();
+		$(".video_iframe").html(iframe);
+		$(".video_iframe iframe").attr('src', $(".video_iframe iframe").attr('src') + '?autoplay=1&loop=0' );
+		$(".video_iframe").html();
+	   $(".video_iframe video").trigger('play'); 	
+   });
+	
+	$(document).on('click','.video_popup .close_popup',function(e){
+	  $("html").removeClass("show_vidpopup");
+		$(".video_iframe").html("");
+	  
+		
+		
+   });
+	
+	$(document).on('click','.hero_play_button',function(e){
+	  $("html").addClass("show_vidpopup");
+		  var iframe = $(this).html();
+		$(".video_iframe").html(iframe);
+	  $(".video_iframe iframe").attr('src', $(".video_iframe iframe").attr('src') + '?autoplay=1&loop=0' );
+
+		$(".video_iframe").html();
+	  $(".video_iframe video").trigger('play'); 
+   });
+  }, 500);
+  
+  $(document).mouseup(function(e) 
+  {
+	  var vidContainer = $(".video_popup .video_iframe");
+
+	  // if the target of the click isn't the container nor a descendant of the container
+	  if (!vidContainer.is(e.target) && vidContainer.has(e.target).length === 0) 
+	  {
+		  
+//           $(".play_button").find("iframe").attr('src', $(".play_button").find("iframe").attr('src').replace('?autoplay=1&loop=0&autopause=0', ''));
+//       $(".hero_play_button").find("iframe").attr('src', $(".hero_play_button").find("iframe").attr('src').replace('?autoplay=1&loop=0&autopause=0', ''));
+	   
+		 $("html").removeClass("show_vidpopup");
+		
+		$(".video_iframe").html("");
+	   
+		
+	  }
+  });
+	   
+	  
+  
+	setInterval(function() {
+			$("#snize-search-results-grid-mode span.snize-thumbnail img").each(function() {
+			var width = $(this).width();
+			$(this).attr('style', 'height: '+width+'px !important');
+		  });
+
+	   }, 500);
+  
+  $(document).mouseup(function(e) 
+  {
+	  var container = $(".wrap-side-menu ul, .btn-show-menu-mobile");
+
+	  // if the target of the click isn't the container nor a descendant of the container
+	  if (!container.is(e.target) && container.has(e.target).length === 0) 
+	  {
+		  $(".btn-show-menu-mobile").removeClass("is-active");
+		$("html").removeClass("menu-open");
+		$(".wrap-side-menu").slideUp();
+	   
+	  }
+  });
+   
+
+</script>

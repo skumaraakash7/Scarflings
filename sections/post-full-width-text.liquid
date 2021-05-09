@@ -1,0 +1,63 @@
+<style>
+  .fullWidthtext {
+      padding: 70px 0px 50px 0px;
+  }
+  .fullWidthtext p {
+      padding: 0px 0px;
+  }
+  @media (min-width: 768px) and (max-width: 991px){
+    .fullWidthtext {
+        padding: 50px 0px 60px 0px;
+    }
+    .fullWidthtext .simpletext {
+        padding: 0px 0px 20px 0px;
+    }
+    
+  }
+  @media (max-width: 767px){
+  	.fullWidthtext .simpletext{
+        padding: 0px 0px 30px 0px;
+        text-align: center;
+    }
+    .fullWidthtext {
+        padding: 50px 0px 50px 0px;
+    }
+    .fullWidthtext .simpletext {
+        padding: 0px 0px;
+        text-align: center;
+    }
+  }
+</style>
+<section class="fullWidthtext">
+  <div class="container">
+    <div class="simpletext">
+       <p class="desktop_only">{{ section.settings.text}}</p>
+       <div class="mobile_only">{{ section.settings.mob_text}}</div>
+     </div>
+     
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Full width Content",
+    "settings": [
+		{
+		"id": "text",
+        "type": "html",
+        "label": "Text"
+		},
+		{
+		"id": "mob_text",
+        "type": "html",
+        "label": "Text for mobile"
+		}
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

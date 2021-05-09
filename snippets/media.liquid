@@ -1,0 +1,51 @@
+    {% case media.media_type %}
+      {% when 'image' %}
+
+         
+          {% assign datavariant = '' %}{% assign datavariantTitle = '' %}
+          {% assign variant = image.variants.first%}
+          {% if variant %} {% assign datavariant = variant.id %} {% assign datavariantTitle = variant.title %}{%endif%}
+          <div class="item-slick3" data-variant='{{datavariant}}' data-variantitle='{{datavariantTitle}}'>
+             {% if product.selected_or_first_available_variant.price < product.selected_or_first_available_variant.compare_at_price %}
+          <div class="block2-img">
+            <div class="discount">
+              <div class="middle">
+
+                	<p class="percent">{{ product.compare_at_price_max | minus: product.price | times: 100 | divided_by: product.compare_at_price_max   }}%</p>
+                <p class="offtext">OFF</p>
+              </div>                                        
+            </div>
+             </div>
+            {% endif %}
+            <div class="wrap-pic-w">
+              {% include 'responsive-image' with
+                image: media.src ,
+                max_width: 501,
+                max_height: 500,
+              	product:product
+              %}
+              
+            </div>
+          </div>
+
+
+      {% when 'external_video' %}
+        <div class="item-slick3  VideoExternal"  data-media-id="{{ media.id }}">
+          {{ media | external_video_tag }}
+        </div>
+      {% when 'video' %}
+        <div class="item-slick3  VideoInternal" data-media-id="{{ media.id }}">
+          {{ media | video_tag: controls: true : image_size: "1024x" }}
+          
+          
+        </div>
+      {% when 'model' %}
+        <div class="item-slick3 DimensinalModel" data-media-id="{{ media.id }}">
+          {{ media | model_viewer_tag }}
+        </div>
+      {% else %}
+        <div class="item-slick3 Nothing" data-media-id="{{ media.id }}">
+          {{ media | media_tag }}
+        </div>
+    {% endcase %}
+

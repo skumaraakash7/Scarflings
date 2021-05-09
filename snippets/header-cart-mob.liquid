@@ -1,0 +1,12 @@
+{% if template != 'cart' %}
+<i class="fa fa-shopping-bag fa-2x mhicon header-icon1 js-show-header-dropdown" aria-hidden="true"></i>
+
+<span class="header-icons-noti" id="cart-total-mobile">{{ cart.item_count }}</span>
+<!-- Header cart noti -->
+<div class="header-cart header-dropdown" id="cart-mobile">
+  <div id="subitem-mobile">
+    
+  	{% include 'cart-popup-content-mob' %}
+  </div>
+</div>
+{% endif %}

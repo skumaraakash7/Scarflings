@@ -1,0 +1,79 @@
+<section class="page_content_section p-t-66 p-b-38 mobile_only" id="section_k_{{ section.id }}" style="background-image:url('{{ section.settings.mob_section_background | img_url: 'master' }}')">
+  
+  <div class="container">
+    <div class="about_us_section_title">
+    <h2 class="bannerSectionheading"> {{ section.settings.mob_section_title }} </h2>
+    </div>
+
+      <div class="expandedSection">
+
+          <div class="expandedSectionInner">
+            <div class="play_button">
+              <video id="vid" controls>
+                <source src="https://cdn.shopify.com/s/files/1/0070/0835/4356/t/69/assets/{{ section.settings.about_banner_video_mob }}" type="video/mp4">
+              </video> 
+              <img src="{{ section.settings.about_mob_video_icon | img_url: 'master' }}">
+            </div>
+            <div class="col-md-7">
+              <div class="simpletext">
+
+                <p> {{ section.settings.mob_section_description }} </p>
+                 <a href="javascript:void(0)" class="btn btn--cta cpsgts">{{ section.settings.left_image_linktext }}</a>
+              </div>
+            </div>
+            <div class="col-md-5 FirstSectImage">
+
+
+            </div>
+
+          </div>
+      </div>
+  </div>
+      
+</section>
+{% schema %}
+  {
+    "name": "M Content Left Img",
+	"settings": [
+          {
+        "id": "mob_section_title",
+        "type": "text",
+        "label": "Heading",
+        "default": "Title"
+      },
+		{
+        "id": "mob_section_description",
+        "type": "html",
+        "label": "Description",
+        "default": "Description"
+      },
+      	{
+		"id": "mob_section_background",
+        "type": "image_picker",
+        "label": "Image"
+		},
+	  {
+      "id": "left_image_linktext",
+      "type": "text",
+      "label": "Button text",
+      "default": "Read More"
+    },
+	{
+		"id": "about_mob_video_icon",
+        "type": "image_picker",
+        "label": "Play button icon"
+		},
+	  {
+        "id": "about_banner_video_mob",
+        "type": "text",
+        "label": "Video name"
+      }
+    ]
+   
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+

@@ -1,0 +1,74 @@
+<section class="page_content_section mobile_only p-t-66 p-b-38" id="section_k_{{ section.id }}" >
+
+    	<div class="row">
+<div class="col-md-12 FirstSectImage"  style="background-image:url('{{ section.settings.img_right | img_url: 'master' }}')">
+
+  <div class="play_button">
+
+       <video controls>
+        <source src="{{ 'Stylist.mov' | asset_url }}" type="video/mp4">
+      </video> 
+    <img src="{{ 'white-play.png' | asset_url }}">
+  </div>
+          </div>
+          
+<div class="col-md-12 bgWhite">
+  <div class="container">
+  <div class="simpletext">
+    <h2 class="textOverImg bannerSectionheading"> {{ section.settings.text_box_left_title }} </h2>  
+    <p> {{ section.settings.text_box_left_text }} </p>
+    <a href="javascript:void(0)" class="btn btn--cta cpsgts">{{ section.settings.linktext }}</a>
+    </div>
+	</div>    
+</div>
+
+          
+          </div>
+    
+</section>
+{% schema %}
+  {
+    "name": "M Content Left Img Right",
+    "settings": [
+      {
+        "id": "text_box_left_title",
+        "type": "html",
+        "label": "Banner Heading",
+        "default": "Title"
+      },
+      {
+        "id": "text_box_left_text",
+        "type": "html",
+        "label": "Add custom text below",
+        "default": "<p>Add your text here</p>"
+      },
+		{
+		"id": "img_right",
+        "type": "image_picker",
+        "label": "Image"
+		},
+{
+      "id": "link",
+      "type": "url",
+      "label": "Button link"
+    	},
+	{
+      "id": "linktext",
+      "type": "text",
+      "label": "Button text",
+      "default": "Read More"
+    },
+	  {
+        "id": "stylist_banner_mob_video",
+        "type": "text",
+        "label": "Video id"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,330 @@
+      <form action="/checkout" method="post" id="cart_form">
+        <!-- Cart item -->
+        <div class=" w-size26 p-l-40 p-r-40 p-t-10  m-t-20 m-r-0 m-l-auto p-lr-15-sm cart-sec-chkout-box" >
+     		 <div id="ShopifyKlarnaOnSiteMessagingAppElementMobile">&nbsp;</div>
+              <!--  -->
+              {% if cart.total_discounts > 0 %}
+             {% if settings.hide_cents %}		
+              {% assign savings = cart.total_discounts | money | remove: '.00'  %}
+               {% else %} 
+                 {% assign savings = cart.total_discounts | money %}
+                    {% endif %}
+              <div class="xflex-w xflex-sb-m p-b-12">
+                <span class="s-text18 w-size19 w-full-sm">
+                  {{ 'cart.general.discount' | t }}:
+                </span>
+                <span class="m-text21 w-size20 w-full-sm money">
+                  {{ 'cart.general.savings_html' | t: price: savings }}
+                </span>
+              </div>
+              {% endif %}
+ 
+              <div class="xflex-w xflex-sb-m p-t-10 p-b-20 ">
+                
+	            <span class="m-text22 w-size19 w-full-sm cart_total_t">
+                  {{ 'cart.general.subtotal' | t }}:
+                </span>
+                <span class="m-text21 w-size20 w-full-sm cart_total_txt money">
+                  
+                  
+
+                  
+                   {% if settings.hide_cents %}	
+                  {{ cart.total_price | money | remove: '.00' }}
+                   {% else %} 
+                  {{ cart.total_price | money }}
+                    {% endif %}
+                </span>
+              </div>
+              
+              {% if cart.total_price >= free_shipping_threshold %}
+				
+                <div class="xflex-w xflex-sb-m p-b-20" id="{{maxprice}}">
+                  <span class="m-text22 w-size19 w-full-sm cart_total_t">
+                    Free Shipping:
+                  </span>
+                  <span class="m-text21 w-size20 w-full-sm cart_total_txt">
+                    $0
+                  </span>
+                  </div>
+              {% endif %}  
+              
+              {% if cart.total_price >= free_shipping_threshold %}
+              <div class="choose-option">
+                  <h4>{{ section.settings.deliveroptions }}</h4>
+<!--                   {{'now' | date: '%d %m %Y' }} -->
+<!--                   {{ "now" | date: "%s" | plus: 864000 | date: "%b %d, %Y" }} -->
+                  
+                  <div class="choose-info">
+                      <input type="radio" checked class="radio-choose">
+                      <span class="free-deliver">{{ section.settings.freedelivery }}</span>
+                      <span class="get-by">
+                         <img src="{{ 'delivery.png' | asset_url }}">
+                       
+                         Get your scarves by
+<!--                             {{'now' | date: '%b. %d' }} + -->
+<!--                             {{'now' | date: '%B' }}  {{ "now" | date: "%s" | plus: 172800 | date: "%d" }}-{{ "now" | date: "%s" | plus: 604800 | date: "%d" }} -->
+                        
+                        {{ "now" | date: "%s" | plus: 172800 | date: "%A" }}
+                        {{ "now" | date: "%s" | plus: 172800 | date: "%B" }}
+                        {{ "now" | date: "%s" | plus: 172800 | date: "%d" }}
+                        
+                        -
+                        {{ "now" | date: "%s" | plus: 604800 | date: "%A" }}
+                        {{ "now" | date: "%s" | plus: 604800 | date: "%B" }}
+                        {{ "now" | date: "%s" | plus: 604800 | date: "%d" }}
+                      </span>
+                  </div>
+              </div>
+              {% endif %}  
+              
+              <div class="size15 trans-0-4">
+
+                <!--<button onclick="document.getElementById('cart_form').submit(); return false;" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4 hvr-wobble-horizontal">
+                  {{ 'cart.general.proceed_checkout' | t }}
+                </button>-->
+                
+                <a href="/checkout" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4 hvr-wobble-horizontal checkout_button">
+                  Proceed to checkout <img src="{{ 'arrow.png' | asset_url }}">
+                        
+                </a>
+                
+               
+                {% if additional_checkout_buttons %}
+                	{% comment %}
+                		{{ content_for_additional_checkout_buttons }}
+                    {% endcomment %}
+                <span class="additional-checkout-buttons">
+                	<div class="additional-checkout-buttons">{{ content_for_additional_checkout_buttons }}</div>
+                </span>
+                {% endif %}
+                
+                
+
+              </div>
+            </div>
+
+        <div class="container-table-cart pos-relative" >
+          <div class="wrap-table-shopping-cart bgwhite">
+            <table class="table-shopping-cart">
+              <tr class="table-head">
+                <th style="text-align: center" colspan="2"><span class="itemCount">{{cart.item_count}}</span>items</th>
+              </tr>
+              {% for item in cart.items %}
+                {% if item.product.handle == all_products[settings.free_gift].handle %}
+                  {% assign has_fg = 'true' %}
+                {%endif%}
+                <tr class="table-row" data-line="{{ forloop.index }}">
+                  <td class="m-column-1">
+                    <div class="cart-img-product b-rad-4 o-f-hidden" >
+                      <a href="{{ item.url }}">
+                        <img src="{{ item | img_url: '90x120' }}"  alt="{{ item.title | escape }}" title="{{ item.title | escape }}" class="" />
+                      </a>
+                    </div>
+                    <div class="price-section">
+                      	<a href="{{ item.url }}">{{ item.product.title }}</a>
+                        {% unless item.variant.title contains 'Default' %}
+
+                            <small>{{ item.variant.title }}</small>
+                        {% endunless %}
+                    	<span class="money">
+                          {% if settings.hide_cents %}
+                          {{ item.line_price | money | remove: '.00' }}
+                           {% else %} 
+                          {{ item.line_price | money }}
+                        {% endif %}
+                    	</span>
+                      	{% assign current_variant = item.product.selected_or_first_available_variant %}
+
+                       {% unless current_variant.available %}
+                          <div id="variantQuantity" class="less-in-stock">
+                             {% if item.product.metafields.bookthatapp.config %}
+              				{% else %}
+                                Out Of Stock!
+                            {% endif %}
+                              </div>
+                      {% else %}
+                        {% if current_variant.inventory_quantity > 25 %}
+                              <div id="variantQuantity" class="in-stock">
+                                 {% if item.product.metafields.bookthatapp.config %}
+              				{% else %}
+                                In Stock
+                      		{% endif %}
+                      </div>
+                        {% endif %}
+
+                        {% if current_variant.inventory_quantity < 25 %}
+                              <div id="variantQuantity" class="less-in-stock">
+                                 {% if item.product.metafields.bookthatapp.config %}
+              				{% else %}
+                                Only {{ current_variant.inventory_quantity }} Left in stock - order soon
+                      		{% endif %}        
+                      </div>
+                        {% endif %}
+
+                      {% endunless %}
+                    </div>
+                  </td>
+                  <td class="m-column-2">
+                    
+                    {% unless item.product.tags contains 'hideproduct' %}
+                      <div class="quantityBox" style="display: inline-flex">
+                        <input type="hidden" value="{{ item.id }}" id="productid_{{ item.id }}">
+                        
+                        {% if item.quantity == 1 %}	
+                          
+                        <button type="button" did="{{ item.id }}" class="btn_cart_down_m color1 flex-c-m size7 eff2">
+                          <span><i class="fa fa-trash-o cart_trash"></i></span>
+                        </button>
+						  {% else %}
+                          
+                          
+                        <button type="button" did="{{ item.id }}" class="btn_cart_down_m color1 flex-c-m size7 eff2">
+                          <span>-</span>
+                        </button>
+                          
+						  {% endif %}	
+                        
+                        
+                       {% if item.product.metafields.bookthatapp.config %}
+                         <input class="t-center num-product" type="number" value="{{ item.quantity }}">
+                          <input type="hidden" name="updates[{{item.id}}]" id="updates_{{ item.id }}" value="{{ item.quantity }}" class="updates_input_bookthat_app" />
+                        {% else %}
+                          <input type="number"  did="{{ item.id }}" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" min="0" class="m-text18 t-center num-product" data-line="{{ forloop.index }}">
+                        {% endif %}
+                        
+                        <button type="button" did="{{ item.id }}" class="btn_cart_up_m color1 flex-c-m size7 eff2">
+                          <span>+</span>
+                        </button>
+                        
+                         <button class="delete_btn" type="button" onclick="cart.remove('{{ item.variant_id }}');" title="Remove" class="" >
+                          Delete
+                         </button>
+                        
+                      </div>
+                    
+                    {%else%}
+						<button type="button" onclick="cart.remove('{{ item.variant_id }}');" title="Remove" class="" >
+                          <i class="fa fa-trash-o cart_trash"></i>
+                      </button>
+                    {% endunless %}
+
+              
+                    {% assign property_size = item.properties | size %}
+                    {% if property_size > 0 %}
+                      {% for p in item.properties %}
+                          {% if forloop.first %}{% endif %}
+                          {% unless p.last == blank or p.first == "subscription_id" or p.first == "shipping_interval_frequency" or p.first == "shipping_interval_unit_type" %}
+                              
+
+                              {% if p.last contains '/BoxImages/' or p.last contains '/uploads/' %}
+                              <a href="{{ p.last }}" target="_blank" class="cartPropLink">
+                                <h6 class="no_need_to_show">
+                                {{ p.first }}:
+                                </h6>
+                                
+                                {% if p.first contains '_boxImage' %}
+                                <div class="boxImgCard  _boxImage">
+                                  <div class="Img">
+                                  	<!--<img class="boxImg" src="{{ p.last }}" />-->
+                                    <span class="flex-c-m sizefull bg1 hov1 hvr-wobble-horizontal preview_giftbox">Preview Giftbox</span>
+                                  </div>
+                                  <div class="ImgTitle">
+                                	{% comment %} {{ p.last | split: '/' | last }} {% endcomment %}
+                                  </div>
+                                </div>
+                                {% endif %}
+                                
+                                {% if p.first contains '_bxProof' %}
+                                <div class="boxImgCard  _bxProof">
+                                  <div class="Img">
+                                  	<img class="boxImg" src="{{ p.last }}" />
+                                  </div>
+                                  <div class="ImgTitle">
+                                	{% comment %} {{ p.last | split: '/' | last }} {% endcomment %}
+                                  </div>
+                                </div>
+                                {% endif %}
+                                
+                    		  </a>
+                              {% else if p.last contains '_bxMsg' %}
+                    
+                    			
+                    
+                    			{% if p.first contains '_boxImage' or p.first contains '_bxProof' %}	
+                    				
+                    			{% else  %}
+                                <div class="cartPropLinkMsg">
+                                  <div class="boxImgCard">{{ p.last }}</div>
+                                </div>
+                    			{% endif %}
+                    
+                              {% endif %}
+
+
+                             
+                          {% endunless %}
+                      {% endfor %}
+                    {% endif %}
+                   
+                    
+                    
+                  </td>
+                </tr>
+              {% endfor %}
+            </table>
+          </div>
+        </div>
+  		
+        
+        
+      </form>
+
+<style>
+  .boxImgCard {
+    width: 100%;
+    height: auto;
+    float:left;
+}
+.Img img {
+    width: 100%;
+    min-width: 90px;
+    float: left;
+    height: 90px;
+    max-width: 90px;
+}
+  .ImgTitle {
+    font-weight: 600;
+    text-transform: capitalize;
+    text-align: left;
+}
+  a.cartPropLink {
+    cursor: pointer;
+}
+  .cartPropLink {
+    width: auto;
+    float: left;
+    padding: 10px;
+}
+@media (max-width:767px){
+.table-shopping-cart .m-column-1 {
+   vertical-align: top;
+}
+.table-shopping-cart .m-column-2 {
+   padding-right: 5px;
+   display: flex;
+   flex-direction: column;
+   margin-bottom: 20px;
+}
+table.table-shopping-cart tr {
+   border-bottom: 1px solid #ccc;
+}
+}
+  .no_need_to_show{
+  	display:none;
+  }
+  .preview_giftbox{
+  color:#fff;
+    padding:10px;
+  }
+</style>

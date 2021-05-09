@@ -1,0 +1,57 @@
+<section class="page_content_section p-t-66 p-b-38 mobile_only" id="section_k_{{ section.id }}">
+
+  <div class="container">
+<div class="top_img_bottom_sec">
+  <div class="simpletext">
+    <h3> {{ section.settings.text_box_top_heading }} </h3>
+    <p>{{ section.settings.text_box_top_text }}</p>
+  </div>
+
+<a href="javascript:void(0)" class="btn btn--cta cpsgts">{{ section.settings.linktext }}</a>
+  </div>
+  </div>
+<div class="bg_image" style="background-image: url('{{ section.settings.img_bottom | img_url: 'master' }}');">
+
+</div>
+</section>
+
+  
+
+{% schema %}
+  {
+    "name": "M Content Top Img Bottom",
+    "settings": [
+      {
+        "id": "text_box_top_heading",
+        "type": "html",
+        "label": "Heading"
+      },
+	  {
+        "id": "text_box_top_text",
+        "type": "html",
+        "label": "Description"
+      },
+		{
+      "id": "link",
+      "type": "url",
+      "label": "Button link"
+    	},
+	{
+      "id": "linktext",
+      "type": "text",
+      "label": "Button text",
+      "default": "Read More"
+    },{
+		"id": "img_bottom",
+        "type": "image_picker",
+        "label": "Image"
+		}
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

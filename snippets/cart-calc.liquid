@@ -1,0 +1,51 @@
+
+function beforeUpdateAllKarts(){
+  $("#cart").removeClass("show-header-dropdown");
+  $("#cart-popup").removeClass("show-header-dropdown");
+  $("#cart-mobile").removeClass("show-header-dropdown");
+}
+function updateAllKarts(cart_total_count){
+    $("#cart > button").button("reset");
+    $("#cart-popup > button").button("reset");
+    $("#cart-mobie > button").button("reset"); 
+    setTimeout(function() {
+      $("#cart-total").html(cart_total_count);
+      $("#cart-total-popup").html(cart_total_count);
+      $("#cart-total-mobile").html(cart_total_count);
+    }, 100);
+
+    $("#destop_cartform_item").load("#destop_cartform_item #dsk_cart", function(){console.log('dsk'); Currency.convertAll(shopCurrency, Currency.cookie.read(),'#destop_cartform_item .money');});
+    $("#cart-popup").load("/ #cart-popup #subcart-popup", function(){console.log('pop1'); Currency.convertAll(shopCurrency, Currency.cookie.read(),'#cart-popup .money');});
+    $("#cart-mobile").load("/ #cart-mobile #subitem-mobile", function(){console.log('mob1'); Currency.convertAll(shopCurrency, Currency.cookie.read(),'#cart-mobile .money');});
+    $("#mobile_cartform_item").load("#mobile_cartform_item #mob_cart", function(){console.log('mob'); Currency.convertAll(shopCurrency, Currency.cookie.read(),'#mobile_cartform_item .money');});
+  
+}
+
+$(document).ready(function(){
+
+  $("#destop_cartform_item").on('load', function(){console.log('load load'); Currency.convertAll(shopCurrency, Currency.cookie.read()); });
+  $("#mobile_cartform_item").on('load', function(){console.log('load load'); Currency.convertAll(shopCurrency, Currency.cookie.read()); });
+  
+	$("#destop_cartform_item").on("change", "input.num-product", function(e) {
+      
+      console.log(e.target.value);
+      if(e.target.value != ''){
+        var o = $(this).attr("did"),
+            r = e.target.value;
+        $.ajax({
+            url: "/cart/update.js",
+            type: "post",
+            data: "updates[" + o + "]=" + r,
+            dataType: "json",
+            beforeSend: beforeUpdateAllKarts(),
+            success: function(t) {
+              	updateAllKarts(t.item_count);
+            },
+            error: function(t, e, o) {
+                alert(t.responseText)
+            }
+        })
+      }
+    });
+
+});

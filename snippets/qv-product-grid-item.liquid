@@ -1,0 +1,134 @@
+{% unless current_collection %}
+{% assign current_collection = collection %}
+{% endunless %}
+
+{% assign on_sale = false %}
+{% if product.compare_at_price > product.price %}
+{% assign on_sale = true %}
+{% endif %}
+
+{% assign sold_out = true %}
+{% if product.available  %}
+{% assign sold_out = false %}
+{% endif %}
+{% assign img_size = '400x400' %}
+<!-- Block2 -->
+<div class="qv block2">
+  {% assign product_created_at = product.created_at | date: '%s' %}
+  {% assign time_ago = 'now' | date: '%s' | minus: product_created_at | divided_by: 86400 %}
+  {% assign product_new_time = settings.product_new_time | times: 1 %}
+  {% comment %}{% if on_sale %} block2-labelsale{% endif %}{% endcomment %}
+  <div class="block2-img wrap-pic-w of-hidden pos-relative {% if time_ago < product_new_time %}block2-labelnew{% endif %} ">
+    
+  
+    
+    {% if on_sale %}
+    <div class="discount collection_sale">
+      <div class="middle">
+        	 <p class="percent">{{ product.compare_at_price_max | minus: product.price | times: 100 | divided_by: product.compare_at_price_max   }}%</p>
+        <p class="offtext">OFF</p>
+      </div>                                        
+    </div>
+    {% endif %}
+    <a href="{{ product.url | within: collection }}">
+      <div class="reveal">
+               
+         <img class=" lazyload" 
+              src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+              data-src="{{ product.featured_image.src | img_url: img_size }}" 
+              alt="{{ product.featured_image.alt | escape }}"
+              >
+        
+   	  	 {% if product.images[1] %}
+         <img class=" hidden lazyload" 
+              src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+              data-src="{{ product.images[1] | img_url: img_size }}" alt="{{ product.images[1].alt | escape }}" />
+      	 {% else %}
+           <img class=" hidden lazyload" 
+              src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+              data-src="{{ product.images.last | img_url: img_size }}" alt="{{ product.images.last.alt | escape }}" />      	
+         {% endif %}
+      </div>
+    </a>
+    {% comment %}
+    <div class="quickview block2-overlay trans-0-4" data-productinfo='{{ product|json }}'>
+     <button class="qshopv" value="{{ product.variants.first.id }}">
+          Quick View
+        </button>
+    </div>
+    {% endcomment %}
+  </div>
+  
+ 
+  <div class="block2-txt p-t-20 qv_product_desc">
+    <a href="{{ product.url | within: collection }}" class="block2-name dis-block s-text3 p-b-5">
+      {{ product.title }}
+    </a>
+    <div class="moneyRow">
+      {% if product.compare_at_price > product.price %}
+          <div class="block2-oldprice m-text7 p-r-5 money">
+           {% if settings.hide_cents %}
+            {{ product.compare_at_price_max | money | remove: '.00' }}
+           {% else %} 
+            {{ product.compare_at_price_max | money  }}
+           {% endif %}
+          </div>
+          <div class="block2-newprice m-text8 p-r-5 money">
+             {% if settings.hide_cents %}
+            {{ product.price | money | remove: '.00' }}
+             {% else %} 
+             {{ product.price | money }}
+            {% endif %}
+          </div>
+      {% else %}
+          <div class="block2-price m-text6 p-r-5 money">
+             {% if settings.hide_cents %}
+            {{ product.price | money | remove: '.00' }}
+             {% else %} 
+             {{ product.price | money }}
+            {% endif %}
+          </div>
+      {% endif %}
+    </div>
+  </div>
+  
+  <div class="qvmodal-content" id="{{ product.variants.first.id }}">
+    <div class="snize-modal-content-wrapper" style="max-height: 540px;">
+        <div class="snize-quick-view-content-left">
+            <a href="{{product.url}}">
+                <div class="snize-quick-view-image-wrapper"><img src="{{ product.featured_image.src | img_url: 'large' }}" class="snize-quick-view-image"></div>
+            </a>
+            <ul class="snize-quick-view-thumbnails">
+              {% for image in product.images %}
+                <li class="snize-quick-view-thumbnail"><img src="{{image.src | img_url: 'thumbnail'}}"></li>
+              {% endfor %}
+            </ul>
+        </div>
+        <div class="snize-quick-view-content-right">
+            <a href="{{product.url}}" class="snize-quick-view-title" data-no-instant="true">{{product.title}}</a>
+              <div class="snize-quick-view-price-wrapper"><span class="snize-price">{{ product.price | money | remove: '.00' }}</span></div>
+              <div class="snize-quick-view-description">{{product.description | strip_html }}</div><a href="{{product.url}}" class="snize-quick-view-show-more">View full details</a>
+              <div class="snize-quick-view-form-wrapper">
+                <form action="/cart/add" data-productid="{{ product.id }}" method="post" class="">
+<!-- Begin ReCharge code -->
+{% if product.available %}{% include 'subscription-product' %}{% endif %}
+<!-- End ReCharge code -->
+
+
+                  <input type="hidden" name="id" data-productid="{{ product.id }}" value="{{product.selected_or_first_available_variant.id}}">
+                  <input type="hidden" name="product_id" value="{{product.id}}">
+                  <div class="snize-quick-view-add-to-cart-wrapper">
+                    <hr>
+                    <div class="snize-quick-view-add-to-cart-quantity">
+                      <label for="snize-quick-view-quantity" class="snize-quick-view-quantity-label">Quantity:</label>
+                      <input type="number" id="snize-quick-view-quantity" name="quantity" class="snize-add-to-cart-quantity-num" value="1" min="1" autocomplete="off">
+                    </div>
+                    <button id="snize-quick-view-add-to-cart" class="xflex-c-m size9 bg1 bo-rad-20 hov1 s-text1 xtrans-0-4 hvr-wobble-horizontal" type="submit">Add to cart</button>
+                  </div>
+                </form>
+              </div>
+        </div>
+      </div>
+    </div>
+</div>
+

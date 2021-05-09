@@ -1,0 +1,131 @@
+<ul class="main_menu">
+  {% for link in linklists[section.settings.header_menu_1].links %}
+  {% assign child_list_handle = link.title | handleize %}
+  {% assign megamenu = false %}
+
+  {% for block in section.blocks %}
+  {% if block.type == 'megamenu' %}
+  {% if child_list_handle == block.settings.mega_menu %}
+  {% include 'mega-menu' %}
+  {% assign megamenu = true %}
+  {% endif %}
+  {% endif %}
+  {% endfor %}
+
+  {% if megamenu == false %}
+  {% if linklists[child_list_handle].links != blank %}
+  <li class="{% if link.active %} sale-noti{% endif %}">
+    <a {% if link.url == '#' %} class="a_href" {% else %} href="{{link.url}}" {% endif %}>{{link.title}}</a>
+    <ul class="sub_menu {{link.title | remove: " "}}">
+      <div class="shop_now_menu">
+        <div class="shop_sub_menu_list">
+          <ul>
+            {% for childlink in linklists[child_list_handle].links %}
+            <li class="data-category {% if childlink.links != blank %}parent{%endif%}" {% if childlink.links == blank %} data-category="{{ childlink.title | handle }}"{% endif %}>
+              <a class="" {% if childlink.links == blank %} href="{{ childlink.url }}"{% endif %}>{{ childlink.title | escape }}</a>
+            
+            {% if childlink.links == blank %}</li>{% endif %}
+            {% endfor %}
+          </ul>
+          
+			<!-- Special collection custom code for sub menu start -->
+            {% for childlink in linklists[child_list_handle].links %}
+              {% if childlink.title == 'SPECIAL COLLECTIONS' %}
+                 {% if childlink.links != blank %}
+          <div class="border_class"></div>
+                            <ul style="display:none">
+                            {% for grandchildlink in childlink.links %}
+                              <li class="data-category child_cate" data-category="{{ grandchildlink.title | handle }}">
+                                <a class="" href="{{ grandchildlink.url }}">{{ grandchildlink.title | escape }}</a>
+                              </li>
+                            {% endfor %}
+                            </ul>
+                          {% endif %}
+                {% endif %}
+                
+            {% endfor %}
+       <!-- Special collection custom code for sub menu end -->
+          
+        </div>
+        <div class="shop_sub_menu_prod">
+          
+          {% for childlink in linklists[child_list_handle].links %}
+          
+          {% if forloop.first == true %}
+          	{% assign style = 'style="display:none;"' %}        
+          {% else %}
+            {% assign style = 'style="display:none;"' %}
+          {% endif %}
+          
+          
+          {% if childlink.links != blank %}
+                        {% if childlink.title == 'SPECIAL COLLECTIONS' %}
+                        {% for grandchildlink in childlink.links %}
+                          <div class="category-products" data-category-products="{{ grandchildlink.title | handle }}" {{style}}>
+            
+                                {% assign new_collection = grandchildlink.url | remove: "/collections/" %}
+
+                                {% for product in collections[new_collection].products  limit:9  %}
+
+                                    <div class="shop_sub_menu_prod_col">
+                                        <div class="prod_col_inner">
+                                          <a href="{{product.url}}">
+                                           {% comment %} <img class="" src="{{ product.featured_image |img_url:"360x250" }}">{% endcomment %}
+                                             <img alt="" class=" lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="{{ product.featured_image |img_url:"360x250" }}">
+                                            <div class="prod_overlay">
+                                              <h3>{{ product.title }}</h3>
+                                            </div>
+                                          </a>
+                                        </div>
+                                      </div>
+
+                                {% endfor %}
+
+                              </div>
+                        {% endfor %}
+                      {% endif %}
+                      {% endif %}
+
+          
+          <div class="category-products" data-category-products="{{ childlink.title | handle }}" {{style}}>
+            
+            {% assign new_collection = childlink.url | remove: "/collections/" %}
+            
+            {% for product in collections[new_collection].products  limit:9  %}
+            
+            	<div class="shop_sub_menu_prod_col">
+                    <div class="prod_col_inner">
+                      <a href="{{product.url}}">
+                        {% comment %}<img class="" src="{{ product.featured_image |img_url:"360x250" }}">{% endcomment %}
+                        <img alt="" class=" lazyload" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="{{ product.featured_image |img_url:"360x250" }}">
+                        <div class="prod_overlay">
+                          <h3>{{ product.title }}</h3>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+              
+            {% endfor %}
+
+          </div>
+          
+          
+          
+          {% endfor %}
+          
+          
+    
+        </div>
+      </div>
+    </ul>
+  </li>
+  {% else %}
+  <li class="{% if link.active %} sale-noti{% endif %}">
+    <a href="{{link.url}}">{{link.title}}</a>
+  </li>
+  {% endif %}
+  {% endif %}
+  {% endfor %}
+</ul>
+
+

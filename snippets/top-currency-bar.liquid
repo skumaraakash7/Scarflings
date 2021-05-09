@@ -1,0 +1,235 @@
+{% if settings.show_multiple_currencies %}
+<style>
+  /*! CSS Used from: Embedded */
+.locale-bar__container{font-size:16px;outline:none;z-index:1000000;}
+.locale-bar__content{align-items:flex-start;display:flex;justify-content:space-between;padding:1em;}
+.locale-bar__message{margin:0;padding:0;}
+.locale-bar__form{margin:0.5em 0 0 -0.3em;text-align:left;}
+.locale-bar__selector{-moz-appearance:none!important;-webkit-appearance:none!important;appearance:none!important;background-color:#f4f4f4!important;background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjUiPjxwYXRoIGZpbGw9IiM2NjYiIGQ9Ik0wIDBzMy40IDQuNCAzLjUgNC40QzMuNyA0LjQgNy4xIDAgNy4xIDBIMHoiLz48L3N2Zz4=)!important;background-position:right 10px center!important;background-repeat:no-repeat!important;background-size:auto!important;border-radius:2px!important;color:#333!important;cursor:pointer!important;display:inline-block!important;font-size:16px!important;height:auto!important;line-height:1.375!important;margin:0.3em!important;max-width:100%!important;padding:0.3em 28px 0.3em 0.5em!important;text-indent:0.01px!important;text-overflow:''!important;vertical-align:baseline!important;width:auto!important;border:1px solid #b65327!important;}
+  .locale-bar__selector:focus {
+    border: 1px solid #ab3409 !important;
+    outline: none;
+    border-radius: 0px !important;
+}
+.locale-bar__button{border:none!important;box-shadow:none!important;font-size:16px!important;height:auto!important;line-height:1.375!important;min-width:unset!important;text-align:center!important;vertical-align:unset!important;width:auto!important;border:none;border-radius:2px;box-shadow:none;margin:0.3em;padding:0.3em 0.5em;}
+.locale-bar__button:hover,.locale-bar__button:focus{border:none!important;box-shadow:none!important;min-width:unset!important;width:auto!important;}
+.locale-bar__button:focus{outline:auto!important;}
+.locale-bar__button:hover{box-shadow:inset 0 0 0 100px rgba(0,0,0,0.15);}
+.locale-bar__close-button{border:none!important;box-shadow:none!important;font-size:16px!important;height:auto!important;line-height:1.375!important;min-width:unset!important;text-align:center!important;vertical-align:unset!important;width:auto!important;background:none!important;padding:0!important;margin-left:1em;padding-top:2px;}
+.locale-bar__close-button:hover,.locale-bar__close-button:focus{border:none!important;box-shadow:none!important;min-width:unset!important;width:auto!important;}
+.locale-bar__close-button:focus{outline:auto!important;}
+.locale-bar__close-button:hover,.locale-bar__close-button:focus{background:none!important;}
+.locale-bar__container{border-bottom:1px solid rgba(0,0,0,0.2);left:0;width:100%;}
+.locale-bar__content{justify-content:space-between;margin:0 auto;padding:3px;}
+.locale-bar__message{display:inline-block;margin:0.25em 1em 0.25em 0 !important;}
+.locale-bar__form{display:inline-block;margin:0.25em 1em 0.25em -0.3em;}
+.locale-bar__close-button{margin-top:0.5em;}
+.locale-bar__container{position:absolute;top:0;}
+  #currency_form {
+    display: inline-block;
+}
+  .locale-bar__call-to-action{
+        margin: 0 auto;
+  }
+.locale-bar__content {
+   margin: 0px !important;
+   text-align: center;
+   padding: 10px 35px 10px 35px !important;
+}
+button.locale-bar__close-button {
+   position: absolute;
+   right: 20px;
+   top: 15px;
+}
+.locale-bar__message {
+   margin: 0px !important;
+   font-size: 16px !important;
+}
+.locale-bar__message {
+   margin: 0px 0px 10px 0px !important;
+}
+@media (max-width: 767px){
+.locale-bar__content {
+   margin: 0px !important;
+   text-align: center;
+   padding: 5px 25px 5px 25px !important;
+}
+
+.locale-bar__message {
+   margin: 0px 0px 5px 0px !important;
+   font-size: 13px !important;
+   line-height: 1.5em !important;
+}
+.locale-bar__selector {
+   font-size: 14px !important;
+}
+button.locale-bar__button {
+   margin: 0px;
+   font-size: 14px !important;
+   font-weight: normal !important;
+   padding: 5px 10px;
+}
+button.locale-bar__close-button {
+   position: absolute;
+   right: 8px;
+   top: 8px;
+   margin: 0px;
+}
+button.locale-bar__close-button svg {
+   width: 14px !important;
+}
+}
+  
+
+ 
+  #currency_sucess_message {
+    color: #08d008 !important;
+}
+  
+  .hidden_by_close {
+    display: none !important;
+}
+
+</style>
+
+<style>
+@media (min-width:992px){
+.topbar_added header:not(.home) .wrap_header {
+   top: 97px !important;
+}
+}
+</style>	
+
+<div id="top_currency_bar" style="display:none">
+    <div class="locale-bar__container" tabindex="-1" style="background-color: rgb(242, 242, 242);">
+        <div class="locale-bar__content" style="max-width: none; margin-left: 20px; margin-right: 20px; padding-left: 2px; padding-right: 2px;">
+            <div class="locale-bar__call-to-action">
+              <p class="locale-bar__message" style="color: rgb(51, 51, 51);">Looks like you’re in <span id="top_bar_country">Unknown Place</span>. Change currency?</p>
+                
+              	{% form 'currency' %}
+  <select class="locale-bar__selector" name="currency" id="currenciesSel" >
+    {% for currency in shop.enabled_currencies %}
+      {% if currency == cart.currency %}
+        <option selected value="{{currency.iso_code}}">{{currency.iso_code}} - {{ currency.symbol }} </option>
+      {% else %}
+        <option value="{{currency.iso_code}}">{{currency.iso_code}} - {{ currency.symbol }} </option>
+      {% endif %}
+    {% endfor %}
+  </select>
+  <button id="currency_switcher_submit_button" class="locale-bar__button " type="button" style="background-color: rgb(181, 76, 38); color: rgb(255, 255, 255);">Change</button>
+{% endform %}
+              
+            <div id="currency_sucess_message" class="locale-bar__message"></div>
+
+            </div>
+            <button class="locale-bar__close-button" type="button">
+                <svg aria-label="Dismiss" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" style="height: 1em; width: 1em;">
+                    <path d="M11.414 10l6.293-6.293a.999.999 0 1 0-1.414-1.414L10 8.586 3.707 2.293a.999.999 0 1 0-1.414 1.414L8.586 10l-6.293 6.293a.999.999 0 1 0 1.414 1.414L10 11.414l6.293 6.293a.997.997 0 0 0 1.414 0 .999.999 0 0 0 0-1.414L11.414 10z" fill="rgba(51, 51, 51, 1)"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+    <div class="locale-bar__backdrop"></div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    
+    
+  	if($("#top_currency_bar").is(":visible")){
+    	$("body").addClass("topbar_added");
+    }else{
+    	$("body").removeClass("topbar_added");
+    }
+
+    $(".locale-bar__close-button").click(function(){
+        $("#top_currency_bar").hide();
+      
+      $("#top_currency_bar").addClass("hidden_by_close");
+      
+      	$("body").css("margin-top","0px");
+    $(".ffsbcontent").css("top","0px");
+    });
+
+  });
+  
+  window.oldCurrency = "{{ cart.currency.iso_code }}";
+  
+  	$(document).ready(AddTopBarFunction);
+	$(window).on('resize',AddTopBarFunction);
+
+ function AddTopBarFunction() {
+   
+   if($("#top_bar_country").html() != "Unknown Place" && $.cookie("top_currency_bar_hide") != "true"){
+   $("#top_currency_bar").show();
+   
+   if($("#top_currency_bar").is(":visible")){
+    	$("body").addClass("topbar_added");
+      }else{
+          $("body").removeClass("topbar_added");
+      }
+   
+   
+	var width = $(window).width();
+  if(width > 767){
+   	var tobar_height = $(".locale-bar__container").height();
+    $("body").css("margin-top",tobar_height);
+    $(".ffsbcontent").css("top",tobar_height);
+   }
+  else{
+  	var tobar_height = $(".locale-bar__container").height();
+    $("body").css("margin-top",tobar_height);
+    $("body").css("padding-top","1px");
+    $(".ffsbcontent").css("top",tobar_height);
+  }
+   
+   }
+   
+   
+ }
+  
+function ShowCurrencySuccessMessage(){
+  	console.log("ShowCurrencySuccessMessage");
+	$("#currency_sucess_message").html(" Currency Changed Succcessfully! ");
+	setTimeout(function(){
+		$("#currency_sucess_message").html("");
+	},2000);
+  	$(".locale-bar__button").removeAttr("disabled");
+}
+  
+  $("#currency_switcher_submit_button").on("click",function(CurrencyFormSubmitButtonEvent){
+    $.cookie("top_currency_bar_hide",true);
+    $(this).attr("disabled",true);
+    $(this).closest("form").submit();
+    $("#top_currency_bar").hide();
+    var tobar_height = $(".locale-bar__container").height();
+    $("body").css("margin-top",-tobar_height);
+    $("body").css("padding-top","0px");
+    $(".ffsbcontent").css("top",-tobar_height);
+    
+    
+  });
+  
+  var initiateTopBar =  setInterval(function(){
+    
+    /*console.log("top_currency_bar_hide",top_currency_bar_hide);*/
+    if($("#top_bar_country").html() != "Unknown Place" && $.cookie("top_currency_bar_hide") == undefined){
+      AddTopBarFunction();
+    }
+    
+    
+    
+  },1500);
+  
+  function RemoveTopBarFunction(){
+  	var tobar_height = $(".locale-bar__container").height();
+    $("body").css("margin-top",-tobar_height);
+    $("body").css("padding-top","0px");
+    $(".ffsbcontent").css("top",-tobar_height);  
+  }
+  
+</script>
+
+{% include 'mycurrencies' %}
+
+{% endif %}

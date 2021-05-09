@@ -1,0 +1,70 @@
+{% for link in linklists[section.settings.header_menu_1].links %}
+{% assign child_list_handle = link.title | handleize %}
+{% assign megamenu = false %}
+
+{% for block in section.blocks %}
+{% if block.type == 'megamenu' %}
+{% if child_list_handle == block.settings.mega_menu %}
+{% include 'mega-menu' %}
+{% assign megamenu = true %}
+{% endif %}
+{% endif %}
+{% endfor %}
+
+{% if megamenu == false %}
+{% if linklists[child_list_handle].links != blank %}
+<li class="item-menu-mobile {% if link.active %} sale-noti{% endif %} mobile_drop_menu">
+  <a href="{{link.url}}">{{link.title}}</a>
+  <ul class="sub-menu">
+    {% for childlink in linklists[child_list_handle].links %}
+    <li><a class="" href="{{ childlink.url }}">{{ childlink.title | escape }}</a></li>
+    {% endfor %}
+  </ul>
+  <i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
+</li>
+{% else %}
+<li class="item-menu-mobile {% if link.active %} sale-noti{% endif %}">
+  <a href="{{link.url}}">{{link.title}}</a>
+</li>
+{% endif %}
+{% endif %}
+{% endfor %}
+
+{% capture the_snippet_auth %}{% include 'socialshopwave-widget-auth' %}{% endcapture %}
+{% if the_snippet_auth contains 'Liquid error' %}
+{% else %}
+    <div id="ssw-topauth" class="ssw-topauth">
+      {% if customer %}
+      <li class="ssw-tprofile ssw-dropdown item-menu-mobile">
+        <a class="ssw-dropdown-toggle" data-toggle="ssw-dropdown" href="javascript:void(0);">
+          <i class="ssw-icon-user"></i>
+          {{ customer.first_name }}
+          {% if customer.last_name != 'Unknown' %}
+          {{ customer.last_name | slice:0 | upcase }}.
+          {% endif %}
+          <i class="ssw-icon-down-open-big"></i>
+        </a>
+        <ul class="ssw-dropdown-menu" role="menu" aria-labelledby="dLabel">
+          <li id="customer_myorders_li"><a tabindex="-1" href="/account">{{ 'socialshopwave.my_orders' | t }}</a></li>
+          {% include 'ssw-widget-dropdown' %}
+          <li class="ssw-divider"></li>
+          <li><a id="customer_logout_link" tabindex="-1" href="/account/logout">{{ 'socialshopwave.logout' | t }}</a></li>
+        </ul>
+      </li>
+      {% else %}
+      <li class="item-menu-mobile">
+        <a id="customer_login_link" href="javascript:void(0);" data-toggle="ssw-modal" data-target="#login_modal" onclick="trackShopStats('login_popup_view', 'all')">{{ 'socialshopwave.log_in' | t }}</a>
+      </li>
+      <li class="item-menu-mobile">
+        <a id="customer_register_link" data-toggle="ssw-modal" data-target="#signup_modal" href="javascript:void(0);" onclick="trackShopStats('login_popup_view', 'all')">{{ 'socialshopwave.sign_up' | t }}</a>
+      </li>
+      {% endif %}
+    </div>
+{% endif %}
+
+<script>
+$( ".mobile_drop_menu" ).on( "click", function() {
+    		$(this).children(".sub-menu").slideToggle();
+  			$(this).children( ".arrow-main-menu" ).toggleClass('turn-arrow');
+    });
+</script>

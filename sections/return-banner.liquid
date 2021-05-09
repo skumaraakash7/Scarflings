@@ -1,0 +1,188 @@
+<style>
+.FirstSectImage{
+background-repeat:no-repeat;
+}
+.retBannersection {
+    padding: 0px !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+    height: 450px;
+    display: flex;
+    align-items: center;
+}
+.retBannersection .simpletext {
+    padding: 0px 0px 0px 50px;
+    margin: -50px 0 0 0;
+}
+.retBannersection .row {
+    padding: 0px;
+    width: 850px;
+    margin: 0 auto;
+  	max-width: 100%;
+}
+.retBannersection .simpletext h2 {
+    color: #000 !important;
+    font-size: 40px !important;
+    width: 385px;
+}
+.retBannersection .simpletext h2 span {
+    color: #b44b2b !important;
+}
+section#section_k_post-banner {
+    padding: 0px 0px 0px 0px;
+}
+.FirstSectImage {
+    background-size: contain;
+    background-position: 60px bottom !important;
+    background-repeat: no-repeat;
+}
+.retBannersection h2 {
+    margin-bottom: 7px;
+}
+.retBannersection .row {
+    padding: 0px;
+    width: 900px;
+    margin: 0 auto;
+    max-width: 100%;
+}
+@media (min-width: 1400px) {
+.retBannersection {
+    height: 550px;
+}
+}
+
+  @media (min-width: 1600px) {
+.retBannersection {
+    height: 650px;
+}
+}
+
+    @media (min-width: 1750px) {
+.retBannersection {
+    height: 750px;
+}
+}
+@media (min-width:768px) and (max-width:991px){
+.retBannersection .simpletext p{
+font-size:15px!important;
+}
+.retBannersection .simpletext{
+padding:50px 0px 50px 0px;
+}
+}
+
+
+@media (max-width:767px){
+
+  .retBannersection .simpletext h2 {
+    font-size: 19px !important;
+    width: 180px;
+    line-height: 1.3em;
+    max-width: 100%;
+}
+ .retBannersection {
+    padding: 0px !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+   background-image:url('{{ section.settings.ret_banner_heading_bg_image_mob | img_url: 'master' }}') !important;
+}
+.retBannersection .row {
+    padding: 15px 0px 0px 0px;
+    margin: 0px 0px !important;
+    width: auto;
+    max-width: unset;
+}
+.retBannersection .simpletext {
+    padding: 0px 0px 30px 45px !important;
+    margin: 0px 0 0 0;
+}
+section#section_k_return-banner .col-8 {
+    padding-right: 0px !Important;
+    padding-left: 10px;
+}
+}
+@media (min-width: 481px) and (max-width: 620px){
+  .retBannersection {
+    height: 300px;
+  }
+  .retBannersection .simpletext {
+      padding: 0px 0px 30px 25px !important;
+      margin-top: 0px;
+  }
+}
+@media (min-width: 381px) and (max-width: 480px){
+  .retBannersection {
+    height: 210px;
+  }
+  .retBannersection .simpletext {
+      padding: 0px 0px 30px 15px !important;
+      margin-top: 0px;
+  }
+}
+@media (max-width: 380px){
+  .retBannersection {
+    height: 200px;
+  }
+  .retBannersection .simpletext {
+      padding: 0px 0px 30px 7px !important;
+      margin-top: 0px;
+  }
+}
+@media (min-width:768px){
+
+.retBannersection .FirstSectImage{
+margin-top:20px!important;
+}
+}
+
+</style>
+<section class="page_content_section retBannersection p-t-66 p-b-38" id="section_k_{{ section.id }}" style="background-image:url('{{ section.settings.ret_banner_heading_bg_image | img_url: 'master' }}')" >
+<div class="container">
+   <div class="row">
+    <div class="col-4 FirstSectImage" >
+    
+     </div>
+     <div class="col-8">
+      <div class="simpletext">
+        <h2> {{ section.settings.ret_banner_heading }} </h2>
+      </div>
+    </div>
+   </div>
+  </div>
+</section>
+{% schema %}
+  {
+    "name": "Section 1",
+    "settings": [
+	  {
+        "id": "ret_banner_heading",
+        "type": "html",
+        "label": "Heading",
+        "default": "<p>Add your text here</p>"
+      },
+		{
+		"id": "ret_banner_heading_bg_image",
+        "type": "image_picker",
+        "label": "Background"
+		}
+	  ,
+		{
+		"id": "ret_banner_heading_bg_image_mob",
+        "type": "image_picker",
+        "label": "Background for mobile"
+		}
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

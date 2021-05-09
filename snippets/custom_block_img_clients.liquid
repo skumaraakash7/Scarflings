@@ -1,0 +1,53 @@
+{% if settings.img_heading_enable %} 
+<section class="custom_image bgwhite p-t-62 p-b-46">
+   <div class="container">
+     <div class="sec-title p-b-22">       
+      <h3 class="m-text5 t-center">{{ settings.img_heading }}</h3>     
+    </div>     
+    <div class="logo-bar slick5">
+      {% for i in (1..6) %}
+      	{%  assign cimg = "custom_image_" | append: i %}     
+      	{% if  settings[cimg] != blank  %} 
+         <div class="item-slick2 logo-bar__item">            
+              <img class="logo-bar__image lazyload" 
+                   src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" 
+                   data-src="{{ settings[cimg] | img_url: 'master' }}">
+         </div>      
+      {% endif %}
+    {% endfor %}       
+    </div>
+</div>
+</section>
+{% endif %}
+
+{% if settings.client_heading_enable %}
+{% comment %}
+<section class="client_section bgwhite p-t-62 p-b-46" data-section-id="{{ section.id }}">
+<div class="container-fluid">
+  <div class="sec-title p-b-60">
+    <h3 class="m-text5 t-center">{{ settings.client_heading }}</h3>
+    </div>
+  <!-- Slide2 -->
+    <div class="slick4">
+     {% for i in (1..6) %}
+      {%  assign author = "author_" | append: i %}     
+      {%  assign c_content = "c_content_" | append: i %}     
+      {%  assign client_image = "client_image_" | append: i %}     
+      	{% if  settings[author] != blank  %} 
+      <div class="p-l-15 p-r-15">
+        <blockquote class="quotes-slider__text text-center">
+          <span class="quote-icon">
+            <img src="{{ settings[client_image] | img_url: 'master' }}">
+          </span>
+          <div class="rte-setting"><p> {{ settings[c_content] }}</p></div>
+          <cite>{{ settings[author] }}</cite>
+         </blockquote>
+      </div>
+      {% endif %}
+      {% endfor %}
+  
+      </div>
+</div>
+</section>
+{% endcomment %}
+  {% endif %}

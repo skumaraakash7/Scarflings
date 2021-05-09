@@ -1,0 +1,111 @@
+<style>
+  
+  @media (min-width:768px){
+    
+    #section_k_{{ section.id }} {
+    
+    background-image: url('{{ section.settings.bg_image_bg | img_url: 'master' }}');
+    
+  }
+    
+}
+  @media (max-width:767px){
+    #section_k_{{ section.id }} {
+    
+    background-image: url('{{ section.settings.bg_image_mob | img_url: 'master' }}');
+    
+  }
+    
+}
+  
+</style>
+  
+<section class="page_content_section p-t-66 p-b-38" id="section_k_{{ section.id }}">
+ 	
+  <div class="container">
+
+  
+    <div class="col-md-12 environment_section">
+        <div class="col-md-12 text-center">
+			<div class="centered_image" style="background-image:url('{{ section.settings.img_center | img_url: 'master' }}')">
+          	 
+              <div class="play_button">
+                 <video id="vid" controls>
+                  <source src="https://cdn.shopify.com/s/files/1/0070/0835/4356/t/69/assets/{{ section.settings.about_sustain }}" type="video/mp4">
+                </video> 
+                <img src="{{ 'white-play.png' | asset_url }}">
+              </div>
+          </div>
+            
+            <h2> {{ section.settings.text_box_left_title }} </h2>
+            <h3 class="simpletext"> {{ section.settings.text_box_left_text }} </h3>
+			<a href="javascript:void(0)" class="btn btn--cta cpsgts">{{ section.settings.center_linktext }}</a>
+              
+        </div>
+
+
+    </div>
+  
+  </div>
+  
+
+
+  
+</section>
+    
+{% schema %}
+  {
+    "name": "Content Above Image",
+    "settings": [
+		{
+		"id": "bg_image_bg",
+        "type": "image_picker",
+        "label": "Background Desktop"
+		},{
+		"id": "bg_image_mob",
+        "type": "image_picker",
+        "label": "Background Mobile"
+		},
+		{
+		"id": "bg_color",
+        "type": "color",
+        "label": "Background Color"
+		},
+        {
+		"id": "img_center",
+        "type": "image_picker",
+        "label": "Image"
+		},
+      {
+        "id": "text_box_left_title",
+        "type": "text",
+        "label": "Heading",
+        "default": "Title"
+      },
+      {
+        "id": "text_box_left_text",
+        "type": "html",
+        "label": "Add custom text below",
+        "default": "<p>Add your text here</p>"
+      },
+	{
+      "id": "center_linktext",
+      "type": "text",
+      "label": "Button text",
+      "default": "Read More"
+    },
+	  {
+        "id": "about_sustain",
+        "type": "text",
+        "label": "Video name"
+      }
+			
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
